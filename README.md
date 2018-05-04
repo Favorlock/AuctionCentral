@@ -17,3 +17,4 @@ Unix: gradlew
 |:----------------------|:----------------------|
 | Perform Clean Install | clean install -x test |
 | Perform Tests         | clean test            |
+| Perform Run           | run                   |

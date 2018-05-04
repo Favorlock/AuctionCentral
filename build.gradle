@@ -1,10 +1,17 @@
 apply from: 'gradle/util.gradle'
 
-apply plugin: 'java'
-apply plugin: 'maven'
-
 group = GROUP
 version = VERSION_NAME
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+mainClassName = MAIN_CLASS
+
+run {
+    standardInput = System.in
+}
 
 apply from: scriptFile('deps.gradle')
 
