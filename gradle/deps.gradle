@@ -1,0 +1,7 @@
+def versions = [
+        junit: '4.12'
+]
+
+ext.dep = [
+        junit: "junit:junit:$versions.junit"
+]

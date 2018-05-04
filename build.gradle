@@ -1,0 +1,17 @@
+apply from: 'gradle/util.gradle'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = GROUP
+version = VERSION_NAME
+
+apply from: scriptFile('deps.gradle')
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation dep.junit
+}
