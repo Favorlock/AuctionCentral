@@ -1,6 +1,6 @@
 package edu.uw.sp18.tcss360a.group6;
 
-import java.util.Scanner;
+import edu.uw.sp18.tcss360a.group6.io.Console;
 
 public class Application {
 
@@ -9,18 +9,21 @@ public class Application {
     private boolean running = true;
 
     public void start() {
-        while (this.running) {
-            Scanner input = new Scanner(System.in);
-            System.out.println("Choose an option");
-            System.out.println("1. Exit");
+        Console console = new Console();
 
-            String response = input.nextLine();
-            switch (response.toLowerCase()) {
+        while (this.running) {
+            console.printf("Choose an option\n");
+            console.printf("1. Exit\n");
+
+            String line = null;
+            while (line == null)
+                line = console.readLine();
+            switch (line.toLowerCase()) {
                 case "1":
                     stop();
                     break;
                 default:
-                    System.out.println("Invalid selection...");
+                    console.printf("Invalid selection...\n");
             }
         }
     }
