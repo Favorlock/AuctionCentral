@@ -13,6 +13,18 @@ run {
     standardInput = System.in
 }
 
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    manifest {
+        attributes("Main-Class": MAIN_CLASS)
+    }
+}
+
 apply from: scriptFile('deps.gradle')
 
 repositories {
