@@ -7,6 +7,7 @@
 
 # Eclipse Project Files
 /bin
+/out
 /.settings
 .classpath
 .project
