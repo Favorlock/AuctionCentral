@@ -34,6 +34,7 @@ repositories {
 dependencies {
     implementation dep.textio
     implementation dep.gson
+    implementation dep.gsonJava8Datatype
 
     testImplementation dep.junit
 }

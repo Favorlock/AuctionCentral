@@ -1,5 +1,7 @@
 package edu.uw.sp18.tcss360a.group6;
 
+import com.google.gson.annotations.Expose;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -16,25 +18,32 @@ public class Auction {
      */
     public static int ITEM_CAPACITY = 10;
 
+    @Expose
     private long id;
 
     /**
      * The date and time the auction is scheduled to take
      * place on.
      */
+    @Expose
     private LocalDate startDate;
 
     /**
      * ArrayList<> of inventory used to represent the inventory in the auction object.
      **/
+    @Expose
     private ArrayList<Item> inventory;
+
+    public Auction() {
+        super();
+    }
 
     /**
      * Constructor used to create an auction object.
      *
      * @param startDate the date the auction takes place
      */
-    Auction(long id, LocalDate startDate) {
+    public Auction(long id, LocalDate startDate) {
         this.id = id;
         this.startDate = startDate;
         this.inventory = new ArrayList<>();
@@ -106,6 +115,15 @@ public class Auction {
      */
     public int getItemsInAuctionCount() {
         return this.inventory.size();
+    }
+
+    @Override
+    public String toString() {
+        return "Auction{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", inventory=" + inventory +
+                '}';
     }
 }
 

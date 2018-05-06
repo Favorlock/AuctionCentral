@@ -1,6 +1,7 @@
 package edu.uw.sp18.tcss360a.group6;
 
 import edu.uw.sp18.tcss360a.group6.io.Console;
+import edu.uw.sp18.tcss360a.group6.model.AuctionRepository;
 import edu.uw.sp18.tcss360a.group6.model.BidRepository;
 import edu.uw.sp18.tcss360a.group6.model.BidderRepository;
 
@@ -13,18 +14,18 @@ public class Application {
 
     private static Application instance;
 
+    private AuctionRepository auctionRepository;
     private BidRepository bidRepository;
     private BidderRepository bidderRepository;
 
     private boolean running = true;
 
     public void start() {
+        this.auctionRepository = AuctionRepository.load();
         this.bidRepository = BidRepository.load();
         this.bidderRepository = BidderRepository.load();
 
-        System.out.println(this.bidRepository.fetchAll().stream()
-                .map(bid -> bid.getId()).collect(Collectors.toList())
-                .toString());
+        System.out.println(this.auctionRepository.fetchAll().toString());
 
         Console console = new Console();
 

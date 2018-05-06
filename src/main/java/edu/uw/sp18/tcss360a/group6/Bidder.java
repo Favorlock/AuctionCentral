@@ -23,7 +23,7 @@ public class Bidder {
     @Expose
     private List<Long> placedBids = new ArrayList<>();
 
-    Bidder() {
+    public Bidder() {
         super();
     }
 
@@ -32,7 +32,7 @@ public class Bidder {
      *
      * @param userName   String used to represent the username in the bidder object.
      */
-    Bidder(long id, String userName) {
+    public Bidder(long id, String userName) {
         this.id = id;
         this.userName = userName;
     }

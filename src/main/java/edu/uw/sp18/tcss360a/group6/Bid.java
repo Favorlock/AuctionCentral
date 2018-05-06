@@ -27,7 +27,11 @@ public class Bid {
     @Expose
     private BigDecimal bid;
 
-    Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal bid) {
+    public Bid() {
+        super();
+    }
+
+    public Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal bid) {
         this.id = id;
         this.bidderId = bidderId;
         this.auctionId = auctionId;
