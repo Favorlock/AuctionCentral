@@ -2,9 +2,14 @@ package edu.uw.sp18.tcss360a.group6;
 
 import edu.uw.sp18.tcss360a.group6.io.Console;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Application {
 
     private static Application instance;
+    /**  All registered users of this application. */
+    private List<Bidder> listOfUsers = new ArrayList<>();
 
     private boolean running = true;
 
@@ -12,6 +17,15 @@ public class Application {
         Console console = new Console();
 
         while (this.running) {
+            //login the user
+            InterfaceLogin login = new InterfaceLogin();
+            String userName = "";
+            while ( !(login.isValidUser(userName, listOfUsers)) ) {
+                console.printf(login.displayLogin());
+                userName = console.readLine();
+            }
+            //display valid user options based on user
+
             console.printf("Choose an option\n");
             console.printf("1. Exit\n");
             console.printf("2. option 2\n");

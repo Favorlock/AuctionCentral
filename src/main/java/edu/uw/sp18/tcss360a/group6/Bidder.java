@@ -116,5 +116,13 @@ public class Bidder {
         bidHistory.add(bid);
     }
 
+    /**
+     *
+     * @return
+     */
+    public String getUserName() {
+        return userName;
+    }
+
 }
 
