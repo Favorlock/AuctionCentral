@@ -1,13 +1,11 @@
 package edu.uw.sp18.tcss360a.group6;
 
-import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.model.AbstractUser;
-import edu.uw.sp18.tcss360a.group6.model.User;
 import edu.uw.sp18.tcss360a.group6.model.UserType;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class used to represent a bidder.
@@ -16,9 +14,6 @@ import java.util.List;
  * @version 4/30/2018
  */
 public class Bidder extends AbstractUser {
-
-    @Expose
-    private List<Long> placedBids = new ArrayList<>();
 
     /**
      * Constructor to create a bidder object.
@@ -77,15 +72,6 @@ public class Bidder extends AbstractUser {
     }
 
     /**
-     * Getter method used to return the bidder's complete bid history.
-     *
-     * @return List<Bid> used to represent the bidder's complete bid history.
-     */
-    public List<Long> getPlacedBids() {
-        return this.placedBids;
-    }
-
-    /**
      * Getter method used to return the bidder's auction specific bid history.
      *
      * @param auction Auction used to represent the auction to search for bid history.
@@ -93,20 +79,16 @@ public class Bidder extends AbstractUser {
      * @return List<Bid> used to represent the bidder's auction specific bid history.
      */
     public List<Bid> getBids(Auction auction) {
-        // TODO
-//        return this.placedBids.stream()
-//                .filter(bid -> auction.equals(bid.getAuction()))
-//                .collect(Collectors.toList());
-        return null;
+        return Application.getInstance().getBidRepository().fetchAll().stream()
+                .filter(bid -> bid.getBidderId() == getId()
+                        && bid.getAuctionId() == auction.getId())
+                .collect(Collectors.toList());
     }
 
-    /**
-     * Helper method used to add a bid to the bidders bid history.
-     *
-     * @param bid Bid used to represent the bid to be added.
-     */
-    public void addBid(Bid bid) {
-        placedBids.add(bid.getId());
+    public List<Bid> getBids() {
+        return Application.getInstance().getBidRepository().fetchAll().stream()
+                .filter(bid -> bid.getBidderId() == getId())
+                .collect(Collectors.toList());
     }
 
 }

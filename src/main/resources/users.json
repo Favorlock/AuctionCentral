@@ -4,10 +4,7 @@
     {
       "type": "BIDDER",
       "id": 0,
-      "userName": "Bidder1",
-      "placedBids": [
-        0
-      ]
+      "userName": "Bidder1"
     }
   ]
 }
