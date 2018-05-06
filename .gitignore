@@ -1,3 +1,13 @@
 # IntelliJ IDEA Project Files
 /.idea
 *.iml
+
+# Eclipse Project Files
+/bin
+/.settings
+.classpath
+.project
+
+# Gradle Files
+/.gradle
+/build
