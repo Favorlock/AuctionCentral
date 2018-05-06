@@ -2,6 +2,7 @@ package edu.uw.sp18.tcss360a.group6;
 
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.BidRepository;
+import edu.uw.sp18.tcss360a.group6.model.BidderRepository;
 
 import java.io.*;
 import java.util.List;
@@ -13,14 +14,14 @@ public class Application {
     private static Application instance;
 
     private BidRepository bidRepository;
-
-    /**  All registered users of this application. */
-    private List<Bidder> listOfUsers = new ArrayList<>();
+    private BidderRepository bidderRepository;
 
     private boolean running = true;
 
     public void start() {
-        loadBids();
+        this.bidRepository = BidRepository.load();
+        this.bidderRepository = BidderRepository.load();
+
         System.out.println(this.bidRepository.fetchAll().stream()
                 .map(bid -> bid.getId()).collect(Collectors.toList())
                 .toString());
@@ -31,7 +32,7 @@ public class Application {
             //login the user
             InterfaceLogin login = new InterfaceLogin();
             String userName = "";
-            while ( !(login.isValidUser(userName, listOfUsers)) ) {
+            while ( !(login.isValidUser(userName, this.bidderRepository.fetchAll())) ) {
                 console.printf(login.displayLogin());
                 userName = console.readLine();
             }
@@ -65,22 +66,8 @@ public class Application {
         return bidRepository;
     }
 
-    private void loadBids() {
-        String fileName = "bids.json";
-        File file = new File(".", fileName);
-        if (!file.exists()) {
-            try (InputStream in = this.getClass().getClassLoader()
-                    .getResourceAsStream(fileName)) {
-                try (OutputStream out = new FileOutputStream(file)) {
-                    byte[] buffer = new byte[in.available()];
-                    in.read(buffer);
-                    out.write(buffer);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        this.bidRepository = new BidRepository(file);
+    public BidderRepository getBidderRepository() {
+        return bidderRepository;
     }
 
     public static void main(String... args) {

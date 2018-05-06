@@ -1,5 +1,7 @@
 package edu.uw.sp18.tcss360a.group6;
 
+import com.google.gson.annotations.Expose;
+
 import java.math.BigDecimal;
 
 /**
@@ -10,14 +12,19 @@ import java.math.BigDecimal;
  */
 public class Bid {
 
+    @Expose
     private long id;
 
+    @Expose
     private long bidderId;
 
+    @Expose
     private long auctionId;
 
+    @Expose
     private long itemId;
 
+    @Expose
     private BigDecimal bid;
 
     Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal bid) {

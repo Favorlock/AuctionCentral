@@ -2,16 +2,18 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.Bid;
+import edu.uw.sp18.tcss360a.group6.Bidder;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BidRepository implements Repository<Bid> {
+public class BidderRepository implements Repository<Bidder> {
 
-    public static final String DEFAULT_RESOURCE_NAME = "bids.json";
+    public static final String DEFAULT_RESOURCE_NAME = "bidders.json";
 
     private static final Gson GSON = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
@@ -22,7 +24,7 @@ public class BidRepository implements Repository<Bid> {
     private long index = 0;
 
     @Expose
-    private List<Bid> entries;
+    private List<Bidder> entries;
 
     private File file;
 
@@ -31,18 +33,18 @@ public class BidRepository implements Repository<Bid> {
     }
 
     @Override
-    public List<Bid> fetchAll() {
+    public List<Bidder> fetchAll() {
         return new ArrayList<>(this.entries);
     }
 
-    public static BidRepository load() {
+    public static BidderRepository load() {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
 
-        BidRepository repository = null;
+        BidderRepository repository = null;
 
         try {
-            repository = GSON.fromJson(new FileReader(file), BidRepository.class);
+            repository = GSON.fromJson(new FileReader(file), BidderRepository.class);
             repository.__init(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

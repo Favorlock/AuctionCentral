@@ -1,9 +1,10 @@
 package edu.uw.sp18.tcss360a.group6;
 
+import com.google.gson.annotations.Expose;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Class used to represent a bidder.
@@ -13,11 +14,14 @@ import java.util.stream.Collectors;
  */
 public class Bidder {
 
+    @Expose
     private long id;
 
+    @Expose
     private String userName;
 
-    private List<Long> bidHistory = new ArrayList<>();
+    @Expose
+    private List<Long> placedBids = new ArrayList<>();
 
     Bidder() {
         super();
@@ -45,7 +49,7 @@ public class Bidder {
         if (canBid() && canBidInAuction(auction) && item.isBidAmountAcceptable(bidAmount)) {
             // TODO:
 //            Bid bid = new Bid(auction, this, item, bidAmount);
-//            this.bidHistory.add(bid);
+//            this.placedBids.add(bid);
 //            item.setNewBid(bid);
 //            item.addBid(bid);
         }
@@ -60,7 +64,7 @@ public class Bidder {
      */
     public boolean canBidInAuction(Auction auction) {
         // TODO
-//        return auction.isAcceptingBids() && this.bidHistory.stream()
+//        return auction.isAcceptingBids() && this.placedBids.stream()
 //                .filter(bid -> bid.getAuction().equals(auction))
 //                .count() < 4;
         return false;
@@ -73,7 +77,7 @@ public class Bidder {
      */
     public boolean canBid() {
         // TODO
-//        long activeBids = this.bidHistory.stream()
+//        long activeBids = this.placedBids.stream()
 //                .filter(bid -> bid.getAuction().isAcceptingBids())
 //                .count();
 //        return activeBids < 10;
@@ -85,8 +89,8 @@ public class Bidder {
      *
      * @return List<Bid> used to represent the bidder's complete bid history.
      */
-    public List<Long> getBidHistory() {
-        return this.bidHistory;
+    public List<Long> getPlacedBids() {
+        return this.placedBids;
     }
 
     /**
@@ -98,7 +102,7 @@ public class Bidder {
      */
     public List<Bid> getBids(Auction auction) {
         // TODO
-//        return this.bidHistory.stream()
+//        return this.placedBids.stream()
 //                .filter(bid -> auction.equals(bid.getAuction()))
 //                .collect(Collectors.toList());
         return null;
@@ -110,7 +114,7 @@ public class Bidder {
      * @param bid Bid used to represent the bid to be added.
      */
     public void addBid(Bid bid) {
-        bidHistory.add(bid.getId());
+        placedBids.add(bid.getId());
     }
 
     /**
