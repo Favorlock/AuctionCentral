@@ -1,6 +1,6 @@
 package edu.uw.sp18.tcss360a.group6;
 
-import java.awt.List;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -20,6 +20,8 @@ public class Application {
 	private BidderRepository bidderRepository;
 	private BidRepository bidRepository;
 	private AuctionRepository auctionRepository;
+    private List<Long> auctionIds;
+    private Bidder bidder;
     
     public void start() {
         TextIO textIO = TextIoFactory.getTextIO();
@@ -28,6 +30,16 @@ public class Application {
                 .read(new StringBuilder()
                         .append("Welcome to Auction Central, please enter your username\n")
                         .toString());
+
+		final String finalUserName = user;
+        bidder = this.bidderRepository.fetchAll().stream()
+                .filter(b -> b.getUserName() != null && b.getUserName().equalsIgnoreCase(finalUserName))
+                .findFirst().orElse(null);
+        auctionIds = this.bidRepository.fetchAll().stream()
+                .filter(bid -> bid.getBidderId() == bidder.getId())
+                .map(Bid::getAuctionId)
+                .collect(Collectors.toList());
+        
 
 
         
@@ -66,14 +78,22 @@ public class Application {
 	}
 
 	private void overViewPrompt(TextIO theTextIO) {
+
+
+		List<String> auctions = this.auctionRepository.fetchAll().stream()
+                .map(Auction::toString)
+                .collect(Collectors.toList());
     	
-		String[] associatedAuctions = new String[3];
-		associatedAuctions[0] = "yup";
-		associatedAuctions[1] = "nope";
-		associatedAuctions[2] = "maybe";
+		String[] associatedAuctions = new String[auctions.size() + 2];
+		associatedAuctions[0] = "Auctions that you have placed bids in:";
+		for(int i = 0; i < auctions.size(); i++) {
+		 
+		}
+		associatedAuctions[auctions.size() + 1] = "Please enter selection: ";
+				int j = auctions.size();
 				auctionOverview = theTextIO.newIntInputReader()
         		.withMinVal(1)
-        		.withMaxVal(4)
+        		.withMaxVal(j)
         		.readList(associatedAuctions);
 	}
 
