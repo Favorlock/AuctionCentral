@@ -10,38 +10,53 @@ import java.math.BigDecimal;
  */
 public class Bid {
 
-    private Auction auction;
+    private long id;
+
+    private long bidderId;
+
+    private long auctionId;
+
+    private long itemId;
+
     private BigDecimal bid;
-    private Bidder bidder;
-    private Item item;
 
-    Bid(Auction theAuction, Bidder theBidder, Item theItem, BigDecimal theBid) {
-
-        auction = theAuction;
-        bid = theBid;
-        bidder = theBidder;
-        item = theItem;
-    }
-
-    public BigDecimal getBid() {
-
-        return bid;
-    }
-
-    public void setStart(BigDecimal theBid) {
-
-        bid = theBid;
+    Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal bid) {
+        this.id = id;
+        this.bidderId = bidderId;
+        this.auctionId = auctionId;
+        this.itemId = itemId;
+        this.bid = bid;
     }
 
     public String toString() {
-
-        String outputString = "Bidder: " + bidder + "\n" + "Item: " + item + "\n" + "Bid: " + bid.doubleValue() + "\n";
+        String outputString = "Bidder ID: " + bidderId + "\n"
+                + "Item ID: " + itemId + "\n"
+                + "Bid: " + bid.doubleValue() + "\n";
         return outputString;
     }
 
-    public Auction getAuction() {
+    public long getId() {
+        return this.id;
+    }
 
-        return auction;
+    public long getBidderId() {
+        return this.bidderId;
+    }
+
+    public long getAuctionId() {
+        return this.auctionId;
+    }
+
+    public long getItemId() {
+        return this.itemId;
+    }
+
+    public BigDecimal getBid() {
+        return bid;
+    }
+
+    public void setBid(BigDecimal bid) {
+        this.bid = bid;
     }
 
 }

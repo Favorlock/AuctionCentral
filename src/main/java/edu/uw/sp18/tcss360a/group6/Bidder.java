@@ -13,32 +13,24 @@ import java.util.stream.Collectors;
  */
 public class Bidder {
 
-    /**
-     * List<Bid> used to represent the bidHistory a bidder has placed.
-     */
-    private List<Bid> bidHistory = new ArrayList<Bid>();
+    private long id;
+
     private String userName;
-    private String phoneNumber;
-    private String email;
-    private String address;
-    private String cardNumber;
+
+    private List<Long> bidHistory = new ArrayList<>();
+
+    Bidder() {
+        super();
+    }
 
     /**
      * Constructor to create a bidder object.
      *
      * @param userName   String used to represent the username in the bidder object.
-     * @param phone      String used to represent the phone number in the bidder object.
-     * @param email      String used to represent the email address in the bidder object.
-     * @param address    String used to represent the physical address in the bidder object.
-     * @param cardNumber String used to represent the credit card number in the bidder object.
      */
-    Bidder(String userName, String phone, String email, String address, String cardNumber) {
-        //Initialize variables
+    Bidder(long id, String userName) {
+        this.id = id;
         this.userName = userName;
-        this.phoneNumber = phone;
-        this.email = email;
-        this.address = address;
-        this.cardNumber = cardNumber;
     }
 
     /**
@@ -51,10 +43,11 @@ public class Bidder {
     public void placeBid(BigDecimal bidAmount, Item item, Auction auction) {
         //Perform checks
         if (canBid() && canBidInAuction(auction) && item.isBidAmountAcceptable(bidAmount)) {
-            Bid bid = new Bid(auction, this, item, bidAmount);
-            this.bidHistory.add(bid);
-            item.setNewBid(bid);
-            item.addBid(bid);
+            // TODO:
+//            Bid bid = new Bid(auction, this, item, bidAmount);
+//            this.bidHistory.add(bid);
+//            item.setNewBid(bid);
+//            item.addBid(bid);
         }
     }
 
@@ -66,9 +59,11 @@ public class Bidder {
      * @return boolean used to represent whether a bidder is allowed to bid in the given auction.
      */
     public boolean canBidInAuction(Auction auction) {
-        return auction.isAcceptingBids() && this.bidHistory.stream()
-                .filter(bid -> bid.getAuction().equals(auction))
-                .count() < 4;
+        // TODO
+//        return auction.isAcceptingBids() && this.bidHistory.stream()
+//                .filter(bid -> bid.getAuction().equals(auction))
+//                .count() < 4;
+        return false;
     }
 
     /**
@@ -77,10 +72,12 @@ public class Bidder {
      * @return boolean used to represent whether the bidder can bid or not.
      */
     public boolean canBid() {
-        long activeBids = this.bidHistory.stream()
-                .filter(bid -> bid.getAuction().isAcceptingBids())
-                .count();
-        return activeBids < 10;
+        // TODO
+//        long activeBids = this.bidHistory.stream()
+//                .filter(bid -> bid.getAuction().isAcceptingBids())
+//                .count();
+//        return activeBids < 10;
+        return false;
     }
 
     /**
@@ -88,8 +85,7 @@ public class Bidder {
      *
      * @return List<Bid> used to represent the bidder's complete bid history.
      */
-    public List<Bid> getBidHistory() {
-
+    public List<Long> getBidHistory() {
         return this.bidHistory;
     }
 
@@ -101,9 +97,11 @@ public class Bidder {
      * @return List<Bid> used to represent the bidder's auction specific bid history.
      */
     public List<Bid> getBids(Auction auction) {
-        return this.bidHistory.stream()
-                .filter(bid -> auction.equals(bid.getAuction()))
-                .collect(Collectors.toList());
+        // TODO
+//        return this.bidHistory.stream()
+//                .filter(bid -> auction.equals(bid.getAuction()))
+//                .collect(Collectors.toList());
+        return null;
     }
 
     /**
@@ -112,8 +110,7 @@ public class Bidder {
      * @param bid Bid used to represent the bid to be added.
      */
     public void addBid(Bid bid) {
-
-        bidHistory.add(bid);
+        bidHistory.add(bid.getId());
     }
 
     /**

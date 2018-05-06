@@ -12,9 +12,8 @@ public class ContactPerson extends Bidder {
     private List<Auction> myAuctions = new ArrayList<Auction>();
     private Map<Auction, ArrayList<Item>> myAuctionItems = new HashMap<>();
 
-    public ContactPerson(String userName, String phoneNumber, String email, String address,
-                         String cardNumber) {
-        super(userName, phoneNumber, email, address, cardNumber);
+    public ContactPerson(long id, String userName) {
+        super(id, userName);
 
     }
 

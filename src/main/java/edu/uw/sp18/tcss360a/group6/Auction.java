@@ -16,6 +16,8 @@ public class Auction {
      */
     public static int ITEM_CAPACITY = 10;
 
+    private long id;
+
     /**
      * The date and time the auction is scheduled to take
      * place on.
@@ -32,7 +34,8 @@ public class Auction {
      *
      * @param startDate the date the auction takes place
      */
-    Auction(LocalDate startDate) {
+    Auction(long id, LocalDate startDate) {
+        this.id = id;
         this.startDate = startDate;
         this.inventory = new ArrayList<>();
     }
