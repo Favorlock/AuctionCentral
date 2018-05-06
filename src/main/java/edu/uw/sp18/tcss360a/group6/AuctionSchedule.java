@@ -1,5 +1,7 @@
 package edu.uw.sp18.tcss360a.group6;
 
+import edu.uw.sp18.tcss360a.group6.model.Auction;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

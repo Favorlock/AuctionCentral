@@ -1,9 +1,7 @@
 package edu.uw.sp18.tcss360a.group6;
 
 import edu.uw.sp18.tcss360a.group6.io.Console;
-import edu.uw.sp18.tcss360a.group6.model.AuctionRepository;
-import edu.uw.sp18.tcss360a.group6.model.BidRepository;
-import edu.uw.sp18.tcss360a.group6.model.UserRepository;
+import edu.uw.sp18.tcss360a.group6.model.*;
 
 public class Application {
 
@@ -16,20 +14,20 @@ public class Application {
     private boolean running = true;
 
     public void start() {
-        this.auctionRepository = AuctionRepository.load();
-        this.bidRepository = BidRepository.load();
-        this.userRepository = UserRepository.load();
+        __loadRepositories();
 
         Console console = new Console();
 
         while (this.running) {
             //login the user
-            InterfaceLogin login = new InterfaceLogin();
+            LoginHandler loginHandler = new LoginHandler();
             String userName = "";
-            while ( !(login.isValidUser(userName, this.userRepository.fetchAll())) ) {
-                console.printf(login.displayLogin());
+            while ( !(loginHandler.validateUser(userName, this.userRepository.fetchAll())) ) {
+                console.printf(loginHandler.displayLogin());
                 userName = console.readLine();
             }
+
+            User user = loginHandler.getUser();
 
             //display valid user options based on user
             console.printf("Choose an option\n");
@@ -62,6 +60,12 @@ public class Application {
 
     public UserRepository getUserRepository() {
         return userRepository;
+    }
+
+    private void __loadRepositories() {
+        this.auctionRepository = AuctionRepository.load();
+        this.bidRepository = BidRepository.load();
+        this.userRepository = UserRepository.load();
     }
 
     public static void main(String... args) {

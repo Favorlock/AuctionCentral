@@ -1,7 +1,6 @@
-package edu.uw.sp18.tcss360a.group6;
+package edu.uw.sp18.tcss360a.group6.model;
 
-import edu.uw.sp18.tcss360a.group6.model.AbstractUser;
-import edu.uw.sp18.tcss360a.group6.model.UserType;
+import edu.uw.sp18.tcss360a.group6.AuctionSchedule;
 
 import java.util.ArrayList;
 import java.util.List;

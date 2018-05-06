@@ -1,4 +1,4 @@
-package edu.uw.sp18.tcss360a.group6;
+package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
 

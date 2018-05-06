@@ -12,10 +12,11 @@ import java.util.ArrayList;
  * InterfaceLogin has methods to display a login message to a user and
  * a method that checks if that user is a valid user of the system.
  */
-public class InterfaceLogin {
+public class LoginHandler {
 
+    private User user;
 
-    public InterfaceLogin() {
+    public LoginHandler() {
     }
 
     /**
@@ -36,9 +37,15 @@ public class InterfaceLogin {
      *
      * @return true is a valid user, false otherwise
      */
-    public boolean isValidUser(String userName, List<User> users) {
-        return users.stream()
-                .anyMatch(user -> user.getUserName().equalsIgnoreCase(userName));
+    public boolean validateUser(String userName, List<User> users) {
+        this.user = users.stream()
+                .filter(u -> u.getUserName().equalsIgnoreCase(userName))
+                .findFirst()
+                .orElse(null);
+        return user != null;
     }
 
+    public User getUser() {
+        return user;
+    }
 }

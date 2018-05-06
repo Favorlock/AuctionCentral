@@ -2,7 +2,6 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.Bid;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
 import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 

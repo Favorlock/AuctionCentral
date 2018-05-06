@@ -1,9 +1,9 @@
-package edu.uw.sp18.tcss360a.group6;
+package edu.uw.sp18.tcss360a.group6.model;
 
-import edu.uw.sp18.tcss360a.group6.model.AbstractUser;
-import edu.uw.sp18.tcss360a.group6.model.UserType;
+import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
  * @version 4/30/2018
  */
 public class Bidder extends AbstractUser {
+
+    private List<Bid> placedBids;
 
     /**
      * Constructor to create a bidder object.
@@ -78,17 +80,21 @@ public class Bidder extends AbstractUser {
      *
      * @return List<Bid> used to represent the bidder's auction specific bid history.
      */
-    public List<Bid> getBids(Auction auction) {
-        return Application.getInstance().getBidRepository().fetchAll().stream()
-                .filter(bid -> bid.getBidderId() == getId()
-                        && bid.getAuctionId() == auction.getId())
+    public List<Bid> getPlacedBids(Auction auction) {
+        return getPlacedBids().stream()
+                .filter(bid -> bid.getAuctionId() == auction.getId())
                 .collect(Collectors.toList());
     }
 
-    public List<Bid> getBids() {
-        return Application.getInstance().getBidRepository().fetchAll().stream()
-                .filter(bid -> bid.getBidderId() == getId())
-                .collect(Collectors.toList());
+    public List<Bid> getPlacedBids() {
+        if (this.placedBids == null) {
+            this.placedBids = Application.getInstance().getBidRepository()
+                    .fetchAll().stream()
+                    .filter(bid -> bid.getBidderId() == getId())
+                    .collect(Collectors.toList());
+        }
+
+        return this.placedBids;
     }
 
 }

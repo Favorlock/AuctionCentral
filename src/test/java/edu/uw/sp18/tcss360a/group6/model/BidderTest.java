@@ -1,7 +1,9 @@
-package edu.uw.sp18.tcss360a.group6;
+package edu.uw.sp18.tcss360a.group6.model;
 
-import org.junit.Before;
-import org.junit.Test;
+import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Bid;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
+import edu.uw.sp18.tcss360a.group6.model.Item;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
