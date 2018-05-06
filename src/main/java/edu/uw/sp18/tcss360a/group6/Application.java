@@ -25,8 +25,6 @@ public class Application {
         this.bidRepository = BidRepository.load();
         this.bidderRepository = BidderRepository.load();
 
-        System.out.println(this.auctionRepository.fetchAll().toString());
-
         Console console = new Console();
 
         while (this.running) {
@@ -38,6 +36,21 @@ public class Application {
                 userName = console.readLine();
             }
             //display valid user options based on user
+
+            final String finalUserName = userName;
+            final Bidder bidder = this.bidderRepository.fetchAll().stream()
+                    .filter(b -> b.getUserName() != null && b.getUserName().equalsIgnoreCase(finalUserName))
+                    .findFirst().orElse(null);
+
+            final List<Long> auctionIds = this.bidRepository.fetchAll().stream()
+                    .filter(bid -> bid.getBidderId() == bidder.getId())
+                    .map(Bid::getAuctionId)
+                    .collect(Collectors.toList());
+            final List<Auction> auctions = this.auctionRepository.fetchAll().stream()
+                    .filter(auction -> auctionIds.contains(auction.getId()))
+                    .collect(Collectors.toList());
+
+            System.out.println(auctions);
 
             console.printf("Choose an option\n");
             console.printf("1. Exit\n");

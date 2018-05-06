@@ -117,6 +117,10 @@ public class Bidder {
         placedBids.add(bid.getId());
     }
 
+    public long getId() {
+        return id;
+    }
+
     /**
      *
      * @return
