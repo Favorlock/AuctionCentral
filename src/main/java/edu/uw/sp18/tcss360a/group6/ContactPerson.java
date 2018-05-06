@@ -1,5 +1,8 @@
 package edu.uw.sp18.tcss360a.group6;
 
+import edu.uw.sp18.tcss360a.group6.model.AbstractUser;
+import edu.uw.sp18.tcss360a.group6.model.UserType;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -7,14 +10,14 @@ import java.util.HashMap;
 /**
  *
  */
-public class ContactPerson extends Bidder {
+public class ContactPerson extends AbstractUser {
 
-    private List<Auction> myAuctions = new ArrayList<Auction>();
-    private Map<Auction, ArrayList<Item>> myAuctionItems = new HashMap<>();
+    private List<Auction> submittedAuctions = new ArrayList<Auction>();
+
+    private Map<Auction, ArrayList<Item>> submittedAuctionItems = new HashMap<>();
 
     public ContactPerson(long id, String userName) {
-        super(id, userName);
-
+        super(UserType.CONTACT_PERSON, id, userName);
     }
 
     /**
@@ -33,12 +36,12 @@ public class ContactPerson extends Bidder {
     public void addInventoryToAuction (Auction auctionToAddItemTo, Item itemToAddToAuction) {
         auctionToAddItemTo.addItem(itemToAddToAuction);
         ArrayList<Item> temporaryItems = new ArrayList<>();
-        if (myAuctionItems.get(auctionToAddItemTo) != null) {
-            temporaryItems = myAuctionItems.get(auctionToAddItemTo);
-            myAuctionItems.put(auctionToAddItemTo, temporaryItems);
+        if (submittedAuctionItems.get(auctionToAddItemTo) != null) {
+            temporaryItems = submittedAuctionItems.get(auctionToAddItemTo);
+            submittedAuctionItems.put(auctionToAddItemTo, temporaryItems);
         } else {
             temporaryItems.add(itemToAddToAuction);
-            myAuctionItems.put(auctionToAddItemTo, temporaryItems);
+            submittedAuctionItems.put(auctionToAddItemTo, temporaryItems);
         }
     }
 
@@ -47,6 +50,6 @@ public class ContactPerson extends Bidder {
      * @return
      */
     public Map<Auction, ArrayList<Item>> viewAllAuctionsItemsISubmitted () {
-        return myAuctionItems;
+        return submittedAuctionItems;
     }
 }

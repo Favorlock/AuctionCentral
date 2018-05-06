@@ -3,12 +3,7 @@ package edu.uw.sp18.tcss360a.group6;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.AuctionRepository;
 import edu.uw.sp18.tcss360a.group6.model.BidRepository;
-import edu.uw.sp18.tcss360a.group6.model.BidderRepository;
-
-import java.io.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
+import edu.uw.sp18.tcss360a.group6.model.UserRepository;
 
 public class Application {
 
@@ -16,14 +11,14 @@ public class Application {
 
     private AuctionRepository auctionRepository;
     private BidRepository bidRepository;
-    private BidderRepository bidderRepository;
+    private UserRepository userRepository;
 
     private boolean running = true;
 
     public void start() {
         this.auctionRepository = AuctionRepository.load();
         this.bidRepository = BidRepository.load();
-        this.bidderRepository = BidderRepository.load();
+        this.userRepository = UserRepository.load();
 
         Console console = new Console();
 
@@ -31,27 +26,12 @@ public class Application {
             //login the user
             InterfaceLogin login = new InterfaceLogin();
             String userName = "";
-            while ( !(login.isValidUser(userName, this.bidderRepository.fetchAll())) ) {
+            while ( !(login.isValidUser(userName, this.userRepository.fetchAll())) ) {
                 console.printf(login.displayLogin());
                 userName = console.readLine();
             }
+
             //display valid user options based on user
-
-            final String finalUserName = userName;
-            final Bidder bidder = this.bidderRepository.fetchAll().stream()
-                    .filter(b -> b.getUserName() != null && b.getUserName().equalsIgnoreCase(finalUserName))
-                    .findFirst().orElse(null);
-
-            final List<Long> auctionIds = this.bidRepository.fetchAll().stream()
-                    .filter(bid -> bid.getBidderId() == bidder.getId())
-                    .map(Bid::getAuctionId)
-                    .collect(Collectors.toList());
-            final List<Auction> auctions = this.auctionRepository.fetchAll().stream()
-                    .filter(auction -> auctionIds.contains(auction.getId()))
-                    .collect(Collectors.toList());
-
-            System.out.println(auctions);
-
             console.printf("Choose an option\n");
             console.printf("1. Exit\n");
             console.printf("2. option 2\n");
@@ -80,8 +60,8 @@ public class Application {
         return bidRepository;
     }
 
-    public BidderRepository getBidderRepository() {
-        return bidderRepository;
+    public UserRepository getUserRepository() {
+        return userRepository;
     }
 
     public static void main(String... args) {

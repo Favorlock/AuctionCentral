@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Bid;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
+import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class BidRepository implements Repository<Bid> {
     private static final Gson GSON = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .serializeNulls()
+            .registerTypeAdapterFactory(new GsonJava8TypeAdapterFactory())
             .create();
 
     @Expose

@@ -1,6 +1,9 @@
 package edu.uw.sp18.tcss360a.group6;
 
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.model.AbstractUser;
+import edu.uw.sp18.tcss360a.group6.model.User;
+import edu.uw.sp18.tcss360a.group6.model.UserType;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,20 +15,10 @@ import java.util.List;
  * @author Adam G. Cannon
  * @version 4/30/2018
  */
-public class Bidder {
-
-    @Expose
-    private long id;
-
-    @Expose
-    private String userName;
+public class Bidder extends AbstractUser {
 
     @Expose
     private List<Long> placedBids = new ArrayList<>();
-
-    public Bidder() {
-        super();
-    }
 
     /**
      * Constructor to create a bidder object.
@@ -33,8 +26,7 @@ public class Bidder {
      * @param userName   String used to represent the username in the bidder object.
      */
     public Bidder(long id, String userName) {
-        this.id = id;
-        this.userName = userName;
+        super(UserType.BIDDER, id, userName);
     }
 
     /**
@@ -115,18 +107,6 @@ public class Bidder {
      */
     public void addBid(Bid bid) {
         placedBids.add(bid.getId());
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getUserName() {
-        return userName;
     }
 
 }

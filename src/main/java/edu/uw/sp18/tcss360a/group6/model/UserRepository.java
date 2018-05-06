@@ -2,8 +2,9 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.Bidder;
+import edu.uw.sp18.tcss360a.group6.gson.UserDeserializer;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
+import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,20 +12,22 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BidderRepository implements Repository<Bidder> {
+public class UserRepository implements Repository<User> {
 
-    public static final String DEFAULT_RESOURCE_NAME = "bidders.json";
+    public static final String DEFAULT_RESOURCE_NAME = "users.json";
 
     private static final Gson GSON = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .serializeNulls()
+            .registerTypeAdapterFactory(new GsonJava8TypeAdapterFactory())
+            .registerTypeAdapter(User.class, new UserDeserializer())
             .create();
 
     @Expose
     private long index = 0;
 
     @Expose
-    private List<Bidder> entries;
+    private List<User> entries;
 
     private File file;
 
@@ -33,18 +36,18 @@ public class BidderRepository implements Repository<Bidder> {
     }
 
     @Override
-    public List<Bidder> fetchAll() {
+    public List<User> fetchAll() {
         return new ArrayList<>(this.entries);
     }
 
-    public static BidderRepository load() {
+    public static UserRepository load() {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
 
-        BidderRepository repository = null;
+        UserRepository repository = null;
 
         try {
-            repository = GSON.fromJson(new FileReader(file), BidderRepository.class);
+            repository = GSON.fromJson(new FileReader(file), UserRepository.class);
             repository.__init(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
