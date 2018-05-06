@@ -14,6 +14,7 @@ public class Application {
         while (this.running) {
             console.printf("Choose an option\n");
             console.printf("1. Exit\n");
+            console.printf("2. option 2\n");
 
             String line = null;
             while (line == null)
@@ -21,6 +22,9 @@ public class Application {
             switch (line.toLowerCase()) {
                 case "1":
                     stop();
+                    break;
+                case "2":
+                    console.printf("you chose option 2...\n");
                     break;
                 default:
                     console.printf("Invalid selection...\n");
