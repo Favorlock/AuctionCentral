@@ -43,6 +43,12 @@ public class ItemRepository implements Repository<Item> {
         return new ArrayList<>(this.entries);
     }
 
+    @Override
+    public void add(Item entry) {
+        entry.id = this.index++;
+        this.entries.add(entry);
+    }
+
     public static ItemRepository load() {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);

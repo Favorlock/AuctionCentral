@@ -22,7 +22,7 @@ public class Auction {
     public static int ITEM_CAPACITY = 10;
 
     @Expose
-    private long id;
+    protected long id;
 
     @Expose
     private LocalDate startDate;

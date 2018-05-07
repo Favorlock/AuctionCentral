@@ -44,6 +44,12 @@ public class UserRepository implements Repository<User> {
         return new ArrayList<>(this.entries);
     }
 
+    @Override
+    public void add(User entry) {
+        // Adding users is currently not supported
+        throw new UnsupportedOperationException();
+    }
+
     public static UserRepository load() {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);

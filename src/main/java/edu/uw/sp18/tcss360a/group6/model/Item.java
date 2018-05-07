@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class Item {
 
     @Expose
-    private long id;
+    protected long id;
 
     @Expose
     private long auctionId;
