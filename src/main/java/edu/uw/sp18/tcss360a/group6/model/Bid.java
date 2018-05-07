@@ -1,6 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.math.BigDecimal;
 
@@ -27,7 +28,9 @@ public class Bid {
     @Expose
     private BigDecimal bid;
 
+    private Bidder bidder; // Lazy loaded, use getBidder()
 
+    private Auction auction; // Lazy loaded, use getAuction()
 
     public Bid() {
         super();
@@ -72,5 +75,25 @@ public class Bid {
         this.bid = bid;
     }
 
+    public Bidder getBidder() {
+        if (this.bidder == null) {
+            this.bidder = Application.getInstance().getUserRepository().fetchAll().stream()
+                    .filter(user -> user.getType() == UserType.BIDDER && user.getId() == this.bidderId)
+                    .map(user -> (Bidder) user)
+                    .findFirst().orElse(null);
+        }
+
+        return this.bidder;
+    }
+
+    public Auction getAuction() {
+        if (this.auction == null) {
+            this.auction = Application.getInstance().getAuctionRepository().fetchAll().stream()
+                    .filter(a -> a.getId() == auctionId)
+                    .findFirst().orElse(null);
+        }
+
+        return this.auction;
+    }
 }
 
