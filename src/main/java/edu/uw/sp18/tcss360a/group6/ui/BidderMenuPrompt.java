@@ -53,7 +53,7 @@ public class BidderMenuPrompt extends AbstractPrompt {
                 break;
             case "5":
                 completed = true;
-                context.set("running", false);
+                application.stop();
                 break;
             default:
                 break;

@@ -49,10 +49,6 @@ public class Application {
                 ContactPersonMenuPrompt contactMenuPrompt = new ContactPersonMenuPrompt(context);
                 contactMenuPrompt.start();
             }
-
-            if (context.has("running")) {
-                this.running = context.get("running", Boolean.class);
-            }
         }
     }
 
