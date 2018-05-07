@@ -12,6 +12,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
+ */
 public class AuctionRepository implements Repository<Auction> {
 
     public static final String DEFAULT_RESOURCE_NAME = "auctions.json";

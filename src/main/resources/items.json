@@ -1,5 +1,5 @@
 {
-  "index": 2,
+  "index": 4,
   "entries": [
     {
       "id": 0,
@@ -14,6 +14,20 @@
       "description": "Statue",
       "quantity": 1,
       "startBid": "100.0"
+    },
+    {
+      "id": 2,
+      "auctionId": 0,
+      "description": "Dolphin",
+      "quantity": 2,
+      "startBid": "1000.0"
+    },
+    {
+      "id": 3,
+      "auctionId": 0,
+      "description": "Golf Club",
+      "quantity": 1,
+      "startBid": "10.50"
     }
   ]
 }

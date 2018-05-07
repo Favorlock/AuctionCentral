@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Class used to represent an auction.
  *
- * @author Adam G. Cannon, Josh Atherton, Tam , Evan
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 4/30/2018
  */
 public class Auction {

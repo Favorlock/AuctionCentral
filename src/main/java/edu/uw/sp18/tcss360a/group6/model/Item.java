@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Class used to represent an item in an auction.
  *
- * @author Adam G. Cannon
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 4/30/2018
  */
 public class Item {

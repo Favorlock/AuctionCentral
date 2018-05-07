@@ -1,10 +1,15 @@
 {
-  "index": 1,
+  "index": 2,
   "entries": [
     {
       "type": "BIDDER",
       "id": 0,
       "userName": "Bidder1"
+    },
+    {
+      "type": "BIDDER",
+      "id": 1,
+      "userName": "Josh"
     }
   ]
 }

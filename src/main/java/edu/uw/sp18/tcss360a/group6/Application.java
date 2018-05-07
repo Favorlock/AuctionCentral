@@ -5,6 +5,12 @@ import edu.uw.sp18.tcss360a.group6.model.*;
 import edu.uw.sp18.tcss360a.group6.ui.BidderMenuPrompt;
 import edu.uw.sp18.tcss360a.group6.ui.LoginPrompt;
 
+/**
+ * Run the Auction central interface and perform the necessary business logic.
+ *
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
+ */
 public class Application {
 
     private static Application instance;
@@ -12,6 +18,7 @@ public class Application {
     private AuctionRepository auctionRepository;
     private BidRepository bidRepository;
     private UserRepository userRepository;
+    private ItemRepository itemRepository;
     private Console console;
     private User user;
     private String line;
@@ -108,6 +115,8 @@ public class Application {
     public UserRepository getUserRepository() {
         return userRepository;
     }
+
+    public ItemRepository getItemRepository() { return itemRepository; }
 
     private void __loadRepositories() {
         this.auctionRepository = AuctionRepository.load();

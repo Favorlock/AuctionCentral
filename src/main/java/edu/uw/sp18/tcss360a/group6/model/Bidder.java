@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 /**
  * Class used to represent a bidder.
  *
- * @author Adam G. Cannon
- * @version 4/30/2018
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
  */
 public class Bidder extends AbstractUser {
 

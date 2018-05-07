@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 /**
- *
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
  */
 public class ContactPerson extends AbstractUser {
 

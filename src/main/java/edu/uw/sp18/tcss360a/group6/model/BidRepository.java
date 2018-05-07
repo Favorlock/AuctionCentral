@@ -9,6 +9,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
+ */
 public class BidRepository implements Repository<Bid> {
 
     public static final String DEFAULT_RESOURCE_NAME = "bids.json";
