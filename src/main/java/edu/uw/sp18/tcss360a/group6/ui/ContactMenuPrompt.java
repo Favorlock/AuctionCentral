@@ -13,10 +13,10 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class BidderMenuPrompt extends AbstractPrompt {
+public class ContactMenuPrompt extends AbstractPrompt {
 
 	private String line;
-    public BidderMenuPrompt(Context context) {
+    public ContactMenuPrompt(Context context) {
         super(context);
     }
 
@@ -28,9 +28,9 @@ public class BidderMenuPrompt extends AbstractPrompt {
         line = null;
         
         console.printf("Choose an option\n");
-        console.printf("1. View brief overview of all auctions I have placed bids in.\n");
-        console.printf("2. View all items I have bid on in all auctions.\n");
-        console.printf("3. View in brief all auctions I can bid on.\n");
+        console.printf("1. View brief overview of items in my auctions.\n");
+        console.printf("2. Submit auction request.\n");
+        console.printf("3. Add inventory for auction.\n");
         console.printf("4. Logout.\n");
 
         while (line == null) {
@@ -40,16 +40,16 @@ public class BidderMenuPrompt extends AbstractPrompt {
         switch (line.toLowerCase()) {
         
         case "1":
-        	BidderAuctionsPrompt auctions = new BidderAuctionsPrompt(theContext);
-        	auctions.start();
+        	ContactItemsPrompt items = new ContactItemsPrompt(theContext);
+        	items.start();
         	break;
         case "2":
-        	BidderItemsPrompt bidderItems = new BidderItemsPrompt(theContext);
-        	bidderItems.start();
+        	AuctionRequestPrompt request = new AuctionRequestPrompt(theContext);
+        	request.start();
         	break;
         case "3":
-        	BidderOpenAuctionsPrompt openAuctions = new BidderOpenAuctionsPrompt(theContext);
-        	openAuctions.start();
+        	AddInventoryPrompt add = new AddInventoryPrompt(theContext);
+        	add.start();
         	break;
         case "4":
         	completed = true;
