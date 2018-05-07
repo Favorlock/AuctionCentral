@@ -10,13 +10,16 @@ public class Application {
     private AuctionRepository auctionRepository;
     private BidRepository bidRepository;
     private UserRepository userRepository;
+    private Console console;
+    private User user;
+    private String line;
 
     private boolean running = true;
 
     public void start() {
         __loadRepositories();
 
-        Console console = new Console();
+        console = new Console();
 
         while (this.running) {
             //login the user
@@ -27,35 +30,54 @@ public class Application {
                 userName = console.readLine();
             }
 
-            User user = loginHandler.getUser();
+            user = loginHandler.getUser();
 
-            bidderOptions(console);
+            bidderOptions();
 
-
-            String line = null;
+            line = null;
             while (line == null)
                 line = console.readLine();
             switch (line.toLowerCase()) {
                 case "1":
-                    console.printf("you chose option 1...\n");
-                    console.printf("Enter 'b' to go back\n");
+                    console.printf("You have placed bids on items for the following auctions:\n");
+                    
+                    bidderAssociatedAuctions();
+                    
+                    console.printf("Enter 'b' to go back.\n");
                     line = console.readLine();
                     switch (line.toLowerCase()) {
                     case "b":
-                    	bidderOptions(console);
+                    	bidderOptions();
                     	break;
                     default:
                     	console.printf("Invalid selection...\n");
                     }
+                    
                     break;
                 case "2":
-                    console.printf("you chose option 2...\n");
+                    console.printf("You have placed bids on the following items:\n");
+                    
+                    bidderAssociatedItems();
+                    
+                    console.printf("Enter 'b' to go back.\n");
+                    line = console.readLine();
+                    switch (line.toLowerCase()) {
+                    case "b":
+                    	bidderOptions();
+                    	break;
+                    default:
+                    	console.printf("Invalid selection...\n");
+                    }
+                    
                     break;
                 case "3":
-                    console.printf("you chose option 2...\n");
+                    console.printf("List of auctions you can bid on.\n");
+                    console.printf("Select an auction to view its items:\n");
+                    
+                    bidderOpenAuctions();
                     break;
                 case "4":
-                    console.printf("you chose option 2...\n");
+                    console.printf("you chose option 4...\n");
                     break;
                 default:
                     console.printf("Invalid selection...\n");
@@ -63,7 +85,34 @@ public class Application {
         }
     }
 
-    public void bidderOptions(Console console) {
+    private void bidderOpenAuctions() {
+		//output list of auctions bidder can bid on
+    	//CASE: user selected an item
+    	//itemsInAuction(auction);
+    	//include n+1) Back to main menu.
+    	//include n+2) Logout.
+	}
+    
+    private void itemsInAuction(Auction theAuction) {
+    	//output list of items available in auction
+    	//include n+1) Back to main menu.
+    	//include n+2) Logout.
+    }
+
+	private void bidderAssociatedItems() {
+		//output brief overview of all items user has placed bids on
+    	//include n+1) Back to main menu.
+    	//include n+2) Logout.
+	}
+
+	private void bidderAssociatedAuctions() {
+		//output brief overview of all auctions user has placed bid in
+    	//include n+1) Back to main menu.
+    	//include n+2) Logout.
+
+	}
+
+	public void bidderOptions() {
         //display valid user options based on user
         console.printf("Choose an option\n");
         console.printf("1. View brief overview of all auctions I have placed bids in.\n");
@@ -71,7 +120,7 @@ public class Application {
         console.printf("3. View in brief all auctions I can bid on.\n");
         console.printf("4. Logout.\n");
     }
-
+    
     public void contactOptions(Console console) {
     	//display valid contact options
     	console.printf("Choose an option\n");
@@ -79,16 +128,15 @@ public class Application {
     	console.printf("2. Submit auction request.\n");
     	console.printf("3. Add inventory for auction.\n");
     	console.printf("4. Logout.\n");
-
+    	
     }
     public void stop() {
         this.running = false;
     }
 
     public AuctionRepository getAuctionRepository() {
-        return auctionRepository;
+    	return auctionRepository;
     }
-
     public BidRepository getBidRepository() {
         return bidRepository;
     }
