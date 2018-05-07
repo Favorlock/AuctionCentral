@@ -121,6 +121,7 @@ public class Application {
 
     private void __loadRepositories() {
         this.auctionRepository = AuctionRepository.load();
+        this.itemRepository = ItemRepository.load();
         this.bidRepository = BidRepository.load();
         this.userRepository = UserRepository.load();
     }
