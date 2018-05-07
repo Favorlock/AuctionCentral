@@ -71,7 +71,7 @@ public class Application {
         console.printf("3. View in brief all auctions I can bid on.\n");
         console.printf("4. Logout.\n");
     }
-    
+
     public void contactOptions(Console console) {
     	//display valid contact options
     	console.printf("Choose an option\n");
@@ -79,10 +79,14 @@ public class Application {
     	console.printf("2. Submit auction request.\n");
     	console.printf("3. Add inventory for auction.\n");
     	console.printf("4. Logout.\n");
-    	
+
     }
     public void stop() {
         this.running = false;
+    }
+
+    public AuctionRepository getAuctionRepository() {
+        return auctionRepository;
     }
 
     public BidRepository getBidRepository() {

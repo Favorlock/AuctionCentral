@@ -9,13 +9,17 @@ apply plugin: 'application'
 
 mainClassName = MAIN_CLASS
 
+File working = new File(rootProject.rootDir, "working/")
+working.mkdirs()
+
 run {
     standardInput = System.in
+    workingDir = working
 }
 
 jar {
     from {
-        configurations.compile.collect {
+        configurations.runtime.collect {
             it.isDirectory() ? it : zipTree(it)
         }
     }
