@@ -3,7 +3,6 @@ package edu.uw.sp18.tcss360a.group6.model;
 import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public class Bidder extends AbstractUser {
 
-    private List<Bid> placedBids;
+    private List<Bid> placedBids; // Lazy loaded, use getPlacedBids()
 
     /**
      * Constructor to create a bidder object.

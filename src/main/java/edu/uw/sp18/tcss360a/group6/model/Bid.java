@@ -27,6 +27,8 @@ public class Bid {
     @Expose
     private BigDecimal bid;
 
+
+
     public Bid() {
         super();
     }
