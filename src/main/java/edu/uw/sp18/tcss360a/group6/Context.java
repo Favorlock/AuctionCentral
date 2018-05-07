@@ -17,21 +17,21 @@ public class Context {
     }
 
     public Object set(String key, Object value) {
-        return this.data.put(key, value);
+        return this.data.put(key.toLowerCase(), value);
     }
 
     public Object unset(String key) {
-        return this.data.remove(key);
+        return this.data.remove(key.toLowerCase());
     }
 
     public Object get (String key) {
-        return this.data.get(key);
+        return this.data.get(key.toLowerCase());
     }
 
     public <T> T get(String key, Class<T> type) {
-        Object value = this.data.get(key);
+        Object value = this.data.get(key.toLowerCase());
         T out = null;
-        if (type.isAssignableFrom(value.getClass()))
+        if (value != null && type.isAssignableFrom(value.getClass()))
             out = type.cast(value);
         return out;
     }

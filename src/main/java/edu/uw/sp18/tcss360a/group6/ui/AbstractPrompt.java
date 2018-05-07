@@ -18,7 +18,7 @@ public abstract class AbstractPrompt implements Prompt {
 
     @Override
     public void start() {
-        if (!this.completed) {
+        while (!this.completed) {
             this.completed = execute(this.context);
         }
     }

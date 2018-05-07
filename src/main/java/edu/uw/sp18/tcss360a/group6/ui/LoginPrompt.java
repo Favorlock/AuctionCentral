@@ -20,33 +20,33 @@ public class LoginPrompt extends AbstractPrompt {
     private static final DateTimeFormatter LOGIN_DATE_FORMAT = DateTimeFormatter
             .ofPattern("yyyy/MM/dd HH:mm:ss");
 
+    private List<User> users;
+
     public LoginPrompt(Context context) {
         super(context);
+        this.users = Application.getInstance().getUserRepository().fetchAll();
     }
 
     @Override
     public boolean execute(Context context) {
         Application application = Application.getInstance();
         Console console = application.getConsole();
-        List<User> users = application.getUserRepository().fetchAll();
 
         LocalDateTime now = LocalDateTime.now();
-        while (!context.has("user")) {
-            console.printfln("Welcome to Auction Central %s",
-                    LOGIN_DATE_FORMAT.format(now));
-            console.printf("Enter your user name: ");
+        console.printfln("Welcome to Auction Central %s",
+                LOGIN_DATE_FORMAT.format(now));
+        console.printf("Enter your user name: ");
 
-            String name = console.readLine();
-            User user = users.stream()
-                    .filter(u -> u.getUserName().equalsIgnoreCase(name))
-                    .findFirst()
-                    .orElse(null);
+        String name = console.readLine();
+        User user = this.users.stream()
+                .filter(u -> u.getUserName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
 
-            if (user != null) {
-                context.set("user", user);
-            }
+        if (user != null) {
+            context.set("user", user);
         }
 
-        return true;
+        return context.has("user");
     }
 }
