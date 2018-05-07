@@ -2,6 +2,7 @@ package edu.uw.sp18.tcss360a.group6;
 
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.*;
+import edu.uw.sp18.tcss360a.group6.ui.BidderMenuPrompt;
 import edu.uw.sp18.tcss360a.group6.ui.LoginPrompt;
 
 public class Application {
@@ -9,7 +10,6 @@ public class Application {
     private static Application instance;
 
     private AuctionRepository auctionRepository;
-    private ItemRepository itemRepository;
     private BidRepository bidRepository;
     private UserRepository userRepository;
     private Console console;
@@ -31,59 +31,9 @@ public class Application {
             loginPrompt.start();
             // Fetch the user from the context
             this.user = context.get("user", User.class);
-
-            // TODO: Make prompts for bidder/contact person along with option prompts
-
-            bidderOptions();
-
-            line = null;
-            while (line == null)
-                line = console.readLine();
-            switch (line.toLowerCase()) {
-                case "1":
-                    console.printf("You have placed bids on items for the following auctions:\n");
-
-                    bidderAssociatedAuctions();
-
-                    console.printf("Enter 'b' to go back.\n");
-                    line = console.readLine();
-                    switch (line.toLowerCase()) {
-                        case "b":
-                            bidderOptions();
-                            break;
-                        default:
-                            console.printf("Invalid selection...\n");
-                    }
-
-                    break;
-                case "2":
-                    console.printf("You have placed bids on the following items:\n");
-
-                    bidderAssociatedItems();
-
-                    console.printf("Enter 'b' to go back.\n");
-                    line = console.readLine();
-                    switch (line.toLowerCase()) {
-                        case "b":
-                            bidderOptions();
-                            break;
-                        default:
-                            console.printf("Invalid selection...\n");
-                    }
-
-                    break;
-                case "3":
-                    console.printf("List of auctions you can bid on.\n");
-                    console.printf("Select an auction to view its items:\n");
-
-                    bidderOpenAuctions();
-                    break;
-                case "4":
-                    console.printf("you chose option 4...\n");
-                    break;
-                default:
-                    console.printf("Invalid selection...\n");
-            }
+            BidderMenuPrompt bidderMenuPrompt = new BidderMenuPrompt(context);
+            bidderMenuPrompt.start();
+           
         }
     }
 
@@ -145,10 +95,6 @@ public class Application {
         return auctionRepository;
     }
 
-    public ItemRepository getItemRepository() {
-        return itemRepository;
-    }
-
     public BidRepository getBidRepository() {
         return bidRepository;
     }
@@ -159,7 +105,6 @@ public class Application {
 
     private void __loadRepositories() {
         this.auctionRepository = AuctionRepository.load();
-        this.itemRepository = ItemRepository.load();
         this.bidRepository = BidRepository.load();
         this.userRepository = UserRepository.load();
     }
