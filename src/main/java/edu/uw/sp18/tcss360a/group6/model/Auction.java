@@ -1,9 +1,12 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class used to represent an auction.
@@ -21,18 +24,10 @@ public class Auction {
     @Expose
     private long id;
 
-    /**
-     * The date and time the auction is scheduled to take
-     * place on.
-     */
     @Expose
     private LocalDate startDate;
 
-    /**
-     * ArrayList<> of inventory used to represent the inventory in the auction object.
-     **/
-    @Expose
-    private ArrayList<Item> inventory;
+    private List<Item> inventory;
 
     public Auction() {
         super();
@@ -46,7 +41,6 @@ public class Auction {
     public Auction(long id, LocalDate startDate) {
         this.id = id;
         this.startDate = startDate;
-        this.inventory = new ArrayList<>();
     }
 
     /**
@@ -75,15 +69,6 @@ public class Auction {
      */
     private boolean isBeforeMidnightOfStartDate() {
         return LocalDate.now().isBefore(this.startDate);
-    }
-
-    /**
-     * Getter method used to return the auction's date.
-     *
-     * @return Date used to represent the date of the auction.
-     */
-    public LocalDate getStartDate() {
-        return this.startDate;
     }
 
     /**
@@ -119,6 +104,25 @@ public class Auction {
 
     public long getId() {
         return id;
+    }
+
+    /**
+     * Getter method used to return the auction's date.
+     *
+     * @return Date used to represent the date of the auction.
+     */
+    public LocalDate getStartDate() {
+        return this.startDate;
+    }
+
+    public List<Item> getInventory() {
+        if (this.inventory == null) {
+            this.inventory = Application.getInstance().getItemRepository().fetchAll().stream()
+                    .filter(item -> item.getAuctionId() == this.id)
+                    .collect(Collectors.toList());
+        }
+
+        return this.inventory;
     }
 
     @Override

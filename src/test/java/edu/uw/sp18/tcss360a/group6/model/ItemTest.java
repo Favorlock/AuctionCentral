@@ -1,6 +1,5 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
-import edu.uw.sp18.tcss360a.group6.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +17,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class ItemTest {
 
-    private int GOLDRING_ID = 1;
+    private long GOLDRING_ID = 0;
+    private long AUCTION_ID = 0;
     private int GOLDRING_START_BID = 10;
     private int GOLDRING_QTY = 1;
     private int EQUAL_BID = 10;
@@ -33,7 +33,7 @@ public class ItemTest {
     @Before
     public void setUp() {
 
-        goldRing = new Item(GOLDRING_ID, "Gold Ring", new BigDecimal(GOLDRING_START_BID), GOLDRING_QTY);
+        goldRing = new Item(GOLDRING_ID, AUCTION_ID, "Gold Ring", new BigDecimal(GOLDRING_START_BID), GOLDRING_QTY);
         equalBid = new BigDecimal(EQUAL_BID);
         greaterBid = new BigDecimal(GREATER_BID);
         lesserBid = new BigDecimal(LESSER_BID);

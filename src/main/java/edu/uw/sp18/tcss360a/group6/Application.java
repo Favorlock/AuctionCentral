@@ -9,6 +9,7 @@ public class Application {
     private static Application instance;
 
     private AuctionRepository auctionRepository;
+    private ItemRepository itemRepository;
     private BidRepository bidRepository;
     private UserRepository userRepository;
     private Console console;
@@ -144,6 +145,10 @@ public class Application {
         return auctionRepository;
     }
 
+    public ItemRepository getItemRepository() {
+        return itemRepository;
+    }
+
     public BidRepository getBidRepository() {
         return bidRepository;
     }
@@ -154,6 +159,7 @@ public class Application {
 
     private void __loadRepositories() {
         this.auctionRepository = AuctionRepository.load();
+        this.itemRepository = ItemRepository.load();
         this.bidRepository = BidRepository.load();
         this.userRepository = UserRepository.load();
     }
