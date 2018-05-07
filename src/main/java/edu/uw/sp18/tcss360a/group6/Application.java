@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.*;
 import edu.uw.sp18.tcss360a.group6.ui.BidderMenuPrompt;
+import edu.uw.sp18.tcss360a.group6.ui.ContactPersonMenuPrompt;
 import edu.uw.sp18.tcss360a.group6.ui.LoginPrompt;
 
 /**
@@ -45,7 +46,12 @@ public class Application {
                 BidderMenuPrompt bidderMenuPrompt = new BidderMenuPrompt(context);
                 bidderMenuPrompt.start();
             } else if (user.getType() ==  UserType.CONTACT_PERSON) {
-                // TODO: Contact person prompt
+                ContactPersonMenuPrompt contactMenuPrompt = new ContactPersonMenuPrompt(context);
+                contactMenuPrompt.start();
+            }
+
+            if (context.has("running")) {
+                this.running = context.get("running", Boolean.class);
             }
         }
     }
