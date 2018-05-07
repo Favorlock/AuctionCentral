@@ -31,8 +31,14 @@ public class Application {
             loginPrompt.start();
             // Fetch the user from the context
             this.user = context.get("user", User.class);
-            BidderMenuPrompt bidderMenuPrompt = new BidderMenuPrompt(context);
-            bidderMenuPrompt.start();
+
+            // Prompt user with menu options
+            if (user.getType() == UserType.BIDDER) {
+                BidderMenuPrompt bidderMenuPrompt = new BidderMenuPrompt(context);
+                bidderMenuPrompt.start();
+            } else if (user.getType() ==  UserType.CONTACT_PERSON) {
+                // TODO: Contact person prompt
+            }
            
         }
     }
