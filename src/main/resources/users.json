@@ -10,6 +10,11 @@
       "type": "BIDDER",
       "id": 1,
       "userName": "Josh"
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 2,
+      "userName": "Evan"
     }
   ]
 }

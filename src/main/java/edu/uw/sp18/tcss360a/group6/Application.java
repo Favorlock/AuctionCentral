@@ -39,6 +39,7 @@ public class Application {
             // Fetch the user from the context
             this.user = context.get("user", User.class);
 
+            console.printf("Hello " + user.getUserName() + ".\n");
             // Prompt user with menu options
             if (user.getType() == UserType.BIDDER) {
                 BidderMenuPrompt bidderMenuPrompt = new BidderMenuPrompt(context);
