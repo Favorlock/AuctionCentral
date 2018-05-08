@@ -31,13 +31,13 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
         for (int i = 0; i < auctions.size(); i++) {
         	console.printfln("%d. " + auctions.get(i).getStartDate(), i+1);
         }
-        console.printfln("%d. Main menu.", auctions.size());
+        console.printfln("%d. Main menu.", auctions.size() + 1);
         console.printfln("Enter choice:");
         while (selection == 0) {
         	selection = Integer.parseInt(console.readLine());
         }
         
-        if (selection == auctions.size()) {
+        if (selection == auctions.size() + 1) {
         	isDone = true;
         }
         else {
