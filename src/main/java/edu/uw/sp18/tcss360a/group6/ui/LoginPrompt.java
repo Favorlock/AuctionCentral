@@ -27,6 +27,12 @@ public class LoginPrompt extends AbstractPrompt {
         this.users = Application.getInstance().getUserRepository().fetchAll();
     }
 
+    /**
+     * Method used to execute the logic and prompting of log in prompt.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
         Application application = Application.getInstance();

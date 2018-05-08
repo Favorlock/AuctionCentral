@@ -6,7 +6,6 @@ import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Submit a new auction to be added to the AuctionRepository.
@@ -16,11 +15,16 @@ import java.util.List;
  */
 public class AuctionRequestPrompt extends AbstractPrompt {
 
-	private String line;
-    public AuctionRequestPrompt(Context context) {
+	public AuctionRequestPrompt(Context context) {
         super(context);
     }
 
+    /**
+     * Method used to execute the logic and prompting of auction request prompt.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
         Application application = Application.getInstance();
