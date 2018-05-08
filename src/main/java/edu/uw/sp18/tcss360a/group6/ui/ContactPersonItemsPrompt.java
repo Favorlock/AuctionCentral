@@ -5,6 +5,8 @@ import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Item;
+
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -15,6 +17,8 @@ import java.util.List;
  * @version 5/4/2018
  */
 public class ContactPersonItemsPrompt extends AbstractPrompt {
+
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
 
 	private Auction associatedAuction;
     public ContactPersonItemsPrompt(Context context, Auction auction) {
@@ -43,10 +47,10 @@ public class ContactPersonItemsPrompt extends AbstractPrompt {
         
         console.printfln("Date: %tD", associatedAuction.getStartDate());
         for(int i = 0; i < inventory.size(); i++) {
-        	console.printfln("ID: %d, Description: %s, Start Bid: %Bd, Quantity:"
+        	console.printfln("ID: %d, Description: %s, Start Bid: %s, Quantity:"
         			+ " %d", 
         			inventory.get(i).getId(), inventory.get(i).getDescription(), 
-        			inventory.get(i).getStartBid(), 
+        			DECIMAL_FORMAT.format(inventory.get(i).getStartBid()),
         			inventory.get(i).getQuantity());
         }
         
