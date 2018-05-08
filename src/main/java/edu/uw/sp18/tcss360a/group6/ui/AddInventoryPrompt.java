@@ -35,6 +35,10 @@ public class AddInventoryPrompt extends AbstractPrompt {
             String line = null;
             String description = null;
             int quantity = 0;
+            String comments = null;
+            String condition = null;
+            String size = null;
+            String location = null;
             Auction activeAuction;
 
             BigDecimal startingBid = new BigDecimal(0);
@@ -42,22 +46,42 @@ public class AddInventoryPrompt extends AbstractPrompt {
             console.printfln("Please provide the requested information when prompted.");
             console.printfln("Description");
 
-            while (line == null) {
+            while (description == null) {
                 description = console.readLine();
             }
 
-            console.printfln("Quantity:");
+            console.printfln("Quantity (greater than 0):");
 
-            while (line == null) {
+            while (quantity == 0) {
                 quantity = Integer.parseInt(console.readLine());
             }
+            
 
-            console.printfln("Starting bid:");
-            while (line == null) {
+            console.printfln("Starting bid (greater than 0):");
+            while (startingBid.equals(0)) {
                 startingBid = BigDecimal.valueOf(Double.parseDouble(console.readLine()));
             }
 
-            Item item = new Item(auction.getId(), description, quantity, startingBid, "", "", "", "");
+            console.printfln("Condition:");
+            while (condition == null) {
+            	condition = console.readLine();
+            }
+            
+            
+            console.printfln("Approximate Size:");
+            while (size == null) {
+            	size = console.readLine();
+            }
+
+            console.printfln("Additional Comments:");
+            while (comments == null) {
+            	comments = console.readLine();
+            }
+            
+
+
+            console.printfln("Storage Location:");
+            Item item = new Item(auction.getId(), description, quantity, startingBid, condition, size, location, comments);
             auction.addItem(item);
             console.printfln("The item has been added to your organization's auction.");
         }
