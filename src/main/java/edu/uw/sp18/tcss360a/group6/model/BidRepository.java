@@ -31,8 +31,8 @@ public class BidRepository implements Repository<Bid> {
 
     private File file;
 
-    private void __init(File file) {
-        this.file = file;
+    public BidRepository() {
+        this.entries = new ArrayList<>();
     }
 
     @Override
@@ -46,14 +46,25 @@ public class BidRepository implements Repository<Bid> {
         this.entries.add(entry);
     }
 
-    public static BidRepository load() {
+    private void __init(File file) {
+        this.file = file;
+    }
+
+    public static BidRepository load(boolean saveDefaultsIfMissing) {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
-        ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        if (saveDefaultsIfMissing) {
+            ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        }
 
         BidRepository repository = null;
 
         try {
-            repository = GSON.fromJson(new FileReader(file), BidRepository.class);
+            if (file.exists()) {
+                repository = GSON.fromJson(new FileReader(file), BidRepository.class);
+            } else {
+                repository = new BidRepository();
+            }
+
             repository.__init(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

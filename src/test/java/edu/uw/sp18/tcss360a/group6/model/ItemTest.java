@@ -33,7 +33,7 @@ public class ItemTest {
     @Before
     public void setUp() {
 
-        goldRing = new Item(GOLDRING_ID, AUCTION_ID, "Gold Ring", new BigDecimal(GOLDRING_START_BID), GOLDRING_QTY);
+        goldRing = new Item(GOLDRING_ID, AUCTION_ID, "Gold Ring", GOLDRING_QTY, new BigDecimal(GOLDRING_START_BID));
         equalBid = new BigDecimal(EQUAL_BID);
         greaterBid = new BigDecimal(GREATER_BID);
         lesserBid = new BigDecimal(LESSER_BID);

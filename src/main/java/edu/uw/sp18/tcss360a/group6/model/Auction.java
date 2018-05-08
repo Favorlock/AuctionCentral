@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,9 +16,14 @@ import java.util.stream.Collectors;
 public class Auction {
 
     /**
-     * Constant specifying the max number of auctions allowed.
+     * Maximum number of active auctions permitted.
      */
-    public static int ITEM_CAPACITY = 10;
+    public static int AUCTION_CAPACITY = 25;
+
+    /**
+     * Maximum number of items per auction permitted.
+     */
+    public static int INVENTORY_CAPACITY = 10;
 
     @Expose
     protected long id;
@@ -46,10 +50,16 @@ public class Auction {
     /**
      * Helper method used to add an item to the auction's inventory.
      *
-     * @param theItem Item used to represent an item to be added to the inventory.
+     * @param item Item used to represent an item to be added to the inventory.
      */
-    public void addItem(Item theItem) {
-        this.inventory.add(theItem);
+    public boolean addItem(Item item) {
+        boolean added = false;
+        if (!isAtCapacity()) {
+            Application.getInstance().getItemRepository().add(item);
+            getInventory().add(item);
+            added = true;
+        }
+        return added;
     }
 
     /**
@@ -72,17 +82,6 @@ public class Auction {
     }
 
     /**
-     * Add an item to the auction if possible.
-     *
-     * @param auctionItem the item to add to the auction
-     */
-    public void addAuctionItem(Item auctionItem) {
-        if (!isAtCapacity()) {
-            this.inventory.add(auctionItem);
-        }
-    }
-
-    /**
      * Check if there is less than the max number of items in the auction.
      * If we can add an item return true, otherwise return false.
      *
@@ -90,18 +89,23 @@ public class Auction {
      */
     public boolean isAtCapacity() {
 
-        return this.inventory.size() >= ITEM_CAPACITY;
+        return getInventorySize() >= INVENTORY_CAPACITY;
     }
 
     /**
-     * Getter method to return the number of items currently in this auction.
+     * Returns the number of items in an auction's inventory.
      *
      * @return the number of items in this auction.
      */
-    public int getItemsInAuctionCount() {
-        return this.inventory.size();
+    public int getInventorySize() {
+        return getInventory().size();
     }
 
+    /**
+     * Returns the id number of an auction.
+     *
+     * @return the auction id
+     */
     public long getId() {
         return id;
     }

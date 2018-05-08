@@ -34,8 +34,8 @@ public class ItemRepository implements Repository<Item> {
 
     private File file;
 
-    private void __init(File file) {
-        this.file = file;
+    public ItemRepository() {
+        this.entries = new ArrayList<>();
     }
 
     @Override
@@ -49,14 +49,25 @@ public class ItemRepository implements Repository<Item> {
         this.entries.add(entry);
     }
 
-    public static ItemRepository load() {
+    private void __init(File file) {
+        this.file = file;
+    }
+
+    public static ItemRepository load(boolean saveDefaultsIfMissing) {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
-        ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        if (saveDefaultsIfMissing) {
+            ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        }
 
         ItemRepository repository = null;
 
         try {
-            repository = GSON.fromJson(new FileReader(file), ItemRepository.class);
+            if (file.exists()) {
+                repository = GSON.fromJson(new FileReader(file), ItemRepository.class);
+            } else {
+                repository = new ItemRepository();
+            }
+
             repository.__init(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
