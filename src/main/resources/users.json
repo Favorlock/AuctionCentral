@@ -12,9 +12,20 @@
       "userName": "Josh"
     },
     {
-      "type": "CONTACT_PERSON",
+      "type": "BIDDER",
       "id": 2,
+      "userName": "Tam"
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 3,
       "userName": "Evan",
+      "organizationId": 0
+    },
+        {
+      "type": "CONTACT_PERSON",
+      "id": 4,
+      "userName": "Adam",
       "organizationId": 0
     }
   ]
