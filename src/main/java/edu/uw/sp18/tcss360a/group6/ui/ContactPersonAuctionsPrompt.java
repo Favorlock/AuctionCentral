@@ -35,7 +35,7 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
         	selection = Integer.parseInt(console.readLine());
         }
         
-        if (selection == auctions.size()) {
+        if (selection == auctions.size() + 1) {
         	isDone = true;
         }
         else {
