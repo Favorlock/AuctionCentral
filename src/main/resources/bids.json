@@ -14,6 +14,63 @@
       "auctionId": 0,
       "itemId": 1,
       "bid": "125.0"
+    },
+    {
+      "id": 2,
+      "bidderId": 0,
+      "auctionId": 0,
+      "itemId": 2,
+      "bid": "1125.0"
+    },
+    {
+      "id": 3,
+      "bidderId": 1,
+      "auctionId": 0,
+      "itemId": 0,
+      "bid": "11.0"
+    },
+    {
+      "id": 4,
+      "bidderId": 0,
+      "auctionId": 0,
+      "itemId": 0,
+      "bid": "12.0"
+    },
+    {
+      "id": 5,
+      "bidderId": 1,
+      "auctionId": 0,
+      "itemId": 1,
+      "bid": "130.0"
+    },
+    {
+      "id": 6,
+      "bidderId": 2,
+      "auctionId": 0,
+      "itemId": 0,
+      "bid": "13.0"
+    },
+    {
+      "id": 7,
+      "bidderId": 1,
+      "auctionId": 0,
+      "itemId": 2,
+      "bid": "1200.0"
+    },
+    {
+      "id": 8,
+      "bidderId": 2,
+      "auctionId": 0,
+      "itemId": 1,
+      "bid": "200.0"
+    },
+    {
+      "id": 9,
+      "bidderId": 3,
+      "auctionId": 0,
+      "itemId": 3,
+      "bid": "14.0"
     }
+    
   ]
 }
