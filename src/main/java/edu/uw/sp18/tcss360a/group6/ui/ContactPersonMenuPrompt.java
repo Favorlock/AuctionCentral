@@ -38,7 +38,7 @@ public class ContactPersonMenuPrompt extends AbstractPrompt {
         switch (line.toLowerCase()) {
 
             case "1":
-                ContactPersonItemsPrompt items = new ContactPersonItemsPrompt(context);
+                ContactPersonAuctionsPrompt items = new ContactPersonAuctionsPrompt(context);
                 items.start();
                 break;
             case "2":
