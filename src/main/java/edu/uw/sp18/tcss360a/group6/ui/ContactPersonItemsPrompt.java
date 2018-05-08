@@ -30,21 +30,22 @@ public class ContactPersonItemsPrompt extends AbstractPrompt {
 
         User user = context.get("user", User.class);
 
-        if (user.getType() == UserType.CONTACT_PERSON) {
-
-            ContactPerson CPUser = (ContactPerson) user;
-            Map<Auction, ArrayList<Item>> auctionItems = CPUser.viewAllAuctionsItemsISubmitted();
-
-            if(auctionItems != null) { // & !auctionItems.isEmpty()
-
-                for(Map.Entry<Auction, ArrayList<Item>> auction : auctionItems.entrySet()) {
-                    console.printfln(auction.getKey().toString());
-//                    for(Item item : auction.getValue()) {}
-                }
-            } else {
-                console.printfln("You have not added any items in any auctions");
-            }
-        }
+        //TODO : refactor to match new version of ContactPerson
+//        if (user.getType() == UserType.CONTACT_PERSON) {
+//
+//            ContactPerson CPUser = (ContactPerson) user;
+//            Map<Auction, ArrayList<Item>> auctionItems = CPUser.viewAllAuctionsItemsISubmitted();
+//
+//            if(auctionItems != null) { // & !auctionItems.isEmpty()
+//
+//                for(Map.Entry<Auction, ArrayList<Item>> auction : auctionItems.entrySet()) {
+//                    console.printfln(auction.getKey().toString());
+////                    for(Item item : auction.getValue()) {}
+//                }
+//            } else {
+//                console.printfln("You have not added any items in any auctions");
+//            }
+//        }
         
         return true;
     }
