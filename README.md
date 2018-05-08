@@ -18,3 +18,10 @@ Unix: gradlew
 | Perform Clean Install | clean install -x test |
 | Perform Tests         | clean test            |
 | Perform Run           | run                   |
+
+### Citations
+
+[Gson](https://github.com/google/gson)
+by [Google](https://github.com/google)  
+[Gson Java 8 Datatype](https://github.com/hsiafan/gson-java8-datatype)
+by [Hsiafan](https://github.com/hsiafan)
