@@ -6,10 +6,7 @@ import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
 import edu.uw.sp18.tcss360a.group6.model.Item;
-import edu.uw.sp18.tcss360a.group6.model.User;
-
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * Add an inventory Item an Auction.
@@ -24,6 +21,12 @@ public class AddInventoryPrompt extends AbstractPrompt {
         super(context);
     }
 
+    /**
+     * Method used to execute the logic and prompting of add inventory prompt.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
     	Application application = Application.getInstance();
@@ -34,15 +37,12 @@ public class AddInventoryPrompt extends AbstractPrompt {
         if (auction == null) {
             // TODO: No Active Auction
         } else {
-            String line = null;
             String description = null;
             int quantity = 0;
             String comments = null;
             String condition = null;
             String size = null;
             String location = null;
-            Auction activeAuction;
-
             BigDecimal startingBid = new BigDecimal(0);
 
             console.printfln("Please provide the requested information when prompted.");
