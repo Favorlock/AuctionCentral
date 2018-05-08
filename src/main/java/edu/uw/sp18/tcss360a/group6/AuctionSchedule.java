@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * Class represents auction schedule available.
+ * Overview of all auctions scheduled.
  *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
