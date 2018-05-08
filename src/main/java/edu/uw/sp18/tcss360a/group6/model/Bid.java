@@ -6,7 +6,7 @@ import edu.uw.sp18.tcss360a.group6.Application;
 import java.math.BigDecimal;
 
 /**
- * Class used to represent a bid for an item in an auction.
+ * Class used to represent a amount for an item in an auction.
  *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 4/30/2018
@@ -26,7 +26,7 @@ public class Bid {
     private long itemId;
 
     @Expose
-    private BigDecimal bid;
+    private BigDecimal amount;
 
     private Bidder bidder; // Lazy loaded, use getBidder()
 
@@ -36,19 +36,16 @@ public class Bid {
         super();
     }
 
-    public Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal bid) {
-        this.id = id;
+    public Bid(long bidderId, long auctionId, long itemId, BigDecimal amount) {
         this.bidderId = bidderId;
         this.auctionId = auctionId;
         this.itemId = itemId;
-        this.bid = bid;
+        this.amount = amount;
     }
 
-    public String toString() {
-        String outputString = "Bidder ID: " + bidderId + "\n"
-                + "Item ID: " + itemId + "\n"
-                + "Bid: " + bid.doubleValue() + "\n";
-        return outputString;
+    public Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal amount) {
+        this(bidderId, auctionId, itemId, amount);
+        this.id = id;
     }
 
     public long getId() {
@@ -67,12 +64,12 @@ public class Bid {
         return this.itemId;
     }
 
-    public BigDecimal getBid() {
-        return bid;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setBid(BigDecimal bid) {
-        this.bid = bid;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public Bidder getBidder() {
@@ -94,6 +91,17 @@ public class Bid {
         }
 
         return this.auction;
+    }
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                "id=" + id +
+                ", bidderId=" + bidderId +
+                ", auctionId=" + auctionId +
+                ", itemId=" + itemId +
+                ", amount=" + amount +
+                '}';
     }
 }
 

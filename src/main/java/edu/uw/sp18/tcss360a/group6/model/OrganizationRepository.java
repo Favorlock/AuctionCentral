@@ -1,6 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.gson.UserDeserializer;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
@@ -16,9 +17,9 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class UserRepository implements Repository<User> {
+public class OrganizationRepository implements Repository<Organization> {
 
-    public static final String DEFAULT_RESOURCE_NAME = "users.json";
+    public static final String DEFAULT_RESOURCE_NAME = "organizations.json";
 
     private static final Gson GSON = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
@@ -31,24 +32,22 @@ public class UserRepository implements Repository<User> {
     private long index = 0;
 
     @Expose
-    private List<User> entries;
+    private List<Organization> entries;
 
     private File file;
 
-    public UserRepository() {
+    public OrganizationRepository() {
         this.entries = new ArrayList<>();
     }
 
     @Override
-    public List<User> fetchAll() {
+    public List<Organization> fetchAll() {
         return new ArrayList<>(this.entries);
     }
 
     @Override
-    public void add(User entry) {
-        if (entry instanceof AbstractUser) {
-            ((AbstractUser) entry).id = this.index++;
-        }
+    public void add(Organization entry) {
+        entry.id = this.index++;
         this.entries.add(entry);
     }
 
@@ -56,19 +55,19 @@ public class UserRepository implements Repository<User> {
         this.file = file;
     }
 
-    public static UserRepository load(boolean saveDefaultsIfMissing) {
+    public static OrganizationRepository load(boolean saveDefaultsIfMissing) {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         if (saveDefaultsIfMissing) {
             ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
         }
 
-        UserRepository repository = null;
+        OrganizationRepository repository = null;
 
         try {
             if (file.exists()) {
-                repository = GSON.fromJson(new FileReader(file), UserRepository.class);
+                repository = GSON.fromJson(new FileReader(file), OrganizationRepository.class);
             } else {
-                repository = new UserRepository();
+                repository = new OrganizationRepository();
             }
 
             repository.__init(file);

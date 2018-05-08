@@ -6,28 +6,44 @@
       "auctionId": 0,
       "description": "Painting",
       "quantity": 1,
-      "startBid": "5.0"
+      "startBid": "5.0",
+      "condition": "good",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 1,
       "auctionId": 0,
       "description": "Statue",
       "quantity": 1,
-      "startBid": "100.0"
+      "startBid": "100.0",
+      "condition": "good",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 2,
       "auctionId": 0,
       "description": "Dolphin",
       "quantity": 2,
-      "startBid": "1000.0"
+      "startBid": "1000.0",
+      "condition": "good",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 3,
       "auctionId": 0,
       "description": "Golf Club",
       "quantity": 1,
-      "startBid": "10.50"
+      "startBid": "10.50",
+      "condition": "good",
+      "approximateSize": "small",
+      "location": "A2",
+      "comments": ""
     }
   ]
 }

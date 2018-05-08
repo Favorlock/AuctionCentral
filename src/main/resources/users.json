@@ -14,7 +14,8 @@
     {
       "type": "CONTACT_PERSON",
       "id": 2,
-      "userName": "Evan"
+      "userName": "Evan",
+      "organizationId": 0
     }
   ]
 }

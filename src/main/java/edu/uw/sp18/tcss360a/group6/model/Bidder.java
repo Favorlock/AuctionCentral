@@ -14,6 +14,16 @@ import java.util.stream.Collectors;
  */
 public class Bidder extends AbstractUser {
 
+    /**
+     * The maximum number of placed bids on items in a given auction.
+     */
+    public static final int MAX_BIDS_PER_AUCTION = 4;
+
+    /**
+     * The maximum number of active placed bids for all auctions.
+     */
+    public static final int MAX_ACTIVE_BIDS = 10;
+
     private List<Bid> placedBids; // Lazy loaded, use getPlacedBids()
 
     /**
@@ -34,7 +44,7 @@ public class Bidder extends AbstractUser {
      */
     public void placeBid(BigDecimal bidAmount, Item item, Auction auction) {
         //Perform checks
-        if (canBid() && canBidInAuction(auction) && item.isBidAmountAcceptable(bidAmount)) {
+        if (canBid() && canBid(auction) && item.isBidAmountAcceptable(bidAmount)) {
             // TODO:
 //            Bid bid = new Bid(auction, this, item, bidAmount);
 //            this.placedBids.add(bid);
@@ -50,12 +60,10 @@ public class Bidder extends AbstractUser {
      *
      * @return boolean used to represent whether a bidder is allowed to bid in the given auction.
      */
-    public boolean canBidInAuction(Auction auction) {
-        // TODO
-//        return auction.isAcceptingBids() && this.placedBids.stream()
-//                .filter(bid -> bid.getAuction().equals(auction))
-//                .count() < 4;
-        return false;
+    public boolean canBid(Auction auction) {
+        return auction.isAcceptingBids() && getPlacedBids().stream()
+                .filter(bid -> bid.getAuction().getId() == auction.getId())
+                .count() < MAX_BIDS_PER_AUCTION;
     }
 
     /**
@@ -64,12 +72,9 @@ public class Bidder extends AbstractUser {
      * @return boolean used to represent whether the bidder can bid or not.
      */
     public boolean canBid() {
-        // TODO
-//        long activeBids = this.placedBids.stream()
-//                .filter(bid -> bid.getAuction().isAcceptingBids())
-//                .count();
-//        return activeBids < 10;
-        return false;
+        return getPlacedBids().stream()
+                .filter(bid -> bid.getAuction().isAcceptingBids())
+                .count() < MAX_ACTIVE_BIDS;
     }
 
     /**

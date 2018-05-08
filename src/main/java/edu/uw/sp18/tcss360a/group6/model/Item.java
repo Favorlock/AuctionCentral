@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +30,18 @@ public class Item {
     @Expose
     private BigDecimal startBid;
 
+    @Expose
+    private String condition;
+
+    @Expose
+    private String approximateSize;
+
+    @Expose
+    private String location;
+
+    @Expose
+    private String comments;
+
     private Auction auction;
 
     private List<Bid> placedBids;
@@ -38,17 +49,57 @@ public class Item {
     /**
      * Constructor for Item object.
      *
-     * @param id    int used to represent the ID number for Item object.
      * @param description String used to represent a brief description for Item object.
-     * @param startBid    Bid used to represent the minimum bid accepted for Item object.
      * @param quantity    int used to represent how many of Item object are sold as one.
+     * @param startBid    Bid used to represent the minimum bid accepted for Item object.
+     * @param condition the condition of the item
+     * @param approximateSize the approximate size of the item
+     * @param location the location the item is stored
+     * @param comments comments on the item
      */
-    Item(long id, long auctionId, String description, int quantity, BigDecimal startBid) {
-        this.id = id;
+    public Item(
+            long auctionId,
+            String description,
+            int quantity,
+            BigDecimal startBid,
+            String condition,
+            String approximateSize,
+            String location,
+            String comments) {
         this.auctionId = auctionId;
         this.description = description;
         this.quantity = quantity;
         this.startBid = startBid;
+        this.condition = condition;
+        this.approximateSize = approximateSize;
+        this.location = location;
+        this.comments = comments;
+    }
+
+    /**
+     * Constructor for Item object.
+     *
+     * @param id    int used to represent the ID number for Item object.
+     * @param description String used to represent a brief description for Item object.
+     * @param quantity    int used to represent how many of Item object are sold as one.
+     * @param startBid    Bid used to represent the minimum bid accepted for Item object.
+     * @param condition the condition of the item
+     * @param approximateSize the approximate size of the item
+     * @param location the location the item is stored
+     * @param comments comments on the item
+     */
+    public Item(
+            long id,
+            long auctionId,
+            String description,
+            int quantity,
+            BigDecimal startBid,
+            String condition,
+            String approximateSize,
+            String location,
+            String comments) {
+        this(auctionId, description, quantity, startBid, condition, approximateSize, location, comments);
+        this.id = id;
     }
 
     /**
@@ -70,7 +121,7 @@ public class Item {
      */
     public void setNewBid(Bid theBid) {
 
-        startBid = theBid.getBid();
+        startBid = theBid.getAmount();
     }
 
     public long getId() {

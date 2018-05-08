@@ -40,7 +40,7 @@ public class BidderTest {
 //        for (int i = 0; i < 3; i++) {
 //            bidder.addBid(bid);
 //        }
-//        assertTrue(bidder.canBidInAuction(auction));
+//        assertTrue(bidder.canBid(auction));
 //    }
 //
 //    @Test
@@ -50,7 +50,7 @@ public class BidderTest {
 //        for (int i = 0; i < 4; i++) {
 //            bidder.addBid(bid);
 //        }
-//        assertFalse(bidder.canBidInAuction(auction));
+//        assertFalse(bidder.canBid(auction));
 //    }
 //
 //    @Test
