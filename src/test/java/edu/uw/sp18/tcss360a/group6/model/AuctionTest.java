@@ -21,6 +21,8 @@ public class AuctionTest {
 
     private long auctionId;
 
+    private long organizationId;
+
     private LocalDate futureDate;
 
     private LocalDate currentDate;
@@ -33,59 +35,72 @@ public class AuctionTest {
 
     private BigDecimal itemStartBid;
 
+    private String condition;
+
+    private String approximateSize;
+
+    private String location;
+
+    private String comments;
+
     @Before
     public void setUp() {
         new Application(false);
         this.auctionId = 0;
+        this.organizationId = 0;
         this.pastDate = LocalDate.now().minusMonths(1);
         this.currentDate = LocalDate.now();
         this.futureDate = LocalDate.now().plusMonths(1);
         this.itemDescription = "Item";
         this.itemQuantity = 1;
         this.itemStartBid = BigDecimal.valueOf(1);
+        this.condition = "";
+        this.approximateSize = "";
+        this.location = "";
+        this.comments = "";
     }
 
     @Test
     public void isAcceptingBids_bidBeforeAuctionDate_True() {
-        Auction auction = new Auction(this.auctionId, this.futureDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.futureDate);
         assertTrue(auction.isAcceptingBids());
     }
 
     @Test
     public void isAcceptingBids_bidOnAuctionDate_False() {
-        Auction auction = new Auction(this.auctionId, this.currentDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
         assertFalse(auction.isAcceptingBids());
     }
 
     @Test
     public void isAcceptingBids_bidAfterAuctionDate_False() {
-        Auction auction = new Auction(this.auctionId, this.pastDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.pastDate);
         assertFalse(auction.isAcceptingBids());
     }
 
     @Test
     public void getInventorySize_AuctionInventoryEmpty_True() {
-        Auction auction = new Auction(this.auctionId, this.currentDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
         assertTrue(auction.getInventorySize() == 0);
     }
 
     @Test
     public void getInventorySize_AuctionFull_True() {
-        Auction auction = new Auction(this.auctionId, this.currentDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
         addItemsToAuction(auction, Auction.INVENTORY_CAPACITY);
         assertTrue(auction.getInventorySize() == Auction.INVENTORY_CAPACITY);
     }
 
     @Test
     public void addItem_InventoryCapacity_True() {
-        Auction auction = new Auction(this.auctionId, this.currentDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
         addItemsToAuction(auction, Auction.INVENTORY_CAPACITY - 1);
         assertTrue(addItemToAuction(auction, Auction.INVENTORY_CAPACITY - 1));
     }
 
     @Test
     public void addItem_InventoryCapacityPlusOne_False() {
-        Auction auction = new Auction(this.auctionId, this.currentDate);
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
         addItemsToAuction(auction, Auction.INVENTORY_CAPACITY );
         assertFalse(addItemToAuction(auction, Auction.INVENTORY_CAPACITY));
     }
@@ -102,7 +117,11 @@ public class AuctionTest {
                 this.auctionId,
                 this.itemDescription,
                 this.itemQuantity,
-                this.itemStartBid));
+                this.itemStartBid,
+                this.condition,
+                this.approximateSize,
+                this.location,
+                this.comments));
         return added;
     }
 

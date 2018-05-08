@@ -18,6 +18,8 @@ public class Application {
 
     private Console console = new Console();
 
+    private OrganizationRepository organizationRepository;
+
     private AuctionRepository auctionRepository;
 
     private BidRepository bidRepository;
@@ -47,6 +49,8 @@ public class Application {
             // Fetch the user from the context
             User user = context.get("user", User.class);
 
+            this.organizationRepository.fetchAll().forEach(org -> System.out.println(org.getAuctions().toString()));
+
             this.console.printfln("Hello %s.", user.getUserName());
             // Prompt user with menu options
             if (user.getType() == UserType.BIDDER) {
@@ -65,6 +69,10 @@ public class Application {
 
     public Console getConsole() {
         return console;
+    }
+
+    public OrganizationRepository getOrganizationRepository() {
+        return organizationRepository;
     }
 
     public AuctionRepository getAuctionRepository() {
@@ -86,6 +94,7 @@ public class Application {
     }
 
     private void __loadRepositories(boolean saveDefaultsIfMissing) {
+        this.organizationRepository = OrganizationRepository.load(saveDefaultsIfMissing);
         this.auctionRepository = AuctionRepository.load(saveDefaultsIfMissing);
         this.itemRepository = ItemRepository.load(saveDefaultsIfMissing);
         this.bidRepository = BidRepository.load(saveDefaultsIfMissing);

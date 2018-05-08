@@ -29,7 +29,12 @@ public class Auction {
     protected long id;
 
     @Expose
+    private long organizationId;
+
+    @Expose
     private LocalDate startDate;
+
+    private Organization organization;
 
     private List<Item> inventory;
 
@@ -42,8 +47,9 @@ public class Auction {
      *
      * @param startDate the date the auction takes place
      */
-    public Auction(long id, LocalDate startDate) {
+    public Auction(long id, long organizationId, LocalDate startDate) {
         this.id = id;
+        this.organizationId = organizationId;
         this.startDate = startDate;
     }
 
@@ -110,6 +116,10 @@ public class Auction {
         return id;
     }
 
+    public long getOrganizationId() {
+        return organizationId;
+    }
+
     /**
      * Getter method used to return the auction's date.
      *
@@ -117,6 +127,16 @@ public class Auction {
      */
     public LocalDate getStartDate() {
         return this.startDate;
+    }
+
+    public Organization getOrganization() {
+        if (this.organization == null) {
+            this.organization = Application.getInstance().getOrganizationRepository().fetchAll().stream()
+                    .filter(org -> org.getId() == this.organizationId)
+                    .findFirst().orElse(null);
+        }
+
+        return this.organization;
     }
 
     public List<Item> getInventory() {
@@ -133,8 +153,8 @@ public class Auction {
     public String toString() {
         return "Auction{" +
                 "id=" + id +
+                ", organizationId=" + organizationId +
                 ", startDate=" + startDate +
-                ", inventory=" + inventory +
                 '}';
     }
 }
