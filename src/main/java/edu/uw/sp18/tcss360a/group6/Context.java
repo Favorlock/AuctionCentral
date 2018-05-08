@@ -10,9 +10,14 @@ import java.util.Map;
  */
 public class Context {
 
-    private Map<String, Object> data = new HashMap<>();
+    private Map<String, Object> data;
+
+    public Context() {
+        this.data = new HashMap<>();
+    }
 
     public Context(Context context, String... keysToCopy) {
+        this();
         for (String key : keysToCopy) {
             if (context.has("key")) {
                 set(key, context.get(key));
