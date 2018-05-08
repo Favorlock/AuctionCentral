@@ -6,6 +6,7 @@ import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.model.User;
+import edu.uw.sp18.tcss360a.group6.model.UserType;
 
 import java.util.List;
 
@@ -28,16 +29,19 @@ public class BidderItemsPrompt extends AbstractPrompt {
     public boolean execute(Context context) {
         Application application = Application.getInstance();
         Console console = application.getConsole();
-        User user = application.getUser();
-        if (user.getType() == BIDDER) {
+
+        User user = context.get("user", User.class);
+        if (user.getType() == UserType.BIDDER) {
             Bidder bidder = (Bidder) user;
             List<Bid> bids = bidder.getPlacedBids();
-            for(Bid b : bids) {
-                console.printf(b.toString());
+            if(bids.size() > 0) {
+                for(Bid b : bids) {
+                    console.printf(b.toString());
+                }
+            } else {
+                console.printfln("You have not placed any bids....");
             }
         }
-
-        //then do option to quit
         
         return true;
     }

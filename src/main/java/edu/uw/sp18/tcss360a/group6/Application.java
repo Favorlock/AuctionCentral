@@ -26,8 +26,6 @@ public class Application {
 
     private ItemRepository itemRepository;
 
-    private User user;
-
     private boolean running = true;
 
     public Application() {
@@ -47,7 +45,7 @@ public class Application {
             LoginPrompt loginPrompt = new LoginPrompt(context);
             loginPrompt.start();
             // Fetch the user from the context
-            user = context.get("user", User.class);
+            User user = context.get("user", User.class);
 
             this.console.printfln("Hello %s.", user.getUserName());
             // Prompt user with menu options
@@ -82,8 +80,6 @@ public class Application {
     }
 
     public ItemRepository getItemRepository() { return itemRepository; }
-
-    public User getUser() { return user; }
 
     private void __init(boolean saveDefaultsIfMissing) {
         __loadRepositories(saveDefaultsIfMissing);
