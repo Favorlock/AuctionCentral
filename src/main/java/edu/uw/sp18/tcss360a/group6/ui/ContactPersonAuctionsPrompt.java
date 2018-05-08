@@ -5,8 +5,6 @@ import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
-import edu.uw.sp18.tcss360a.group6.model.User;
-
 import java.util.List;
 
 /**
@@ -25,7 +23,6 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
     	Application application = Application.getInstance();
         Console console = application.getConsole();
         ContactPerson contact = context.get("user", ContactPerson.class);
-        Auction auction = contact.getOrganization().getCurrentAuction();
         List<Auction> auctions = contact.getOrganization().getAuctions();
         int selection = 0;
         console.printfln("Auctions submitted:");
@@ -43,6 +40,7 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
         }
         else {
         	ContactPersonItemsPrompt items = new ContactPersonItemsPrompt(context, auctions.get(selection));
+        	items.start();
         }
         return isDone;
     }
