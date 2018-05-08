@@ -1,5 +1,5 @@
 {
-  "index": 2,
+  "index": 20,
   "entries": [
     {
       "id": 0,
@@ -136,7 +136,7 @@
     },
     {
       "id": 19,
-      "bidderId": 3,
+      "bidderId": 5,
       "auctionId": 1,
       "itemId": 3,
       "bid": "16.0"
