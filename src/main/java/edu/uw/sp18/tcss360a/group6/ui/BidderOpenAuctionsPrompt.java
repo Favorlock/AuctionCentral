@@ -4,7 +4,11 @@ import edu.uw.sp18.tcss360a.group6.Application;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
+
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -15,6 +19,8 @@ import java.util.stream.Collectors;
  * @version 5/1/2018
  */
 public class BidderOpenAuctionsPrompt extends AbstractPrompt {
+
+    private static final Pattern INTEGER_PATTERN = Pattern.compile("^([+-]?[0-9]\\d*|0)$");
 
 	public BidderOpenAuctionsPrompt(Context context) {
         super(context);
@@ -29,44 +35,45 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
      */
     @Override
     public boolean execute(Context context) {
-    	int selection = 0;
-    	boolean canBack = false;
+    	boolean completed = false;
         Application application = Application.getInstance();
         Console console = application.getConsole();
+        Bidder bidder = context.get("user", Bidder.class);
 
-        List<Auction> allAuctions = Application.getInstance()
+        List<Auction> auctions = Application.getInstance()
         		.getAuctionRepository().fetchAll().stream()
-                .filter(auction -> auction.isAcceptingBids())
+                .filter(auction -> bidder.canBid(auction))
                 .collect(Collectors.toList());
-        int i = 0;
+        int i = 1;
         console.printfln("Auctions you can bid in: ");
-        for(Auction auction : allAuctions) {
-            if(auction.isAcceptingBids()) {
-            	i++;
-                console.printfln("%d. Auction: %d, Start Date: %tD", i, auction.getId(), auction.getStartDate());
-                
-            }
-            
+        for(Auction auction : auctions) {
+            console.printfln("%d. Auction: %d, Start Date: %tD", i++, auction.getId(), auction.getStartDate());
         }
-        console.printfln("%d. Main Menu.", i+1);
+
+        int lastAuctionOption = i - 1;
+        int mainMenuOption = i++;
+        console.printfln("%d. Main Menu.", mainMenuOption);
         console.printfln("Choose an option.");
 
-        i--;
-        while (selection == 0) {
-        	selection = Integer.parseInt(console.readLine());
+
+        String selection = console.readLine();
+        Matcher matcher = INTEGER_PATTERN.matcher(selection);
+        if (matcher.matches()) {
+            int option = Integer.parseInt(selection);
+            if (option > 0 && option <= i - 1) {
+                if (option <= lastAuctionOption) {
+                    Auction auction = auctions.get(option - 1);
+                    Context nextContext = new Context(context, "user");
+                    nextContext.set("auction", auction);
+                    BidderListBiddableItemsPrompt bidderListBiddableItemsPrompt = new BidderListBiddableItemsPrompt(nextContext);
+                    bidderListBiddableItemsPrompt.start();
+                }
+
+                completed = true;
+            }
         }
-        
-        if (selection == i + 1) {
-        	canBack = true;
-        }
-        else {
-            // TODO
-//        	BidderAddItemPrompt add = new BidderAddItemPrompt(context);
-//
-//        	add.start();
-        }
-        
-        return canBack;
+
+        return completed;
     }
     
 }

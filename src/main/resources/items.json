@@ -69,7 +69,7 @@
     },
     {
       "id": 6,
-      "auctionId": 1,
+      "auctionId": 2,
       "description": "Laptop",
       "quantity": 1,
       "startBid": "1000.0",
@@ -78,9 +78,9 @@
       "location": "A9",
       "comments": ""
     },
-        {
+    {
       "id": 7,
-      "auctionId": 1,
+      "auctionId": 2,
       "description": "Lawn Gnome",
       "quantity": 1,
       "startBid": "12.0",

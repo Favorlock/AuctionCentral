@@ -46,12 +46,13 @@ public class ContactPersonItemsPrompt extends AbstractPrompt {
         List<Item> inventory = associatedAuction.getInventory();
         
         console.printfln("Date: %tD", associatedAuction.getStartDate());
-        for(int i = 0; i < inventory.size(); i++) {
+        for(Item item : inventory) {
         	console.printfln("ID: %d, Description: %s, Start Bid: %s, Quantity:"
         			+ " %d", 
-        			inventory.get(i).getId(), inventory.get(i).getDescription(), 
-        			DECIMAL_FORMAT.format(inventory.get(i).getStartBid()),
-        			inventory.get(i).getQuantity());
+        			item.getId(),
+                    item.getDescription(),
+        			DECIMAL_FORMAT.format(item.getStartBid()),
+        			item.getQuantity());
         }
         
         console.printfln("What would you like to do next?");

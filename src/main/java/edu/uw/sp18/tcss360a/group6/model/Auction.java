@@ -93,7 +93,8 @@ public class Auction {
      * @return true if the current date is before the start date
      */
     private boolean isBeforeMidnightOfStartDate() {
-        return LocalDate.now().isBefore(this.startDate);
+        LocalDate now = LocalDate.now();
+        return now.isBefore(this.startDate);
     }
 
     /**

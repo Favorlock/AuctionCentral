@@ -46,8 +46,9 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
         	isDone = true;
         }
         else {
+            Auction auction = auctions.get(selection - 1);
         	ContactPersonItemsPrompt items = new ContactPersonItemsPrompt
-        			(context, auctions.get(selection));
+        			(context, auction);
         	items.start();
         }
         return isDone;

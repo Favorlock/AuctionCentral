@@ -19,7 +19,7 @@ public class Context {
     public Context(Context context, String... keysToCopy) {
         this();
         for (String key : keysToCopy) {
-            if (context.has("key")) {
+            if (context.has(key)) {
                 set(key, context.get(key));
             }
         }
