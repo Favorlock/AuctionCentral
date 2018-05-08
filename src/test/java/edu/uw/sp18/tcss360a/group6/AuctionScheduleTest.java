@@ -8,10 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Class used to represent auction schedule test.
  *
- * @author Group 6
- * @version 5/02/2018
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
  */
 public class AuctionScheduleTest
 {

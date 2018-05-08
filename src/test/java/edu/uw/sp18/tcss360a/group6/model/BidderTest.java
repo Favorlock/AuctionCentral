@@ -11,6 +11,10 @@ import java.time.LocalDate;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
+ */
 public class BidderTest {
 
     private Bidder bidder;

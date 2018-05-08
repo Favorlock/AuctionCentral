@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * JUnit test class for auction.
  *
- * @author Adam G. Cannon
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
 public class AuctionTest {
