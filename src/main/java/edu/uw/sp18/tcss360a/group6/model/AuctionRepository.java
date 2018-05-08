@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Store the Auctions in this application.
+ *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */

@@ -7,6 +7,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Organization represents an Auction with the respective contact person.
+ *
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/1/2018
+ */
 public class Organization {
 
     @Expose

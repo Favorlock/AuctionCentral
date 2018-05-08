@@ -30,9 +30,12 @@ public class BidderAuctionsPrompt extends AbstractPrompt {
 
         Bidder user = context.get("user", Bidder.class);
         List<Bid> bids = user.getPlacedBids();
-
-        for(Bid aBid : bids) {
-            console.printfln(aBid.toString());
+        if(bids.size() > 0) {
+            for(Bid aBid : bids) {
+                console.printfln(aBid.toString());
+            }
+        } else {
+            console.printfln("You have not placed any bids in any auctions yet...");
         }
         
         

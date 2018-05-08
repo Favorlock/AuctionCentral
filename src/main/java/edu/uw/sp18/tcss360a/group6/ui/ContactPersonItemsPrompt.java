@@ -31,6 +31,8 @@ public class ContactPersonItemsPrompt extends AbstractPrompt {
     	boolean isDone = false;
     	Application application = Application.getInstance();
         Console console = application.getConsole();
+
+
         int selection = 0;
         List<Item> inventory = associatedAuction.getInventory();
         

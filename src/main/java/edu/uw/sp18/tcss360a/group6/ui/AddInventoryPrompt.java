@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
+ * Add an inventory Item an Auction.
+ *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
@@ -44,14 +46,13 @@ public class AddInventoryPrompt extends AbstractPrompt {
             BigDecimal startingBid = new BigDecimal(0);
 
             console.printfln("Please provide the requested information when prompted.");
-            console.printfln("Description");
 
+            console.printfln("Description: ");
             while (description == null) {
                 description = console.readLine();
             }
 
             console.printfln("Quantity (greater than 0):");
-
             while (quantity == 0) {
                 quantity = Integer.parseInt(console.readLine());
             }
@@ -62,13 +63,13 @@ public class AddInventoryPrompt extends AbstractPrompt {
                 startingBid = BigDecimal.valueOf(Double.parseDouble(console.readLine()));
             }
 
-            console.printfln("Condition:");
+            console.printfln("Item condition:");
             while (condition == null) {
             	condition = console.readLine();
             }
             
             
-            console.printfln("Approximate Size:");
+            console.printfln("Approximate Size (enter dimensions in inches LxWxH):");
             while (size == null) {
             	size = console.readLine();
             }
@@ -79,8 +80,10 @@ public class AddInventoryPrompt extends AbstractPrompt {
             }
             
 
-
-            console.printfln("Storage Location:");
+            console.printfln("Storage Location (is item big or small):");
+            while (location == null) {
+                location = console.readLine();
+            }
             Item item = new Item(auction.getId(), description, quantity, startingBid, condition, size, location, comments);
             auction.addItem(item);
             console.printfln("The item has been added to your organization's auction.");
