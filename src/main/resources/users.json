@@ -27,6 +27,12 @@
       "id": 4,
       "userName": "Adam",
       "organizationId": 0
+    },
+    {
+      "type": "BIDDER",
+      "id": 5,
+      "userName": "Gideon",
+      "organizationId": 0
     }
   ]
 }
