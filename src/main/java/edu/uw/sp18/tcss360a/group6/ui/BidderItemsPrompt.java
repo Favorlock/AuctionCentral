@@ -10,8 +10,6 @@ import edu.uw.sp18.tcss360a.group6.model.UserType;
 
 import java.util.List;
 
-import static edu.uw.sp18.tcss360a.group6.model.UserType.BIDDER;
-
 /**
  * Display all of the items that a user has bid on.
  *
@@ -20,11 +18,16 @@ import static edu.uw.sp18.tcss360a.group6.model.UserType.BIDDER;
  */
 public class BidderItemsPrompt extends AbstractPrompt {
 
-	private String line;
-    public BidderItemsPrompt(Context context) {
+	public BidderItemsPrompt(Context context) {
         super(context);
     }
 
+    /**
+     * Method used to execute the logic and prompting of bidder's item prompt.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
         Application application = Application.getInstance();
@@ -35,8 +38,8 @@ public class BidderItemsPrompt extends AbstractPrompt {
             Bidder bidder = (Bidder) user;
             List<Bid> bids = bidder.getPlacedBids();
             if(bids.size() > 0) {
-                for(Bid b : bids) {
-                    console.printf(b.toString());
+                for(Bid bid : bids) {
+                    console.printf(bid.toString());
                 }
             } else {
                 console.printfln("You have not placed any bids on items yet....");

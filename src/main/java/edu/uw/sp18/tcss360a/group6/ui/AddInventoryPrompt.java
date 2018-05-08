@@ -23,7 +23,7 @@ public class AddInventoryPrompt extends AbstractPrompt {
 
     /**
      * Method used to execute the logic and prompting of add inventory prompt.
-     * 
+     *
      * @boolean used to represent whether the prompt should return to previous
      * prompt.
      */
@@ -37,6 +37,8 @@ public class AddInventoryPrompt extends AbstractPrompt {
         if (auction == null) {
             // TODO: No Active Auction
         } else {
+            int itemID;
+            String line = null;
             String description = null;
             int quantity = 0;
             String comments = null;
@@ -45,7 +47,12 @@ public class AddInventoryPrompt extends AbstractPrompt {
             String location = null;
             BigDecimal startingBid = new BigDecimal(0);
 
-            console.printfln("Please provide the requested information when prompted.");
+            console.printfln(
+                    "Please provide the requested information when "
+            		+ "prompted.");
+
+            console.printfln("Item Id: "); //do dynamically
+                itemID = Integer.parseInt(console.readLine());
 
             console.printfln("Description: ");
             while (description == null) {
@@ -60,7 +67,9 @@ public class AddInventoryPrompt extends AbstractPrompt {
 
             console.printfln("Starting bid (greater than 0):");
             while (startingBid.equals(0)) {
-                startingBid = BigDecimal.valueOf(Double.parseDouble(console.readLine()));
+                startingBid = BigDecimal
+                        .valueOf(Double.parseDouble
+                		(console.readLine()));
             }
 
             console.printfln("Item condition:");
@@ -69,7 +78,9 @@ public class AddInventoryPrompt extends AbstractPrompt {
             }
             
             
-            console.printfln("Approximate Size (enter dimensions in inches LxWxH):");
+            console.printfln(
+                    "Approximate Size (enter dimensions in inches "
+            		+ "LxWxH):");
             while (size == null) {
             	size = console.readLine();
             }
@@ -84,9 +95,11 @@ public class AddInventoryPrompt extends AbstractPrompt {
             while (location == null) {
                 location = console.readLine();
             }
-            Item item = new Item(auction.getId(), description, quantity, startingBid, condition, size, location, comments);
+            Item item = new Item(itemID,auction.getId(), description, quantity, startingBid, condition, size, location, comments);
             auction.addItem(item);
-            console.printfln("The item has been added to your organization's auction.");
+            console.printfln(
+                    "The item has been added to your organization's "
+            		+ "auction.");
         }
 
         return true;

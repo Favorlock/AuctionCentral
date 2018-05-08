@@ -101,7 +101,7 @@ public class Bid {
                 ", auctionId=" + auctionId +
                 ", itemId=" + itemId +
                 ", amount=" + amount +
-                '}';
+                "}\n";
     }
 }
 
