@@ -47,8 +47,8 @@ public class OrganizationRepository implements Repository<Organization> {
 
     @Override
     public void add(Organization entry) {
-        // Adding users is currently not supported
-        throw new UnsupportedOperationException();
+        entry.id = this.index++;
+        this.entries.add(entry);
     }
 
     private void __init(File file) {

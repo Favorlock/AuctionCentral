@@ -17,7 +17,7 @@ public class AbstractUser implements User {
     private UserType type;
 
     @Expose
-    private long id;
+    protected long id;
 
     @Expose
     private String userName;

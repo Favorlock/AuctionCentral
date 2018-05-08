@@ -46,8 +46,10 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public void add(User entry) {
-        // Adding users is currently not supported
-        throw new UnsupportedOperationException();
+        if (entry instanceof AbstractUser) {
+            ((AbstractUser) entry).id = this.index++;
+        }
+        this.entries.add(entry);
     }
 
     private void __init(File file) {
