@@ -23,6 +23,12 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
 
     @Override
     public boolean execute(Context context) {
+        Application application = Application.getInstance();
+        Console console = application.getConsole();
+
+        console.printfln("Auctions you can bid in: ");
+
+
         
         return true;
     }

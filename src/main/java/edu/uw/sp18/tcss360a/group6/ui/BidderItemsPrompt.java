@@ -42,7 +42,7 @@ public class BidderItemsPrompt extends AbstractPrompt {
                 console.printfln("You have not placed any bids....");
             }
         }
-        
+
         return true;
     }
     
