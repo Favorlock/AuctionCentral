@@ -12,6 +12,14 @@ public class Context {
 
     private Map<String, Object> data = new HashMap<>();
 
+    public Context(Context context, String... keysToCopy) {
+        for (String key : keysToCopy) {
+            if (context.has("key")) {
+                set(key, context.get(key));
+            }
+        }
+    }
+
     public boolean has(String key) {
         return this.data.containsKey(key.toLowerCase());
     }
