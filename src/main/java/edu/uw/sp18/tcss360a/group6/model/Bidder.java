@@ -111,5 +111,12 @@ public class Bidder extends AbstractUser {
         return getPlacedBids().stream().map(bid -> bid.getItem()).collect(Collectors.toList());
     }
 
+    public List<Auction> getPlacedBidAuctions() {
+        return getPlacedBids().stream()
+                .map(bid -> bid.getAuction())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
 }
 
