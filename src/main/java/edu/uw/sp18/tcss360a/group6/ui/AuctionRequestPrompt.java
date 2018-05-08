@@ -14,7 +14,7 @@ import java.time.LocalDate;
  * @version 5/1/2018
  */
 public class AuctionRequestPrompt extends AbstractPrompt {
-
+	
 	public AuctionRequestPrompt(Context context) {
         super(context);
     }
