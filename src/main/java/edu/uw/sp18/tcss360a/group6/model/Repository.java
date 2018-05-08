@@ -12,4 +12,6 @@ public interface Repository<T> {
 
     List<T> fetchAll();
 
+    void add(T entry);
+
 }

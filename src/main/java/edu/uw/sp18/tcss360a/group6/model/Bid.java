@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class Bid {
 
     @Expose
-    private long id;
+    protected long id;
 
     @Expose
     private long bidderId;

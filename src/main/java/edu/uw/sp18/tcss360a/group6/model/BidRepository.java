@@ -40,6 +40,12 @@ public class BidRepository implements Repository<Bid> {
         return new ArrayList<>(this.entries);
     }
 
+    @Override
+    public void add(Bid entry) {
+        entry.id = this.index++;
+        this.entries.add(entry);
+    }
+
     public static BidRepository load() {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);

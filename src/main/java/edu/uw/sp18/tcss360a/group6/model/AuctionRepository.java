@@ -43,6 +43,12 @@ public class AuctionRepository implements Repository<Auction> {
         return new ArrayList<>(this.entries);
     }
 
+    @Override
+    public void add(Auction entry) {
+        entry.id = this.index++;
+        this.entries.add(entry);
+    }
+
     public static AuctionRepository load() {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
         ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
