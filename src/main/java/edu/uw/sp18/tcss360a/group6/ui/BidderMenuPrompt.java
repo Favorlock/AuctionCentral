@@ -16,6 +16,14 @@ public class BidderMenuPrompt extends AbstractPrompt {
         super(context);
     }
 
+    /**
+     * Method used to execute the logic and prompting of the main bidder 
+     * menu prompt.
+     * 
+     * @boolean used to represent whether the prompt should return to 
+     * previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
         Application application = Application.getInstance();
@@ -25,8 +33,10 @@ public class BidderMenuPrompt extends AbstractPrompt {
         String line = null;
 
         console.printfln("Choose an option");
-        console.printfln("1. View brief overview of all auctions I have placed bids in.");
-        console.printfln("2. View all items I have bid on in all auctions.");
+        console.printfln("1. View brief overview of all auctions I have "
+        		+ "placed bids in.");
+        console.printfln("2. View all items I have bid on in all "
+        		+ "auctions.");
         console.printfln("3. View in brief all auctions I can bid on.");
         console.printfln("4. Logout.");
         console.printfln("5. Quit.");
@@ -37,15 +47,18 @@ public class BidderMenuPrompt extends AbstractPrompt {
 
         switch (line.toLowerCase()) {
             case "1":
-                BidderAuctionsPrompt auctions = new BidderAuctionsPrompt(context);
+                BidderAuctionsPrompt auctions = 
+                new BidderAuctionsPrompt(context);
                 auctions.start();
                 break;
             case "2":
-                BidderItemsPrompt bidderItems = new BidderItemsPrompt(context);
+                BidderItemsPrompt bidderItems = 
+                new BidderItemsPrompt(context);
                 bidderItems.start();
                 break;
             case "3":
-                BidderOpenAuctionsPrompt openAuctions = new BidderOpenAuctionsPrompt(context);
+                BidderOpenAuctionsPrompt openAuctions = 
+                new BidderOpenAuctionsPrompt(context);
                 openAuctions.start();
                 break;
             case "4":
