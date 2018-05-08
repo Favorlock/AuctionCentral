@@ -34,8 +34,8 @@ public class AuctionRepository implements Repository<Auction> {
 
     private File file;
 
-    private void __init(File file) {
-        this.file = file;
+    private AuctionRepository() {
+        this.entries = new ArrayList<>();
     }
 
     @Override
@@ -49,14 +49,25 @@ public class AuctionRepository implements Repository<Auction> {
         this.entries.add(entry);
     }
 
-    public static AuctionRepository load() {
+    private void __init(File file) {
+        this.file = file;
+    }
+
+    public static AuctionRepository load(boolean saveDefaultsIfMissing) {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
-        ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        if (saveDefaultsIfMissing) {
+            ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        }
 
         AuctionRepository repository = null;
 
         try {
-            repository = GSON.fromJson(new FileReader(file), AuctionRepository.class);
+            if (file.exists()) {
+                repository = GSON.fromJson(new FileReader(file), AuctionRepository.class);
+            } else {
+                repository = new AuctionRepository();
+            }
+
             repository.__init(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

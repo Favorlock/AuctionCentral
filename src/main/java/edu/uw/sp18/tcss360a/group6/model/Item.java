@@ -43,12 +43,12 @@ public class Item {
      * @param startBid    Bid used to represent the minimum bid accepted for Item object.
      * @param quantity    int used to represent how many of Item object are sold as one.
      */
-    Item(long id, long auctionId, String description, BigDecimal startBid, int quantity) {
+    Item(long id, long auctionId, String description, int quantity, BigDecimal startBid) {
         this.id = id;
         this.auctionId = auctionId;
         this.description = description;
-        this.startBid = startBid;
         this.quantity = quantity;
+        this.startBid = startBid;
     }
 
     /**

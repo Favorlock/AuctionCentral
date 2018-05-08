@@ -30,9 +30,16 @@ public class Application {
 
     private boolean running = true;
 
-    public void start() {
-        __loadRepositories();
+    public Application() {
+        this(true);
+    }
 
+    public Application(boolean saveDefaultsIfMissing) {
+        instance = this;
+        __init(saveDefaultsIfMissing);
+    }
+
+    public void start() {
         while (this.running) {
             // Context to use through lifetime of a user session
             Context context = new Context();
@@ -78,16 +85,19 @@ public class Application {
 
     public User getUser() { return user; }
 
-    private void __loadRepositories() {
-        this.auctionRepository = AuctionRepository.load();
-        this.itemRepository = ItemRepository.load();
-        this.bidRepository = BidRepository.load();
-        this.userRepository = UserRepository.load();
+    private void __init(boolean saveDefaultsIfMissing) {
+        __loadRepositories(saveDefaultsIfMissing);
+    }
+
+    private void __loadRepositories(boolean saveDefaultsIfMissing) {
+        this.auctionRepository = AuctionRepository.load(saveDefaultsIfMissing);
+        this.itemRepository = ItemRepository.load(saveDefaultsIfMissing);
+        this.bidRepository = BidRepository.load(saveDefaultsIfMissing);
+        this.userRepository = UserRepository.load(saveDefaultsIfMissing);
     }
 
     public static void main(String... args) {
-        instance = new Application();
-        instance.start();
+        new Application().start();
     }
 
     public static Application getInstance() {

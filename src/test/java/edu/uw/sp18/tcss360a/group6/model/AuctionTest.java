@@ -1,8 +1,9 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 
-import edu.uw.sp18.tcss360a.group6.model.Auction;
-import edu.uw.sp18.tcss360a.group6.model.Item;
+import edu.uw.sp18.tcss360a.group6.Application;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,80 +19,92 @@ import static org.junit.Assert.assertTrue;
  */
 public class AuctionTest {
 
-    //Global Variables
-    private static int MAX_NUMBER_OF_AUCTIONS = 10;
-    private LocalDate auctionNotPassed;
-    private LocalDate auctionDay;
-    private LocalDate auctionPassed;
-    private Auction auction;
-    private Auction smallAuction;
-    private Auction oneLessThanMaxItemsAuction;
-    private Auction maxNumberOfItemsAuction;
-    private Item cat;
-    private BigDecimal catPrice;
+    private long auctionId;
 
+    private LocalDate futureDate;
 
-//    @Before
-//    public void setUp() {
-//        //Initialize variables
-//        auctionPassed = LocalDate.now().minusMonths(1);
-//        auctionDay = LocalDate.now();
-//        auctionNotPassed = LocalDate.now().plusMonths(1);
-//        catPrice = new BigDecimal(10);
-//        cat = new Item(01, "Cat", catPrice, 1);
-//        smallAuction = new Auction(auctionDay);
-//
-//        oneLessThanMaxItemsAuction = new Auction(auctionDay);
-//        int numberOfAuctions = 1;
-//        while (numberOfAuctions < MAX_NUMBER_OF_AUCTIONS) {
-//            oneLessThanMaxItemsAuction.addAuctionItem(cat);
-//            numberOfAuctions++;
-//        }
-//
-//        maxNumberOfItemsAuction = new Auction(auctionDay);
-//        numberOfAuctions = 0;
-//        while (numberOfAuctions < MAX_NUMBER_OF_AUCTIONS) {
-//            maxNumberOfItemsAuction.addAuctionItem(cat);
-//            numberOfAuctions++;
-//        }
-//    }
-//
-//    @Test
-//    public void isAcceptingBids_bidBeforeAuctionDate_True() {
-//        auction = new Auction(auctionNotPassed);
-//        assertTrue(auction.isAcceptingBids());
-//    }
-//
-//    @Test
-//    public void isAcceptingBids_bidOnAuctionDate_False() {
-//        auction = new Auction(auctionDay);
-//        assertFalse(auction.isAcceptingBids());
-//    }
-//
-//    @Test
-//    public void isAcceptingBids_bidAfterAuctionDate_False() {
-//        auction = new Auction(auctionPassed);
-//        assertFalse(auction.isAcceptingBids());
-//    }
-//
-//    @Test
-//    public void addAuctionItem_manyFewerItemsThanMaxAllowed_True() {
-//        smallAuction.addAuctionItem(cat);
-//        assertTrue(smallAuction.getItemsInAuctionCount() == 1);
-//    }
-//
-//    @Test
-//    public void addAuctionItem_oneFewerItemThanMaxAllowed_True() {
-//        oneLessThanMaxItemsAuction.addAuctionItem(cat);
-//        assertTrue(oneLessThanMaxItemsAuction.getItemsInAuctionCount() == MAX_NUMBER_OF_AUCTIONS);
-//    }
-//
-//    @Test
-//    public void addAuctionItem_exactNumberOfMaxItemsAllowed_False() {
-//        maxNumberOfItemsAuction.addAuctionItem(cat);
-//        assertFalse(maxNumberOfItemsAuction.getItemsInAuctionCount() == (MAX_NUMBER_OF_AUCTIONS + 1));
-//    }
+    private LocalDate currentDate;
 
+    private LocalDate pastDate;
+
+    private String itemDescription;
+
+    private int itemQuantity;
+
+    private BigDecimal itemStartBid;
+
+    @Before
+    public void setUp() {
+        new Application(false);
+        this.auctionId = 0;
+        this.pastDate = LocalDate.now().minusMonths(1);
+        this.currentDate = LocalDate.now();
+        this.futureDate = LocalDate.now().plusMonths(1);
+        this.itemDescription = "Item";
+        this.itemQuantity = 1;
+        this.itemStartBid = BigDecimal.valueOf(1);
+    }
+
+    @Test
+    public void isAcceptingBids_bidBeforeAuctionDate_True() {
+        Auction auction = new Auction(this.auctionId, this.futureDate);
+        assertTrue(auction.isAcceptingBids());
+    }
+
+    @Test
+    public void isAcceptingBids_bidOnAuctionDate_False() {
+        Auction auction = new Auction(this.auctionId, this.currentDate);
+        assertFalse(auction.isAcceptingBids());
+    }
+
+    @Test
+    public void isAcceptingBids_bidAfterAuctionDate_False() {
+        Auction auction = new Auction(this.auctionId, this.pastDate);
+        assertFalse(auction.isAcceptingBids());
+    }
+
+    @Test
+    public void getInventorySize_AuctionInventoryEmpty_True() {
+        Auction auction = new Auction(this.auctionId, this.currentDate);
+        assertTrue(auction.getInventorySize() == 0);
+    }
+
+    @Test
+    public void getInventorySize_AuctionFull_True() {
+        Auction auction = new Auction(this.auctionId, this.currentDate);
+        addItemsToAuction(auction, Auction.INVENTORY_CAPACITY);
+        assertTrue(auction.getInventorySize() == Auction.INVENTORY_CAPACITY);
+    }
+
+    @Test
+    public void addItem_InventoryCapacity_True() {
+        Auction auction = new Auction(this.auctionId, this.currentDate);
+        addItemsToAuction(auction, Auction.INVENTORY_CAPACITY - 1);
+        assertTrue(addItemToAuction(auction, Auction.INVENTORY_CAPACITY - 1));
+    }
+
+    @Test
+    public void addItem_InventoryCapacityPlusOne_False() {
+        Auction auction = new Auction(this.auctionId, this.currentDate);
+        addItemsToAuction(auction, Auction.INVENTORY_CAPACITY );
+        assertFalse(addItemToAuction(auction, Auction.INVENTORY_CAPACITY));
+    }
+
+    private void addItemsToAuction(Auction auction, int count) {
+        for (int i = 0; i < count; i++) {
+            addItemToAuction(auction, i);
+        }
+    }
+
+    private boolean addItemToAuction(Auction auction, int id) {
+        boolean added = auction.addItem(new Item(
+                id,
+                this.auctionId,
+                this.itemDescription,
+                this.itemQuantity,
+                this.itemStartBid));
+        return added;
+    }
 
 }
 

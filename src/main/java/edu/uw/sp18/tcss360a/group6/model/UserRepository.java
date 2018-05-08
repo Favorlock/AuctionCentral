@@ -35,8 +35,8 @@ public class UserRepository implements Repository<User> {
 
     private File file;
 
-    private void __init(File file) {
-        this.file = file;
+    public UserRepository() {
+        this.entries = new ArrayList<>();
     }
 
     @Override
@@ -50,14 +50,25 @@ public class UserRepository implements Repository<User> {
         throw new UnsupportedOperationException();
     }
 
-    public static UserRepository load() {
+    private void __init(File file) {
+        this.file = file;
+    }
+
+    public static UserRepository load(boolean saveDefaultsIfMissing) {
         File file = new File(".", DEFAULT_RESOURCE_NAME);
-        ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        if (saveDefaultsIfMissing) {
+            ResourceUtil.saveResource(DEFAULT_RESOURCE_NAME, file, false);
+        }
 
         UserRepository repository = null;
 
         try {
-            repository = GSON.fromJson(new FileReader(file), UserRepository.class);
+            if (file.exists()) {
+                repository = GSON.fromJson(new FileReader(file), UserRepository.class);
+            } else {
+                repository = new UserRepository();
+            }
+
             repository.__init(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
