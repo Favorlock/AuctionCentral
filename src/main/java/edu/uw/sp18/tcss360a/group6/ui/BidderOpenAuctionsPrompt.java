@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.ui;
 import edu.uw.sp18.tcss360a.group6.Application;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.model.User;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
     public boolean execute(Context context) {
         Application application = Application.getInstance();
         Console console = application.getConsole();
+        Bidder user = context.get("user", Bidder.class);
 
         console.printfln("Auctions you can bid in: ");
 
