@@ -4,10 +4,7 @@ import edu.uw.sp18.tcss360a.group6.Application;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
-import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
 import edu.uw.sp18.tcss360a.group6.model.Item;
-import edu.uw.sp18.tcss360a.group6.model.User;
-
 import java.util.List;
 
 /**
@@ -26,6 +23,14 @@ public class ContactPersonItemsPrompt extends AbstractPrompt {
         
     }
 
+    /**
+     * Method used to execute the logic and prompting of contact person's items
+     * 
+     *  in specific auction.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
     	boolean isDone = false;
@@ -59,7 +64,8 @@ public class ContactPersonItemsPrompt extends AbstractPrompt {
             	
                 break;
             case 2:
-                ContactPersonMenuPrompt menuPrompt = new ContactPersonMenuPrompt(context);
+                ContactPersonMenuPrompt menuPrompt = new 
+                ContactPersonMenuPrompt(context);
                 menuPrompt.start();
                 break;
 

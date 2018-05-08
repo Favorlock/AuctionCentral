@@ -8,8 +8,6 @@ import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
 import java.util.List;
 
 /**
- *
- *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/6/2018
  */
@@ -18,7 +16,14 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
     public ContactPersonAuctionsPrompt(Context context) {
         super(context);
     }
-
+    
+    /**
+     * Method used to execute the logic and prompting of view of contact 
+     * person's auctions.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
     	boolean isDone = false;
@@ -41,7 +46,8 @@ public class ContactPersonAuctionsPrompt extends AbstractPrompt {
         	isDone = true;
         }
         else {
-        	ContactPersonItemsPrompt items = new ContactPersonItemsPrompt(context, auctions.get(selection));
+        	ContactPersonItemsPrompt items = new ContactPersonItemsPrompt
+        			(context, auctions.get(selection));
         	items.start();
         }
         return isDone;

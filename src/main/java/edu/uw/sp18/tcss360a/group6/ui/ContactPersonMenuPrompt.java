@@ -16,6 +16,13 @@ public class ContactPersonMenuPrompt extends AbstractPrompt {
         super(context);
     }
 
+    /**
+     * Method used to execute the logic and prompting of main menu for contact
+     *  person.
+     * 
+     * @boolean used to represent whether the prompt should return to previous
+     * prompt.
+     */
     @Override
     public boolean execute(Context context) {
         Application application = Application.getInstance();
@@ -38,7 +45,8 @@ public class ContactPersonMenuPrompt extends AbstractPrompt {
         switch (line.toLowerCase()) {
 
             case "1":
-                ContactPersonAuctionsPrompt items = new ContactPersonAuctionsPrompt(context);
+                ContactPersonAuctionsPrompt items = new 
+                ContactPersonAuctionsPrompt(context);
                 items.start();
                 break;
             case "2":
