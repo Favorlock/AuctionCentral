@@ -57,6 +57,16 @@ public class Organization {
                 .findFirst().orElse(null);
     }
 
+    public boolean addAuction(Auction auction) {
+        boolean added = false;
+        if (getCurrentAuction() == null) {
+            Application.getInstance().getAuctionRepository().add(auction);
+            getAuctions().add(auction);
+            added = true;
+        }
+        return added;
+    }
+
     @Override
     public String toString() {
         return "Organization{" +
