@@ -7,6 +7,10 @@ import edu.uw.sp18.tcss360a.group6.model.User;
 
 import java.util.List;
 
+/**
+ *
+ *
+ */
 public class ContactItemsPrompt extends AbstractPrompt {
 
 	private String line;
