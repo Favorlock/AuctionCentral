@@ -7,6 +7,12 @@ import edu.uw.sp18.tcss360a.group6.model.User;
 
 import java.util.List;
 
+/**
+ *
+ *
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
+ * @version 5/4/2018
+ */
 public class ContactPersonItemsPrompt extends AbstractPrompt {
 
 	private String line;

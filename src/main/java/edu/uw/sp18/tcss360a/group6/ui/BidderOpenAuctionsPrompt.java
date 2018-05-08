@@ -8,6 +8,9 @@ import edu.uw.sp18.tcss360a.group6.model.User;
 import java.util.List;
 
 /**
+ * Display to the caller all of the auctions that have Items the user can bid
+ * on.
+ *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
@@ -20,8 +23,6 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
 
     @Override
     public boolean execute(Context context) {
-        
-        
         
         return true;
     }

@@ -26,6 +26,8 @@ public class Application {
 
     private ItemRepository itemRepository;
 
+    private User user;
+
     private boolean running = true;
 
     public void start() {
@@ -38,7 +40,7 @@ public class Application {
             LoginPrompt loginPrompt = new LoginPrompt(context);
             loginPrompt.start();
             // Fetch the user from the context
-            User user = context.get("user", User.class);
+            user = context.get("user", User.class);
 
             this.console.printfln("Hello %s.", user.getUserName());
             // Prompt user with menu options
@@ -73,6 +75,8 @@ public class Application {
     }
 
     public ItemRepository getItemRepository() { return itemRepository; }
+
+    public User getUser() { return user; }
 
     private void __loadRepositories() {
         this.auctionRepository = AuctionRepository.load();
