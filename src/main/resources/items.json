@@ -44,6 +44,50 @@
       "approximateSize": "small",
       "location": "A2",
       "comments": ""
-    }
+    },
+    {
+      "id": 4,
+      "auctionId": 1,
+      "description": "Beer",
+      "quantity": 6,
+      "startBid": "5.0",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 5,
+      "auctionId": 1,
+      "description": "Vase",
+      "quantity": 1,
+      "startBid": "100.0",
+      "condition": "good",
+      "approximateSize": "medium",
+      "location": "A3",
+      "comments": ""
+    },
+    {
+      "id": 6,
+      "auctionId": 1,
+      "description": "Laptop",
+      "quantity": 1,
+      "startBid": "1000.0",
+      "condition": "used",
+      "approximateSize": "medium",
+      "location": "A9",
+      "comments": ""
+    },
+        {
+      "id": 7,
+      "auctionId": 1,
+      "description": "Lawn Gnome",
+      "quantity": 1,
+      "startBid": "12.0",
+      "condition": "old",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
+    },
   ]
 }
