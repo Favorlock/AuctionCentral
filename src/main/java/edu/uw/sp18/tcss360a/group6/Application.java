@@ -49,8 +49,6 @@ public class Application {
             // Fetch the user from the context
             User user = context.get("user", User.class);
 
-            this.organizationRepository.fetchAll().forEach(org -> System.out.println(org.getAuctions().toString()));
-
             this.console.printfln("Hello %s.", user.getUserName());
             // Prompt user with menu options
             if (user.getType() == UserType.BIDDER) {
