@@ -3,14 +3,15 @@ package edu.uw.sp18.tcss360a.group6.ui;
 import edu.uw.sp18.tcss360a.group6.Application;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
-import edu.uw.sp18.tcss360a.group6.model.*;
+import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
+import edu.uw.sp18.tcss360a.group6.model.Item;
+import edu.uw.sp18.tcss360a.group6.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
- *  Display Items I have available in my auctions.
+ *	Display Items I have available in my auctions.
  *  View brief overview of items in my auctions.
  *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
@@ -18,36 +19,56 @@ import java.util.Map;
  */
 public class ContactPersonItemsPrompt extends AbstractPrompt {
 
-	private String line;
-    public ContactPersonItemsPrompt(Context context) {
-        super(context);
+	private Auction associatedAuction;
+    public ContactPersonItemsPrompt(Context context, Auction auction) {
+    	super(context);
+    	associatedAuction = auction;
+        
     }
 
     @Override
     public boolean execute(Context context) {
-        Application application = Application.getInstance();
+    	boolean isDone = false;
+    	Application application = Application.getInstance();
         Console console = application.getConsole();
-
-        User user = context.get("user", User.class);
-
-        //TODO : refactor to match new version of ContactPerson
-//        if (user.getType() == UserType.CONTACT_PERSON) {
-//
-//            ContactPerson CPUser = (ContactPerson) user;
-//            Map<Auction, ArrayList<Item>> auctionItems = CPUser.viewAllAuctionsItemsISubmitted();
-//
-//            if(auctionItems != null) { // & !auctionItems.isEmpty()
-//
-//                for(Map.Entry<Auction, ArrayList<Item>> auction : auctionItems.entrySet()) {
-//                    console.printfln(auction.getKey().toString());
-////                    for(Item item : auction.getValue()) {}
-//                }
-//            } else {
-//                console.printfln("You have not added any items in any auctions");
-//            }
-//        }
+        int selection = 0;
+        List<Item> inventory = associatedAuction.getInventory();
         
-        return true;
+        console.printfln("Date: %tD", associatedAuction.getStartDate());
+        for(int i = 0; i < inventory.size(); i++) {
+        	console.printfln("ID: %d, Description: %s, Start Bid: %Bd, Quantity:"
+        			+ " %d", 
+        			inventory.get(i).getId(), inventory.get(i).getDescription(), 
+        			inventory.get(i).getStartBid(), 
+        			inventory.get(i).getQuantity());
+        }
+        
+        console.printfln("What would you like to do next?");
+        console.printfln("1. Select another auction.");
+        console.printfln("2. Back to main menu.");
+        
+        while (selection == 0) {
+        	selection = Integer.parseInt(console.readLine());
+        }
+
+        switch (selection) {
+            case 1:
+            	isDone = true;
+            	
+                break;
+            case 2:
+                ContactPersonMenuPrompt menuPrompt = new ContactPersonMenuPrompt(context);
+                menuPrompt.start();
+                break;
+
+            default:
+            	console.printfln("Improper choice.");
+                console.printfln("What would you like to do next?");
+                console.printfln("1. Select another auction.");
+                console.printfln("2. Back to main menu.");
+                break;
+        }
+        return isDone;
     }
     
 }
