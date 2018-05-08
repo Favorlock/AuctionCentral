@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.ui;
 import edu.uw.sp18.tcss360a.group6.Application;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
+import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import java.util.List;
@@ -32,10 +33,10 @@ public class BidderAuctionsPrompt extends AbstractPrompt {
         Console console = application.getConsole();
 
         Bidder user = context.get("user", Bidder.class);
-        List<Bid> bids = user.getPlacedBids();
-        if(bids.size() > 0) {
-            for(Bid aBid : bids) {
-                console.printfln(aBid.toString());
+        List<Auction> auctions = user.getPlacedBidAuctions();
+        if(auctions.size() > 0) {
+            for(Auction auction : auctions) {
+                console.printfln("Auction: %d, Start Date: %tD", auction.getId(), auction.getStartDate());
             }
         } else {
             console.printfln("You have not placed any bids in any "
