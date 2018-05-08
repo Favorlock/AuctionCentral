@@ -57,9 +57,16 @@ public class Organization {
                 .findFirst().orElse(null);
     }
 
+    public Auction getAuctionWithinLastYear() {
+        LocalDate now = LocalDate.now();
+        return getAuctions().stream()
+                .filter(auction -> auction.getStartDate().isAfter(now.minusYears(1)))
+                .findFirst().orElse(null);
+    }
+
     public boolean addAuction(Auction auction) {
         boolean added = false;
-        if (getCurrentAuction() == null) {
+        if (getCurrentAuction() == null && getAuctionWithinLastYear() == null) {
             Application.getInstance().getAuctionRepository().add(auction);
             getAuctions().add(auction);
             added = true;
