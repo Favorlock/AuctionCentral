@@ -47,10 +47,19 @@ public class Auction {
      *
      * @param startDate the date the auction takes place
      */
-    public Auction(long id, long organizationId, LocalDate startDate) {
-        this.id = id;
+    public Auction(long organizationId, LocalDate startDate) {
         this.organizationId = organizationId;
         this.startDate = startDate;
+    }
+
+    /**
+     * Constructor used to create an auction object.
+     *
+     * @param startDate the date the auction takes place
+     */
+    public Auction(long id, long organizationId, LocalDate startDate) {
+        this(organizationId, startDate);
+        this.id = id;
     }
 
     /**

@@ -60,9 +60,10 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
         	canBack = true;
         }
         else {
-        	BidderAddItemPrompt add = new BidderAddItemPrompt(context);
-        			
-        	add.start();
+            // TODO
+//        	BidderAddItemPrompt add = new BidderAddItemPrompt(context);
+//
+//        	add.start();
         }
         
         return canBack;

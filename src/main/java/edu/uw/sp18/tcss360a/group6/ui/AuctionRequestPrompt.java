@@ -33,24 +33,24 @@ public class AuctionRequestPrompt extends AbstractPrompt {
         // get input to add a new auction
         // create new auction object and add to auction repository
 
-        long auctionID;
-        long organizationID;
-        LocalDate startDate;
-
-        console.printfln("Enter the auction ID: "); //should be done dynamic
-        auctionID = Long.parseLong(console.readLine());
-
-        console.printfln("Enter organization ID: ");
-        organizationID = Long.parseLong(console.readLine());
-
-        console.printfln("Enter the auction date in the format: 2007-12-03 ");
-        startDate = LocalDate.parse(console.readLine());
-
         ContactPerson contact = context.get("user", ContactPerson.class);
-        Auction anAuction = new Auction(auctionID, organizationID, startDate);
+        Auction auction;
 
-        //add the auction to the repository
-        contact.getOrganization().addAuction(anAuction);
+        if (contact.getOrganization().getCurrentAuction() != null) {
+            console.printfln("Your organization has already scheduled an Auction.");
+        } else if ((auction = contact.getOrganization().getAuctionWithinLastYear()) != null) {
+            console.printfln("You must wait a full year to schedule another auction.");
+            console.printfln("Last auction scheduled on %s", auction.getStartDate());
+        } else {
+            LocalDate startDate;
+
+            console.printfln("Enter the auction date in the format: 2007-12-03 ");
+            startDate = LocalDate.parse(console.readLine());
+
+            auction = new Auction(contact.getOrganizationId(), startDate);
+
+            //add the auction to the repository
+            contact.getOrganization().addAuction(auction);
 
         /*
         Pattern r = Pattern.compile("^\d{2}/\d{2}/\d{4}$");
@@ -58,7 +58,9 @@ public class AuctionRequestPrompt extends AbstractPrompt {
         String date = "05/07/2018";
         date.matches("^\d{2}/\d{2}/\d{4}$");
          */
-        
+
+        }
+
         return true;
     }
     

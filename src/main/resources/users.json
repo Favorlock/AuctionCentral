@@ -1,5 +1,5 @@
 {
-  "index": 6,
+  "index": 7,
   "entries": [
     {
       "type": "BIDDER",
@@ -26,13 +26,18 @@
       "type": "CONTACT_PERSON",
       "id": 4,
       "userName": "Adam",
-      "organizationId": 0
+      "organizationId": 1
     },
     {
       "type": "BIDDER",
       "id": 5,
-      "userName": "Gideon",
-      "organizationId": 0
+      "userName": "Gideon"
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 6,
+      "userName": "CPOrgY",
+      "organizationId": 2
     }
   ]
 }

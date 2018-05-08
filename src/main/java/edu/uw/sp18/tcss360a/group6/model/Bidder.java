@@ -42,15 +42,15 @@ public class Bidder extends AbstractUser {
      * @param item      Item used to represent an item in an auction.
      * @param auction   Aution used to represent an auction.
      */
-    public void placeBid(BigDecimal bidAmount, Item item, Auction auction) {
-        //Perform checks
+    public boolean addBid(BigDecimal bidAmount, Item item, Auction auction) {
+        boolean placed = false;
         if (canBid() && canBid(auction) && item.isBidAmountAcceptable(bidAmount)) {
-            // TODO:
-//            Bid bid = new Bid(auction, this, item, bidAmount);
-//            this.placedBids.add(bid);
-//            item.setNewBid(bid);
-//            item.addBid(bid);
+            Bid bid = new Bid(this.id, auction.getId(), item.getId(), bidAmount);
+            Application.getInstance().getBidRepository().add(bid);
+            getPlacedBids().add(bid);
+            placed = true;
         }
+        return placed;
     }
 
     /**
