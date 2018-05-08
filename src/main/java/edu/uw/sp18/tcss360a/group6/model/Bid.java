@@ -32,6 +32,8 @@ public class Bid {
 
     private Auction auction; // Lazy loaded, use getAuction()
 
+    private Item item; // Lazy loaded, use getItem()
+
     public Bid() {
         super();
     }
@@ -91,6 +93,16 @@ public class Bid {
         }
 
         return this.auction;
+    }
+
+    public Item getItem() {
+        if (this.item == null) {
+            this.item = Application.getInstance().getItemRepository().fetchAll().stream()
+                    .filter(i -> i.getId() == this.itemId)
+                    .findFirst().orElse(null);
+        }
+
+        return this.item;
     }
 
     @Override

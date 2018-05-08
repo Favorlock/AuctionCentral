@@ -51,11 +51,6 @@ public class AuctionRequestPrompt extends AbstractPrompt {
 
         //add the auction to the repository
         contact.getOrganization().addAuction(anAuction);
-<<<<<<< HEAD
-   
-=======
-//        AuctionRepository.add(anAuction);
-//        Organization.addAuction(anAuction);
 
         /*
         Pattern r = Pattern.compile("^\d{2}/\d{2}/\d{4}$");
@@ -64,7 +59,6 @@ public class AuctionRequestPrompt extends AbstractPrompt {
         date.matches("^\d{2}/\d{2}/\d{4}$");
          */
         
->>>>>>> branch 'master' of https://github.com/UWTTCSS360AGroup6/AuctionCentral
         return true;
     }
     
