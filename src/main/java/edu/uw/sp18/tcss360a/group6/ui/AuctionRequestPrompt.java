@@ -3,9 +3,7 @@ package edu.uw.sp18.tcss360a.group6.ui;
 import edu.uw.sp18.tcss360a.group6.Application;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
-import edu.uw.sp18.tcss360a.group6.model.Auction;
-import edu.uw.sp18.tcss360a.group6.model.AuctionRepository;
-import edu.uw.sp18.tcss360a.group6.model.User;
+import edu.uw.sp18.tcss360a.group6.model.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,7 +25,7 @@ public class AuctionRequestPrompt extends AbstractPrompt {
     public boolean execute(Context context) {
         Application application = Application.getInstance();
         Console console = application.getConsole();
-        // can add an auction
+        // can add an auction (check here or elsewhere)
         // get input to add a new auction
         // create new auction object and add to auction repository
 
@@ -44,11 +42,18 @@ public class AuctionRequestPrompt extends AbstractPrompt {
         console.printfln("Enter the auction date in the format: 2007-12-03 ");
         startDate = LocalDate.parse(console.readLine());
 
+        ContactPerson contact = context.get("user", ContactPerson.class);
         Auction anAuction = new Auction(auctionID, organizationID, startDate);
 
-        AuctionRepository.add(anAuction);
+        //add the auction to the repository
 
-        //
+//        contact.addAuction(anAuction);
+
+//        AuctionRepository.add(anAuction);
+//        Organization.addAuction(anAuction);
+
+        
+
         /*
         Pattern r = Pattern.compile("^\d{2}/\d{2}/\d{4}$");
 
