@@ -39,7 +39,7 @@ public class BidderItemsPrompt extends AbstractPrompt {
                     console.printf(b.toString());
                 }
             } else {
-                console.printfln("You have not placed any bids....");
+                console.printfln("You have not placed any bids on items yet....");
             }
         }
 
