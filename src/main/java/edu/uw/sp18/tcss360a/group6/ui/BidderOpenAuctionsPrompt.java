@@ -29,6 +29,8 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
      */
     @Override
     public boolean execute(Context context) {
+    	int selection = 0;
+    	boolean canBack = false;
         Application application = Application.getInstance();
         Console console = application.getConsole();
 
@@ -36,15 +38,34 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
         		.getAuctionRepository().fetchAll().stream()
                 .filter(auction -> auction.isAcceptingBids())
                 .collect(Collectors.toList());
-
+        int i = 0;
         console.printfln("Auctions you can bid in: ");
         for(Auction auction : allAuctions) {
             if(auction.isAcceptingBids()) {
-                console.printfln(auction.toString());
+            	i++;
+                console.printfln("%d. Auction: %d, Start Date: %tD", i, auction.getId(), auction.getStartDate());
+                
             }
+            
         }
+        console.printfln("%d. Main Menu.", i+1);
+        console.printfln("Choose an option.");
 
-        return true;
+        i--;
+        while (selection == 0) {
+        	selection = Integer.parseInt(console.readLine());
+        }
+        
+        if (selection == i + 1) {
+        	canBack = true;
+        }
+        else {
+        	BidderAddItemPrompt add = new BidderAddItemPrompt(context);
+        			
+        	add.start();
+        }
+        
+        return canBack;
     }
     
 }
