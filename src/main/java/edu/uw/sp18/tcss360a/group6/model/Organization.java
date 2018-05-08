@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Application;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,6 +47,14 @@ public class Organization {
         }
 
         return this.auctions;
+    }
+
+    public Auction getCurrentAuction() {
+        LocalDate now = LocalDate.now();
+        return getAuctions().stream()
+                .filter(auction -> auction.getStartDate().isEqual(now)
+                        || auction.getStartDate().isAfter(now))
+                .findFirst().orElse(null);
     }
 
     @Override

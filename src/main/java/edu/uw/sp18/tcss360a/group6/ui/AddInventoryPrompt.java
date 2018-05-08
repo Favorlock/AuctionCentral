@@ -26,37 +26,42 @@ public class AddInventoryPrompt extends AbstractPrompt {
     public boolean execute(Context context) {
     	Application application = Application.getInstance();
         Console console = application.getConsole();
+        ContactPerson contact = context.get("user", ContactPerson.class);
+        Auction auction = contact.getOrganization().getCurrentAuction();
 
-        String line = null;
-        String description = null;
-        int quantity = 0;
-        Auction activeAuction;
-        
-        BigDecimal startingBid = new BigDecimal(0);
-        
-        console.printfln("Please provide the requested information when prompted.");
-        console.printfln("Description");
-        
-        while (line == null) {
-            description = console.readLine();
-        }
-        
-        console.printfln("Quantity:");
-        
-        while (line == null) {
-            quantity = Integer.parseInt(console.readLine());
-        }
-        
-        console.printfln("Starting bid:");
-        while (line == null) {
-            startingBid = BigDecimal.valueOf(Double.parseDouble(console.readLine()));
+        if (auction == null) {
+            // TODO: No Active Auction
+        } else {
+            String line = null;
+            String description = null;
+            int quantity = 0;
+            Auction activeAuction;
+
+            BigDecimal startingBid = new BigDecimal(0);
+
+            console.printfln("Please provide the requested information when prompted.");
+            console.printfln("Description");
+
+            while (line == null) {
+                description = console.readLine();
+            }
+
+            console.printfln("Quantity:");
+
+            while (line == null) {
+                quantity = Integer.parseInt(console.readLine());
+            }
+
+            console.printfln("Starting bid:");
+            while (line == null) {
+                startingBid = BigDecimal.valueOf(Double.parseDouble(console.readLine()));
+            }
+
+            Item item = new Item(auction.getId(), description, quantity, startingBid, "", "", "", "");
+            auction.addItem(item);
+            console.printfln("The item has been added to your organization's auction.");
         }
 
-        //activeAuction = context.get("user", ContactPerson.class).getOrganization().getActiveAuction();
-        //int auctionId = activeAuction.getId();
-        //Item newItem = new Item(auctionId, description, quantity, startingBid);
-        //context.get("user", ContactPerson.class).addInventoryToAuction(activeAuction, newItem);
-        console.printfln("The item has been added to your organization's auction.");
         return true;
     }
     
