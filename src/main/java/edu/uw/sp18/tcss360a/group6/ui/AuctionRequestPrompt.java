@@ -51,14 +51,7 @@ public class AuctionRequestPrompt extends AbstractPrompt {
 
         //add the auction to the repository
         contact.getOrganization().addAuction(anAuction);
-
-        /*
-        Pattern r = Pattern.compile("^\d{2}/\d{2}/\d{4}$");
-
-        String date = "05/07/2018";
-        date.matches("^\d{2}/\d{2}/\d{4}$");
-         */
-        
+   
         return true;
     }
     
