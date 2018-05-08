@@ -50,13 +50,7 @@ public class AuctionRequestPrompt extends AbstractPrompt {
         Auction anAuction = new Auction(auctionID, organizationID, startDate);
 
         //add the auction to the repository
-
-//        contact.addAuction(anAuction);
         contact.getOrganization().addAuction(anAuction);
-//        AuctionRepository.add(anAuction);
-//        Organization.addAuction(anAuction);
-
-
 
         /*
         Pattern r = Pattern.compile("^\d{2}/\d{2}/\d{4}$");
