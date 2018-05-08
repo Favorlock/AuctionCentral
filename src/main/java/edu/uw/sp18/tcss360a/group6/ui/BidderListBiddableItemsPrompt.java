@@ -43,10 +43,7 @@ public class BidderListBiddableItemsPrompt extends AbstractPrompt {
         int i = 1;
         console.printfln("Items you can bid on:");
         for(Item item : items) {
-            Bid bid = application.getBidRepository().fetchAll().stream()
-                    .filter(b -> b.getItemId() == item.getId())
-                    .sorted(Comparator.comparing(Bid::getAmount))
-                    .findFirst().orElse(null);
+            Bid bid = item.getCurrentBid();
             console.printfln("%s. ID: %d, Description: %s, Current Bid: %s, Quantity:"
                             + " %d",
                     i++,
@@ -57,7 +54,7 @@ public class BidderListBiddableItemsPrompt extends AbstractPrompt {
         }
 
         int lastItemOption = i - 1;
-        int mainMenuOption = i;
+        int mainMenuOption = i++;
         console.printfln("%d. Main Menu.", mainMenuOption);
         console.printfln("Choose an option.");
 
@@ -68,9 +65,10 @@ public class BidderListBiddableItemsPrompt extends AbstractPrompt {
             if (option > 0 && option <= i - 1) {
                 if (option <= lastItemOption) {
                     Item item = items.get(option - 1);
-                    Context nextContext = new Context(context, "user");
+                    Context nextContext = new Context(context, "user", "auction");
                     nextContext.set("item", item);
-                    // TODO: Bid Prompt
+                    PlaceBidPrompt placeBidPrompt = new PlaceBidPrompt(nextContext);
+                    placeBidPrompt.start();
                 }
 
                 completed = true;

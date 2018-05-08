@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Application;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -163,6 +164,13 @@ public class Item {
         }
 
         return this.placedBids;
+    }
+
+    public Bid getCurrentBid() {
+        return Application.getInstance().getBidRepository().fetchAll().stream()
+                .filter(b -> b.getItemId() == this.id)
+                .sorted(Comparator.comparing(Bid::getAmount))
+                .findFirst().orElse(null);
     }
 
     @Override
