@@ -45,7 +45,8 @@ public class AddInventoryPrompt extends AbstractPrompt {
             String location = null;
             BigDecimal startingBid = new BigDecimal(0);
 
-            console.printfln("Please provide the requested information when prompted.");
+            console.printfln("Please provide the requested information when "
+            		+ "prompted.");
 
             console.printfln("Description: ");
             while (description == null) {
@@ -60,7 +61,8 @@ public class AddInventoryPrompt extends AbstractPrompt {
 
             console.printfln("Starting bid (greater than 0):");
             while (startingBid.equals(0)) {
-                startingBid = BigDecimal.valueOf(Double.parseDouble(console.readLine()));
+                startingBid = BigDecimal.valueOf(Double.parseDouble
+                		(console.readLine()));
             }
 
             console.printfln("Item condition:");
@@ -69,7 +71,8 @@ public class AddInventoryPrompt extends AbstractPrompt {
             }
             
             
-            console.printfln("Approximate Size (enter dimensions in inches LxWxH):");
+            console.printfln("Approximate Size (enter dimensions in inches "
+            		+ "LxWxH):");
             while (size == null) {
             	size = console.readLine();
             }
@@ -84,9 +87,11 @@ public class AddInventoryPrompt extends AbstractPrompt {
             while (location == null) {
                 location = console.readLine();
             }
-            Item item = new Item(auction.getId(), description, quantity, startingBid, condition, size, location, comments);
+            Item item = new Item(auction.getId(), description, quantity, 
+            		startingBid, condition, size, location, comments);
             auction.addItem(item);
-            console.printfln("The item has been added to your organization's auction.");
+            console.printfln("The item has been added to your organization's "
+            		+ "auction.");
         }
 
         return true;
