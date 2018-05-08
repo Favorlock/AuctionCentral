@@ -35,8 +35,8 @@ public class BidderItemsPrompt extends AbstractPrompt {
             Bidder bidder = (Bidder) user;
             List<Bid> bids = bidder.getPlacedBids();
             if(bids.size() > 0) {
-                for(Bid b : bids) {
-                    console.printf(b.toString());
+                for(Bid bid : bids) {
+                    console.printf(bid.toString());
                 }
             } else {
                 console.printfln("You have not placed any bids on items yet....");

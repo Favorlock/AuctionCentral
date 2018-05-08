@@ -52,8 +52,6 @@ public class AuctionRequestPrompt extends AbstractPrompt {
 //        AuctionRepository.add(anAuction);
 //        Organization.addAuction(anAuction);
 
-
-
         /*
         Pattern r = Pattern.compile("^\d{2}/\d{2}/\d{4}$");
 
