@@ -30,7 +30,7 @@ public class BidderAuctionsPrompt extends AbstractPrompt {
 
         Bidder user = context.get("user", Bidder.class);
         List<Bid> bids = user.getPlacedBids();
-        
+
         for(Bid aBid : bids) {
             console.printfln(aBid.toString());
         }
