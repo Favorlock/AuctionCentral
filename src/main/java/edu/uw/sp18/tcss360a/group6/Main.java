@@ -8,17 +8,26 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static String FXML_SOURCE = "edu/uw/sp18/tcss360a/group6/Main.fxml";
+    public static String LOGIN_FXML = "/scenes/Login.fxml";
     public static final String STAGE_TITLE = "Auction Central";
+
+    private SceneController sceneController;
 
     @Override
     public void start(Stage stage) throws Exception {
-        final Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(FXML_SOURCE));
-        final Scene scene = new Scene(root);
+        final Parent login = FXMLLoader.load(getClass().getResource(LOGIN_FXML));
+        final Scene scene = new Scene(login);
+
+        this.sceneController = new SceneController(scene);
+        this.sceneController.addScreen("login", login);
 
         stage.setTitle(STAGE_TITLE);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public SceneController getSceneController() {
+        return this.sceneController;
     }
 
     public static void main(String... args) {
