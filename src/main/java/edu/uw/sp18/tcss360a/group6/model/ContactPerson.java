@@ -2,12 +2,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Application;
-import edu.uw.sp18.tcss360a.group6.AuctionSchedule;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 /**
  * Represents a ContactPerson user and the methods they are able to perform
  * adding inventory to auctions, scheduling auctions, and viewing items
