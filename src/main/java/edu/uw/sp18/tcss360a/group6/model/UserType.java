@@ -7,7 +7,8 @@ package edu.uw.sp18.tcss360a.group6.model;
 public enum UserType {
     UNKNOWN(-1, User.class),
     BIDDER(0, Bidder.class),
-    CONTACT_PERSON(1, ContactPerson.class);
+    CONTACT_PERSON(1, ContactPerson.class),
+    EMPLOYEE(2, Employee.class);
 
     private int id;
     private Class<? extends User> type;
