@@ -28,8 +28,10 @@ public class Employee extends AbstractUser {
             A positive integer is specified
             A positive integer is specified that is greater than the number of existing auctions in the system
     */
-    public void changeUpcomingAuctionsMax() {
-
+    public void changeUpcomingAuctionsMax(final int newAuctionMax, Auction auctions) {
+        if(newAuctionMax > 0) { //TODO: num greater than existing auctions check
+            Auction.AUCTION_CAPACITY = newAuctionMax;
+        }
     }
 
     /*
@@ -54,10 +56,10 @@ public class Employee extends AbstractUser {
     As an employee of AuctionCentral, I want to cancel an auction.
         No auction can be cancelled that has any bids
             The auction has no bids
-            The auction has one bid
-            The auction has many more than one bid
+            The auction has one bid : fail
+            The auction has many more than one bid : fail
      */
-    public void cancelAnAuction() {
+    public void cancelAnAuction(Auction anAuction) {
 
     }
 
