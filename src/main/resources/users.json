@@ -48,6 +48,36 @@
       "type": "EMPLOYEE",
       "id": 9,
       "userName": "Billy"
+    },
+    {
+      "type": "BIDDER",
+      "id": 10,
+      "userName": "BidderMaxBids"
+    },
+    {
+      "type": "BIDDER",
+      "id": 11,
+      "userName": "BidderMaxTotal"
+    },
+    {
+      "type": "BIDDER",
+      "id": 12,
+      "userName": "BidderNoBids"
+    },
+    {
+      "type": "BIDDER",
+      "id": 13,
+      "userName": "ContactEarlyRequest"
+    },
+    {
+      "type": "BIDDER",
+      "id": 14,
+      "userName": "ContactSystemFull"
+    },
+    {
+      "type": "BIDDER",
+      "id": 15,
+      "userName": "ContactOpen"
     }
   ]
 }
