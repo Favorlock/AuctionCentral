@@ -1,43 +1,53 @@
 {
-  "index": 7,
+  "index": 9,
   "entries": [
     {
       "type": "BIDDER",
-      "id": 0,
+      "id": 1,
       "userName": "Bidder1"
     },
     {
       "type": "BIDDER",
-      "id": 1,
+      "id": 2,
       "userName": "Josh"
     },
     {
       "type": "BIDDER",
-      "id": 2,
+      "id": 3,
       "userName": "Tam"
     },
     {
       "type": "CONTACT_PERSON",
-      "id": 3,
+      "id": 4,
       "userName": "Evan",
       "organizationId": 0
     },
         {
       "type": "CONTACT_PERSON",
-      "id": 4,
+      "id": 5,
       "userName": "Adam",
       "organizationId": 1
     },
     {
       "type": "BIDDER",
-      "id": 5,
+      "id": 6,
       "userName": "Gideon"
     },
     {
       "type": "CONTACT_PERSON",
-      "id": 6,
+      "id": 7,
       "userName": "CPOrgY",
       "organizationId": 2
+    },
+    {
+      "type": "EMPLOYEE",
+      "id": 8,
+      "userName": "Johnny"
+    },
+    {
+      "type": "EMPLOYEE",
+      "id": 9,
+      "userName": "Billy"
     }
   ]
 }
