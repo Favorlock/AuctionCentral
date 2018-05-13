@@ -1,5 +1,5 @@
 {
-  "index": 46,
+  "index": 49,
   "entries": [
     {
       "id": 1,
@@ -504,6 +504,39 @@
       "startBid": "50.00",
       "condition": "new",
       "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 47,
+      "auctionId": 21,
+      "description": "Alienware PC",
+      "quantity": 1,
+      "startBid": "550.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 48,
+      "auctionId": 21,
+      "description": "Alienware Laptop",
+      "quantity": 1,
+      "startBid": "1150.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 49,
+      "auctionId": 21,
+      "description": "Baby Crib",
+      "quantity": 1,
+      "startBid": "250.00",
+      "condition": "new",
+      "approximateSize": "large",
       "location": "A1",
       "comments": ""
     }

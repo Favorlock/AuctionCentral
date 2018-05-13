@@ -1,5 +1,5 @@
 {
-  "index": 9,
+  "index": 15,
   "entries": [
     {
       "type": "BIDDER",
@@ -65,19 +65,22 @@
       "userName": "BidderNoBids"
     },
     {
-      "type": "BIDDER",
+      "type": "CONTACT_PERSON",
       "id": 13,
-      "userName": "ContactEarlyRequest"
+      "userName": "ContactEarlyRequest",
+      "organizationId": 13
     },
     {
-      "type": "BIDDER",
+      "type": "CONTACT_PERSON",
       "id": 14,
-      "userName": "ContactSystemFull"
+      "userName": "ContactSystemFull",
+      "organizationId": 8
     },
     {
-      "type": "BIDDER",
+      "type": "CONTACT_PERSON",
       "id": 15,
-      "userName": "ContactOpen"
+      "userName": "ContactOpen",
+      "organizationId": 20
     }
   ]
 }
