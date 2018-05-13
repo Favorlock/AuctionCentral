@@ -24,6 +24,10 @@
     {
       "id": 6,
       "name": "something"
+    },
+    {
+      "id": 7,
+      "name": "another something"
     }
   ]
 }
