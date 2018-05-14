@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.gson.UserDeserializer;
+import edu.uw.sp18.tcss360a.group6.util.FileUtil;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
 import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 
@@ -50,6 +51,19 @@ public class OrganizationRepository implements Repository<Organization> {
         entry.id = this.index++;
         this.entries.add(entry);
     }
+
+    @Override
+    public void delete(Organization entry) {
+        this.entries.removeIf(organization -> organization.getId() == entry.getId());
+        save();
+    }
+
+    @Override
+    public void save() {
+        String json = GSON.toJson(this);
+        FileUtil.saveJson(this.file, json);
+    }
+
 
     private void __init(File file) {
         this.file = file;

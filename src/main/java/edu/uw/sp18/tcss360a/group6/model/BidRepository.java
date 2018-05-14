@@ -2,6 +2,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.util.FileUtil;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
 import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 
@@ -45,6 +46,19 @@ public class BidRepository implements Repository<Bid> {
         entry.id = this.index++;
         this.entries.add(entry);
     }
+
+    @Override
+    public void delete(Bid entry) {
+        this.entries.removeIf(bid -> bid.getId() == entry.getId());
+        save();
+    }
+
+    @Override
+    public void save() {
+        String json = GSON.toJson(this);
+        FileUtil.saveJson(this.file, json);
+    }
+
 
     private void __init(File file) {
         this.file = file;

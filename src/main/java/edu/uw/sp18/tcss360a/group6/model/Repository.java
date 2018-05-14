@@ -14,4 +14,8 @@ public interface Repository<T> {
 
     void add(T entry);
 
+    void delete(T entry);
+
+    void save();
+
 }
