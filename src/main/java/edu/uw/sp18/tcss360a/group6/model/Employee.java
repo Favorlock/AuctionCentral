@@ -1,5 +1,9 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
+
+import java.time.LocalDate;
+
 /**
  * Class used to represent an Employee of Auction Central.
  *
@@ -26,8 +30,12 @@ public class Employee extends AbstractUser {
             A positive integer is specified that is greater than the number of existing auctions in the system
     */
     public void changeUpcomingAuctionsMax(final int newAuctionMax, Auction auctions) {
-        if(newAuctionMax > 0) { //TODO: num greater than existing auctions check
-            Auction.AUCTION_CAPACITY = newAuctionMax;
+        if(newAuctionMax > 0 && newAuctionMax > Bootstrap.getInstance().getAuctionRepository().fetchFutureAuctions().size()) {
+            LocalDate now = LocalDate.now();
+
+            if (auctions.getStartDate().isAfter(now)) {
+                auctions.setAuctionCapacity(newAuctionMax);
+            }
         }
     }
 

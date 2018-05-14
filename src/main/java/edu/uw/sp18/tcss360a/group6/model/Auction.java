@@ -38,6 +38,9 @@ public class Auction {
 
     private List<Item> inventory;
 
+    private int inventoryCapacity;
+
+    private int auctionCapacity;
     public Auction() {
         super();
     }
@@ -50,6 +53,8 @@ public class Auction {
     public Auction(long organizationId, LocalDate startDate) {
         this.organizationId = organizationId;
         this.startDate = startDate;
+        inventoryCapacity = INVENTORY_CAPACITY;
+        auctionCapacity = AUCTION_CAPACITY;
     }
 
     /**
@@ -60,6 +65,9 @@ public class Auction {
     public Auction(long id, long organizationId, LocalDate startDate) {
         this(organizationId, startDate);
         this.id = id;
+        inventoryCapacity = INVENTORY_CAPACITY;
+        auctionCapacity = AUCTION_CAPACITY;
+
     }
 
     /**
@@ -105,7 +113,7 @@ public class Auction {
      */
     public boolean isAtCapacity() {
 
-        return getInventorySize() >= INVENTORY_CAPACITY;
+        return getInventorySize() >= getInventoryCapacity();
     }
 
     /**
@@ -149,6 +157,21 @@ public class Auction {
         return this.organization;
     }
 
+    public int getAuctionCapacity() {
+        return auctionCapacity;
+    }
+
+    public int getInventoryCapacity() {
+        return inventoryCapacity;
+    }
+
+    public void setInventoryCapacity(int theCapacity) {
+        inventoryCapacity = theCapacity;
+    }
+
+    public void setAuctionCapacity(int theCapacity) {
+        auctionCapacity = theCapacity;
+    }
     public List<Item> getInventory() {
         if (this.inventory == null) {
             this.inventory = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
