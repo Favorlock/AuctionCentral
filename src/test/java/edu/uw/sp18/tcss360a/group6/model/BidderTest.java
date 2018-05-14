@@ -19,32 +19,49 @@ import static org.junit.Assert.assertTrue;
  */
 public class BidderTest {
 
+    private String userName;
     private Bidder bidder;
+    private long bidderId;
     private Auction auction;
+    private long auctionId;
     private LocalDate auctionDate;
     private Bid bid;
     private Item item;
-    private BigDecimal itemStartPrice;
-    private BigDecimal bidPrice;
-
+    private String itemDescription;
+    private long itemId;
+    private int itemQuantity;
+    private String itemCondition;
+    private String itemApproximateSize;
+    private String itemLocation;
+    private String itemComment;
+    private BigDecimal minBid;
+    private BigDecimal amount;
     @Before
     public void setUp() {
-
+        this.userName ="Adam";
+        this.bidderId = 1234;
+        this.auctionId = 12345;
+        this.itemId = 40;
+        this.itemDescription ="RoseVase";
+        this.itemQuantity = 1;
+        this.itemCondition ="Good";
+        this.itemApproximateSize = "10x5";
+        this.itemLocation ="Italy";
+        this.itemComment ="n/a";
+        amount = new BigDecimal(1);
         auctionDate = LocalDate.now().plusMonths(2);
-        bidder = new Bidder("adam", "1234567890", "agc9@uw.edu", "1410 E 52nd ST, Tacoma WA", "1000100010001000");
-        auction = new Auction(auctionDate);
-        itemStartPrice = new BigDecimal(100);
-        bidPrice = new BigDecimal(110);
-        item = new Item(01, "Gold Ring", itemStartPrice, 1);
-        bid = new Bid(auction, bidder, item, bidPrice);
-
+        bidder = new Bidder(bidderId,userName);
+        auction = new Auction();
+        minBid = new BigDecimal(110);
+        item = new Item(itemId,auctionId, itemDescription,itemQuantity,minBid, itemCondition, itemApproximateSize, itemLocation, itemComment);
+        bid = new Bid(bidderId, auctionId, itemId, amount);
     }
 
     @Test
     public void canBidInAuction_belowMaximumBids_True() {
 
         for (int i = 0; i < 3; i++) {
-            bidder.addBid(bid);
+            bidder.addBid(amount, item, auction);
         }
         assertTrue(bidder.canBid(auction));
     }
@@ -54,7 +71,7 @@ public class BidderTest {
 
 
         for (int i = 0; i < 4; i++) {
-            bidder.addBid(bid);
+            bidder.addBid(amount, item, auction);
         }
         assertFalse(bidder.canBid(auction));
     }
@@ -63,7 +80,7 @@ public class BidderTest {
     public void canBid_belowMaximumBids_True() {
 
         for (int i = 0; i < 10; i++) {
-            bidder.addBid(bid);
+            bidder.addBid(amount, item, auction);
         }
         assertTrue(bidder.canBid());
     }
@@ -71,7 +88,7 @@ public class BidderTest {
     @Test
     public void canBid_aboveMaximumBids_False() {
         for (int i = 0; i < 11; i++) {
-            bidder.addBid(bid);
+            bidder.addBid(amount, item, auction);
         }
         assertFalse(bidder.canBid());
     }
