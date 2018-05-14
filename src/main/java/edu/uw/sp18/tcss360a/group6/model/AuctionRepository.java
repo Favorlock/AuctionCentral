@@ -47,7 +47,7 @@ public class AuctionRepository implements Repository<Auction> {
         return new ArrayList<>(this.entries);
     }
 
-    public List<Auction> getFutureAuctions() {
+    public List<Auction> fetchFutureAuctions() {
         return fetchAll().stream()
                 .filter(auction -> auction.getStartDate().isAfter(LocalDate.now()))
                 .collect(Collectors.toList());
