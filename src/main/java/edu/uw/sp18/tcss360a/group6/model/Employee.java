@@ -8,9 +8,6 @@ package edu.uw.sp18.tcss360a.group6.model;
  */
 public class Employee extends AbstractUser {
 
-    private long userID;
-   // private String userName;
-
     /**
      * Construct a new employee.
      *

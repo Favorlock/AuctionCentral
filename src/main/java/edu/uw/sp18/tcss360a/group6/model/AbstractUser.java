@@ -20,7 +20,7 @@ public class AbstractUser implements User {
     protected long id;
 
     @Expose
-    private String userName;
+    protected String userName;
 
     protected AbstractUser(UserType type, long id, String username) {
         this.type = type;
