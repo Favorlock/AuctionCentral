@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Class used to represent an Employee of Auction Central.
@@ -29,8 +30,16 @@ public class Employee extends AbstractUser {
             A positive integer is specified
             A positive integer is specified that is greater than the number of existing auctions in the system
     */
+    /**
+     * Change the maximum amount of auctions that the system allows to be
+     * scheduled at one time.
+     *
+     * @param newAuctionMax integer specifying proposed new amount of auction allowed
+     * @param auctions the auctions in the system
+     */
     public void changeUpcomingAuctionsMax(final int newAuctionMax, Auction auctions) {
-        if(newAuctionMax > 0 && newAuctionMax > Bootstrap.getInstance().getAuctionRepository().fetchFutureAuctions().size()) {
+        if(newAuctionMax > 0 && newAuctionMax > Bootstrap.getInstance().
+                getAuctionRepository().fetchFutureAuctions().size()) {
             LocalDate now = LocalDate.now();
 
             if (auctions.getStartDate().isAfter(now)) {
@@ -45,20 +54,36 @@ public class Employee extends AbstractUser {
         The first and second dates are the same
         The second date is at least one day later than the second date
      */
-    public void viewAllAuctionsBetweenDates(Auction date1, Auction date2) {
-        if (date1.getStartDate().isBefore(date2.getStartDate()) ||
-                date1.getStartDate().isEqual(date2.getStartDate())) {
-           //TODO: get the auctions between dates
-
-        }
+    /**
+     * View all auctions between a two set inclusive dates.
+     *
+     * @param firstDate the starting date
+     * @param secondDate the ending date
+     */
+    public List<Auction> viewAllAuctionsBetweenDates(LocalDate firstDate, LocalDate secondDate) {
+        //TODO:
+//        if (firstDate.getStartDate().isBefore(secondDate.getStartDate()) ||
+//                firstDate.getStartDate().isEqual(secondDate.getStartDate())) {
+//            return Bootstrap.getInstance().getAuctionRepository().fetchAll().stream().
+//                    filter(auction-> auction.getStartDate().isAfter(firstDate) &&
+//                    auction.getStartDate().isBefore(secondDate)).collect(collectors.toList());
+//        }
+        return null;
     }
 
-    /*
-    As an employee of AuctionCentral, I want a view in brief in chronological order of all auctions, past, present, and future.
-        There exists at least one auction in the past and at least one auction in the future.
+    /**
+     * If the auction has at least one auction in the past and one auction in
+     * the future return a list of auctions, otherwise return null.
+     *
+     * @return a list of all auctions in chronological order
      */
-    public void viewAllAuctionsInOrder() {
-
+    public List<Auction> viewAllAuctionsInOrder() {
+        if (Bootstrap.getInstance().getAuctionRepository().
+                fetchFutureAuctions().size() > 1) {
+            return Bootstrap.getInstance().getAuctionRepository().
+                    fetchAllInChronologicalOrder();
+        }
+        return null;
     }
 
     /*
@@ -67,6 +92,12 @@ public class Employee extends AbstractUser {
             The auction has no bids
             The auction has one bid : fail
             The auction has many more than one bid : fail
+     */
+    /**
+     * Method to cancel an auction. If an auction has no bids then can cancel
+     * the auction.
+     *
+     * @param anAuction the auction to try to cancel
      */
     public void cancelAnAuction(Auction anAuction) {
 //        if(auction has no bids) { //TODO: get if auction has any bids
