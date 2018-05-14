@@ -61,6 +61,18 @@ public class AuctionTest {
     }
 
     @Test
+    public void isAtCapacity_addItemInCapacity_True(){
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
+        assertTrue(auction.isAtCapacity());
+    }
+
+    @Test
+    public void isAtCapacity_addItemOverCapacity_False() {
+        Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
+        assertFalse(auction.isAtCapacity());
+    }
+
+    @Test
     public void isAcceptingBids_bidBeforeAuctionDate_True() {
         Auction auction = new Auction(this.auctionId, this.organizationId, this.futureDate);
         assertTrue(auction.isAcceptingBids());
