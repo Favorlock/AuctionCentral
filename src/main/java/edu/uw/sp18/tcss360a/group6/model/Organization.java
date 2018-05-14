@@ -70,9 +70,16 @@ public class Organization {
                 .findFirst().orElse(null);
     }
 
+    public boolean isAuctionScheduleOpeningAvailable() {
+        return Application.getInstance().getAuctionRepository()
+                .fetchFutureAuctions().size() < Auction.AUCTION_CAPACITY;
+    }
+
     public boolean addAuction(Auction auction) {
         boolean added = false;
-        if (getCurrentAuction() == null && getAuctionWithinLastYear() == null) {
+        if (isAuctionScheduleOpeningAvailable()
+                && getCurrentAuction() == null
+                && getAuctionWithinLastYear() == null) {
             Application.getInstance().getAuctionRepository().add(auction);
             getAuctions().add(auction);
             added = true;
