@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,8 +50,21 @@ public class AuctionRepository implements Repository<Auction> {
     }
 
     public List<Auction> fetchFutureAuctions() {
-        return fetchAll().stream()
+        return this.entries.stream()
                 .filter(auction -> auction.getStartDate().isAfter(LocalDate.now()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Auction> fetchAllInChronologicalOrder() {
+        return this.entries.stream()
+                .sorted(Comparator.comparing(Auction::getStartDate))
+                .collect(Collectors.toList());
+    }
+
+    public List<Auction> fetchAuctionsInPeriod(LocalDate min, LocalDate max) {
+        return this.entries.stream()
+                .filter(auction -> auction.getStartDate().isAfter(min.minusDays(1))
+                        && auction.getStartDate().isBefore(max.plusDays(1)))
                 .collect(Collectors.toList());
     }
 
