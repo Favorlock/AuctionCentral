@@ -9,8 +9,10 @@ import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Store the Auctions in this application.
@@ -43,6 +45,12 @@ public class AuctionRepository implements Repository<Auction> {
     @Override
     public List<Auction> fetchAll() {
         return new ArrayList<>(this.entries);
+    }
+
+    public List<Auction> getFutureAuctions() {
+        return fetchAll().stream()
+                .filter(auction -> auction.getStartDate().isAfter(LocalDate.now()))
+                .collect(Collectors.toList());
     }
 
     @Override
