@@ -1,6 +1,6 @@
 package edu.uw.sp18.tcss360a.group6.ui;
 
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.User;
@@ -24,7 +24,7 @@ public class LoginPrompt extends AbstractPrompt {
 
     public LoginPrompt(Context context) {
         super(context);
-        this.users = Application.getInstance().getUserRepository().fetchAll();
+        this.users = ConsoleApplication.getInstance().getUserRepository().fetchAll();
     }
 
     /**
@@ -35,7 +35,7 @@ public class LoginPrompt extends AbstractPrompt {
      */
     @Override
     public boolean execute(Context context) {
-        Application application = Application.getInstance();
+        ConsoleApplication application = (ConsoleApplication) ConsoleApplication.getInstance();
         Console console = application.getConsole();
 
         LocalDateTime now = LocalDateTime.now();

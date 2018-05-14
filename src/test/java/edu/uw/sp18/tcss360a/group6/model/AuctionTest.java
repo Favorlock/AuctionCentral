@@ -1,7 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,7 +45,7 @@ public class AuctionTest {
 
     @Before
     public void setUp() {
-        new Application(false);
+        new ConsoleApplication(false);
         this.auctionId = 0;
         this.organizationId = 0;
         this.pastDate = LocalDate.now().minusMonths(1);

@@ -44,6 +44,12 @@ public class UserRepository implements Repository<User> {
         return new ArrayList<>(this.entries);
     }
 
+    public User fetchUser(String name) {
+        return fetchAll().stream()
+                .filter(user -> user.getUserName().equalsIgnoreCase(name))
+                .findFirst().orElse(null);
+    }
+
     @Override
     public void add(User entry) {
         if (entry instanceof AbstractUser) {

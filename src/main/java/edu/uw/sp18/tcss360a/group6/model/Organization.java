@@ -1,7 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,7 +35,7 @@ public class Organization {
 
     public List<ContactPerson> getContactPeople() {
         if (this.contactPeople == null) {
-            this.contactPeople = Application.getInstance().getUserRepository().fetchAll().stream()
+            this.contactPeople = ConsoleApplication.getInstance().getUserRepository().fetchAll().stream()
                     .filter(user -> user.getType() == UserType.CONTACT_PERSON)
                     .map(user -> (ContactPerson) user)
                     .filter(user -> user.getOrganizationId() == this.id)
@@ -47,7 +47,7 @@ public class Organization {
 
     public List<Auction> getAuctions() {
         if (this.auctions == null) {
-            this.auctions = Application.getInstance().getAuctionRepository().fetchAll().stream()
+            this.auctions = ConsoleApplication.getInstance().getAuctionRepository().fetchAll().stream()
                     .filter(auction -> auction.getOrganizationId() == this.id)
                     .collect(Collectors.toList());
         }
@@ -71,7 +71,7 @@ public class Organization {
     }
 
     public boolean isAuctionScheduleOpeningAvailable() {
-        return Application.getInstance().getAuctionRepository()
+        return ConsoleApplication.getInstance().getAuctionRepository()
                 .fetchFutureAuctions().size() < Auction.AUCTION_CAPACITY;
     }
 
@@ -80,7 +80,7 @@ public class Organization {
         if (isAuctionScheduleOpeningAvailable()
                 && getCurrentAuction() == null
                 && getAuctionWithinLastYear() == null) {
-            Application.getInstance().getAuctionRepository().add(auction);
+            ConsoleApplication.getInstance().getAuctionRepository().add(auction);
             getAuctions().add(auction);
             added = true;
         }

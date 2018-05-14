@@ -1,6 +1,6 @@
 package edu.uw.sp18.tcss360a.group6.ui;
 
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
@@ -9,7 +9,6 @@ import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.model.Item;
 
 import java.text.DecimalFormat;
-import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,7 +26,7 @@ public class BidderListBiddableItemsPrompt extends AbstractPrompt {
     @Override
     public boolean execute(Context context) {
         boolean completed = false;
-        Application application = Application.getInstance();
+        ConsoleApplication application = (ConsoleApplication) ConsoleApplication.getInstance();
         Console console = application.getConsole();
         Bidder bidder = context.get("user", Bidder.class);
         Auction auction = context.get("auction", Auction.class);
