@@ -40,8 +40,12 @@ public class Employee extends AbstractUser {
         The first and second dates are the same
         The second date is at least one day later than the second date
      */
-    public void viewAllAuctionsBetweenDates() {
+    public void viewAllAuctionsBetweenDates(Auction date1, Auction date2) {
+        if (date1.getStartDate().isBefore(date2.getStartDate()) ||
+                date1.getStartDate().isEqual(date2.getStartDate())) {
+           //TODO: get the auctions between dates
 
+        }
     }
 
     /*
@@ -60,7 +64,9 @@ public class Employee extends AbstractUser {
             The auction has many more than one bid : fail
      */
     public void cancelAnAuction(Auction anAuction) {
-
+//        if(auction has no bids) { //TODO: get if auction has any bids
+//            delete the auction
+//        }
     }
 
 
