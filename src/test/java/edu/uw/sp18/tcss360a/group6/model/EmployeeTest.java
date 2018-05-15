@@ -11,28 +11,36 @@ import static org.junit.Assert.*;
  */
 public class EmployeeTest {
 
+    private Employee employee;
     @Before
     public void setUp() {
+        long idNumber = 100;
+        String userName = "New Employee";
+        employee = new Employee(idNumber, userName);
+
     }
 
     @Test
     public void changeUpcomingAuctionsMax_negativeNumberSpecified_Fail() {
-        long idNumber = 100;
-        String userName = "New Employee";
-        Employee employee = new Employee(idNumber, userName);
         int newMax = -1;
         employee.setAuctionCapacity(newMax);
-        assertFalse( employee.getAuctionCapacity() == newMax);
+        assertFalse(employee.getAuctionCapacity() == newMax);
     }
 
     @Test
     public void changeUpcomingAuctionsMax_positiveNumberSpecified_True() {
-        assertTrue(true);
+
+        int newMax = 30;
+        employee.setAuctionCapacity(newMax);
+        assertEquals(employee.getAuctionCapacity(), newMax);
     }
 
     @Test
     public void changeUpcomingAuctionsMax_numberSpecifiedGreaterThanNumberOfSystemAuctions_True() {
-        assertTrue(true);
+
+        int newMax = 30;
+        employee.setAuctionCapacity(newMax);
+        assertEquals(employee.getAuctionCapacity(), newMax);
     }
 
     @Test
