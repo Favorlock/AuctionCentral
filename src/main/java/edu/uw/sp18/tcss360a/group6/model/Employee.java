@@ -48,6 +48,14 @@ public class Employee extends AbstractUser {
         }
     }
 
+    public int getAuctionCapacity() {
+        Bootstrap bootstrap = Bootstrap.getInstance();
+        SettingsRepository settingsRepository = bootstrap.getSettingsRepository();
+        AuctionRepository auctionRepository = bootstrap.getAuctionRepository();
+
+        return settingsRepository.fetch().getAuctionCapacity();
+    }
+
     /*
     As an employee of AuctionCentral, I want a view in brief of all auctions that take place between any two dates, inclusive.
         The second date is earlier than the first date : fail

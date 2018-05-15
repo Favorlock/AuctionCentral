@@ -3,8 +3,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
@@ -23,7 +22,7 @@ public class EmployeeTest {
         Employee employee = new Employee(idNumber, userName);
         int newMax = -1;
         employee.setAuctionCapacity(newMax);
-        assertFalse(false);
+        assertFalse( employee.getAuctionCapacity() == newMax);
     }
 
     @Test
