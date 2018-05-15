@@ -1,6 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
@@ -15,16 +16,6 @@ import java.util.stream.Collectors;
  */
 public class Auction {
 
-    /**
-     * Maximum number of active auctions permitted.
-     */
-    public static int AUCTION_CAPACITY = 25;
-
-    /**
-     * Maximum number of items per auction permitted.
-     */
-    public static int INVENTORY_CAPACITY = 10;
-
     @Expose
     protected long id;
 
@@ -38,9 +29,6 @@ public class Auction {
 
     private List<Item> inventory;
 
-    private int inventoryCapacity;
-
-    private int auctionCapacity;
     public Auction() {
         super();
     }
@@ -53,8 +41,6 @@ public class Auction {
     public Auction(long organizationId, LocalDate startDate) {
         this.organizationId = organizationId;
         this.startDate = startDate;
-        inventoryCapacity = INVENTORY_CAPACITY;
-        auctionCapacity = AUCTION_CAPACITY;
     }
 
     /**
@@ -65,8 +51,6 @@ public class Auction {
     public Auction(long id, long organizationId, LocalDate startDate) {
         this(organizationId, startDate);
         this.id = id;
-        inventoryCapacity = INVENTORY_CAPACITY;
-        auctionCapacity = AUCTION_CAPACITY;
 
     }
 
@@ -113,7 +97,8 @@ public class Auction {
      */
     public boolean isAtCapacity() {
 
-        return getInventorySize() >= getInventoryCapacity();
+        return getInventorySize() >= Bootstrap.getInstance().getSettingsRepository().fetch()
+                .getInventoryCapacity();
     }
 
     /**
@@ -157,21 +142,6 @@ public class Auction {
         return this.organization;
     }
 
-    public int getAuctionCapacity() {
-        return auctionCapacity;
-    }
-
-    public int getInventoryCapacity() {
-        return inventoryCapacity;
-    }
-
-    public void setInventoryCapacity(int theCapacity) {
-        inventoryCapacity = theCapacity;
-    }
-
-    public void setAuctionCapacity(int theCapacity) {
-        auctionCapacity = theCapacity;
-    }
     public List<Item> getInventory() {
         if (this.inventory == null) {
             this.inventory = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()

@@ -6,6 +6,8 @@ public class Bootstrap {
 
     private static Bootstrap instance;
 
+    private SettingsRepository settingsRepository;
+
     private OrganizationRepository organizationRepository;
 
     private AuctionRepository auctionRepository;
@@ -23,6 +25,10 @@ public class Bootstrap {
     public Bootstrap(boolean saveDefaultsIfMissing) {
         instance = this;
         __init(saveDefaultsIfMissing);
+    }
+
+    public SettingsRepository getSettingsRepository() {
+        return this.settingsRepository;
     }
 
     public OrganizationRepository getOrganizationRepository() {
@@ -50,6 +56,7 @@ public class Bootstrap {
     }
 
     private void __loadRepositories(boolean saveDefaultsIfMissing) {
+        this.settingsRepository = SettingsRepository.load(saveDefaultsIfMissing);
         this.organizationRepository = OrganizationRepository.load(saveDefaultsIfMissing);
         this.auctionRepository = AuctionRepository.load(saveDefaultsIfMissing);
         this.itemRepository = ItemRepository.load(saveDefaultsIfMissing);

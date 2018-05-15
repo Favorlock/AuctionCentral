@@ -17,7 +17,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class UserRepository implements Repository<User> {
+public class UserRepository implements CollectionRepository<User> {
 
     public static final String DEFAULT_RESOURCE_NAME = "users.json";
 

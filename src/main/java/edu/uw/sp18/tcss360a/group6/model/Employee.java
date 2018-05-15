@@ -16,10 +16,10 @@ public class Employee extends AbstractUser {
     /**
      * Construct a new employee.
      *
-     * @param id employees user identification number
+     * @param id       employees user identification number
      * @param userName String representation of the employee name
      */
-    public Employee (long id, String userName) {
+    public Employee(long id, String userName) {
         super(UserType.EMPLOYEE, id, userName);
     }
 
@@ -30,21 +30,21 @@ public class Employee extends AbstractUser {
             A positive integer is specified
             A positive integer is specified that is greater than the number of existing auctions in the system
     */
+
     /**
      * Change the maximum amount of auctions that the system allows to be
      * scheduled at one time.
      *
      * @param newAuctionMax integer specifying proposed new amount of auction allowed
-     * @param auctions the auctions in the system
      */
-    public void changeUpcomingAuctionsMax(final int newAuctionMax, Auction auctions) {
-        if(newAuctionMax > 0 && newAuctionMax > Bootstrap.getInstance().
-                getAuctionRepository().fetchFutureAuctions().size()) {
-            LocalDate now = LocalDate.now();
+    public void setAuctionCapacity(final int newAuctionMax) {
+        Bootstrap bootstrap = Bootstrap.getInstance();
+        SettingsRepository settingsRepository = bootstrap.getSettingsRepository();
+        AuctionRepository auctionRepository = bootstrap.getAuctionRepository();
 
-            if (auctions.getStartDate().isAfter(now)) {
-                auctions.setAuctionCapacity(newAuctionMax);
-            }
+        if (newAuctionMax > 0 && newAuctionMax > auctionRepository.fetchFutureAuctions().size()) {
+            settingsRepository.fetch().setAuctionCapacity(newAuctionMax);
+            settingsRepository.save();
         }
     }
 
@@ -54,10 +54,11 @@ public class Employee extends AbstractUser {
         The first and second dates are the same
         The second date is at least one day later than the second date
      */
+
     /**
      * View all auctions between a two set inclusive dates.
      *
-     * @param firstDate the starting date
+     * @param firstDate  the starting date
      * @param secondDate the ending date
      */
     public List<Auction> viewAllAuctionsBetweenDates(LocalDate firstDate, LocalDate secondDate) {
@@ -93,6 +94,7 @@ public class Employee extends AbstractUser {
             The auction has one bid : fail
             The auction has many more than one bid : fail
      */
+
     /**
      * Method to cancel an auction. If an auction has no bids then can cancel
      * the auction.

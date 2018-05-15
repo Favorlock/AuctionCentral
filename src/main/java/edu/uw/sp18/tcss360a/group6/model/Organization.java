@@ -1,6 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
@@ -72,7 +73,7 @@ public class Organization {
 
     public boolean isAuctionScheduleOpeningAvailable() {
         return ConsoleApplication.getInstance().getAuctionRepository()
-                .fetchFutureAuctions().size() < Auction.AUCTION_CAPACITY;
+                .fetchFutureAuctions().size() < Bootstrap.getInstance().getSettingsRepository().fetch().getAuctionCapacity();
     }
 
     public boolean addAuction(Auction auction) {

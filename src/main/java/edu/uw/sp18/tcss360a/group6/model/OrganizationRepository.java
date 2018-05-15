@@ -18,7 +18,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class OrganizationRepository implements Repository<Organization> {
+public class OrganizationRepository implements CollectionRepository<Organization> {
 
     public static final String DEFAULT_RESOURCE_NAME = "organizations.json";
 

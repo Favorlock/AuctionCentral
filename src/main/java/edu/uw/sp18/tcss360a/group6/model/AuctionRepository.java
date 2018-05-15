@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class AuctionRepository implements Repository<Auction> {
+public class AuctionRepository implements CollectionRepository<Auction> {
 
     public static final String DEFAULT_RESOURCE_NAME = "auctions.json";
 
