@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.gson.UserDeserializer;
+import edu.uw.sp18.tcss360a.group6.util.FileUtil;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
 import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class UserRepository implements Repository<User> {
+public class UserRepository implements CollectionRepository<User> {
 
     public static final String DEFAULT_RESOURCE_NAME = "users.json";
 
@@ -44,12 +45,30 @@ public class UserRepository implements Repository<User> {
         return new ArrayList<>(this.entries);
     }
 
+    public User fetchUser(String name) {
+        return fetchAll().stream()
+                .filter(user -> user.getUserName().equalsIgnoreCase(name))
+                .findFirst().orElse(null);
+    }
+
     @Override
     public void add(User entry) {
         if (entry instanceof AbstractUser) {
             ((AbstractUser) entry).id = this.index++;
         }
         this.entries.add(entry);
+    }
+
+    @Override
+    public void delete(User entry) {
+        this.entries.removeIf(user -> user.getId() == entry.getId());
+        save();
+    }
+
+    @Override
+    public void save() {
+        String json = GSON.toJson(this);
+        FileUtil.saveJson(this.file, json);
     }
 
     private void __init(File file) {

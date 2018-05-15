@@ -1,7 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -147,7 +147,7 @@ public class Item {
 
     public Auction getAuction() {
         if (this.auction == null) {
-            this.auction = Application.getInstance().getAuctionRepository().fetchAll().stream()
+            this.auction = ConsoleApplication.getInstance().getAuctionRepository().fetchAll().stream()
                     .filter(a -> a.getId() == this.auctionId)
                     .findFirst().orElse(null);
         }
@@ -157,7 +157,7 @@ public class Item {
 
     public List<Bid> getPlacedBids() {
         if (this.placedBids == null) {
-            this.placedBids = Application.getInstance().getBidRepository().fetchAll().stream()
+            this.placedBids = ConsoleApplication.getInstance().getBidRepository().fetchAll().stream()
                     .filter(bid -> bid.getAuctionId() == this.auctionId
                             && bid.getItemId() == this.id)
                     .collect(Collectors.toList());
@@ -167,7 +167,7 @@ public class Item {
     }
 
     public Bid getCurrentBid() {
-        return Application.getInstance().getBidRepository().fetchAll().stream()
+        return ConsoleApplication.getInstance().getBidRepository().fetchAll().stream()
                 .filter(b -> b.getItemId() == this.id)
                 .sorted(Comparator.comparing(Bid::getAmount))
                 .findFirst().orElse(null);

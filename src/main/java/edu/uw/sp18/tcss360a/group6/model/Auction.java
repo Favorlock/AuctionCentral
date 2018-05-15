@@ -1,7 +1,8 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,16 +15,6 @@ import java.util.stream.Collectors;
  * @version 4/30/2018
  */
 public class Auction {
-
-    /**
-     * Maximum number of active auctions permitted.
-     */
-    public static int AUCTION_CAPACITY = 25;
-
-    /**
-     * Maximum number of items per auction permitted.
-     */
-    public static int INVENTORY_CAPACITY = 10;
 
     @Expose
     protected long id;
@@ -60,6 +51,7 @@ public class Auction {
     public Auction(long id, long organizationId, LocalDate startDate) {
         this(organizationId, startDate);
         this.id = id;
+
     }
 
     /**
@@ -70,7 +62,7 @@ public class Auction {
     public boolean addItem(Item item) {
         boolean added = false;
         if (!isAtCapacity()) {
-            Application.getInstance().getItemRepository().add(item);
+            ConsoleApplication.getInstance().getItemRepository().add(item);
             getInventory().add(item);
             added = true;
         }
@@ -105,7 +97,8 @@ public class Auction {
      */
     public boolean isAtCapacity() {
 
-        return getInventorySize() >= INVENTORY_CAPACITY;
+        return getInventorySize() >= Bootstrap.getInstance().getSettingsRepository().fetch()
+                .getInventoryCapacity();
     }
 
     /**
@@ -141,7 +134,7 @@ public class Auction {
 
     public Organization getOrganization() {
         if (this.organization == null) {
-            this.organization = Application.getInstance().getOrganizationRepository().fetchAll().stream()
+            this.organization = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
                     .filter(org -> org.getId() == this.organizationId)
                     .findFirst().orElse(null);
         }
@@ -151,7 +144,7 @@ public class Auction {
 
     public List<Item> getInventory() {
         if (this.inventory == null) {
-            this.inventory = Application.getInstance().getItemRepository().fetchAll().stream()
+            this.inventory = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
                     .filter(item -> item.getAuctionId() == this.id)
                     .collect(Collectors.toList());
         }

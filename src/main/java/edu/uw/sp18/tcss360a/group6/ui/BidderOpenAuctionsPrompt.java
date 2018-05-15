@@ -1,6 +1,6 @@
 package edu.uw.sp18.tcss360a.group6.ui;
 
-import edu.uw.sp18.tcss360a.group6.Application;
+import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 import edu.uw.sp18.tcss360a.group6.Context;
 import edu.uw.sp18.tcss360a.group6.io.Console;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
@@ -36,11 +36,11 @@ public class BidderOpenAuctionsPrompt extends AbstractPrompt {
     @Override
     public boolean execute(Context context) {
     	boolean completed = false;
-        Application application = Application.getInstance();
+        ConsoleApplication application = (ConsoleApplication) ConsoleApplication.getInstance();
         Console console = application.getConsole();
         Bidder bidder = context.get("user", Bidder.class);
 
-        List<Auction> auctions = Application.getInstance()
+        List<Auction> auctions = ConsoleApplication.getInstance()
         		.getAuctionRepository().fetchAll().stream()
                 .filter(auction -> bidder.canBid(auction))
                 .collect(Collectors.toList());

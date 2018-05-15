@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.util.FileUtil;
 import edu.uw.sp18.tcss360a.group6.util.ResourceUtil;
 import net.dongliu.gson.GsonJava8TypeAdapterFactory;
 
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,7 @@ import java.util.stream.Collectors;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 5/1/2018
  */
-public class AuctionRepository implements Repository<Auction> {
+public class AuctionRepository implements CollectionRepository<Auction> {
 
     public static final String DEFAULT_RESOURCE_NAME = "auctions.json";
 
@@ -48,8 +50,21 @@ public class AuctionRepository implements Repository<Auction> {
     }
 
     public List<Auction> fetchFutureAuctions() {
-        return fetchAll().stream()
+        return this.entries.stream()
                 .filter(auction -> auction.getStartDate().isAfter(LocalDate.now()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Auction> fetchAllInChronologicalOrder() {
+        return this.entries.stream()
+                .sorted(Comparator.comparing(Auction::getStartDate))
+                .collect(Collectors.toList());
+    }
+
+    public List<Auction> fetchAuctionsInPeriod(LocalDate min, LocalDate max) {
+        return this.entries.stream()
+                .filter(auction -> auction.getStartDate().isAfter(min.minusDays(1))
+                        && auction.getStartDate().isBefore(max.plusDays(1)))
                 .collect(Collectors.toList());
     }
 
@@ -58,6 +73,19 @@ public class AuctionRepository implements Repository<Auction> {
         entry.id = this.index++;
         this.entries.add(entry);
     }
+
+    @Override
+    public void delete(Auction entry) {
+        this.entries.removeIf(auction -> auction.getId() == entry.getId());
+        save();
+    }
+
+    @Override
+    public void save() {
+        String json = GSON.toJson(this);
+        FileUtil.saveJson(this.file, json);
+    }
+
 
     private void __init(File file) {
         this.file = file;
