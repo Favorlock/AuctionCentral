@@ -14,11 +14,15 @@ public class EmployeeTest {
 
     @Before
     public void setUp() {
-
     }
 
     @Test
     public void changeUpcomingAuctionsMax_negativeNumberSpecified_Fail() {
+        long idNumber = 100;
+        String userName = "New Employee";
+        Employee employee = new Employee(idNumber, userName);
+        int newMax = -1;
+        employee.setAuctionCapacity(newMax);
         assertFalse(false);
     }
 
