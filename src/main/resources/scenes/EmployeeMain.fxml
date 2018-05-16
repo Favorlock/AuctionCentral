@@ -23,9 +23,9 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View Auctions in System"/>
-                <Label text="Change Maximum Number of Auctions"/>
-                <Label text="Logout"/>
+                <Label text="View Auctions in System" onMouseReleased="#viewAuctions"/>
+                <Label text="Change Maximum Number of Auctions" onMouseReleased="#changeMaxAuctions"/>
+                <Label text="Logout" onMouseReleased="#logout"/>
             </children>
         </VBox>
     </left>

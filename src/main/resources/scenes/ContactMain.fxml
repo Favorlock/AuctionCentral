@@ -23,10 +23,10 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View my Auctions / Add Item to Auction"/>
-                <Label text="Submit Auction Request"/>
-                <Label text="Add Item to Auction"/>
-                <Label text="Logout"/>
+                <Label text="View my Auctions" onMouseReleased="#viewAuctions"/>
+                <Label text="Submit Auction Request" onMouseReleased="#submitAuction"/>
+                <Label text="Add Item to Auction" onMouseReleased="#addItem"/>
+                <Label text="Logout" onMouseReleased="#logout"/>
             </children>
         </VBox>
     </left>

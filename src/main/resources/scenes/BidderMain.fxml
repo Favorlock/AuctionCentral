@@ -23,9 +23,9 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View My Bids"/>
-                <Label text="Place Bid"/>
-                <Label text="Logout"/>
+                <Label text="View My Bids" onMouseReleased="#viewBids"/>
+                <Label text="Place Bid" onMouseReleased="#placeBid"/>
+                <Label text="Logout" onMouseReleased="#logout"/>
             </children>
         </VBox>
     </left>
