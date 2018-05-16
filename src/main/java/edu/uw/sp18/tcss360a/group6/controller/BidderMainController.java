@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 public class BidderMainController {
 
-    FXApplication application = FXApplication.getInstance();
+    private FXApplication application = FXApplication.getInstance();
 
     @FXML
     public void viewBids() {
@@ -19,11 +19,11 @@ public class BidderMainController {
     }
     @FXML
     public void placeBid() {
-        //Link to place bid menu
+        application.getSceneController().activate("placeBid");
     }
     @FXML
     public void logout() {
-        //Link to logout menu
+        application.getSceneController().activate("login");
     }
 
 

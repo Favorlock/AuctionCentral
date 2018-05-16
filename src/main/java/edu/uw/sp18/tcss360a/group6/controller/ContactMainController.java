@@ -1,12 +1,15 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
+import edu.uw.sp18.tcss360a.group6.FXApplication;
 import javafx.fxml.FXML;
 
 public class ContactMainController {
 
+    private FXApplication application = FXApplication.getInstance();
+
     @FXML
     public void viewAuctions() {
-        //Link to view auctions menu
+        application.getSceneController().activate("contactViewAuctions");
     }
     @FXML
     public void submitAuction() {
@@ -18,6 +21,6 @@ public class ContactMainController {
     }
     @FXML
     public void logout() {
-        //Link to logout menu
+        application.getSceneController().activate("login");
     }
 }
