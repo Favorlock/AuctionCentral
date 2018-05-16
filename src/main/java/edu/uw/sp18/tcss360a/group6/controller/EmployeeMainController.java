@@ -15,6 +15,7 @@ public class EmployeeMainController {
     public void changeMaxAuctions() {
         //Link to change max auctions menu
     }
+
     @FXML
     public void logout() {
         application.getSceneController().activate("login");
