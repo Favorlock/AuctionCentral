@@ -26,6 +26,8 @@ public class LoginController {
                     application.getSceneController().activate("bidderMain");
                 } else if (user.getType() == UserType.CONTACT_PERSON) {
                     application.getSceneController().activate("contactMain");
+                } else if (user.getType() == UserType.EMPLOYEE) {
+                    application.getSceneController().activate("employeeMain");
                 }
             }
         }
