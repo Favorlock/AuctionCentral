@@ -10,6 +10,8 @@ public class FXApplication extends Application {
 
     public static String LOGIN_FXML = "/scenes/Login.fxml";
     public static String BIDDER_MAIN_FXML = "/scenes/BidderMain.fxml";
+    public static String CONTACT_MAIN_FXML = "/scenes/ContactMain.fxml";
+
     public static final String STAGE_TITLE = "Auction Central";
 
     private static FXApplication instance;
@@ -24,11 +26,14 @@ public class FXApplication extends Application {
     public void start(Stage stage) throws Exception {
         final Parent login = FXMLLoader.load(getClass().getResource(LOGIN_FXML));
         final Parent bidderMain = FXMLLoader.load(getClass().getResource(BIDDER_MAIN_FXML));
+        final Parent contactMain = FXMLLoader.load(getClass().getResource(CONTACT_MAIN_FXML));
+
         final Scene scene = new Scene(login);
 
         this.sceneController = new SceneController(scene);
         this.sceneController.addScreen("login", login);
         this.sceneController.addScreen("bidderMain", bidderMain);
+        this.sceneController.addScreen("contactMain", contactMain);
 
         stage.setTitle(STAGE_TITLE);
         stage.setScene(scene);

@@ -95,7 +95,7 @@ public class AuctionTest {
         Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
         assertTrue(auction.getInventorySize() == 0);
     }
-
+/*
     @Test
     public void getInventorySize_AuctionFull_True() {
         Auction auction = new Auction(this.auctionId, this.organizationId, this.currentDate);
@@ -116,7 +116,7 @@ public class AuctionTest {
         addItemsToAuction(auction, Auction.INVENTORY_CAPACITY );
         assertFalse(addItemToAuction(auction, Auction.INVENTORY_CAPACITY));
     }
-
+*/
     private void addItemsToAuction(Auction auction, int count) {
         for (int i = 0; i < count; i++) {
             addItemToAuction(auction, i);
