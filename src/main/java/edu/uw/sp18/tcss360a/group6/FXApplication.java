@@ -12,6 +12,7 @@ public class FXApplication extends Application {
     public static String BIDDER_MAIN_FXML = "/scenes/BidderMain.fxml";
     public static String CONTACT_MAIN_FXML = "/scenes/ContactMain.fxml";
     public static String EMPLOYEE_MAIN_FXML = "/scenes/EmployeeMain.fxml";
+    public static String BIDDER_VIEW_BIDS_FXML = "/scenes/ViewBids.fxml";
 
     public static final String STAGE_TITLE = "Auction Central";
 
@@ -29,6 +30,7 @@ public class FXApplication extends Application {
         final Parent bidderMain = FXMLLoader.load(getClass().getResource(BIDDER_MAIN_FXML));
         final Parent contactMain = FXMLLoader.load(getClass().getResource(CONTACT_MAIN_FXML));
         final Parent employeeMain = FXMLLoader.load(getClass().getResource(EMPLOYEE_MAIN_FXML));
+        final Parent viewBids = FXMLLoader.load(getClass().getResource(BIDDER_VIEW_BIDS_FXML));
 
         final Scene scene = new Scene(login);
 
@@ -37,6 +39,7 @@ public class FXApplication extends Application {
         this.sceneController.addScreen("bidderMain", bidderMain);
         this.sceneController.addScreen("contactMain", contactMain);
         this.sceneController.addScreen("employeeMain", employeeMain);
+        this.sceneController.addScreen("viewBids", viewBids);
 
         stage.setTitle(STAGE_TITLE);
         stage.setScene(scene);
