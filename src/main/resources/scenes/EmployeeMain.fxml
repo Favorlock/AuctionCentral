@@ -31,7 +31,7 @@
     </left>
 
     <center>
-        <VBox styleClass="content-section" />
+        <VBox prefHeight="379.0" prefWidth="484.0" styleClass="content-section" />
     </center>
 
     <bottom>

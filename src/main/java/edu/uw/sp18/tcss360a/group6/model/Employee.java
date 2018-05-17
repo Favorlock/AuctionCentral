@@ -56,19 +56,17 @@ public class Employee extends AbstractUser {
      */
 
     /**
-     * View all auctions between a two set inclusive dates.
+     * View all auctions between a set of inclusive dates.
      *
      * @param firstDate  the starting date
      * @param secondDate the ending date
      */
     public List<Auction> viewAllAuctionsBetweenDates(LocalDate firstDate, LocalDate secondDate) {
         //TODO:
-//        if (firstDate.getStartDate().isBefore(secondDate.getStartDate()) ||
-//                firstDate.getStartDate().isEqual(secondDate.getStartDate())) {
-//            return Bootstrap.getInstance().getAuctionRepository().fetchAll().stream().
-//                    filter(auction-> auction.getStartDate().isAfter(firstDate) &&
-//                    auction.getStartDate().isBefore(secondDate)).collect(collectors.toList());
-//        }
+        if (firstDate.isBefore(secondDate) ||
+                firstDate.isEqual(secondDate)) {
+            return Bootstrap.getInstance().getAuctionRepository().fetchAuctionsInPeriod(firstDate, secondDate);
+        }
         return null;
     }
 
