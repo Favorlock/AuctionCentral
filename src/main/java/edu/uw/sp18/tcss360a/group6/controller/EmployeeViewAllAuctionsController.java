@@ -3,7 +3,7 @@ package edu.uw.sp18.tcss360a.group6.controller;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import javafx.fxml.FXML;
 
-public class EmployeeViewAuctionsController {
+public class EmployeeViewAllAuctionsController {
 
     private FXApplication application = FXApplication.getInstance();
     @FXML
