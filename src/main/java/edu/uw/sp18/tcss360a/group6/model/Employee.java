@@ -95,25 +95,44 @@ public class Employee extends AbstractUser {
         return null;
     }
 
-    /*
-    As an employee of AuctionCentral, I want to cancel an auction.
-        No auction can be cancelled that has any bids
-            The auction has no bids
-            The auction has one bid : fail
-            The auction has many more than one bid : fail
-     */
-
     /**
-     * Method to cancel an auction. If an auction has no bids then can cancel
-     * the auction.
+     * Method to cancel an auction. If an auction has no bids then delete
+     * the auction. Return true if auction did delete otherwise false.
      *
      * @param anAuction the auction to try to cancel
      */
-    public void cancelAnAuction(Auction anAuction) {
-//        if(auction has no bids) { //TODO: get if auction has any bids
-//            delete the auction
-//        }
+    public Boolean cancelAnAuction(Auction anAuction) { //TODO: is all relevant info deleted?
+        boolean didDeleteAuction = false;
+        if (anAuction.getInventorySize() == 0) {
+            List<Auction> auctions = Bootstrap.getInstance().getAuctionRepository().fetchAll();
+            for (Auction a : auctions) {
+                if (a.getId() == anAuction.getId()) {
+                    if(isThereBidsOnAuctionItems(a.getInventory())) {
+                        Bootstrap.getInstance().getAuctionRepository().delete(a);
+                        didDeleteAuction = true;
+                    }
+                    break;
+                }
+            }
+        }
+        return didDeleteAuction;
     }
 
+    /**
+     * Checks a list of items to see if there are bids on any items.
+     * returns true if at least one Item in list has a bid.
+     *
+     * @param items a list of items in an auction
+     * @return if any items in the list have bids
+     */
+    public Boolean isThereBidsOnAuctionItems(List<Item> items) {
+        Boolean anyBidOnItems = false;
+        for (Item item : items) {
+            if (item.getPlacedBids().size() > 0) {
+                anyBidOnItems = true;
+            }
+        }
+        return anyBidOnItems;
+    }
 
 }
