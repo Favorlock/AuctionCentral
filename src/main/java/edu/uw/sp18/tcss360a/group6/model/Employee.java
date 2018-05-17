@@ -23,14 +23,6 @@ public class Employee extends AbstractUser {
         super(UserType.EMPLOYEE, id, userName);
     }
 
-    /*
-    As an employee of AuctionCentral, I want to change the maximum number of upcoming auctions that can be accepted by the system.
-        The maximum number of upcoming auctions must be a positive integer.
-            A non-positive integer is specified: fail
-            A positive integer is specified
-            A positive integer is specified that is greater than the number of existing auctions in the system
-    */
-
     /**
      * Change the maximum amount of auctions that the system allows to be
      * scheduled at one time.
