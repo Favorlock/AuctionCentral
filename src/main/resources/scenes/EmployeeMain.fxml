@@ -22,10 +22,11 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label onMouseReleased="#viewAuctions" text="View All Auctions in System" />
-            <Label layoutX="11.0" layoutY="56.0" onMouseReleased="#changeMaxAuctions" text="View Auctions Between Two Dates" />
-                <Label onMouseReleased="#changeMaxAuctions" text="Change Maximum Number of Auctions" />
-                <Label onMouseReleased="#logout" text="Logout" />
+                <Label onMouseReleased="#viewAllAuctions" text="View All Auctions in System" wrapText="true" />
+            <Label layoutX="11.0" layoutY="56.0" onMouseReleased="#viewAuctionsBetweenDates" text="View Auctions Between Two Dates" wrapText="true" />
+                <Label onMouseReleased="#changeMaxAuctions" text="Change Maximum Number of Auctions" wrapText="true" />
+            <Label layoutX="11.0" layoutY="141.0" onMouseReleased="#cancelAnAuction" text="Cancel an Auction" wrapText="true" />
+                <Label onMouseReleased="#logout" text="logout" />
             </children>
         </VBox>
     </left>

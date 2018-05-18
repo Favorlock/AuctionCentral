@@ -8,12 +8,23 @@ public class EmployeeMainController {
     private FXApplication application = FXApplication.getInstance();
 
     @FXML
-    public void viewAuctions() {
-        //Link to view auctions menu
+    public void viewAllAuctions() {
+        application.getSceneController().activate("viewAllAuctions");
     }
+
+    @FXML
+    public void viewAuctionsBetweenDates() {
+        application.getSceneController().activate("viewAuctionsBetweenDates");
+    }
+
     @FXML
     public void changeMaxAuctions() {
-        //Link to change max auctions menu
+        application.getSceneController().activate("changeMaxAuctions");
+    }
+
+    @FXML
+    public void cancelAnAuction() {
+        application.getSceneController().activate("cancelAnAuction");
     }
 
     @FXML

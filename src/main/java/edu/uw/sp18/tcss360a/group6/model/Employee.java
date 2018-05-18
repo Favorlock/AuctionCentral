@@ -48,13 +48,6 @@ public class Employee extends AbstractUser {
         return settingsRepository.fetch().getAuctionCapacity();
     }
 
-    /*
-    As an employee of AuctionCentral, I want a view in brief of all auctions that take place between any two dates, inclusive.
-        The second date is earlier than the first date : fail
-        The first and second dates are the same
-        The second date is at least one day later than the second date
-     */
-
     /**
      * View all auctions between a set of inclusive dates.
      *
@@ -62,7 +55,6 @@ public class Employee extends AbstractUser {
      * @param secondDate the ending date
      */
     public List<Auction> viewAllAuctionsBetweenDates(LocalDate firstDate, LocalDate secondDate) {
-        //TODO:
         if (firstDate.isBefore(secondDate) ||
                 firstDate.isEqual(secondDate)) {
             return Bootstrap.getInstance().getAuctionRepository().fetchAuctionsInPeriod(firstDate, secondDate);

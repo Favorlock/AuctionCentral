@@ -99,3 +99,10 @@ public class EmployeeTest {
 
 
 }
+
+    /*
+    As an employee of AuctionCentral, I want a view in brief of all auctions that take place between any two dates, inclusive.
+        The second date is earlier than the first date : fail
+        The first and second dates are the same
+        The second date is at least one day later than the second date
+     */

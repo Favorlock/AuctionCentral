@@ -74,6 +74,11 @@ public class Bid {
         this.amount = amount;
     }
 
+    /**
+     * Get the Bidder for this Bid.
+     *
+     * @return the bidder of this bid.
+     */
     public Bidder getBidder() {
         if (this.bidder == null) {
             this.bidder = ConsoleApplication.getInstance().getUserRepository().fetchAll().stream()
@@ -85,6 +90,11 @@ public class Bid {
         return this.bidder;
     }
 
+    /**
+     * Get the auction that this bid resides in.
+     *
+     * @return the Auction this bid is in.
+     */
     public Auction getAuction() {
         if (this.auction == null) {
             this.auction = ConsoleApplication.getInstance().getAuctionRepository().fetchAll().stream()
@@ -95,6 +105,11 @@ public class Bid {
         return this.auction;
     }
 
+    /**
+     * Get the item that this bid is for.
+     *
+     * @return the Item this bid is for
+     */
     public Item getItem() {
         if (this.item == null) {
             this.item = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()

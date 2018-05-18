@@ -119,6 +119,11 @@ public class Auction {
         return id;
     }
 
+    /**
+     * Return the organization ID.
+     *
+     * @return long representing organization ID
+     */
     public long getOrganizationId() {
         return organizationId;
     }
@@ -132,6 +137,11 @@ public class Auction {
         return this.startDate;
     }
 
+    /**
+     * Get the organization representing this auction.
+     *
+     * @return the organization representing this auction.
+     */
     public Organization getOrganization() {
         if (this.organization == null) {
             this.organization = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
@@ -142,6 +152,11 @@ public class Auction {
         return this.organization;
     }
 
+    /**
+     * Get the items that are in this auction.
+     *
+     * @return List of type item that are the items in this auction
+     */
     public List<Item> getInventory() {
         if (this.inventory == null) {
             this.inventory = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
