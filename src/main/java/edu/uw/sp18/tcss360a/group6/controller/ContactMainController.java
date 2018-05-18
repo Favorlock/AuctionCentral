@@ -18,11 +18,11 @@ public class ContactMainController {
     }
     @FXML
     public void submitAuction() {
-        //Link to submit auctions menu
+        application.getSceneController().activate("contactSubmitAuction");
     }
     @FXML
     public void addItem() {
-        //Link to add item menu
+        application.getSceneController().activate("contactAddItem");
     }
     @FXML
     public void logout() {

@@ -34,6 +34,8 @@ public class LoginController {
                 } else if (user.getType() == UserType.EMPLOYEE) {
                     application.getSceneController().activate("employeeMain");
                 }
+            } else {
+                userNameTextField.setText("Invalid user, try again....");
             }
         }
     }
