@@ -6,7 +6,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.layout.HBox?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.uw.sp18.tcss360a.group6.controller.BidderMainController"
+            fx:controller="edu.uw.sp18.tcss360a.group6.controller.PlaceBidController"
             prefHeight="480.0" prefWidth="680.0">
     <stylesheets>
         <URL value="@../css/Root.css"/>
@@ -15,7 +15,7 @@
     <top>
         <BorderPane styleClass="header-section">
             <left>
-                <Label id="header-text" text="Main Menu"/>
+                <Label id="header-text" text="Canceling a Bid"/>
             </left>
         </BorderPane>
     </top>
@@ -23,9 +23,7 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View My Bids" onMouseReleased="#viewBids"/>
-                <Label text="Place Bid" onMouseReleased="#placeBid"/>
-                <Label text="Cancel Bid" onMouseReleased="#cancelBid"/>
+                <Label text="Go Back" onMouseReleased="#back"/>
                 <Label text="Logout" onMouseReleased="#logout"/>
             </children>
         </VBox>

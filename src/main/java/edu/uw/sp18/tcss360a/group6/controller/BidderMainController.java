@@ -16,6 +16,10 @@ public class BidderMainController {
         application.getSceneController().activate("placeBid");
     }
     @FXML
+    public void cancelBid() {
+        application.getSceneController().activate("cancelBid");
+    }
+    @FXML
     public void logout() {
         application.getSceneController().activate("login");
     }

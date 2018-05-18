@@ -14,6 +14,7 @@ public class FXApplication extends Application {
     private static String EMPLOYEE_MAIN_FXML = "/scenes/EmployeeMain.fxml";
     private static String BIDDER_VIEW_BIDS_FXML = "/scenes/ViewBids.fxml";
     private static String BIDDER_PLACE_BID_FXML = "/scenes/PlaceBid.fxml";
+    private static String BIDDER_CANCEL_BID_FXML = "/scenes/CancelBid.fxml";
     private static String CONTACT_VIEW_AUCTIONS_FXML = "/scenes/ContactViewAuctions.fxml";
 
     private static final String STAGE_TITLE = "Auction Central";
@@ -34,6 +35,7 @@ public class FXApplication extends Application {
         final Parent employeeMain = FXMLLoader.load(getClass().getResource(EMPLOYEE_MAIN_FXML));
         final Parent viewBids = FXMLLoader.load(getClass().getResource(BIDDER_VIEW_BIDS_FXML));
         final Parent placeBid = FXMLLoader.load(getClass().getResource(BIDDER_PLACE_BID_FXML));
+        final Parent cancelBid = FXMLLoader.load(getClass().getResource(BIDDER_CANCEL_BID_FXML));
         final Parent contactViewAuctions = FXMLLoader.load(getClass().getResource(CONTACT_VIEW_AUCTIONS_FXML));
 
         final Scene scene = new Scene(login);
@@ -45,6 +47,7 @@ public class FXApplication extends Application {
         this.sceneController.addScreen("employeeMain", employeeMain);
         this.sceneController.addScreen("viewBids", viewBids);
         this.sceneController.addScreen("placeBid", placeBid);
+        this.sceneController.addScreen("cancelBid", cancelBid);
         this.sceneController.addScreen("contactViewAuctions", contactViewAuctions);
 
         stage.setTitle(STAGE_TITLE);
