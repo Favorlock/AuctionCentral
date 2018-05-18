@@ -9,22 +9,22 @@ public class EmployeeMainController {
 
     @FXML
     public void viewAllAuctions() {
-        application.getSceneController().activate("viewAllAuctions");
+        application.getSceneController().activate("employeeViewAllAuctions");
     }
 
     @FXML
     public void viewAuctionsBetweenDates() {
-        application.getSceneController().activate("viewAuctionsBetweenDates");
+        application.getSceneController().activate("employeeBetweenDates");
     }
 
     @FXML
     public void changeMaxAuctions() {
-        application.getSceneController().activate("changeMaxAuctions");
+        application.getSceneController().activate("employeeChangeMax");
     }
 
     @FXML
     public void cancelAnAuction() {
-        application.getSceneController().activate("cancelAnAuction");
+        application.getSceneController().activate("employeeCancel");
     }
 
     @FXML
