@@ -50,9 +50,12 @@ public class Item {
     /**
      * Constructor for Item object.
      *
-     * @param description String used to represent a brief description for Item object.
-     * @param quantity    int used to represent how many of Item object are sold as one.
-     * @param startBid    Bid used to represent the minimum bid accepted for Item object.
+     * @param description String used to represent a brief description for
+     *                    Item object.
+     * @param quantity    int used to represent how many of Item object are
+     *                   sold as one.
+     * @param startBid    Bid used to represent the minimum bid accepted for
+     *                   Item object.
      * @param condition the condition of the item
      * @param approximateSize the approximate size of the item
      * @param location the location the item is stored
@@ -81,9 +84,12 @@ public class Item {
      * Constructor for Item object.
      *
      * @param id    int used to represent the ID number for Item object.
-     * @param description String used to represent a brief description for Item object.
-     * @param quantity    int used to represent how many of Item object are sold as one.
-     * @param startBid    Bid used to represent the minimum bid accepted for Item object.
+     * @param description String used to represent a brief description for
+     *                    Item object.
+     * @param quantity    int used to represent how many of Item object are
+     *                    sold as one.
+     * @param startBid    Bid used to represent the minimum bid accepted for
+     *                   Item object.
      * @param condition the condition of the item
      * @param approximateSize the approximate size of the item
      * @param location the location the item is stored
@@ -99,7 +105,8 @@ public class Item {
             String approximateSize,
             String location,
             String comments) {
-        this(auctionId, description, quantity, startBid, condition, approximateSize, location, comments);
+        this(auctionId, description, quantity, startBid, condition,
+                approximateSize, location, comments);
         this.id = id;
     }
 
@@ -125,29 +132,56 @@ public class Item {
         startBid = theBid.getAmount();
     }
 
+    /**
+     * Get the ID that represents this Item.
+     * @return long the item ID
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * Get a long returned that represents the Auction ID for the auction this
+     * Item belongs to.
+     * @return long representing the auction ID
+     */
     public long getAuctionId() {
         return auctionId;
     }
 
+    /**
+     * Get a String description of the Item.
+     * @return String a description of the item
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Get the quantity of this Item.
+     * @return int representing the quantity of this Item
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     * Get the starting bid for this Item.
+     * @return BigDecimal representing the starting Bid.
+     */
     public BigDecimal getStartBid() {
         return startBid;
     }
 
+    /**
+     * Get the Auction that this Item belongs to.
+     *
+     * @return Auction object that this item belongs to
+     */
     public Auction getAuction() {
         if (this.auction == null) {
-            this.auction = ConsoleApplication.getInstance().getAuctionRepository().fetchAll().stream()
+            this.auction = ConsoleApplication.getInstance().
+                    getAuctionRepository().fetchAll().stream()
                     .filter(a -> a.getId() == this.auctionId)
                     .findFirst().orElse(null);
         }
@@ -155,9 +189,16 @@ public class Item {
         return this.auction;
     }
 
+    /**
+     * Get all of the bids that have been placed on this Item. Returns
+     * a list of Bid objects.
+     *
+     * @return List<Bid> get list of current placed bids on the item
+     */
     public List<Bid> getPlacedBids() {
         if (this.placedBids == null) {
-            this.placedBids = ConsoleApplication.getInstance().getBidRepository().fetchAll().stream()
+            this.placedBids = ConsoleApplication.getInstance().
+                    getBidRepository().fetchAll().stream()
                     .filter(bid -> bid.getAuctionId() == this.auctionId
                             && bid.getItemId() == this.id)
                     .collect(Collectors.toList());
@@ -166,6 +207,11 @@ public class Item {
         return this.placedBids;
     }
 
+    /**
+     * Get the current bid on the Item.
+     *
+     * @return Bid object representing the current bid
+     */
     public Bid getCurrentBid() {
         return ConsoleApplication.getInstance().getBidRepository().fetchAll().stream()
                 .filter(b -> b.getItemId() == this.id)

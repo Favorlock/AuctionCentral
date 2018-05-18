@@ -34,9 +34,11 @@ public class Organization {
         return this.name;
     }
 
+
     public List<ContactPerson> getContactPeople() {
         if (this.contactPeople == null) {
-            this.contactPeople = ConsoleApplication.getInstance().getUserRepository().fetchAll().stream()
+            this.contactPeople = ConsoleApplication.getInstance()
+                    .getUserRepository().fetchAll().stream()
                     .filter(user -> user.getType() == UserType.CONTACT_PERSON)
                     .map(user -> (ContactPerson) user)
                     .filter(user -> user.getOrganizationId() == this.id)
@@ -48,7 +50,8 @@ public class Organization {
 
     public List<Auction> getAuctions() {
         if (this.auctions == null) {
-            this.auctions = ConsoleApplication.getInstance().getAuctionRepository().fetchAll().stream()
+            this.auctions = ConsoleApplication.getInstance()
+                    .getAuctionRepository().fetchAll().stream()
                     .filter(auction -> auction.getOrganizationId() == this.id)
                     .collect(Collectors.toList());
         }
@@ -73,9 +76,17 @@ public class Organization {
 
     public boolean isAuctionScheduleOpeningAvailable() {
         return ConsoleApplication.getInstance().getAuctionRepository()
-                .fetchFutureAuctions().size() < Bootstrap.getInstance().getSettingsRepository().fetch().getAuctionCapacity();
+                .fetchFutureAuctions().size() < Bootstrap.getInstance().
+                getSettingsRepository().fetch().getAuctionCapacity();
     }
 
+    /**
+     * Attempt to add an auction to the AuctionRepository if possible.
+     * For example must not have more than allowable auctions on one day and
+     * more than allowable within the year etc...
+     * @param auction Auction object to Auction repository
+     * @return True if the auction added
+     */
     public boolean addAuction(Auction auction) {
         boolean added = false;
         if (isAuctionScheduleOpeningAvailable()

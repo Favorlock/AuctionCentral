@@ -8,7 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-
+/**
+ * GUI for users to login to the application.
+ *
+ * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
+ * @version 5/18/2018
+ */
 public class LoginController {
 
     @FXML
