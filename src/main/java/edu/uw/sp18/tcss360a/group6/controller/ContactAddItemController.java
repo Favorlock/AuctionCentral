@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
  * @version 5/18/2018
  */
 public class ContactAddItemController {
-
     private FXApplication application = FXApplication.getInstance();
     @FXML
     public void back() {

@@ -4,7 +4,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
+<?import javafx.collections.*?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.uw.sp18.tcss360a.group6.controller.ContactViewAuctionsController"
             prefHeight="480.0" prefWidth="680.0">
@@ -30,7 +32,11 @@
     </left>
 
     <center>
-        <VBox styleClass="content-section" />
+        <VBox styleClass="content-section"  >
+            <children>
+                <ListView fx:id="listView"/>
+            </children>
+        </VBox>
     </center>
 
     <bottom>

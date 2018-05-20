@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.uw.sp18.tcss360a.group6.controller.ViewBidsController"
             prefHeight="480.0" prefWidth="680.0">
@@ -31,6 +32,11 @@
 
     <center>
         <VBox styleClass="content-section" />
+            <BorderPane styleClass="bids-section">
+            <center>
+                <ListView fx:id="myBidsAView" layoutX="14.0" layoutY="21.0" prefHeight="109.0" prefWidth="100.0" />
+            </center>
+        </BorderPane>
     </center>
 
     <bottom>

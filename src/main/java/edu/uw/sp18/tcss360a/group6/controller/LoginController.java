@@ -29,6 +29,7 @@ public class LoginController {
             if (user != null) {
                 if (user.getType() == UserType.BIDDER) {
                     application.getSceneController().activate("bidderMain");
+
                 } else if (user.getType() == UserType.CONTACT_PERSON) {
                     application.getSceneController().activate("contactMain");
                 } else if (user.getType() == UserType.EMPLOYEE) {

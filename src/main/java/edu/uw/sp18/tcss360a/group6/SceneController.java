@@ -24,6 +24,7 @@ public class SceneController {
     }
 
     public void activate(String name) {
+
         this.primaryScene.setRoot(this.screenMap.get(name));
     }
 
