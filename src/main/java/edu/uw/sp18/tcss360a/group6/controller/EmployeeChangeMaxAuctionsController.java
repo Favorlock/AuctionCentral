@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.controller;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -19,7 +20,9 @@ public class EmployeeChangeMaxAuctionsController {
     private TextField newMax;
     @FXML
     public void onEnter(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
 
+        }
     }
     @FXML
     public void back() {

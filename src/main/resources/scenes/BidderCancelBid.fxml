@@ -15,7 +15,7 @@
     <top>
         <BorderPane styleClass="header-section">
             <left>
-                <Label id="header-text" text="Canceling a Bid"/>
+                <Label id="header-text" text="Cancel a Bid"/>
             </left>
         </BorderPane>
     </top>

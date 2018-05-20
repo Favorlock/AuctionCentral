@@ -31,7 +31,7 @@
 
     <center>
         <VBox styleClass="content-section" prefHeight="200.0" prefWidth="325.0">
-            <Label text="Please enter the start and end date in the format: 2007-12-03 " wrapText="true">
+            <Label text="Please enter the start and end date in the format: 2007-12-25 " wrapText="true">
                 <font>
                     <Font size="18.0"/>
                 </font>

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
-<?import javafx.collections.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.*?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
@@ -17,7 +15,7 @@
     <top>
         <BorderPane styleClass="header-section">
             <left>
-                <Label id="header-text" text="Auctions"/>
+                <Label id="header-text" text="All Auctions"/>
             </left>
         </BorderPane>
     </top>
