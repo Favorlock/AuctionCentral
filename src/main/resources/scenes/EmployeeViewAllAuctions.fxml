@@ -15,17 +15,15 @@
     <top>
         <BorderPane styleClass="header-section">
             <left>
-                <Label id="header-text" text="Auctions"/>
+                <Label id="header-text" text="All Auctions in System"/>
             </left>
         </BorderPane>
     </top>
 
     <left>
         <VBox styleClass="sidebar-section">
-            <children>
-                <Label text="Go Back" onMouseReleased="#back"/>
-                <Label text="Logout" onMouseReleased="#logout"/>
-            </children>
+            <Label text="Go Back" onMouseReleased="#back"/>
+            <Label text="Logout" onMouseReleased="#logout"/>
         </VBox>
     </left>
 
@@ -35,9 +33,7 @@
 
     <bottom>
         <HBox styleClass="footer-section">
-            <children>
-                <Label text="UWT, TCSS 360 A, Group 6, Spring 2018"/>
-            </children>
+            <Label text="UWT, TCSS 360 A, Group 6, Spring 2018"/>
         </HBox>
     </bottom>
 </BorderPane>

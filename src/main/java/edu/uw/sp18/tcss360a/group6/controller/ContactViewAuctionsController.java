@@ -21,7 +21,8 @@ import java.util.List;
  * @version 5/18/2018
  */
 public class ContactViewAuctionsController {
-    @FXML private ListView listView;
+    @FXML
+    public ListView listView;
     private FXApplication application = FXApplication.getInstance();
     private  ObservableList names = FXCollections.observableArrayList();
     public ContactViewAuctionsController () {
