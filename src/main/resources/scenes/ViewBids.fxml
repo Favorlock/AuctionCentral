@@ -31,12 +31,13 @@
         </VBox>
     </left>
 
+
     <center>
         <VBox styleClass="content-section"  >
-            <children>
-                <ListView fx:id="listView"/>
-                <Button fx:id="refreshBids" onAction="#displayBids" text="View Bids / Refresh" alignment="center"/>
-            </children>
+            <ListView fx:id="listView"/>
+            <HBox styleClass="content-section" spacing="60">
+                <Button fx:id="refreshBids" onAction="#displayBids" text="View Bids / Refresh" />
+            </HBox>
         </VBox>
     </center>
 

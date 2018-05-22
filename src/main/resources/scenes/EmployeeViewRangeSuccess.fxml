@@ -29,14 +29,16 @@
         </VBox>
     </left>
 
+
     <center>
         <VBox styleClass="content-section"  >
-            <children>
-                <ListView fx:id="listView"/>
+            <ListView fx:id="listView"/>
+            <HBox styleClass="content-section" spacing="60">
                 <Button fx:id="refreshAuctions" onAction="#displayAuctions" text="View Auctions / Refresh" />
-            </children>
+            </HBox>
         </VBox>
     </center>
+
 
     <bottom>
         <HBox styleClass="footer-section">
