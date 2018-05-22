@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
@@ -30,25 +29,26 @@ public class ContactViewAuctionsController {
     public ListView listView;
     @FXML
     private FXApplication application = FXApplication.getInstance();
-    private  ObservableList names = FXCollections.observableArrayList();
+    private  ObservableList auctions = FXCollections.observableArrayList();
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public ContactViewAuctionsController () {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
+        //TODO: dispaly only auctions associated with contact person
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
 
         listView = new ListView();
 
-        List<String> name = new ArrayList<>();
+        List<String> auctionString = new ArrayList<>();
         //add the items to the list
         for(Auction anAuction : auctions) {
-            name.add(anAuction.toString());
+            auctionString.add(anAuction.toString());
         }
 
-        names.setAll(name);
-        listView.setItems(names);
+        this.auctions.setAll(auctionString);
+        listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         listView.setVisible(true);
@@ -60,7 +60,7 @@ public class ContactViewAuctionsController {
     @FXML
     public void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
-        listProperty.set(FXCollections.observableArrayList(names));
+        listProperty.set(FXCollections.observableArrayList(auctions));
     }
 
     @FXML

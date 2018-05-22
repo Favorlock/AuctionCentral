@@ -33,7 +33,7 @@
         <VBox styleClass="content-section"  >
             <children>
                 <ListView fx:id="listView"/>
-                <Button fx:id="refreshAuctions" onAction="#displayAuctions" text="Refresh Auctions" />
+                <Button fx:id="refreshAuctions" onAction="#displayAuctions" text="View Auctions / Refresh" />
             </children>
         </VBox>
     </center>
