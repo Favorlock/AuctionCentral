@@ -36,10 +36,12 @@ public class EmployeeViewRangeSuccessController {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
+        //TODO: get auctions between dates, not all auctions
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
         listView = new ListView();
 
         List<String> auctionString = new ArrayList<>();
+
         //add the items to the list
         for(Auction anAuction : auctions) {
             auctionString.add(anAuction.toString());

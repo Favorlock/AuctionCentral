@@ -169,11 +169,9 @@ public class Auction {
 
     @Override
     public String toString() {
-        return "Auction{" +
-                "id=" + id +
-                ", organizationId=" + organizationId +
-                ", startDate=" + startDate +
-                '}';
+        return "Auction ID=" + id +
+                ", Organization ID=" + organizationId +
+                ", Start Date=" + startDate;
     }
 }
 
