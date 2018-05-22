@@ -28,6 +28,7 @@ public class FXApplication extends Application {
     private static String EMPLOYEE_CANCEL_FXML = "/scenes/EmployeeCancelAnAuction.fxml";
     private static String EMPLOYEE_CHANGE_MAX_FXML = "/scenes/EmployeeChangeMaxAuctions.fxml";
     private static String AUCTION_ADD_SUCCESS_FXML = "/scenes/AuctionAddSuccess.fxml";
+    private static String EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML = "/scenes/EmployeeViewAuctionsError.fxml";
 
     private static final String STAGE_TITLE = "Auction Central";
 
@@ -55,6 +56,8 @@ public class FXApplication extends Application {
         //bidders
         final Parent bidderMain = FXMLLoader.load(getClass()
                 .getResource(BIDDER_MAIN_FXML));
+        final Parent employeeViewAuctionsError = FXMLLoader.load(getClass()
+                .getResource(EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML));
         final Parent viewBids = FXMLLoader.load(getClass()
                 .getResource(BIDDER_VIEW_BIDS_FXML));
         final Parent placeBid = FXMLLoader.load(getClass()
@@ -101,6 +104,8 @@ public class FXApplication extends Application {
                 .addScreen("employeeChangeMax", employeeChangeMax);
         this.sceneController
                 .addScreen("auctionAddSuccess", auctionAddSuccess);
+        this.sceneController
+                .addScreen("employeeViewAuctionsError", employeeViewAuctionsError);
 
 
         stage.setTitle(STAGE_TITLE);
