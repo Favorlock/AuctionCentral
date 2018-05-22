@@ -28,13 +28,11 @@ public class EmployeeViewAuctionsBetweenDatesController {
     @FXML
     public void onEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            System.out.println(LocalDate.parse(startDate.getText()));
-            System.out.println(LocalDate.parse(endDate.getText()));
 
             start = LocalDate.parse(startDate.getText());
             end = LocalDate.parse(endDate.getText());
             if (start.isBefore(end)) {
-                application.getSceneController().activate("employeeMain");
+                application.getSceneController().activate("employeeViewRangeSuccess");
             } else {
                 application.getSceneController().activate("employeeViewAuctionsError");
             }
