@@ -33,6 +33,8 @@ public class EmployeeViewAuctionsBetweenDatesController {
             end = LocalDate.parse(endDate.getText());
             if (start.isBefore(end)) {
                 application.getSceneController().activate("employeeViewRangeSuccess");
+                EmployeeViewRangeSuccessController.setDates(start, end);
+
             } else {
                 application.getSceneController().activate("employeeViewAuctionsError");
             }

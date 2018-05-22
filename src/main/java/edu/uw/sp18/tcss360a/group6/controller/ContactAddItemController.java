@@ -33,7 +33,7 @@ public class ContactAddItemController {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
-        //TODO: dispaly only auctions associated with contact person
+        //TODO: display only auctions associated with contact person
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
 
         listView = new ListView();
@@ -50,7 +50,7 @@ public class ContactAddItemController {
 
         listView.setVisible(true);
 
-        displayAuctions(); // TODO: this should display them initially ????
+        displayAuctions();
 
     }
 

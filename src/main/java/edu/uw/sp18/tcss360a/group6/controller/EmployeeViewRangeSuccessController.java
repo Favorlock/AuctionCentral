@@ -13,6 +13,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,17 +32,16 @@ public class EmployeeViewRangeSuccessController {
     private FXApplication application = FXApplication.getInstance();
     private ObservableList auctions = FXCollections.observableArrayList();
     private ListProperty<String> listProperty = new SimpleListProperty<>();
-
     public EmployeeViewRangeSuccessController () {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
-        //TODO: get auctions between dates, not all auctions
+        //TODO: Display only auctions in range
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+
         listView = new ListView();
 
         List<String> auctionString = new ArrayList<>();
-
         //add the items to the list
         for(Auction anAuction : auctions) {
             auctionString.add(anAuction.toString());
@@ -57,11 +57,15 @@ public class EmployeeViewRangeSuccessController {
 
     }
 
+    public static void setDates(LocalDate start, LocalDate end) {
+    }
+
     @FXML
     public void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
     }
+
     @FXML
     public void back() {
         application.getSceneController().activate("employeeBetweenDates");
