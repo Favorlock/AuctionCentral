@@ -3,6 +3,8 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.collections.ObservableList;
@@ -25,10 +27,13 @@ public class ContactViewAuctionsController {
     public ListView listView;
     private FXApplication application = FXApplication.getInstance();
     private  ObservableList names = FXCollections.observableArrayList();
+
+    private ListProperty<String> listProperty = new SimpleListProperty<>();
+
     public ContactViewAuctionsController () {
         super ();
 
-         listView = new ListView();
+        listView = new ListView();
 
         List<String> name = new ArrayList<>();
         name.add("Adam");
@@ -37,7 +42,18 @@ public class ContactViewAuctionsController {
         names.setAll(name);
         listView.setItems(names);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+
+        listView.setVisible(true);
+
     }
+
+    @FXML
+    public void displayAuctions() {
+        System.out.println("--- button works ---");
+        listView.itemsProperty().bind(listProperty);
+        listProperty.set(FXCollections.observableArrayList(names));
+    }
+
     @FXML
     public void back() {
         application.getSceneController().activate("contactMain");
