@@ -67,7 +67,7 @@ public class EmployeeCancelAnAuctionController {
         Employee employee = Session.getInstance().get("user", Employee.class);
         Auction canceledAuction = (Auction)listView.getSelectionModel().getSelectedItem();
 
-        System.out.println(employee.cancelAnAuction(canceledAuction));
+            System.out.println(employee.cancelAnAuction(canceledAuction));
     }
     @FXML
     public void back() {
