@@ -40,6 +40,10 @@ public class Employee extends AbstractUser {
         }
     }
 
+    /**
+     * Get maximum amount of auctions currently allowed in the system.
+     * @return integer showing max allowed auctions
+     */
     public int getAuctionCapacity() {
         Bootstrap bootstrap = Bootstrap.getInstance();
         SettingsRepository settingsRepository = bootstrap.getSettingsRepository();
@@ -85,16 +89,14 @@ public class Employee extends AbstractUser {
      */
     public Boolean cancelAnAuction(Auction anAuction) { //TODO: is all relevant info deleted?
         boolean didDeleteAuction = false;
-        if (anAuction.getInventorySize() == 0) {
-            List<Auction> auctions = Bootstrap.getInstance().getAuctionRepository().fetchAll();
-            for (Auction a : auctions) {
-                if (a.getId() == anAuction.getId()) {
-                    if(isThereBidsOnAuctionItems(a.getInventory())) {
-                        Bootstrap.getInstance().getAuctionRepository().delete(a);
-                        didDeleteAuction = true;
-                    }
-                    break;
+        List<Auction> auctions = Bootstrap.getInstance().getAuctionRepository().fetchAll();
+        for (Auction a : auctions) {
+            if (a.getId() == anAuction.getId()) {
+                if(!isThereBidsOnAuctionItems(a.getInventory())) {
+                    Bootstrap.getInstance().getAuctionRepository().delete(a);
+                    didDeleteAuction = true;
                 }
+                break;
             }
         }
         return didDeleteAuction;
