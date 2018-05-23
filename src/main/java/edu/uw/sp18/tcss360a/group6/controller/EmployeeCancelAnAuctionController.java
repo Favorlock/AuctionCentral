@@ -47,7 +47,8 @@ public class EmployeeCancelAnAuctionController {
 
         this.auctions.setAll(auctions);
         listView.setItems(this.auctions);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
 
         listView.setVisible(true);
 

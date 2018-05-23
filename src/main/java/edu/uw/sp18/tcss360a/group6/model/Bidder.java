@@ -90,6 +90,10 @@ public class Bidder extends AbstractUser {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Get the all bids that this bidder placed in all auctions.
+     * @return list of type Bid
+     */
     public List<Bid> getPlacedBids() {
         if (this.placedBids == null) {
             this.placedBids = ConsoleApplication.getInstance().getBidRepository()
@@ -101,16 +105,30 @@ public class Bidder extends AbstractUser {
         return this.placedBids;
     }
 
+    /**
+     * Get the items that this Bidder has placed bids on in a specified
+     * auction.
+     * @param auction an Auction to get bids on
+     * @return a list of items in the auction
+     */
     public List<Item> getPlacedBidItems(Auction auction) {
         return getPlacedBidItems().stream()
                 .filter(item -> item.getAuctionId() == auction.id)
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Get the list of Items that his bidder has placed bids on.
+     * @return list of Item
+     */
     public List<Item> getPlacedBidItems() {
         return getPlacedBids().stream().map(bid -> bid.getItem()).collect(Collectors.toList());
     }
 
+    /**
+     * Get the list of Auctions that this bidder has placed bids in.
+     * @return list of Auction
+     */
     public List<Auction> getPlacedBidAuctions() {
         return getPlacedBids().stream()
                 .map(bid -> bid.getAuction())

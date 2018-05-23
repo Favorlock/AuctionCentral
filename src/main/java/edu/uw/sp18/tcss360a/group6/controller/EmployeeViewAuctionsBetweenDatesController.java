@@ -34,12 +34,13 @@ public class EmployeeViewAuctionsBetweenDatesController {
 
             start = LocalDate.parse(startDate.getText());
             end = LocalDate.parse(endDate.getText());
-            if (start.isBefore(end)) {
-                application.getSceneController().activate("employeeViewRangeSuccess");
+            if (start.isBefore(end)) { //TODO: check for invalid entry formats
                 EmployeeViewRangeSuccessController.setDates(start, end);
-
+                application.getSceneController()
+                        .activate("employeeViewRangeSuccess");
             } else {
-                application.getSceneController().activate("employeeViewAuctionsError");
+                application.getSceneController()
+                        .activate("employeeViewAuctionsError");
             }
         }
     }

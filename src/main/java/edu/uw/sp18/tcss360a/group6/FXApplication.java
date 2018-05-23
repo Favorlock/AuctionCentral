@@ -85,6 +85,10 @@ public class FXApplication extends Application {
         return this.sceneController;
     }
 
+    /**
+     * Start the GUI .
+     * @param args for command line input
+     */
     public static void main(String... args) {
         Bootstrap bootstrap = new Bootstrap();
         Application.launch(FXApplication.class);

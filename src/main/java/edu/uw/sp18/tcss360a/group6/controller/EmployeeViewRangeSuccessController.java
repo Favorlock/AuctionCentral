@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.controller;
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Employee;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -33,6 +34,9 @@ public class EmployeeViewRangeSuccessController {
     @FXML
     private FXApplication application = FXApplication.getInstance();
 
+    private static LocalDate startDate;
+    private static LocalDate endDate;
+
     private ObservableList auctions = FXCollections.observableArrayList();
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
@@ -41,14 +45,17 @@ public class EmployeeViewRangeSuccessController {
 
         Bootstrap bootstrap = new Bootstrap();
         //TODO: Display only auctions in range
-        List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+        List<Auction> auction = bootstrap.getAuctionRepository()
+                .fetchAuctionsInPeriod(startDate, endDate);
+//        List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
 
         listView = new ListView();
 
 
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
 
         listView.setVisible(true);
 
@@ -56,6 +63,8 @@ public class EmployeeViewRangeSuccessController {
     }
 
     public static void setDates(LocalDate start, LocalDate end) {
+        startDate = start;
+        endDate = end;
     }
 
     @FXML
