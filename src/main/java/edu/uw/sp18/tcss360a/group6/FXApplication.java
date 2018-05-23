@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 /**
  * Driver to run the GUI.
@@ -43,75 +44,37 @@ public class FXApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        final Parent login = FXMLLoader.load(getClass()
-                .getResource(LOGIN_FXML));
-        //contact persons
-        final Parent contactMain = FXMLLoader.load(getClass()
-                .getResource(CONTACT_MAIN_FXML));
-        final Parent contactViewAuctions = FXMLLoader.load(getClass()
-                .getResource(CONTACT_VIEW_AUCTIONS_FXML));
-        final Parent contactAddItem = FXMLLoader.load(getClass()
-                .getResource(CONTACT_ADD_ITEM_FXML));
-        final Parent contactSubmitAuction = FXMLLoader.load(getClass()
-                .getResource(CONTACT_SUBMIT_AUCTION_FXML));
-        //bidders
-        final Parent bidderMain = FXMLLoader.load(getClass()
-                .getResource(BIDDER_MAIN_FXML));
-        final Parent employeeViewAuctionsError = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML));
-        final Parent viewBids = FXMLLoader.load(getClass()
-                .getResource(BIDDER_VIEW_BIDS_FXML));
-        final Parent placeBid = FXMLLoader.load(getClass()
-                .getResource(BIDDER_PLACE_BID_FXML));
-        final Parent bidderCancelBid = FXMLLoader.load(getClass()
-                .getResource(BIDDER_CANCEL_BID_FXML));
-        //employees
-        final Parent employeeMain = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_MAIN_FXML));
-        final Parent employeeViewAll = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_VIEW_ALL_FXML));
-        final Parent employeeBetweenDates = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_VIEW_BETWEEN_DATES_FXML));
-        final Parent employeeCancel = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_CANCEL_FXML));
-        final Parent employeeChangeMax = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_CHANGE_MAX_FXML));
-        final Parent auctionAddSuccess = FXMLLoader.load(getClass()
-                .getResource(AUCTION_ADD_SUCCESS_FXML));
-        final Parent employeeViewRangeSuccess = FXMLLoader.load(getClass()
-                .getResource(EMPLOYEE_VIEW_RANGE_SUCCESS_FXML));
-
-
-        final Scene scene = new Scene(login);
+        final Scene scene = new Scene(new AnchorPane());
         this.sceneController = new SceneController(scene);
-        this.sceneController.addScreen("login", login);
+        this.sceneController.addScreen("login", LOGIN_FXML);
         //contact persons
-        this.sceneController.addScreen("contactMain", contactMain);
+        this.sceneController.addScreen("contactMain", CONTACT_MAIN_FXML);
         this.sceneController
-                .addScreen("contactViewAuctions", contactViewAuctions);
-        this.sceneController.addScreen("contactAddItem", contactAddItem);
-        this.sceneController.addScreen("contactSubmitAuction", contactSubmitAuction);
+                .addScreen("contactViewAuctions", CONTACT_VIEW_AUCTIONS_FXML);
+        this.sceneController.addScreen("contactAddItem", CONTACT_ADD_ITEM_FXML);
+        this.sceneController.addScreen("contactSubmitAuction", CONTACT_SUBMIT_AUCTION_FXML);
         //bidders
-        this.sceneController.addScreen("bidderMain", bidderMain);
-        this.sceneController.addScreen("viewBids", viewBids);
-        this.sceneController.addScreen("placeBid", placeBid);
-        this.sceneController.addScreen("cancelBid", bidderCancelBid);
+        this.sceneController.addScreen("bidderMain", BIDDER_MAIN_FXML);
+        this.sceneController.addScreen("viewBids", BIDDER_VIEW_BIDS_FXML);
+        this.sceneController.addScreen("placeBid", BIDDER_PLACE_BID_FXML);
+        this.sceneController.addScreen("cancelBid", BIDDER_CANCEL_BID_FXML);
         //employees
-        this.sceneController.addScreen("employeeMain", employeeMain);
+        this.sceneController.addScreen("employeeMain", EMPLOYEE_MAIN_FXML);
         this.sceneController
-                .addScreen("employeeViewAllAuctions", employeeViewAll);
+                .addScreen("employeeViewAllAuctions", EMPLOYEE_VIEW_ALL_FXML);
         this.sceneController
-                .addScreen("employeeBetweenDates", employeeBetweenDates);
-        this.sceneController.addScreen("employeeCancel", employeeCancel);
+                .addScreen("employeeBetweenDates", EMPLOYEE_VIEW_BETWEEN_DATES_FXML);
+        this.sceneController.addScreen("employeeCancel", EMPLOYEE_CANCEL_FXML);
         this.sceneController
-                .addScreen("employeeChangeMax", employeeChangeMax);
+                .addScreen("employeeChangeMax", EMPLOYEE_CHANGE_MAX_FXML);
         this.sceneController
-                .addScreen("auctionAddSuccess", auctionAddSuccess);
+                .addScreen("auctionAddSuccess", AUCTION_ADD_SUCCESS_FXML);
         this.sceneController
-                .addScreen("employeeViewAuctionsError", employeeViewAuctionsError);
+                .addScreen("employeeViewAuctionsError", EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML);
         this.sceneController
-                .addScreen("employeeViewRangeSuccess", employeeViewRangeSuccess);
+                .addScreen("employeeViewRangeSuccess", EMPLOYEE_VIEW_RANGE_SUCCESS_FXML);
 
+        this.sceneController.activate("login");
 
         stage.setTitle(STAGE_TITLE);
         stage.setScene(scene);
