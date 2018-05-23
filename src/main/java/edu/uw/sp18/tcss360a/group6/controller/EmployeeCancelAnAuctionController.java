@@ -2,7 +2,10 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Employee;
+import edu.uw.sp18.tcss360a.group6.model.Item;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -38,18 +41,11 @@ public class EmployeeCancelAnAuctionController {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
-        //TODO: display only auctions associated with contact person
-        List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+        List<Auction> auctions = bootstrap.getAuctionRepository().fetchFutureAuctions();
 
         listView = new ListView();
 
-        List<String> auctionString = new ArrayList<>();
-        //add the items to the list
-        for(Auction anAuction : auctions) {
-            auctionString.add(anAuction.toString());
-        }
-
-        this.auctions.setAll(auctionString);
+        this.auctions.setAll(auctions);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
@@ -64,6 +60,15 @@ public class EmployeeCancelAnAuctionController {
         listProperty.set(FXCollections.observableArrayList(auctions));
     }
 
+    @FXML
+    public void cancelAuction() {
+
+        //TODO: Cancel auction method not removing auction
+        Employee employee = Session.getInstance().get("user", Employee.class);
+        Auction canceledAuction = (Auction)listView.getSelectionModel().getSelectedItem();
+
+        System.out.println(employee.cancelAnAuction(canceledAuction));
+    }
     @FXML
     public void back() {
         application.getSceneController().activate("employeeMain");
