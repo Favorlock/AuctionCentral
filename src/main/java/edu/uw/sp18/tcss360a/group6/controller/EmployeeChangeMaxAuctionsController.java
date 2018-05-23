@@ -16,20 +16,19 @@ import javafx.scene.input.KeyEvent;
 public class EmployeeChangeMaxAuctionsController {
 
     private FXApplication application = FXApplication.getInstance();
+
     @FXML
     private TextField newMax;
+
     @FXML
     public void onEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
 
         }
     }
+
     @FXML
     public void back() {
         application.getSceneController().activate("employeeMain");
-    }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
     }
 }

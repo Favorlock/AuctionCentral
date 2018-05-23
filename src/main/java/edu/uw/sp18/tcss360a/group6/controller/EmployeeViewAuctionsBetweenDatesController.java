@@ -18,13 +18,16 @@ public class EmployeeViewAuctionsBetweenDatesController {
 
     @FXML
     private TextField startDate;
+
     @FXML
     private TextField endDate;
 
     private LocalDate start;
+
     private LocalDate end;
 
     private FXApplication application = FXApplication.getInstance();
+
     @FXML
     public void onEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
@@ -38,12 +41,10 @@ public class EmployeeViewAuctionsBetweenDatesController {
             }
         }
     }
+
     @FXML
     public void back() {
         application.getSceneController().activate("employeeMain");
     }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
-    }
+
 }

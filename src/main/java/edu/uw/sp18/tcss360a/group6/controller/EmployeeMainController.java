@@ -29,9 +29,4 @@ public class EmployeeMainController {
     public void cancelAnAuction() {
         application.getSceneController().activate("employeeCancel");
     }
-
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
-    }
 }

@@ -23,12 +23,17 @@ import java.util.List;
  * @version 5/18/2018
  */
 public class EmployeeCancelAnAuctionController {
+
     @FXML
     public ListView listView;
+
     @FXML
     private FXApplication application = FXApplication.getInstance();
+
     private ObservableList auctions = FXCollections.observableArrayList();
+
     private ListProperty<String> listProperty = new SimpleListProperty<>();
+
     public EmployeeCancelAnAuctionController () {
         super ();
 
@@ -51,7 +56,6 @@ public class EmployeeCancelAnAuctionController {
         listView.setVisible(true);
 
         displayAuctions(); // TODO: this should display them initially ????
-
     }
 
     @FXML
@@ -63,9 +67,5 @@ public class EmployeeCancelAnAuctionController {
     @FXML
     public void back() {
         application.getSceneController().activate("contactMain");
-    }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
     }
 }

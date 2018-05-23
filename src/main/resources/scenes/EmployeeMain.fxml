@@ -6,15 +6,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="480.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uw.sp18.tcss360a.group6.controller.EmployeeMainController">
+<BorderPane prefHeight="480.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.uw.sp18.tcss360a.group6.controller.EmployeeMainController">
     <stylesheets>
-        <URL value="@../css/Root.css" />
+        <URL value="@../css/Root.css"/>
     </stylesheets>
 
     <top>
         <BorderPane styleClass="header-section">
             <left>
-                <Label id="header-text" text="Main Menu - Employee" />
+                <Label id="header-text" text="Main Menu - Employee"/>
             </left>
         </BorderPane>
     </top>
@@ -22,23 +24,25 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label onMouseReleased="#viewAllAuctions" text="View All Auctions in System" wrapText="true" />
-            <Label layoutX="11.0" layoutY="56.0" onMouseReleased="#viewAuctionsBetweenDates" text="View Auctions Between Two Dates" wrapText="true" />
-                <Label onMouseReleased="#changeMaxAuctions" text="Change Maximum Number of Auctions" wrapText="true" />
-            <Label layoutX="11.0" layoutY="141.0" onMouseReleased="#cancelAnAuction" text="Cancel an Auction" wrapText="true" />
-                <Label onMouseReleased="#logout" text="logout" />
+                <Label onMouseReleased="#viewAllAuctions" text="View All Auctions in System" wrapText="true"/>
+                <Label layoutX="11.0" layoutY="56.0" onMouseReleased="#viewAuctionsBetweenDates"
+                       text="View Auctions Between Two Dates" wrapText="true"/>
+                <Label onMouseReleased="#changeMaxAuctions" text="Change Maximum Number of Auctions" wrapText="true"/>
+                <Label layoutX="11.0" layoutY="141.0" onMouseReleased="#cancelAnAuction" text="Cancel an Auction"
+                       wrapText="true"/>
+                <fx:include source="Logout.fxml"/>
             </children>
         </VBox>
     </left>
 
     <center>
-        <VBox prefHeight="379.0" prefWidth="484.0" styleClass="content-section" />
+        <VBox prefHeight="379.0" prefWidth="484.0" styleClass="content-section"/>
     </center>
 
     <bottom>
         <HBox styleClass="footer-section">
             <children>
-                <Label text="UWT, TCSS 360 A, Group 6, Spring 2018" />
+                <Label text="UWT, TCSS 360 A, Group 6, Spring 2018"/>
             </children>
         </HBox>
     </bottom>
