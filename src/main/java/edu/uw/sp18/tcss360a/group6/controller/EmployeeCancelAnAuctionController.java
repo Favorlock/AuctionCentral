@@ -38,7 +38,7 @@ public class EmployeeCancelAnAuctionController {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
-        //TODO: dispaly only auctions associated with contact person
+        //TODO: display only auctions associated with contact person
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
 
         listView = new ListView();
@@ -66,6 +66,6 @@ public class EmployeeCancelAnAuctionController {
 
     @FXML
     public void back() {
-        application.getSceneController().activate("contactMain");
+        application.getSceneController().activate("employeeMain");
     }
 }

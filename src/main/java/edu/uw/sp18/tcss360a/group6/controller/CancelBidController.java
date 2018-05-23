@@ -63,7 +63,7 @@ public class CancelBidController {
 
     @FXML
     public void back() {
-        application.getSceneController().activate("contactMain");
+        application.getSceneController().activate("bidderMain");
     }
 
 }
