@@ -40,7 +40,6 @@ public class ViewBidsController {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public ViewBidsController () {
-        Bootstrap bootstrap = new Bootstrap();
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
         List<Bid> bids = bidder.getPlacedBids();
 
