@@ -40,13 +40,8 @@ public class CancelBidController {
 
         listView = new ListView();
 
-        List<String> bidsString = new ArrayList<>();
-        //add the items to the list
-        for (Bid anBid : bids) {
-            bidsString.add(anBid.toString()); //.getItem()
-        }
 
-        this.observableBids.setAll(bidsString);
+        this.observableBids.setAll(bids);
         listView.setItems(this.observableBids);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 

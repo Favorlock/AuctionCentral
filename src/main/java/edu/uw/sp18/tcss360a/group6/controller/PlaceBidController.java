@@ -38,17 +38,12 @@ public class PlaceBidController {
         super ();
 
         Bootstrap bootstrap = new Bootstrap();
-        List<Auction> auctions = bootstrap.getAuctionRepository().fetchFutureAuctions();
+        List<Auction> auction = bootstrap.getAuctionRepository().fetchFutureAuctions();
 
         listView = new ListView();
 
-        List<String> auctionString = new ArrayList<>();
-        //add the items to the list
-        for(Auction anAuction : auctions) {
-            auctionString.add(anAuction.toString());
-        }
 
-        this.auctions.setAll(auctionString);
+        this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 

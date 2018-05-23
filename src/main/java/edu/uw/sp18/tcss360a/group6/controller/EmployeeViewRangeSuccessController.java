@@ -41,17 +41,12 @@ public class EmployeeViewRangeSuccessController {
 
         Bootstrap bootstrap = new Bootstrap();
         //TODO: Display only auctions in range
-        List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+        List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
 
         listView = new ListView();
 
-        List<String> auctionString = new ArrayList<>();
-        //add the items to the list
-        for(Auction anAuction : auctions) {
-            auctionString.add(anAuction.toString());
-        }
 
-        this.auctions.setAll(auctionString);
+        this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 

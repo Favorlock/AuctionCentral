@@ -39,17 +39,12 @@ public class ContactAddItemController {
         Bootstrap bootstrap = new Bootstrap();
         //TODO: display only auctions associated with contact person
         ContactPerson user = Session.getInstance().get("user", ContactPerson.class);
-        List<Auction> auctions = user.getOrganization().getAuctions();
+        List<Auction> auction = user.getOrganization().getAuctions();
 
         listView = new ListView();
 
-        List<String> auctionString = new ArrayList<>();
-        //add the items to the list
-        for(Auction anAuction : auctions) {
-            auctionString.add(anAuction.toString());
-        }
 
-        this.auctions.setAll(auctionString);
+        this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 

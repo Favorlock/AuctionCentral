@@ -44,17 +44,11 @@ public class ContactViewAuctionsController {
         ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
         Bootstrap bootstrap = new Bootstrap();
         //TODO: dispaly only auctions associated with contact person
-        List<Auction> auctions = contact.getOrganization().getAuctions();
+        List<Auction> auction = contact.getOrganization().getAuctions();
 
         listView = new ListView();
 
-        List<String> auctionString = new ArrayList<>();
-        //add the items to the list
-        for(Auction anAuction : auctions) {
-            auctionString.add(anAuction.toString());
-        }
-
-        this.auctions.setAll(auctionString);
+        this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
