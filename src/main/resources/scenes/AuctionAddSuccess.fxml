@@ -25,8 +25,7 @@
         <VBox styleClass="sidebar-section">
             <Label text="Add Items" onMouseReleased="#addItems"/>
             <Label text="Go Back" onMouseReleased="#back"/>
-            <Label text="Logout" onMouseReleased="#logout"/>
-
+            <fx:include source="Logout.fxml"/>
         </VBox>
     </left>
 

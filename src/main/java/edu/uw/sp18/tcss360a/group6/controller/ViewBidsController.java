@@ -30,11 +30,12 @@ public class ViewBidsController {
 
     @FXML
     private ListView listView;
+
     private FXApplication application = FXApplication.getInstance();
+
     private ObservableList observableBids = FXCollections.observableArrayList();
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
-
 
     public ViewBidsController () {
         Bootstrap bootstrap = new Bootstrap();
@@ -56,8 +57,6 @@ public class ViewBidsController {
         listView.setVisible(true);
 
         displayBids(); // TODO: this should display them initially ????
-
-
     }
 
     @FXML
@@ -65,12 +64,9 @@ public class ViewBidsController {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(observableBids));
     }
+
     @FXML
     public void back() {
         application.getSceneController().activate("bidderMain");
-    }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
     }
 }

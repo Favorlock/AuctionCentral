@@ -26,7 +26,7 @@
                 <Label text="View my Auctions" onMouseReleased="#viewAuctions"/>
                 <Label text="Submit Auction Request" onMouseReleased="#submitAuction" wrapText="true"/>
                 <Label text="Add Item to Auction" onMouseReleased="#addItem" wrapText="true"/>
-                <Label text="Logout" onMouseReleased="#logout"/>
+                <fx:include source="Logout.fxml"/>
             </children>
         </VBox>
     </left>

@@ -2,7 +2,6 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
-import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
@@ -24,13 +23,17 @@ import java.util.List;
  * @version 5/18/2018
  */
 public class CancelBidController {
+
     @FXML
     private ListView listView;
+
     private FXApplication application = FXApplication.getInstance();
+
     private ObservableList observableBids = FXCollections.observableArrayList();
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
-   public CancelBidController () {
+
+    public CancelBidController() {
         Bootstrap bootstrap = new Bootstrap();
         //TODO: display only bids associated with bidder
         List<Bid> bids = bootstrap.getBidRepository().fetchAll();
@@ -39,7 +42,7 @@ public class CancelBidController {
 
         List<String> bidsString = new ArrayList<>();
         //add the items to the list
-        for(Bid anBid : bids) {
+        for (Bid anBid : bids) {
             bidsString.add(anBid.toString()); //.getItem()
         }
 
@@ -50,7 +53,6 @@ public class CancelBidController {
         listView.setVisible(true);
 
         displayBids(); // TODO: this should display them initially ????
-
     }
 
     @FXML
@@ -58,12 +60,10 @@ public class CancelBidController {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(observableBids));
     }
+
     @FXML
     public void back() {
         application.getSceneController().activate("contactMain");
     }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
-    }
+
 }

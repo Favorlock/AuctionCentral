@@ -14,8 +14,6 @@ import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,11 +23,15 @@ import java.util.List;
  * @version 5/18/2018
  */
 public class EmployeeViewAllAuctionsController {
+
     @FXML
     public ListView listView;
+
     @FXML
     private FXApplication application = FXApplication.getInstance();
+
     private ObservableList auctions = FXCollections.observableArrayList();
+
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public EmployeeViewAllAuctionsController () {
@@ -52,7 +54,6 @@ public class EmployeeViewAllAuctionsController {
         listView.setVisible(true);
 
         displayAuctions(); // TODO: this should display them initially ????
-
     }
 
     @FXML
@@ -60,12 +61,10 @@ public class EmployeeViewAllAuctionsController {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
     }
+
     @FXML
     public void back() {
         application.getSceneController().activate("employeeMain");
     }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
-    }
+
 }

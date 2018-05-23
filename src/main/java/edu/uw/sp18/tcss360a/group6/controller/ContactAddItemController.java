@@ -50,8 +50,7 @@ public class ContactAddItemController {
 
         listView.setVisible(true);
 
-        displayAuctions();
-
+        displayAuctions(); // TODO: this should display them initially ????
     }
 
     @FXML

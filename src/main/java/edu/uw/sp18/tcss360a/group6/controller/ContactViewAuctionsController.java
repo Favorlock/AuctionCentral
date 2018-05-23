@@ -25,11 +25,15 @@ import java.util.List;
  * @version 5/18/2018
  */
 public class ContactViewAuctionsController {
+
     @FXML
     public ListView listView;
+
     @FXML
     private FXApplication application = FXApplication.getInstance();
+
     private  ObservableList auctions = FXCollections.observableArrayList();
+
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public ContactViewAuctionsController () {
@@ -54,7 +58,6 @@ public class ContactViewAuctionsController {
         listView.setVisible(true);
 
         displayAuctions(); // TODO: this should display them initially ????
-
     }
 
     @FXML
@@ -67,10 +70,4 @@ public class ContactViewAuctionsController {
     public void back() {
         application.getSceneController().activate("contactMain");
     }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
-    }
-
-
 }

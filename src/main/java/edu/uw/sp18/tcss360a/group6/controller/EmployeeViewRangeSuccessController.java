@@ -26,11 +26,15 @@ import java.util.List;
  * @version 5/18/2018
  */
 public class EmployeeViewRangeSuccessController {
+
     @FXML
     public ListView listView;
+
     @FXML
     private FXApplication application = FXApplication.getInstance();
+
     private ObservableList auctions = FXCollections.observableArrayList();
+
     private ListProperty<String> listProperty = new SimpleListProperty<>();
     public EmployeeViewRangeSuccessController () {
         super ();
@@ -54,7 +58,6 @@ public class EmployeeViewRangeSuccessController {
         listView.setVisible(true);
 
         displayAuctions(); // TODO: this should display them initially ????
-
     }
 
     public static void setDates(LocalDate start, LocalDate end) {
@@ -69,9 +72,5 @@ public class EmployeeViewRangeSuccessController {
     @FXML
     public void back() {
         application.getSceneController().activate("employeeBetweenDates");
-    }
-    @FXML
-    public void logout() {
-        application.getSceneController().activate("login");
     }
 }
