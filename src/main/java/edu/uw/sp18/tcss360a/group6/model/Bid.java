@@ -122,13 +122,11 @@ public class Bid {
 
     @Override
     public String toString() {
-        return "Bid{" +
-                "id=" + id +
+        return "Bid id=" + id +
                 ", bidderId=" + bidderId +
                 ", auctionId=" + auctionId +
                 ", itemId=" + itemId +
-                ", amount=" + amount +
-                "}\n";
+                ", amount=" + amount;
     }
 }
 

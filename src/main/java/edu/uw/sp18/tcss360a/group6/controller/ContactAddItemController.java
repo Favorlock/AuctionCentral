@@ -2,7 +2,11 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
+import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
+import edu.uw.sp18.tcss360a.group6.model.Employee;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -34,7 +38,8 @@ public class ContactAddItemController {
 
         Bootstrap bootstrap = new Bootstrap();
         //TODO: display only auctions associated with contact person
-        List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+        ContactPerson user = Session.getInstance().get("user", ContactPerson.class);
+        List<Auction> auctions = user.getOrganization().getAuctions();
 
         listView = new ListView();
 
