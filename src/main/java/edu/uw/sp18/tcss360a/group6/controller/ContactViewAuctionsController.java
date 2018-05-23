@@ -3,7 +3,9 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -39,9 +41,10 @@ public class ContactViewAuctionsController {
     public ContactViewAuctionsController () {
         super ();
 
+        ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
         Bootstrap bootstrap = new Bootstrap();
         //TODO: dispaly only auctions associated with contact person
-        List<Auction> auctions = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+        List<Auction> auctions = contact.getOrganization().getAuctions();
 
         listView = new ListView();
 
