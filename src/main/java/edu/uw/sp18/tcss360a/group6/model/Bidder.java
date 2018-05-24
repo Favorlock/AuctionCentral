@@ -1,5 +1,6 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.math.BigDecimal;
@@ -64,6 +65,30 @@ public class Bidder extends AbstractUser {
         return auction.isAcceptingBids() && getPlacedBids().stream()
                 .filter(bid -> bid.getAuction().getId() == auction.getId())
                 .count() < MAX_BIDS_PER_AUCTION;
+    }
+
+    /**
+     * Get a list of all of the Auctions that I can place a bid in.
+     * @return a List<Auction> that I can bid in
+     */
+    public List<Auction> getAuctionsICanBidIn() { //TODO: verify this works correctly !!!
+        Bootstrap bootstrap = new Bootstrap();
+        return bootstrap.getAuctionRepository().fetchAll().stream()
+                .filter(auction -> canBid(auction)).collect(Collectors.toList());
+    }
+
+    public boolean cancelBid(Bid aBid) { //TODO: finish for bidder cancel bid class. Verify this works !!!
+        boolean didCancelBid = false;
+        Bootstrap bootstrap = new Bootstrap();
+        List<Bid> bids = bootstrap.getBidRepository().fetchAll();
+        for(Bid b : bids) {
+            if(b.getId() == aBid.getId()) {
+                bootstrap.getBidRepository().delete(aBid);
+                didCancelBid = true;
+                break;
+            }
+        }
+        return didCancelBid;
     }
 
     /**

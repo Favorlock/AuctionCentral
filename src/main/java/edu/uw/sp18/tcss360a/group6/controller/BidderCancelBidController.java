@@ -2,7 +2,10 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
+import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -22,7 +25,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class CancelBidController {
+public class BidderCancelBidController {
 
     @FXML
     private ListView listView;
@@ -33,10 +36,15 @@ public class CancelBidController {
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
-    public CancelBidController() {
-        Bootstrap bootstrap = new Bootstrap();
+    private Bidder bidder;
+
+    public BidderCancelBidController() {
+
+        Bidder bidder = Session.getInstance().get("user", Bidder.class);
+        Bootstrap bootstrap = new Bootstrap(); //TODO: delete bootstrap
         //TODO: display only bids associated with bidder
-        List<Bid> bids = bootstrap.getBidRepository().fetchAll();
+//        List<Bid> bids = bootstrap.getBidRepository().fetchAll();
+        List<Bid> bids = bidder.getPlacedBids();
 
         listView = new ListView();
 
@@ -54,6 +62,12 @@ public class CancelBidController {
     public void displayBids() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(observableBids));
+    }
+
+    @FXML
+    public void cancelBid() {
+        Bid bid = (Bid) listView.getSelectionModel().getSelectedItem();
+        bidder.cancelBid(bid);
     }
 
     @FXML

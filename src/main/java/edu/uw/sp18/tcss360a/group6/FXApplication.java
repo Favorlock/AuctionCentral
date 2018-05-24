@@ -23,6 +23,7 @@ public class FXApplication extends Application {
     private static String BIDDER_VIEW_BIDS_FXML = "/scenes/ViewBids.fxml";
     private static String BIDDER_PLACE_BID_FXML = "/scenes/PlaceBid.fxml";
     private static String BIDDER_CANCEL_BID_FXML = "/scenes/BidderCancelBid.fxml";
+    private static String BIDDER_PLACE_BID_VIEW_AUCTION_FXML = "/scenes/BidderPlaceBidViewAuction.fxml";
     private static String EMPLOYEE_MAIN_FXML = "/scenes/EmployeeMain.fxml";
     private static String EMPLOYEE_VIEW_ALL_FXML = "/scenes/EmployeeViewAllAuctions.fxml";
     private static String EMPLOYEE_VIEW_BETWEEN_DATES_FXML = "/scenes/EmployeeViewAuctionsBetweenDates.fxml";
@@ -59,6 +60,7 @@ public class FXApplication extends Application {
         this.sceneController.addScreen("viewBids", BIDDER_VIEW_BIDS_FXML);
         this.sceneController.addScreen("placeBid", BIDDER_PLACE_BID_FXML);
         this.sceneController.addScreen("cancelBid", BIDDER_CANCEL_BID_FXML);
+        this.sceneController.addScreen("placeBidViewAuction", BIDDER_PLACE_BID_VIEW_AUCTION_FXML);
         //employees
         this.sceneController.addScreen("employeeMain", EMPLOYEE_MAIN_FXML);
         this.sceneController

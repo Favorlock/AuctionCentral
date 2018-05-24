@@ -2,7 +2,9 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -37,8 +39,10 @@ public class PlaceBidController {
     public PlaceBidController () {
         super ();
 
-        Bootstrap bootstrap = new Bootstrap();
-        List<Auction> auction = bootstrap.getAuctionRepository().fetchFutureAuctions();
+        Bidder bidder = Session.getInstance().get("user", Bidder.class);
+        Bootstrap bootstrap = new Bootstrap(); //TODO: not needed ?? delete
+//        List<Auction> auction = bootstrap.getAuctionRepository().fetchFutureAuctions();
+        List<Auction> auction = bidder.getAuctionsICanBidIn();
 
         listView = new ListView();
 
@@ -56,6 +60,11 @@ public class PlaceBidController {
     public void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
+    }
+
+    @FXML
+    public void placeBid() {
+        application.getSceneController().activate("placeBidViewAuction"); //TODO
     }
 
     @FXML
