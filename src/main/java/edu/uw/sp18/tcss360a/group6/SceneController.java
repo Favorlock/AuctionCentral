@@ -1,5 +1,6 @@
 package edu.uw.sp18.tcss360a.group6;
 
+import edu.uw.sp18.tcss360a.group6.controller.Initializable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,7 +30,12 @@ public class SceneController {
         String path = this.scenePathMap.get(name);
         if (path != null) {
             try {
-                Parent parent = FXMLLoader.load(getClass().getResource(path));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+                Parent parent = loader.load();
+                Object controller = loader.getController();
+                if (controller instanceof Initializable) {
+                    ((Initializable) controller).initialize();
+                }
                 this.primaryScene.setRoot(parent);
             } catch (IOException e) {
                 e.printStackTrace();

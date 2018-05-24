@@ -23,7 +23,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class ViewBidsController {
+public class ViewBidsController implements Initializable{
 
     @FXML
     private ListView listView;
@@ -44,8 +44,6 @@ public class ViewBidsController {
         this.listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         this.listView.setVisible(true);
-
-        Platform.runLater(this::displayBids);
     }
 
     @FXML
@@ -57,5 +55,10 @@ public class ViewBidsController {
     @FXML
     public void back() {
         this.application.getSceneController().activate("bidderMain");
+    }
+
+    @Override
+    public void initialize() {
+        displayBids();
     }
 }
