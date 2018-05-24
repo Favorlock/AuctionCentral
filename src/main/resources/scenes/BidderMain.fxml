@@ -23,7 +23,7 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View Items I Have Bid On" onMouseReleased="#viewBids"/>
+                <Label text="View Items I Have Bid On" onMouseReleased="#viewBids" wrapText="true"/>
                 <Label text="Place Bid" onMouseReleased="#placeBid"/>
                 <Label text="Cancel Bid" onMouseReleased="#cancelBid"/>
                 <fx:include source="Logout.fxml"/>

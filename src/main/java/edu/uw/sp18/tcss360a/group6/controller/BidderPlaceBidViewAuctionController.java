@@ -1,8 +1,10 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.controller.components.ListViewCell;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
+import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.model.Item;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -11,9 +13,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.util.Callback;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -32,6 +36,9 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
     @FXML
     private FXApplication application = FXApplication.getInstance();
+
+    @FXML
+    private TextField bidderAmount;
 
     private ObservableList items = FXCollections.observableArrayList();
 
@@ -61,10 +68,24 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(items));
     }
+    @FXML
+    public void clearText() {
+        bidderAmount.setText("");
+    }
 
     @FXML
-    public void placeBidOnItem() {
+    public void placeBidOnItem() { //TODO: CODE DEFENSIVE FOR INVALID BID IN TEXT FIELD
+        // check if user entered valid input into the text field
+        try {
+            BigDecimal bidAmount = new BigDecimal(bidderAmount.getText());
 
+            Item theItem = (Item)listView.getSelectionModel().getSelectedItem();
+            Bidder theBidder = Session.getInstance().get("user", Bidder.class);
+
+            theBidder.addBid(bidAmount, theItem, auction);
+        } catch (NumberFormatException e) {
+            bidderAmount.setText("Enter valid bid amount");
+        }
     }
 
     @FXML

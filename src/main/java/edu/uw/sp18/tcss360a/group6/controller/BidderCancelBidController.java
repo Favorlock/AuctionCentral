@@ -39,13 +39,10 @@ public class BidderCancelBidController implements Initializable{
     public BidderCancelBidController() {
 
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
-        Bootstrap bootstrap = new Bootstrap(); //TODO: delete bootstrap
-        //TODO: display only bids associated with bidder
-//        List<Bid> bids = bootstrap.getBidRepository().fetchAll();
+
         List<Bid> bids = bidder.getPlacedBids();
 
         listView = new ListView();
-
 
         this.observableBids.setAll(bids);
         listView.setItems(this.observableBids);
