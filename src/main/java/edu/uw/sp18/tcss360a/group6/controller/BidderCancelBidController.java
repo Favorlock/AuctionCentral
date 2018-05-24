@@ -23,7 +23,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class BidderCancelBidController {
+public class BidderCancelBidController implements Initializable{
 
     @FXML
     private ListView listView;
@@ -73,4 +73,8 @@ public class BidderCancelBidController {
         application.getSceneController().activate("bidderMain");
     }
 
+    @Override
+    public void initialize() {
+        displayBids();
+    }
 }

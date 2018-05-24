@@ -21,7 +21,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class EmployeeViewAllAuctionsController {
+public class EmployeeViewAllAuctionsController implements Initializable{
 
     @FXML
     public ListView listView;
@@ -59,6 +59,11 @@ public class EmployeeViewAllAuctionsController {
     @FXML
     public void back() {
         application.getSceneController().activate("employeeMain");
+    }
+
+    @Override
+    public void initialize() {
+        displayAuctions();
     }
 
 }

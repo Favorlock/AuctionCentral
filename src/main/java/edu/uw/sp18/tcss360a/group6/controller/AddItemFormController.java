@@ -55,7 +55,7 @@ public class AddItemFormController {
 
     @FXML
     public void back() {
-        application.getSceneController().activate("employeeMain");
+        application.getSceneController().activate("contactAddItem");
     }
 
 }

@@ -25,7 +25,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class ContactViewAuctionsController {
+public class ContactViewAuctionsController implements Initializable{
 
     @FXML
     public ListView listView;
@@ -65,5 +65,10 @@ public class ContactViewAuctionsController {
     @FXML
     public void back() {
         application.getSceneController().activate("contactMain");
+    }
+
+    @Override
+    public void initialize() {
+        displayAuctions();
     }
 }

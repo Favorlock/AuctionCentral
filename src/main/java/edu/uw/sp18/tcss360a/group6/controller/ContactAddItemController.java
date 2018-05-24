@@ -20,7 +20,7 @@ import javafx.util.Callback;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class ContactAddItemController {
+public class ContactAddItemController implements Initializable{
     @FXML
     public ListView listView;
     @FXML
@@ -64,5 +64,10 @@ public class ContactAddItemController {
     @FXML
     public void logout() {
         application.getSceneController().activate("login");
+    }
+
+    @Override
+    public void initialize() {
+        displayAuctions();
     }
 }

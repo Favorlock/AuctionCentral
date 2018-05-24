@@ -22,7 +22,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class EmployeeViewRangeSuccessController {
+public class EmployeeViewRangeSuccessController implements Initializable {
 
     @FXML
     public ListView listView;
@@ -72,5 +72,10 @@ public class EmployeeViewRangeSuccessController {
     @FXML
     public void back() {
         application.getSceneController().activate("employeeBetweenDates");
+    }
+
+    @Override
+    public void initialize() {
+        displayAuctions();
     }
 }

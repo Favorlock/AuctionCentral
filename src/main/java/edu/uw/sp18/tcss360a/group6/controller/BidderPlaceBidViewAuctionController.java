@@ -16,7 +16,7 @@ import javafx.scene.control.ListView;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/23/2018
  */
-public class BidderPlaceBidViewAuctionController {
+public class BidderPlaceBidViewAuctionController implements Initializable {
 
     private static Auction auction;
 
@@ -67,5 +67,10 @@ public class BidderPlaceBidViewAuctionController {
     @FXML
     public void back() {
         application.getSceneController().activate("bidderMain");
+    }
+
+    @Override
+    public void initialize() {
+        displayItems();
     }
 }
