@@ -36,7 +36,6 @@
         <VBox styleClass="content-section"  >
             <ListView fx:id="listView"/>
             <HBox styleClass="content-section" spacing="60">
-                <Button onAction="#displayItems" text="View Items / Refresh" />
                 <Button onAction="#placeBidOnItem" text="Place Bid on selected Item" />
             </HBox>
         </VBox>
