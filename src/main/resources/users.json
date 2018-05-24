@@ -1,5 +1,5 @@
 {
-  "index": 15,
+  "index": 19,
   "entries": [
     {
       "type": "BIDDER",
@@ -22,7 +22,7 @@
       "userName": "Evan",
       "organizationId": 1
     },
-        {
+    {
       "type": "CONTACT_PERSON",
       "id": 5,
       "userName": "Adam",
@@ -36,7 +36,7 @@
     {
       "type": "CONTACT_PERSON",
       "id": 7,
-      "userName": "Voss",
+      "userName": "CPOrgY",
       "organizationId": 2
     },
     {
@@ -86,6 +86,21 @@
       "type": "EMPLOYEE",
       "id": 16,
       "userName": "Administrator"
+    },
+    {
+      "type": "BIDDER",
+      "id": 17,
+      "userName": "Bill Gates"
+    },
+    {
+      "type": "BIDDER",
+      "id": 18,
+      "userName": "Johnny Cash"
+    },
+    {
+      "type": "BIDDER",
+      "id": 19,
+      "userName": "Angela"
     }
   ]
 }

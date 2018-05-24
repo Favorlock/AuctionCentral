@@ -19,14 +19,14 @@
       "id": 3,
       "bidderId": 1,
       "auctionId": 14,
-      "itemId": 0,
+      "itemId": 5,
       "bid": "11.0"
     },
     {
       "id": 4,
       "bidderId": 17,
       "auctionId": 14,
-      "itemId": 0,
+      "itemId": 5,
       "bid": "12.0"
     },
     {
