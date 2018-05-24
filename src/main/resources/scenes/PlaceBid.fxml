@@ -35,7 +35,7 @@
         <VBox styleClass="content-section"  >
             <ListView fx:id="listView"/>
             <HBox styleClass="content-section" spacing="60">
-                <Button fx:id="refreshAuctions" onAction="#displayAuctions" text="View Auctions / Refresh" />
+                <Button fx:id="refreshAuctions" onAction="#displayAuctions" text="View Auctions" />
                 <Button fx:id="selectAuction" onAction="#placeBid" text="View Selected Auction" />
             </HBox>
         </VBox>

@@ -3,10 +3,7 @@ package edu.uw.sp18.tcss360a.group6.controller;
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
-import edu.uw.sp18.tcss360a.group6.model.Auction;
-import edu.uw.sp18.tcss360a.group6.model.Bidder;
-import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
-import edu.uw.sp18.tcss360a.group6.model.Employee;
+import edu.uw.sp18.tcss360a.group6.model.*;
 import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -39,7 +36,7 @@ public class ContactAddItemController {
         Bootstrap bootstrap = new Bootstrap();
         //TODO: display only auctions associated with contact person
         ContactPerson user = Session.getInstance().get("user", ContactPerson.class);
-        List<Auction> auction = user.getOrganization().getAuctions();
+        Auction auction = user.getOrganization().getCurrentAuction();
 
         listView = new ListView();
 
@@ -59,6 +56,10 @@ public class ContactAddItemController {
         listProperty.set(FXCollections.observableArrayList(auctions));
     }
 
+    @FXML
+    public void openSelection() {
+        application.getSceneController().activate("addItemForm");
+    }
     @FXML
     public void back() {
         application.getSceneController().activate("contactMain");

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.uw.sp18.tcss360a.group6.controller.AddItemFormController"
+            prefHeight="480.0" prefWidth="680.0">
+    <stylesheets>
+        <URL value="@../css/Root.css"/>
+    </stylesheets>
+
+    <top>
+        <BorderPane styleClass="header-section">
+            <left>
+                <Label id="header-text" text="Add Item to Auction"/>
+            </left>
+        </BorderPane>
+    </top>
+
+    <left>
+        <VBox styleClass="sidebar-section">
+            <Label text="Go Back" onMouseReleased="#back"/>
+            <fx:include source="Logout.fxml"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="content-section" prefHeight="200.0" prefWidth="325.0">
+            <Label text="Please enter all information requested in form below. " wrapText="true">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+            <Label text="Description">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="descriptionField" onKeyReleased="#onEnter" maxWidth="150" />
+            <Label text="Quantity">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="quantityField" onKeyReleased="#onEnter" maxWidth="150" />
+            <Label text="Starting Bid">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="startBidField" onKeyReleased="#onEnter" maxWidth="150" />
+            <Label text="Condition">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="conditionField" onKeyReleased="#onEnter" maxWidth="150" />
+            <Label text="Approximate Size (Small | Medium | Large)">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="sizeField" onKeyReleased="#onEnter" maxWidth="150" />
+            <Label text="Location">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="locationField" onKeyReleased="#onEnter" maxWidth="150" />
+            <Label text="Additional Comments">
+                <font>
+                    <Font size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="commentsField" onKeyReleased="#onEnter" maxWidth="150" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox styleClass="footer-section">
+            <Label text="UWT, TCSS 360 A, Group 6, Spring 2018"/>
+        </HBox>
+    </bottom>
+</BorderPane>
