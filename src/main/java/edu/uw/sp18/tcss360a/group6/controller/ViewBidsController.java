@@ -5,6 +5,7 @@ import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.controller.components.ListViewCell;
+import edu.uw.sp18.tcss360a.group6.model.Item;
 import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -15,6 +16,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,9 +39,12 @@ public class ViewBidsController implements Initializable{
     public ViewBidsController () {
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
         List<Bid> bids = bidder.getPlacedBids();
-
+        List<Item> items = new ArrayList<>();
+        for (Bid bid: bids) {
+            items.add(bid.getItem());
+        }
         this.listView = new ListView();
-        this.observableBids.setAll(bids);
+        this.observableBids.setAll(items);
         this.listView.setItems(this.observableBids);
         this.listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
