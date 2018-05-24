@@ -1,12 +1,11 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
-import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
-import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.model.Bidder;
-import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
+import edu.uw.sp18.tcss360a.group6.controller.components.ListViewCell;
+import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -14,12 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.util.Callback;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,26 +38,24 @@ public class ViewBidsController {
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
         List<Bid> bids = bidder.getPlacedBids();
 
-        listView = new ListView();
-
-
+        this.listView = new ListView();
         this.observableBids.setAll(bids);
-        listView.setItems(this.observableBids);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        this.listView.setItems(this.observableBids);
+        this.listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
-        listView.setVisible(true);
+        this.listView.setVisible(true);
 
-        displayBids(); // TODO: this should display them initially ????
+        Platform.runLater(this::displayBids);
     }
 
     @FXML
     public void displayBids() {
-        listView.itemsProperty().bind(listProperty);
-        listProperty.set(FXCollections.observableArrayList(observableBids));
+        this.listView.itemsProperty().bind(this.listProperty);
+        this.listProperty.set(FXCollections.observableArrayList(this.observableBids));
     }
 
     @FXML
     public void back() {
-        application.getSceneController().activate("bidderMain");
+        this.application.getSceneController().activate("bidderMain");
     }
 }

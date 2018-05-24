@@ -5,22 +5,12 @@ import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
-import edu.uw.sp18.tcss360a.group6.model.Employee;
-import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.util.Callback;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * GUI for Contact person users to submit a request for a new auction.
