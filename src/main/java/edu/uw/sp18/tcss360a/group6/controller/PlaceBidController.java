@@ -39,8 +39,7 @@ public class PlaceBidController implements Initializable {
         super ();
 
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
-        Bootstrap bootstrap = new Bootstrap(); //TODO: not needed ?? delete
-//        List<Auction> auction = bootstrap.getAuctionRepository().fetchFutureAuctions();
+
         List<Auction> auction = bidder.getAuctionsICanBidIn();
 
         listView = new ListView();
@@ -63,8 +62,8 @@ public class PlaceBidController implements Initializable {
 
     @FXML
     public void placeBid() { //TODO - set auction in BidderPlaceBidViewAuctionController
-//        Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
-//        BidderPlaceBidViewAuctionController.setAuction(selectedAuction);
+        Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
+        BidderPlaceBidViewAuctionController.setAuction(selectedAuction);
         application.getSceneController().activate("placeBidViewAuction");
     }
 

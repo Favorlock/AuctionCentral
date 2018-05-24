@@ -4,6 +4,7 @@ import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,13 +72,22 @@ public class Bidder extends AbstractUser {
      * Get a list of all of the Auctions that I can place a bid in.
      * @return a List<Auction> that I can bid in
      */
-    public List<Auction> getAuctionsICanBidIn() { //TODO: verify this works correctly !!!
+    public List<Auction> getAuctionsICanBidIn() { //TODO: this should be working
         Bootstrap bootstrap = new Bootstrap();
-        return bootstrap.getAuctionRepository().fetchAll().stream()
-                .filter(auction -> canBid(auction)).collect(Collectors.toList());
+        //this should do same as below
+//        return bootstrap.getAuctionRepository().fetchAllFutureAuctions().stream()
+//                .filter(auction -> canBid(auction)).collect(Collectors.toList());
+
+        List<Auction> auctions = new ArrayList<>();
+        for (Auction anAuction : bootstrap.getInstance().getAuctionRepository().fetchFutureAuctions()) {
+            if(this.canBid(anAuction)) {
+                auctions.add(anAuction);
+            }
+        }
+        return auctions;
     }
 
-    public boolean cancelBid(Bid aBid) { //TODO: finish for bidder cancel bid class. Verify this works !!!
+    public boolean cancelBid(Bid aBid) { //TODO: Verify this works !!!
         boolean didCancelBid = false;
         Bootstrap bootstrap = new Bootstrap();
         List<Bid> bids = bootstrap.getBidRepository().fetchAll();
