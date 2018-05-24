@@ -1,0 +1,106 @@
+{
+  "index": 19,
+  "entries": [
+    {
+      "type": "BIDDER",
+      "id": 1,
+      "userName": "Bidder1"
+    },
+    {
+      "type": "BIDDER",
+      "id": 2,
+      "userName": "Josh"
+    },
+    {
+      "type": "BIDDER",
+      "id": 3,
+      "userName": "Tam"
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 4,
+      "userName": "Evan",
+      "organizationId": 1
+    },
+        {
+      "type": "CONTACT_PERSON",
+      "id": 5,
+      "userName": "Adam",
+      "organizationId": 1
+    },
+    {
+      "type": "BIDDER",
+      "id": 6,
+      "userName": "Gideon"
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 7,
+      "userName": "CPOrgY",
+      "organizationId": 2
+    },
+    {
+      "type": "EMPLOYEE",
+      "id": 8,
+      "userName": "Johnny"
+    },
+    {
+      "type": "EMPLOYEE",
+      "id": 9,
+      "userName": "Billy"
+    },
+    {
+      "type": "BIDDER",
+      "id": 10,
+      "userName": "BidderMaxBids"
+    },
+    {
+      "type": "BIDDER",
+      "id": 11,
+      "userName": "BidderMaxTotal"
+    },
+    {
+      "type": "BIDDER",
+      "id": 12,
+      "userName": "BidderNoBids"
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 13,
+      "userName": "ContactEarlyRequest",
+      "organizationId": 13
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 14,
+      "userName": "ContactSystemFull",
+      "organizationId": 8
+    },
+    {
+      "type": "CONTACT_PERSON",
+      "id": 15,
+      "userName": "ContactOpen",
+      "organizationId": 20
+    },
+    {
+      "type": "EMPLOYEE",
+      "id": 16,
+      "userName": "Administrator"
+    },
+    {
+      "type": "BIDDER",
+      "id": 17,
+      "userName": "Bill Gates"
+    },
+    {
+      "type": "BIDDER",
+      "id": 18,
+      "userName": "Johnny Cash"
+    },
+    {
+      "type": "BIDDER",
+      "id": 19,
+      "userName": "Angela"
+    }
+  ]
+}

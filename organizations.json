@@ -1,0 +1,85 @@
+{
+  "index": 20,
+  "entries": [
+    {
+      "id": 1,
+      "name": "UNICEF"
+    },
+    {
+      "id": 2,
+      "name": "Human Rights Watch"
+    },
+    {
+      "id": 3,
+      "name": "Museum of Modern Art"
+    },
+    {
+      "id": 4,
+      "name": "Human Rights Campaign"
+    },
+    {
+      "id": 5,
+      "name": "ACLU"
+    },
+    {
+      "id": 6,
+      "name": "Doctors Without Borders"
+    },
+    {
+      "id": 7,
+      "name": "National Public Radio"
+    },
+    {
+      "id": 8,
+      "name": "Feeding America"
+    },
+    {
+      "id": 9,
+      "name": "American Red Cross"
+    },
+    {
+      "id": 10,
+      "name": "World Wildlife Fund"
+    },
+    {
+      "id": 11,
+      "name": "ASPCA"
+    },
+    {
+      "id": 12,
+      "name": "Smithsonian Institute"
+    },
+    {
+      "id": 13,
+      "name": "Alzheimer's Association"
+    },
+    {
+      "id": 14,
+      "name": "Disabled American Veterans"
+    },
+    {
+      "id": 15,
+      "name": "Creative Commons"
+    },
+    {
+      "id": 16,
+      "name": "Save the Children"
+    },
+    {
+      "id": 17,
+      "name": "National Audubon Society"
+    },
+    {
+      "id": 18,
+      "name": "Make-A-Wish"
+    },
+    {
+      "id": 19,
+      "name": "Ted Talks"
+    },
+    {
+      "id": 20,
+      "name": "Boy Scouts of America"
+    }
+  ]
+}
