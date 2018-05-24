@@ -10,16 +10,13 @@ import javafx.fxml.FXML;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class AuctionAddSuccessController {
+public class MaxAuctionsChangeSuccessController {
 
     private FXApplication application = FXApplication.getInstance();
 
     @FXML
-    public void addItems() {application.getSceneController().activate("contactAddItem"); }
-
-    @FXML
     public void back() {
-        application.getSceneController().activate("contactMain");
+        application.getSceneController().activate("employeeMain");
     }
 
 }

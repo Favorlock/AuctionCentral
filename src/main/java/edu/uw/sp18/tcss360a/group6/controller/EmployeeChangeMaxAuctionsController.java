@@ -29,9 +29,11 @@ public class EmployeeChangeMaxAuctionsController {
         if (event.getCode().equals(KeyCode.ENTER)) {
             Employee employee = Session.getInstance().get("user", Employee.class);
             int max = Integer.parseInt(newMax.getText());
-            System.out.println("old Max: " + employee.getAuctionCapacity());
-            employee.setAuctionCapacity(max);
-            System.out.println("new Max: " + employee.getAuctionCapacity());
+            if (employee.setAuctionCapacity(max)){
+                application.getSceneController().activate("maxAuctionsChangeSuccess");
+            } else {
+                application.getSceneController().activate("maxAuctionsChangeFail");
+            }
         }
     }
 

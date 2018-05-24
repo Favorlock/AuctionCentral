@@ -29,7 +29,8 @@ public class Employee extends AbstractUser {
      *
      * @param newAuctionMax integer specifying proposed new amount of auction allowed
      */
-    public void setAuctionCapacity(final int newAuctionMax) {
+    public boolean setAuctionCapacity(final int newAuctionMax) {
+        boolean changed = false;
         Bootstrap bootstrap = Bootstrap.getInstance();
         SettingsRepository settingsRepository = bootstrap.getSettingsRepository();
         AuctionRepository auctionRepository = bootstrap.getAuctionRepository();
@@ -37,7 +38,9 @@ public class Employee extends AbstractUser {
         if (newAuctionMax > 0 && newAuctionMax > auctionRepository.fetchFutureAuctions().size()) {
             settingsRepository.fetch().setAuctionCapacity(newAuctionMax);
             settingsRepository.save();
+            changed = true;
         }
+        return changed;
     }
 
     /**
