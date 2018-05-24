@@ -22,7 +22,7 @@ public class BidderPlaceBidViewAuctionController {
         super();
     }
 
-    public static void setAuction(Auction anAuction) { //TODO: display the ?????
+    public static void setAuction(Auction anAuction) { //TODO: display the ???
         auction = anAuction;
     }
 
