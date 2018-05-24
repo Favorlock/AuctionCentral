@@ -6,6 +6,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
 <BorderPane prefHeight="480.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uw.sp18.tcss360a.group6.controller.BidderPlaceBidViewAuctionController">
     <stylesheets>
         <URL value="@../css/Root.css" />
@@ -28,6 +30,17 @@
             </children>
         </VBox>
     </left>
+
+
+    <center>
+        <VBox styleClass="content-section"  >
+            <ListView fx:id="listView"/>
+            <HBox styleClass="content-section" spacing="60">
+                <Button onAction="#displayItems" text="View Items / Refresh" />
+                <Button onAction="#placeBidOnItem" text="Place Bid on selected Item" />
+            </HBox>
+        </VBox>
+    </center>
 
     
 

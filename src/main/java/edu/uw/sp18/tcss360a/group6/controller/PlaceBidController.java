@@ -63,8 +63,10 @@ public class PlaceBidController {
     }
 
     @FXML
-    public void placeBid() {
-        application.getSceneController().activate("placeBidViewAuction"); //TODO
+    public void placeBid() { //TODO - set auction in BidderPlaceBidViewAuctionController
+//        Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
+//        BidderPlaceBidViewAuctionController.setAuction(selectedAuction);
+        application.getSceneController().activate("placeBidViewAuction");
     }
 
     @FXML
