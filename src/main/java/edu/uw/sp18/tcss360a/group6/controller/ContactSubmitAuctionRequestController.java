@@ -1,13 +1,26 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
+import edu.uw.sp18.tcss360a.group6.Session;
+import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
+import edu.uw.sp18.tcss360a.group6.model.Employee;
+import edu.uw.sp18.tcss360a.group6.util.ListViewCell;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Callback;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * GUI for Contact person users to submit a request for a new auction.
@@ -17,21 +30,37 @@ import java.time.LocalDate;
  */
 public class ContactSubmitAuctionRequestController {
 
-    private FXApplication application = FXApplication.getInstance();
-
-    //TODO: import actual user
-    private ContactPerson contact = new ContactPerson(100,100, "hunded"); //context.get("user", ContactPerson.class);
-
-    private LocalDate startDate;
-
     @FXML
-    private TextField auctionDate;
+    private TextField inputDate;
+    @FXML
+    private FXApplication application = FXApplication.getInstance();
+    private LocalDate auctionDate;
+    public ContactSubmitAuctionRequestController () {
+        super ();
+    }
 
     @FXML
     public void onEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            startDate = LocalDate.parse(auctionDate.getText());
+            //TODO: fully test business rules
+            Bootstrap bootstrap = new Bootstrap();
 
+            ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
+            auctionDate = LocalDate.parse(inputDate.getText());
+            long auctionId = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder().size() + 1;
+            long orgId = contact.getOrganizationId();
+
+            Auction addedAuction = new Auction(auctionId, orgId, auctionDate);
+            if(contact.getOrganization().addAuction(addedAuction)) {
+
+
+                application.getSceneController().activate("auctionAddSuccess");
+            } else {
+                application.getSceneController().activate("auctionAddFail");
+            }
+
+
+            //System.out.println(contact.getOrganization().addAuction(addedAuction));
         }
     }
 

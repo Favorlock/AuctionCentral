@@ -31,6 +31,7 @@ public class FXApplication extends Application {
     private static String AUCTION_ADD_SUCCESS_FXML = "/scenes/AuctionAddSuccess.fxml";
     private static String EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML = "/scenes/EmployeeViewAuctionsError.fxml";
     private static String EMPLOYEE_VIEW_RANGE_SUCCESS_FXML = "/scenes/EmployeeViewRangeSuccess.fxml";
+    private static String AUCTION_ADD_FAIL_FXML = "/scenes/AuctionAddFail.fxml";
 
     private static final String STAGE_TITLE = "Auction Central";
 
@@ -73,6 +74,11 @@ public class FXApplication extends Application {
                 .addScreen("employeeViewAuctionsError", EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML);
         this.sceneController
                 .addScreen("employeeViewRangeSuccess", EMPLOYEE_VIEW_RANGE_SUCCESS_FXML);
+        this.sceneController
+                .addScreen("auctionAddSuccess", AUCTION_ADD_SUCCESS_FXML);
+        this.sceneController
+                .addScreen("auctionAddFail", AUCTION_ADD_FAIL_FXML);
+
 
         this.sceneController.activate("login");
 

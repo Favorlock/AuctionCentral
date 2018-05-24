@@ -13,7 +13,8 @@ public class ContactMainController {
     private FXApplication application = FXApplication.getInstance();
 
     @FXML
-    public void viewAuctions() { application.getSceneController().activate("contactViewAuctions"); }
+    public void viewAuctions() {
+        application.getSceneController().activate("contactViewAuctions"); }
 
     @FXML
     public void submitAuction() {
