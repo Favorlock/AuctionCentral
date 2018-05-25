@@ -1,306 +1,544 @@
 {
-  "index": 43,
+  "index": 49,
   "entries": [
     {
       "id": 1,
-      "bidderId": 17,
       "auctionId": 14,
-      "itemId": 1,
-      "bid": "125.0"
+      "description": "Painting",
+      "quantity": 1,
+      "startBid": "5.99",
+      "condition": "good",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 2,
-      "bidderId": 17,
       "auctionId": 14,
-      "itemId": 2,
-      "bid": "1125.0"
+      "description": "Statue",
+      "quantity": 1,
+      "startBid": "100.78",
+      "condition": "good",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 3,
-      "bidderId": 1,
       "auctionId": 14,
-      "itemId": 5,
-      "bid": "11.0"
+      "description": "Dolphin",
+      "quantity": 2,
+      "startBid": "1000.0",
+      "condition": "good",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 4,
-      "bidderId": 17,
       "auctionId": 14,
-      "itemId": 5,
-      "bid": "12.0"
+      "description": "Golf Club",
+      "quantity": 1,
+      "startBid": "10.50",
+      "condition": "good",
+      "approximateSize": "small",
+      "location": "A2",
+      "comments": ""
     },
     {
       "id": 5,
-      "bidderId": 1,
       "auctionId": 14,
-      "itemId": 1,
-      "bid": "130.0"
+      "description": "Beer",
+      "quantity": 6,
+      "startBid": "5.0",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 6,
-      "bidderId": 2,
       "auctionId": 14,
-      "itemId": 5,
-      "bid": "13.0"
+      "description": "Vase",
+      "quantity": 1,
+      "startBid": "100.11",
+      "condition": "good",
+      "approximateSize": "medium",
+      "location": "A3",
+      "comments": ""
     },
     {
       "id": 7,
-      "bidderId": 1,
       "auctionId": 14,
-      "itemId": 2,
-      "bid": "1200.0"
+      "description": "Laptop",
+      "quantity": 1,
+      "startBid": "1000.10",
+      "condition": "used",
+      "approximateSize": "medium",
+      "location": "A9",
+      "comments": ""
     },
     {
       "id": 8,
-      "bidderId": 2,
       "auctionId": 14,
-      "itemId": 1,
-      "bid": "200.0"
+      "description": "Lawn Gnome",
+      "quantity": 1,
+      "startBid": "12.10",
+      "condition": "used",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 9,
-      "bidderId": 3,
       "auctionId": 14,
-      "itemId": 3,
-      "bid": "14.0"
+      "description": "Car Trailer",
+      "quantity": 1,
+      "startBid": "800.0",
+      "condition": "used",
+      "approximateSize": "over-sized",
+      "location": "A4",
+      "comments": "Damage to back left Tail light."
     },
     {
       "id": 10,
-      "bidderId": 3,
       "auctionId": 14,
-      "itemId": 5,
-      "bid": "11.0"
+      "description": "Diamond earrings",
+      "quantity": 1,
+      "startBid": "1200.0",
+      "condition": "used",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 11,
-      "bidderId": 6,
-      "auctionId": 14,
-      "itemId": 1,
-      "bid": "135.0"
+      "auctionId": 15,
+      "description": "Golf Balls",
+      "quantity": 20,
+      "startBid": "20.99",
+      "condition": "used",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": "Comes in a bag. Golf balls are of assorted colors."
     },
     {
       "id": 12,
-      "bidderId": 6,
-      "auctionId": 14,
-      "itemId": 2,
-      "bid": "1135.0"
+      "auctionId": 15,
+      "description": "Golf Cart",
+      "quantity": 1,
+      "startBid": "555.30",
+      "condition": "used",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": "Perfect condition other than a tear on driver side seat."
     },
     {
       "id": 13,
-      "bidderId": 6,
-      "auctionId": 14,
-      "itemId": 5,
-      "bid": "12.0"
+      "auctionId": 15,
+      "description": "Baseball bat",
+      "quantity": 1,
+      "startBid": "80.0",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A2",
+      "comments": "Solid wood baseball bat."
     },
     {
       "id": 14,
-      "bidderId": 18,
-      "auctionId": 14,
-      "itemId": 5,
-      "bid": "13.0"
+      "auctionId": 1,
+      "description": "Chicken coop",
+      "quantity": 1,
+      "startBid": "1222.99",
+      "condition": "new",
+      "approximateSize": "over-sized",
+      "location": "A5",
+      "comments": "Fully assembled."
     },
     {
       "id": 15,
-      "bidderId": 3,
-      "auctionId": 14,
-      "itemId": 1,
-      "bid": "140.0"
+      "auctionId": 1,
+      "description": "Inflatable pool",
+      "quantity": 1,
+      "startBid": "456.50",
+      "condition": "old",
+      "approximateSize": "small",
+      "location": "new",
+      "comments": ""
     },
     {
       "id": 16,
-      "bidderId": 19,
-      "auctionId": 14,
-      "itemId": 5,
-      "bid": "14.0"
+      "auctionId": 1,
+      "description": "Pool noodle float",
+      "quantity": 5,
+      "startBid": "7.0",
+      "condition": "used",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 17,
-      "bidderId": 19,
-      "auctionId": 14,
-      "itemId": 2,
-      "bid": "1210.0"
+      "auctionId": 2,
+      "description": "Case of pop",
+      "quantity": 24,
+      "startBid": "43.0",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": "Contains 24 cans of shrink wrapped pop"
     },
     {
       "id": 18,
-      "bidderId": 19,
-      "auctionId": 14,
-      "itemId": 1,
-      "bid": "210.0"
+      "auctionId": 2,
+      "description": "Poodle",
+      "quantity": 1,
+      "startBid": "756.0",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A2",
+      "comments": "9 months old"
     },
     {
       "id": 19,
-      "bidderId": 5,
-      "auctionId": 14,
-      "itemId": 3,
-      "bid": "16.0"
+      "auctionId": 2,
+      "description": "Labrador",
+      "quantity": 2,
+      "startBid": "234.34",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A2",
+      "comments": "2 year old brothers"
     },
     {
       "id": 20,
-      "bidderId": 19,
-      "auctionId": 14,
-      "itemId": 4,
-      "bid": "19.0"
+      "auctionId": 3,
+      "description": "Border Collie",
+      "quantity": 1,
+      "startBid": "45.0",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A2",
+      "comments": ""
     },
     {
       "id": 21,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 1,
-      "bid": "7.00"
+      "auctionId": 3,
+      "description": "Volkswagen Bug",
+      "quantity": 1,
+      "startBid": "3000.0",
+      "condition": "used",
+      "approximateSize": "large",
+      "location": "A4",
+      "comments": ""
     },
     {
       "id": 22,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 2,
-      "bid": "110.00"
+      "auctionId": 3,
+      "description": "Doge Pilothouse",
+      "quantity": 1,
+      "startBid": "2300.0",
+      "condition": "large",
+      "approximateSize": "small",
+      "location": "A4",
+      "comments": ""
     },
     {
       "id": 23,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 3,
-      "bid": "1250.00"
+      "auctionId": 4,
+      "description": "Jeep Gladiator",
+      "quantity": 1,
+      "startBid": "987.0",
+      "condition": "used",
+      "approximateSize": "large",
+      "location": "A4",
+      "comments": ""
     },
     {
       "id": 24,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 4,
-      "bid": "16.00"
+      "auctionId": 4,
+      "description": "Toyota Tacoma",
+      "quantity": 1,
+      "startBid": "8000.0",
+      "condition": "used",
+      "approximateSize": "large",
+      "location": "A4",
+      "comments": ""
     },
     {
       "id": 25,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 5,
-      "bid": "10.00"
+      "auctionId": 4,
+      "description": "SuperPhone 8",
+      "quantity": 1,
+      "startBid": "999.99",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A0",
+      "comments": ""
     },
     {
       "id": 26,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 6,
-      "bid": "120.00"
+      "auctionId": 5,
+      "description": "Chicken coop",
+      "quantity": 1,
+      "startBid": "1222.99",
+      "condition": "new",
+      "approximateSize": "over-sized",
+      "location": "A5",
+      "comments": "Fully assembled."
     },
     {
       "id": 27,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 7,
-      "bid": "1001.00"
+      "auctionId": 5,
+      "description": "Inflatable pool",
+      "quantity": 1,
+      "startBid": "456.50",
+      "condition": "old",
+      "approximateSize": "small",
+      "location": "new",
+      "comments": ""
     },
     {
       "id": 28,
-      "bidderId": 10,
-      "auctionId": 14,
-      "itemId": 8,
-      "bid": "25.10"
+      "auctionId": 5,
+      "description": "Pool noodle float",
+      "quantity": 5,
+      "startBid": "7.0",
+      "condition": "used",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 29,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 1,
-      "bid": "9.00"
+      "auctionId": 6,
+      "description": "Gold Ring",
+      "quantity": 1,
+      "startBid": "300.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 30,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 2,
-      "bid": "105.00"
+      "auctionId": 7,
+      "description": "Gold and Silver Watch",
+      "quantity": 1,
+      "startBid": "150.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 31,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 3,
-      "bid": "1350.00"
+      "auctionId": 8,
+      "description": "Bicycle",
+      "quantity": 1,
+      "startBid": "75.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 32,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 4,
-      "bid": "18.00"
+      "auctionId": 9,
+      "description": "Mechanical Pencils",
+      "quantity": 20,
+      "startBid": "10.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 33,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 5,
-      "bid": "8.00"
+      "auctionId": 10,
+      "description": "Vintage Records",
+      "quantity": 10,
+      "startBid": "20.00",
+      "condition": "used",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 34,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 6,
-      "bid": "125.75"
+      "auctionId": 11,
+      "description": "5 Shelf Bookcase",
+      "quantity": 1,
+      "startBid": "200.00",
+      "condition": "new",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 35,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 7,
-      "bid": "1010.00"
+      "auctionId": 12,
+      "description": "Projection Screen",
+      "quantity": 1,
+      "startBid": "50.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 36,
-      "bidderId": 11,
-      "auctionId": 14,
-      "itemId": 8,
-      "bid": "15.10"
+      "auctionId": 13,
+      "description": "Alienware Laptop",
+      "quantity": 1,
+      "startBid": "800.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 37,
-      "bidderId": 11,
-      "auctionId": 6,
-      "itemId": 29,
-      "bid": "301.00"
+      "auctionId": 16,
+      "description": "Signed Basketball Shoes",
+      "quantity": 1,
+      "startBid": "50.00",
+      "condition": "used",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 38,
-      "bidderId": 11,
       "auctionId": 6,
-      "itemId": 28,
-      "bid": "15.10"
+      "description": "Rifle Case",
+      "quantity": 1,
+      "startBid": "20.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 39,
-      "bidderId": 11,
       "auctionId": 6,
-      "itemId": 39,
-      "bid": "150.10"
+      "description": "Yoda Painting",
+      "quantity": 1,
+      "startBid": "150.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 40,
-      "bidderId": 11,
       "auctionId": 6,
-      "itemId": 41,
-      "bid": "97.00"
+      "description": "Razer Headphones",
+      "quantity": 1,
+      "startBid": "70.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 41,
-      "bidderId": 10,
-      "auctionId": 1,
-      "itemId": 14,
-      "bid": "1400.00"
+      "auctionId": 6,
+      "description": "Black Leather Sectional",
+      "quantity": 1,
+      "startBid": "85.00",
+      "condition": "new",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 42,
-      "bidderId": 11,
-      "auctionId": 1,
-      "itemId": 16,
-      "bid": "10.50"
+      "auctionId": 6,
+      "description": "Surveillance System",
+      "quantity": 1,
+      "startBid": "125.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
     },
     {
       "id": 43,
-      "bidderId": 10,
-      "auctionId": 2,
-      "itemId": 18,
-      "bid": "800.00"
+      "auctionId": 6,
+      "description": "Buick Grand National '78",
+      "quantity": 1,
+      "startBid": "10000.00",
+      "condition": "used",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 44,
+      "auctionId": 6,
+      "description": "Soccer Ball",
+      "quantity": 1,
+      "startBid": "15.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 45,
+      "auctionId": 6,
+      "description": "Knife Set",
+      "quantity": 1,
+      "startBid": "85.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 46,
+      "auctionId": 6,
+      "description": "Nike Shoes",
+      "quantity": 1,
+      "startBid": "50.00",
+      "condition": "new",
+      "approximateSize": "small",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 47,
+      "auctionId": 21,
+      "description": "Alienware PC",
+      "quantity": 1,
+      "startBid": "550.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 48,
+      "auctionId": 21,
+      "description": "Alienware Laptop",
+      "quantity": 1,
+      "startBid": "1150.00",
+      "condition": "new",
+      "approximateSize": "medium",
+      "location": "A1",
+      "comments": ""
+    },
+    {
+      "id": 49,
+      "auctionId": 21,
+      "description": "Baby Crib",
+      "quantity": 1,
+      "startBid": "250.00",
+      "condition": "new",
+      "approximateSize": "large",
+      "location": "A1",
+      "comments": ""
     }
   ]
 }

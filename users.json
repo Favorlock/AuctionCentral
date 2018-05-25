@@ -101,6 +101,11 @@
       "type": "BIDDER",
       "id": 19,
       "userName": "Angela"
+    },
+    {
+      "type": "BIDDER",
+      "id": 20,
+      "userName": "Stevie"
     }
   ]
 }
