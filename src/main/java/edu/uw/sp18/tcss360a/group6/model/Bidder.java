@@ -19,12 +19,12 @@ public class Bidder extends AbstractUser {
     /**
      * The maximum number of placed bids on items in a given auction.
      */
-    public static final int MAX_BIDS_PER_AUCTION = 4;
+    public static final int MAX_BIDS_PER_AUCTION = 8;
 
     /**
      * The maximum number of active placed bids for all auctions.
      */
-    public static final int MAX_ACTIVE_BIDS = 10;
+    public static final int MAX_ACTIVE_BIDS = 12;
 
     private List<Bid> placedBids; // Lazy loaded, use getPlacedBids()
 
@@ -69,6 +69,17 @@ public class Bidder extends AbstractUser {
     }
 
     /**
+     * Helper method used to check if the bidder is allowed to bid.
+     *
+     * @return boolean used to represent whether the bidder can bid or not.
+     */
+    public boolean canBid() {
+        return getPlacedBids().stream()
+                .filter(bid -> bid.getAuction().isAcceptingBids())
+                .count() < MAX_ACTIVE_BIDS;
+    }
+
+    /**
      * Get a list of all of the Auctions that I can place a bid in.
      * @return a List<Auction> that I can bid in
      */
@@ -99,17 +110,6 @@ public class Bidder extends AbstractUser {
             }
         }
         return didCancelBid;
-    }
-
-    /**
-     * Helper method used to check if the bidder is allowed to bid.
-     *
-     * @return boolean used to represent whether the bidder can bid or not.
-     */
-    public boolean canBid() {
-        return getPlacedBids().stream()
-                .filter(bid -> bid.getAuction().isAcceptingBids())
-                .count() < MAX_ACTIVE_BIDS;
     }
 
     /**
