@@ -72,6 +72,7 @@ public class AuctionRepository implements CollectionRepository<Auction> {
     public void add(Auction entry) {
         entry.id = this.index++;
         this.entries.add(entry);
+        this.save();
     }
 
     @Override

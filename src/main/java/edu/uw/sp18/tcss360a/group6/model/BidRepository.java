@@ -45,6 +45,7 @@ public class BidRepository implements CollectionRepository<Bid> {
     public void add(Bid entry) {
         entry.id = this.index++;
         this.entries.add(entry);
+        this.save();
     }
 
     @Override

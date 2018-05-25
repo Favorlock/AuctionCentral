@@ -64,7 +64,6 @@ public class Auction {
         if (!isAtCapacity()) {
             ConsoleApplication.getInstance().getItemRepository().add(item);
             getInventory().add(item);
-            ConsoleApplication.getInstance().getItemRepository().save(); //adfjas;dlfkj
             added = true;
         }
         return added;
