@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public class BidderCancelBidController implements Initializable{
 
     @FXML
     private ListView listView;
+
+    @FXML
+    private Text cancelBidText;
 
     private FXApplication application = FXApplication.getInstance();
 
@@ -59,7 +63,15 @@ public class BidderCancelBidController implements Initializable{
     @FXML
     public void cancelBid() {
         Bid bid = (Bid) listView.getSelectionModel().getSelectedItem();
-        System.out.println(bidder.cancelBid(bid)); //TODO: remove print statement
+        didCancelBidText(bidder.cancelBid(bid));
+    }
+
+    private void didCancelBidText(boolean didCancel) {
+        if (didCancel) {
+            cancelBidText.setText("Canceled bid");
+        } else {
+            cancelBidText.setText("Did not Canceled bid");
+        }
     }
 
     @FXML
