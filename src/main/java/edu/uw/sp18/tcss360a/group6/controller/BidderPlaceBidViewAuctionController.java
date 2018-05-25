@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
@@ -43,6 +44,9 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     @FXML
     private TextField bidderAmount;
 
+    @FXML
+    private Text bidMessageText;
+
     private ObservableList items = FXCollections.observableArrayList();
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
@@ -52,15 +56,6 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
         Bootstrap bootstrap = new Bootstrap();
 //        Item item = bootstrap.getItemRepository().fetchAll().stream().filter(item -> item.getId() == theItem.getId());
-/*
-        List<Long> bidItemIds = bidder.getPlacedBids().stream()
-                .map(Bid::getItemId)
-                .distinct()
-                .collect(Collectors.toList());
-        List<Item> items = auction.getInventory().stream()
-                .filter(item -> !bidItemIds.contains(item.getId()))
-                .collect(Collectors.toList());
- */
 
         List<Item> auctionItems = auction.getInventory();
         //TODO: can see auction with no items, put items in all auctions
@@ -97,9 +92,17 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
             Item theItem = (Item)listView.getSelectionModel().getSelectedItem();
             Bidder theBidder = Session.getInstance().get("user", Bidder.class);
 
-            theBidder.addBid(bidAmount, theItem, auction);
+            messageForBid(theBidder.addBid(bidAmount, theItem, auction));
         } catch (NumberFormatException e) {
             bidderAmount.setText("Enter valid bid amount");
+        }
+    }
+
+    public void messageForBid(boolean didBid) {
+        if(didBid) {
+            bidMessageText.setText("Placed bid on Item");
+        } else {
+            bidMessageText.setText("Bid not placed on Item");
         }
     }
 
