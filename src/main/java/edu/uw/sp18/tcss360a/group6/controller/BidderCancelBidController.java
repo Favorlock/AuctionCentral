@@ -61,8 +61,8 @@ public class BidderCancelBidController implements Initializable{
 
     @FXML
     public void cancelBid() {
-        Bid bid = (Bid) listView.getSelectionModel().getSelectedItem();
-        bidder.cancelBid(bid);
+//        Bid bid = ;(Bid)
+//        bidder.cancelBid(bid);
     }
 
     @FXML

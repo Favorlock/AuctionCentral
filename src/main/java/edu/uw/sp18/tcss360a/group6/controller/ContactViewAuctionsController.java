@@ -63,6 +63,13 @@ public class ContactViewAuctionsController implements Initializable{
     }
 
     @FXML
+    public void viewAuction() { //TODO - set auction in BidderPlaceBidViewAuctionController
+        Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
+        ContactViewItemsController.setAuction(selectedAuction);
+        application.getSceneController().activate("contactViewItems");
+    }
+
+    @FXML
     public void back() {
         application.getSceneController().activate("contactMain");
     }

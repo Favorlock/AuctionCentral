@@ -65,8 +65,8 @@ public class EmployeeCancelAnAuctionController implements Initializable{
         //TODO: Cancel auction method not removing auction
         Employee employee = Session.getInstance().get("user", Employee.class);
         Auction canceledAuction = (Auction)listView.getSelectionModel().getSelectedItem();
-
-            System.out.println(employee.cancelAnAuction(canceledAuction));
+        employee.cancelAnAuction(canceledAuction);
+        displayAuctions();
     }
     @FXML
     public void back() {
