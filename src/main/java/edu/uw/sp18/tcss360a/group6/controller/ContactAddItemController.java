@@ -55,6 +55,8 @@ public class ContactAddItemController implements Initializable{
 
     @FXML
     public void openSelection() {
+        Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
+        AddItemFormController.setAuction(selectedAuction);
         application.getSceneController().activate("addItemForm");
     }
     @FXML

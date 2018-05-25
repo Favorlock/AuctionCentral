@@ -1,6 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.math.BigDecimal;
@@ -49,7 +50,7 @@ public class Item {
 
     /**
      * Constructor for Item object.
-     *
+     * @param auctionId long representing the auction ID
      * @param description String used to represent a brief description for
      *                    Item object.
      * @param quantity    int used to represent how many of Item object are
@@ -83,7 +84,7 @@ public class Item {
     /**
      * Constructor for Item object.
      *
-     * @param id    int used to represent the ID number for Item object.
+     * @param itemId    int used to represent the ID number for Item object.
      * @param description String used to represent a brief description for
      *                    Item object.
      * @param quantity    int used to represent how many of Item object are
@@ -96,7 +97,7 @@ public class Item {
      * @param comments comments on the item
      */
     public Item(
-            long id,
+            long itemId,
             long auctionId,
             String description,
             int quantity,
@@ -225,7 +226,7 @@ public class Item {
                 ", Auction ID=" + auctionId +
                 ", Description='" + description + '\'' +
                 ", Quantity=" + quantity +
-                ", Starting Bid=" + startBid;
+                ", Min Bid=" + startBid;
     }
 }
 

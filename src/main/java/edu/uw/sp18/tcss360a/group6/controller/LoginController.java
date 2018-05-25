@@ -44,4 +44,9 @@ public class LoginController {
         }
     }
 
+    @FXML
+    public void clearText() {
+        userNameTextField.setText("");
+    }
+
 }
