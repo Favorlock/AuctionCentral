@@ -60,8 +60,8 @@ public class AddItemFormController {
     @FXML
     public void addItem() { //TODO: validate all fields are valid
         Bootstrap bootstrap = new Bootstrap();
-        itemId = bootstrap.getItemRepository().fetchAll().size() + 1;
-        auctionId = bootstrap.getAuctionRepository().fetchAll().size() + 1;
+        itemId = bootstrap.getItemRepository().fetchAll().size() + 2;
+        auctionId = auction.getId();
 
         description = descriptionField.getText();
         quantity = Integer.parseInt(quantityField.getText());
@@ -75,7 +75,7 @@ public class AddItemFormController {
         Item item = new Item(itemId, auctionId, description, quantity,
                 startBid, condition, size, location, comments);
 
-        auction.addItem(item);
+        System.out.println(auction.addItem(item));
 //        bootstrap.getAuctionRepository().fetchAll().stream()
 //                .filter(auction1 -> auction1.getId() == auction.getId()::addItem(auction1));
     }
