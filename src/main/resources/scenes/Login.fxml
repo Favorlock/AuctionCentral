@@ -5,20 +5,30 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 <GridPane fx:controller="edu.uw.sp18.tcss360a.group6.controller.LoginController"
           xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-          prefHeight="480.0" prefWidth="680.0" alignment="center" hgap="10" vgap="10" styleClass="root">
-    <padding>
-        <Insets top="25" right="25" bottom="25" left="25"/>
-    </padding>
+          prefHeight="480.0" prefWidth="680.0" alignment="center" styleClass="root">
+    <stylesheets>
+        <URL value="@../css/Root.css"/>
+    </stylesheets>
 
-    <Text text="Welcome"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="center" hgap="10" vgap="10">
+        <padding>
+            <Insets top="25" right="25" bottom="25"/>
+        </padding>
 
-    <Label text="User Name:"
-           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Text text="Welcome"
+              GridPane.columnIndex="0" GridPane.rowIndex="0"
+              GridPane.columnSpan="2"/>
 
-    <TextField fx:id="userNameTextField" onKeyReleased="#onEnter" onMouseClicked="#clearText"
-            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label text="User Name:"
+               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+        <TextField fx:id="userNameTextField" onKeyReleased="#onEnter" onMouseClicked="#clearText"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
+
+    <fx:include source="components/Error.fxml"
+                GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 </GridPane>

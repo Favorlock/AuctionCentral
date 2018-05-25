@@ -28,7 +28,7 @@
             <children>
                 <Label onMouseReleased="#selectAnotherAuction" text="Select another auction" wrapText="true" />
                 <Label onMouseReleased="#back" text="Go back to main menu" wrapText="true" />
-                <fx:include source="Logout.fxml" />
+                <fx:include source="components/Logout.fxml" />
             </children>
         </VBox>
     </left>

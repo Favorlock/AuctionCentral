@@ -26,7 +26,7 @@
     <left>
         <VBox styleClass="sidebar-section">
             <Label text="Go Back" onMouseReleased="#back"/>
-            <fx:include source="Logout.fxml"/>
+            <fx:include source="components/Logout.fxml"/>
         </VBox>
     </left>
 

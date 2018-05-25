@@ -43,4 +43,7 @@ public class SceneController {
         }
     }
 
+    public Scene getPrimaryScene() {
+        return this.primaryScene;
+    }
 }

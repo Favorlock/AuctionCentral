@@ -30,18 +30,22 @@ public class EmployeeViewAuctionsBetweenDatesController {
 
     @FXML
     public void onEnter(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER)) {
+        try {
+            if (event.getCode().equals(KeyCode.ENTER)) {
 
-            start = LocalDate.parse(startDate.getText());
-            end = LocalDate.parse(endDate.getText());
-            if (start.isBefore(end)) { //TODO: check for invalid entry formats
-                EmployeeViewRangeSuccessController.setDates(start, end);
-                application.getSceneController()
-                        .activate("employeeViewRangeSuccess");
-            } else {
-                application.getSceneController()
-                        .activate("employeeViewAuctionsError");
+                start = LocalDate.parse(startDate.getText());
+                end = LocalDate.parse(endDate.getText());
+                if (start.isBefore(end)) { //TODO: check for invalid entry formats
+                    EmployeeViewRangeSuccessController.setDates(start, end);
+                    application.getSceneController()
+                            .activate("employeeViewRangeSuccess");
+                } else {
+                    application.getSceneController()
+                            .activate("employeeViewAuctionsError");
+                }
             }
+        } catch (Exception ex) {
+            application.getSceneController().activate("employeeViewAuctionsError");
         }
     }
 

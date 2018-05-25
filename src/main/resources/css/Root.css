@@ -44,3 +44,7 @@
     -fx-border-width: 1;
     -fx-border-color: #E8E8E8 transparent transparent transparent;
 }
+
+#error-section Label {
+    -fx-text-fill: red;
+}

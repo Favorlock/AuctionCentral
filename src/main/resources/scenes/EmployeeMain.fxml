@@ -30,7 +30,7 @@
                 <Label onMouseReleased="#changeMaxAuctions" text="Change Maximum Number of Auctions" wrapText="true"/>
                 <Label layoutX="11.0" layoutY="141.0" onMouseReleased="#cancelAnAuction" text="Cancel an Auction"
                        wrapText="true"/>
-                <fx:include source="Logout.fxml"/>
+                <fx:include source="components/Logout.fxml"/>
             </children>
         </VBox>
     </left>

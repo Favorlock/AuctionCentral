@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.uw.sp18.tcss360a.group6.controller.LogoutController"
+            id="error-section" visible="false">
+    <Label id="error-message"/>
+</AnchorPane>
