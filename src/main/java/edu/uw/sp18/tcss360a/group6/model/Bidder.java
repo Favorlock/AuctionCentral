@@ -62,7 +62,8 @@ public class Bidder extends AbstractUser {
      *
      * @return boolean used to represent whether a bidder is allowed to bid in the given auction.
      */
-    public boolean canBid(Auction auction) {
+    public boolean canBid(Auction auction) {  //TODO: is canBid working???
+
         return auction.isAcceptingBids() && getPlacedBids().stream()
                 .filter(bid -> bid.getAuction().getId() == auction.getId())
                 .count() < MAX_BIDS_PER_AUCTION;
@@ -98,7 +99,7 @@ public class Bidder extends AbstractUser {
         return auctions;
     }
 
-    public boolean cancelBid(Bid aBid) { //TODO: Verify this works !!!
+    public boolean cancelBid(Bid aBid) { //TODO: not working !
         boolean didCancelBid = false;
         Bootstrap bootstrap = new Bootstrap();
         List<Bid> bids = bootstrap.getBidRepository().fetchAll();

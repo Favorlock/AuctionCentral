@@ -38,10 +38,8 @@ public class BidderCancelBidController implements Initializable{
 
     public BidderCancelBidController() {
 
-        Bidder bidder = Session.getInstance().get("user", Bidder.class);
-
+        bidder = Session.getInstance().get("user", Bidder.class);
         List<Bid> bids = bidder.getPlacedBids();
-
         listView = new ListView();
 
         this.observableBids.setAll(bids);
@@ -50,7 +48,6 @@ public class BidderCancelBidController implements Initializable{
 
         listView.setVisible(true);
 
-        displayBids(); // TODO: this should display them initially ????
     }
 
     @FXML
@@ -61,8 +58,8 @@ public class BidderCancelBidController implements Initializable{
 
     @FXML
     public void cancelBid() {
-//        Bid bid = ;(Bid)
-//        bidder.cancelBid(bid);
+        Bid bid = (Bid) listView.getSelectionModel().getSelectedItem();
+        System.out.println(bidder.cancelBid(bid)); //TODO: remove print statement
     }
 
     @FXML

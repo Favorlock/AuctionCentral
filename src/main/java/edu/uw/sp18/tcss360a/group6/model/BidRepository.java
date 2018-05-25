@@ -50,6 +50,7 @@ public class BidRepository implements CollectionRepository<Bid> {
 
     @Override
     public void delete(Bid entry) {
+//        entry.id = this.index--; //TODO: should decrement index?
         this.entries.removeIf(bid -> bid.getId() == entry.getId());
         save();
     }
