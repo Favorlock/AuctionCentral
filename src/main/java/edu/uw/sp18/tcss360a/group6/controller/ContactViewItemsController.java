@@ -48,20 +48,6 @@ public class ContactViewItemsController implements Initializable {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public ContactViewItemsController() {
-        super();
-
-        Bootstrap bootstrap = new Bootstrap();
-//        Item item = bootstrap.getItemRepository().fetchAll().stream().filter(item -> item.getId() == theItem.getId());
-/*
-        List<Long> bidItemIds = bidder.getPlacedBids().stream()
-                .map(Bid::getItemId)
-                .distinct()
-                .collect(Collectors.toList());
-        List<Item> items = auction.getInventory().stream()
-                .filter(item -> !bidItemIds.contains(item.getId()))
-                .collect(Collectors.toList());
- */
-
         List<Item> auctionItems = auction.getInventory();
         //TODO: can see auction with no items, put items in all auctions
 

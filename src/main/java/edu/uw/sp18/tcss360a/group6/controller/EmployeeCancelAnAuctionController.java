@@ -36,8 +36,6 @@ public class EmployeeCancelAnAuctionController implements Initializable{
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public EmployeeCancelAnAuctionController () {
-        super ();
-
         Bootstrap bootstrap = new Bootstrap();
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchFutureAuctions();
 
@@ -49,8 +47,6 @@ public class EmployeeCancelAnAuctionController implements Initializable{
                 listView -> new ListViewCell());
 
         listView.setVisible(true);
-
-        displayAuctions(); // TODO: this should display them initially ????
     }
 
     @FXML

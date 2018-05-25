@@ -34,8 +34,6 @@ public class EmployeeViewAllAuctionsController implements Initializable{
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public EmployeeViewAllAuctionsController () {
-        super ();
-
         Bootstrap bootstrap = new Bootstrap();
         List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
         listView = new ListView();
@@ -46,8 +44,6 @@ public class EmployeeViewAllAuctionsController implements Initializable{
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         listView.setVisible(true);
-
-        displayAuctions(); // TODO: this should display them initially ????
     }
 
     @FXML

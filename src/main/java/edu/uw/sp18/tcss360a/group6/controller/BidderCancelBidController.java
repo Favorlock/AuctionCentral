@@ -41,7 +41,6 @@ public class BidderCancelBidController implements Initializable{
     private Bidder bidder;
 
     public BidderCancelBidController() {
-
         bidder = Session.getInstance().get("user", Bidder.class);
         List<Bid> bids = bidder.getPlacedBids();
         listView = new ListView();
@@ -51,7 +50,6 @@ public class BidderCancelBidController implements Initializable{
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         listView.setVisible(true);
-
     }
 
     @FXML

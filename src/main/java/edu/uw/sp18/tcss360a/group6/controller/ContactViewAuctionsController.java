@@ -38,10 +38,7 @@ public class ContactViewAuctionsController implements Initializable{
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public ContactViewAuctionsController () {
-        super ();
-
         ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
-        Bootstrap bootstrap = new Bootstrap();
         //TODO: dispaly only auctions associated with contact person
         List<Auction> auction = contact.getOrganization().getAuctions();
 
@@ -52,8 +49,6 @@ public class ContactViewAuctionsController implements Initializable{
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         listView.setVisible(true);
-
-        displayAuctions(); // TODO: this should display them initially ????
     }
 
     @FXML
@@ -63,7 +58,8 @@ public class ContactViewAuctionsController implements Initializable{
     }
 
     @FXML
-    public void viewAuction() { //TODO - set auction in BidderPlaceBidViewAuctionController
+    public void viewAuction() {
+        //TODO - set auction in BidderPlaceBidViewAuctionController
         Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
         ContactViewItemsController.setAuction(selectedAuction);
         application.getSceneController().activate("contactViewItems");

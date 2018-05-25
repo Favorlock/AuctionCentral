@@ -20,31 +20,26 @@ import javafx.util.Callback;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class ContactAddItemController implements Initializable{
+public class ContactAddItemController implements Initializable {
     @FXML
     public ListView listView;
     @FXML
     private FXApplication application = FXApplication.getInstance();
     private ObservableList auctions = FXCollections.observableArrayList();
     private ListProperty<String> listProperty = new SimpleListProperty<>();
-    public ContactAddItemController () {
-        super ();
 
-        Bootstrap bootstrap = new Bootstrap();
+    public ContactAddItemController () {
         //TODO: display only auctions associated with contact person
         ContactPerson user = Session.getInstance().get("user", ContactPerson.class);
         Auction auction = user.getOrganization().getCurrentAuction();
 
         listView = new ListView();
 
-
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         listView.setVisible(true);
-
-        displayAuctions(); // TODO: this should display them initially ????
     }
 
     @FXML

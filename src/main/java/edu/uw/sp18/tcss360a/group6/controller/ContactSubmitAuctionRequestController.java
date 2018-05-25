@@ -22,12 +22,11 @@ public class ContactSubmitAuctionRequestController {
 
     @FXML
     private TextField inputDate;
+
     @FXML
     private FXApplication application = FXApplication.getInstance();
+
     private LocalDate auctionDate;
-    public ContactSubmitAuctionRequestController () {
-        super ();
-    }
 
     @FXML
     public void onEnter(KeyEvent event) {
@@ -42,15 +41,10 @@ public class ContactSubmitAuctionRequestController {
 
             Auction addedAuction = new Auction(auctionId, orgId, auctionDate);
             if(contact.getOrganization().addAuction(addedAuction)) {
-
-
                 application.getSceneController().activate("auctionAddSuccess");
             } else {
                 application.getSceneController().activate("auctionAddFail");
             }
-
-
-            //System.out.println(contact.getOrganization().addAuction(addedAuction));
         }
     }
 

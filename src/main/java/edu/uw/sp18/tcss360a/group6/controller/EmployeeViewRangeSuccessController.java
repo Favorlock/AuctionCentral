@@ -37,8 +37,6 @@ public class EmployeeViewRangeSuccessController implements Initializable {
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
     public EmployeeViewRangeSuccessController () {
-        super ();
-
         Bootstrap bootstrap = new Bootstrap();
         //TODO: Display only auctions in range
         List<Auction> auction = bootstrap.getAuctionRepository()

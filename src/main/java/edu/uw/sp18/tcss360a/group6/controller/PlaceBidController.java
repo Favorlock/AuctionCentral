@@ -36,8 +36,6 @@ public class PlaceBidController implements Initializable {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public PlaceBidController () {
-        super ();
-
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
 
         List<Auction> auction = bidder.getAuctionsICanBidIn();
@@ -50,8 +48,6 @@ public class PlaceBidController implements Initializable {
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
 
         listView.setVisible(true);
-
-        displayAuctions(); // TODO: this should display them initially ????
     }
 
     @FXML
