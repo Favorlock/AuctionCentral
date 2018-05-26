@@ -53,13 +53,14 @@ public class BidderTest {
         bidder = new Bidder(bidderId,userName);
         auction = new Auction();
         minBid = new BigDecimal(110);
-        item = new Item(itemId,auctionId, itemDescription,itemQuantity,minBid, itemCondition, itemApproximateSize, itemLocation, itemComment);
+        item = new Item(itemId,auctionId, itemDescription, itemQuantity,
+                minBid, itemCondition, itemApproximateSize, itemLocation,
+                itemComment);
         bid = new Bid(bidderId, auctionId, itemId, amount);
     }
 
     @Test
     public void canBidInAuction_belowMaximumBids_True() {
-
         for (int i = 0; i < 3; i++) {
             bidder.addBid(amount, item, auction);
         }
@@ -68,8 +69,6 @@ public class BidderTest {
 
     @Test
     public void canBidInAuction_aboveMaximumBids_False() {
-
-
         for (int i = 0; i < 4; i++) {
             bidder.addBid(amount, item, auction);
         }
@@ -78,7 +77,6 @@ public class BidderTest {
 
     @Test
     public void canBid_belowMaximumBids_True() {
-
         for (int i = 0; i < 10; i++) {
             bidder.addBid(amount, item, auction);
         }

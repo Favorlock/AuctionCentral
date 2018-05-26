@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -20,6 +21,8 @@ public class EmployeeTest {
     private Bid itemBid;
     private BigDecimal itemPrice;
     private LocalDate startDate;
+    private LocalDate endDate;
+    private LocalDate endDatePlusOne;
     @Before
     public void setUp() {
         long idNumber = 100;
@@ -28,6 +31,8 @@ public class EmployeeTest {
 
         itemPrice = new BigDecimal(500);
         startDate = LocalDate.now();
+        endDate = LocalDate.now().plusMonths(3);
+        endDatePlusOne = LocalDate.now().plusDays(1);
         auctionWithOneItem = new Auction(idNumber, startDate);
         oneItem = new Item(idNumber, "Dog", 1, itemPrice, "good",
                 "small", "A1", "N/A");
@@ -59,21 +64,21 @@ public class EmployeeTest {
 
     @Test
     public void viewAllAuctionsBetweenDates_secondDateBeforeFirstDate_Fail() {
-        assertFalse(false);
+        assertNull(employee.viewAllAuctionsBetweenDates(endDate, startDate));
     }
 
     @Test
     public void viewAllAuctionsBetweenDates_firstAndSecondDateEquivalent_True() {
-        assertTrue(true);
+        assertNotNull(employee.viewAllAuctionsBetweenDates(endDate, endDate));
     }
 
     @Test
     public void viewAllAuctionsBetweenDates_secondDateAtLeastOneDayAfterFirstDate_True() {
-        assertTrue(true);
+        assertNotNull(employee.viewAllAuctionsBetweenDates(endDate, endDatePlusOne));
     }
 
     @Test
-    public void viewAllAuctionsInOrder_atLeastOnePastAndFutureAuction_True() {
+    public void viewAllAuctionsInOrder_atLeastOnePastAndFutureAuction_True() { //TODO:
         assertTrue(true);
     }
 
@@ -100,9 +105,3 @@ public class EmployeeTest {
 
 }
 
-    /*
-    As an employee of AuctionCentral, I want a view in brief of all auctions that take place between any two dates, inclusive.
-        The second date is earlier than the first date : fail
-        The first and second dates are the same
-        The second date is at least one day later than the second date
-     */

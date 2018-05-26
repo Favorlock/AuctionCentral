@@ -27,15 +27,19 @@ public class Employee extends AbstractUser {
      * Change the maximum amount of auctions that the system allows to be
      * scheduled at one time.
      *
-     * @param newAuctionMax integer specifying proposed new amount of auction allowed
+     * @param newAuctionMax integer specifying proposed new amount of auction
+     *                     allowed
      */
     public boolean setAuctionCapacity(final int newAuctionMax) {
         boolean changed = false;
         Bootstrap bootstrap = Bootstrap.getInstance();
-        SettingsRepository settingsRepository = bootstrap.getSettingsRepository();
-        AuctionRepository auctionRepository = bootstrap.getAuctionRepository();
+        SettingsRepository settingsRepository =
+                bootstrap.getSettingsRepository();
+        AuctionRepository auctionRepository =
+                bootstrap.getAuctionRepository();
 
-        if (newAuctionMax > 0 && newAuctionMax > auctionRepository.fetchFutureAuctions().size()) {
+        if (newAuctionMax > 0 && newAuctionMax > auctionRepository
+                .fetchFutureAuctions().size()) {
             settingsRepository.fetch().setAuctionCapacity(newAuctionMax);
             settingsRepository.save();
             changed = true;
@@ -61,10 +65,12 @@ public class Employee extends AbstractUser {
      * @param firstDate  the starting date
      * @param secondDate the ending date
      */
-    public List<Auction> viewAllAuctionsBetweenDates(LocalDate firstDate, LocalDate secondDate) {
+    public List<Auction> viewAllAuctionsBetweenDates(LocalDate firstDate,
+                                                     LocalDate secondDate) {
         if (firstDate.isBefore(secondDate) ||
                 firstDate.isEqual(secondDate)) {
-            return Bootstrap.getInstance().getAuctionRepository().fetchAuctionsInPeriod(firstDate, secondDate);
+            return Bootstrap.getInstance().getAuctionRepository()
+                    .fetchAuctionsInPeriod(firstDate, secondDate);
         }
         return null;
     }
@@ -90,13 +96,16 @@ public class Employee extends AbstractUser {
      *
      * @param anAuction the auction to try to cancel
      */
-    public Boolean cancelAnAuction(Auction anAuction) { //TODO: is all relevant info deleted?
+    public Boolean cancelAnAuction(Auction anAuction) {
+        //TODO: is all relevant info deleted?
         boolean didDeleteAuction = false;
-        List<Auction> auctions = Bootstrap.getInstance().getAuctionRepository().fetchAll();
+        List<Auction> auctions = Bootstrap.getInstance()
+                .getAuctionRepository().fetchAll();
         for (Auction a : auctions) {
             if (a.getId() == anAuction.getId()) {
                 if(!isThereBidsOnAuctionItems(a.getInventory())) {
-                    Bootstrap.getInstance().getAuctionRepository().delete(a);
+                    Bootstrap.getInstance().getAuctionRepository()
+                            .delete(a);
                     didDeleteAuction = true;
                 }
                 break;
