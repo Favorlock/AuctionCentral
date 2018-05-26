@@ -37,6 +37,7 @@ public class FXApplication extends Application {
     private static String MAX_AUCTIONS_CHANGE_FAIL_FXML = "/scenes/MaxAuctionsChangeFail.fxml";
     private static String ADD_ITEM_FORM_FXML = "/scenes/AddItemForm.fxml";
     private static String CONTACT_VIEW_ITEMS_FXML = "/scenes/ContactViewItems.fxml";
+    private static String AUCTION_ADD_INPUT_FAIL_FXML = "/scenes/AuctionAddInputFail.fxml";
 
     private static final String STAGE_TITLE = "Auction Central";
 
@@ -92,6 +93,8 @@ public class FXApplication extends Application {
                 .addScreen("addItemForm", ADD_ITEM_FORM_FXML);
         this.sceneController
                 .addScreen("contactViewItems", CONTACT_VIEW_ITEMS_FXML);
+        this.sceneController
+                .addScreen("auctionAddInputFail", AUCTION_ADD_INPUT_FAIL_FXML);
 
 
         this.sceneController.activate("login");

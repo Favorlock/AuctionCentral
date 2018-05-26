@@ -5,7 +5,6 @@ import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.ContactPerson;
-import edu.uw.sp18.tcss360a.group6.model.ItemRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -31,21 +30,40 @@ public class ContactSubmitAuctionRequestController {
 
     @FXML
     public void onEnter(KeyEvent event) {
+
+        boolean correctInput = true;
         if (event.getCode().equals(KeyCode.ENTER)) {
             //TODO: fully test business rules
             Bootstrap bootstrap = new Bootstrap();
 
             ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
-            auctionDate = LocalDate.parse(inputDate.getText());
-            long auctionId = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder().size() + 1;
-            long orgId = contact.getOrganizationId();
+            try {
+                auctionDate = LocalDate.parse(inputDate.getText());
+                if (!auctionDate.isAfter(LocalDate.now())){
 
-            Auction addedAuction = new Auction(auctionId, orgId, auctionDate);
-            if(contact.getOrganization().addAuction(addedAuction)) {
-                application.getSceneController().activate("auctionAddSuccess");
-            } else {
-                application.getSceneController().activate("auctionAddFail");
+                    application.getSceneController().activate("auctionAddInputFail");
+
+                    correctInput = false;
+                }
+
+            } catch (Exception exception) {
+                application.getSceneController().activate("auctionAddInputFail");
+
+                correctInput = false;
             }
+
+            if (correctInput) {
+                long auctionId = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder().size() + 1;
+                long orgId = contact.getOrganizationId();
+
+                Auction addedAuction = new Auction(auctionId, orgId, auctionDate);
+                if(contact.getOrganization().addAuction(addedAuction)) {
+                    application.getSceneController().activate("auctionAddSuccess");
+                } else {
+                    application.getSceneController().activate("auctionAddFail");
+                }
+            }
+
         }
     }
 
