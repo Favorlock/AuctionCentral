@@ -53,7 +53,6 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
     public BidderPlaceBidViewAuctionController() {
         List<Item> auctionItems = auction.getInventory();
-        //TODO: can see auction with no items, put items in all auctions
 
         listView = new ListView();
         this.items.setAll(auctionItems);

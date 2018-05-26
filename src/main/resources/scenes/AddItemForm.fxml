@@ -80,6 +80,7 @@
             </Label>
             <TextField fx:id="commentsField" onKeyReleased="#onEnter" maxWidth="150" />
             <Button onAction="#addItem" text="Add Item" />
+            <Label fx:id="addItemMessageText"/>
         </VBox>
     </center>
 

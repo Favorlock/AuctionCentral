@@ -5,6 +5,7 @@ import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Item;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -34,6 +35,8 @@ public class AddItemFormController {
     private TextField locationField;
     @FXML
     private TextField commentsField;
+    @FXML
+    private Label addItemMessageText;
 
     private static Auction auction;
 
@@ -75,9 +78,15 @@ public class AddItemFormController {
         Item item = new Item(itemId, auctionId, description, quantity,
                 startBid, condition, size, location, comments);
 
-        System.out.println(auction.addItem(item));
-//        bootstrap.getAuctionRepository().fetchAll().stream()
-//                .filter(auction1 -> auction1.getId() == auction.getId()::addItem(auction1));
+        showAddItemStatus(auction.addItem(item));
+    }
+
+    private void showAddItemStatus(boolean didAdd) {
+        if(didAdd) {
+            addItemMessageText.setText("Item was added to the auction");
+        } else {
+            addItemMessageText.setText("Item was not added to the auction");
+        }
     }
 
     public static void setAuction(Auction anAuction) {
