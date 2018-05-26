@@ -172,9 +172,9 @@ public class Auction {
         String org = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
                 .filter(organization -> organization.getId() == organizationId)
                 .findFirst().orElse(null).getName();
-        return "Auction ID=" + id +
-                ", Start Date=" + startDate +
-                 ", Organization=" + org;
+        return "Start Date=" + startDate +
+                ", Auction ID=" + id +
+                ", Organization=" + org;
 
     }
 }

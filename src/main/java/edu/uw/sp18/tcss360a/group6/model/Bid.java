@@ -36,6 +36,7 @@ public class Bid {
 
     public Bid() {
         super();
+
     }
 
     public Bid(long bidderId, long auctionId, long itemId, BigDecimal amount) {
@@ -43,6 +44,7 @@ public class Bid {
         this.auctionId = auctionId;
         this.itemId = itemId;
         this.amount = amount;
+        this.amount = this.amount.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
     public Bid(long id, long bidderId, long auctionId, long itemId, BigDecimal amount) {
@@ -122,11 +124,15 @@ public class Bid {
 
     @Override
     public String toString() {
+        String itemName = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
+                .filter(item -> item.getId() == itemId)
+                .findFirst().orElse(null).getDescription();
+        this.amount = this.amount.setScale(2, BigDecimal.ROUND_HALF_UP);
         return "Bid ID=" + id +
-                ", Bidder ID=" + bidderId +
-                ", Auction ID=" + auctionId +
-                ", Item ID=" + itemId +
-                ", Amount=" + amount;
+                ", Item=" + itemName +
+                ", Amount=" + amount +
+                ", Auction ID=" + auctionId;
+
     }
 }
 

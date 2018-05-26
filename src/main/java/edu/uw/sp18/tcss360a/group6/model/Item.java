@@ -222,6 +222,7 @@ public class Item {
 
     @Override
     public String toString() {
+        this.startBid = this.startBid.setScale(2, BigDecimal.ROUND_HALF_UP);
 
         return description +
                 ", Quantity=" + quantity +
