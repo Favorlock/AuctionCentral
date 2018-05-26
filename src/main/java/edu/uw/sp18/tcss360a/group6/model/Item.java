@@ -222,11 +222,13 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item ID=" + id +
-                ", Auction ID=" + auctionId +
-                ", Description='" + description + '\'' +
+
+        return description +
                 ", Quantity=" + quantity +
-                ", Min Bid=" + startBid;
+                ", Min Bid=" + startBid +
+                ", Item ID='" + id + '\'' +
+                ", Auction ID=" + auctionId ;
+
     }
 }
 

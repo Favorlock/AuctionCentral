@@ -169,9 +169,13 @@ public class Auction {
 
     @Override
     public String toString() {
+        String org = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
+                .filter(organization -> organization.getId() == organizationId)
+                .findFirst().orElse(null).getName();
         return "Auction ID=" + id +
-                ", Organization ID=" + organizationId +
-                ", Start Date=" + startDate;
+                ", Start Date=" + startDate +
+                 ", Organization=" + org;
+
     }
 }
 
