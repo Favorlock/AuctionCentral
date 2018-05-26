@@ -50,6 +50,8 @@ public class EmployeeViewAllAuctionsController implements Initializable{
     public void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
+        listView.getSelectionModel().select(0);
+
     }
 
     @FXML

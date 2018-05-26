@@ -47,7 +47,6 @@ public class ViewBidsController implements Initializable{
         this.observableBids.setAll(items);
         this.listView.setItems(this.observableBids);
         this.listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
-
         this.listView.setVisible(true);
     }
 
@@ -55,6 +54,7 @@ public class ViewBidsController implements Initializable{
     public void displayBids() {
         this.listView.itemsProperty().bind(this.listProperty);
         this.listProperty.set(FXCollections.observableArrayList(this.observableBids));
+        listView.getSelectionModel().select(0);
     }
 
     @FXML

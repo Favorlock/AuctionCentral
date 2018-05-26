@@ -67,6 +67,8 @@ public class ContactViewItemsController implements Initializable {
     public void displayItems() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(items));
+        listView.getSelectionModel().select(0);
+
     }
 
     @FXML
