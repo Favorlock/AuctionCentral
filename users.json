@@ -110,7 +110,8 @@
     {
       "type": "CONTACT_PERSON",
       "id": 21,
-      "userName": "Sally"
+      "userName": "Sally",
+      "organizationId": 21
     }
   ]
 }

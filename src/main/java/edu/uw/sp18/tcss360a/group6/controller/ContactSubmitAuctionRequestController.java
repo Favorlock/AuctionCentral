@@ -28,42 +28,42 @@ public class ContactSubmitAuctionRequestController {
 
     private LocalDate auctionDate;
 
+    /**
+     * Get data from the GUI and add an auction to the repository if
+     * possible.
+     * @param event activate this method when user hits enter
+     */
     @FXML
     public void onEnter(KeyEvent event) {
-
         boolean correctInput = true;
         if (event.getCode().equals(KeyCode.ENTER)) {
             //TODO: fully test business rules
             Bootstrap bootstrap = new Bootstrap();
-
             ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
             try {
                 auctionDate = LocalDate.parse(inputDate.getText());
+
                 if (!auctionDate.isAfter(LocalDate.now())){
-
                     application.getSceneController().activate("auctionAddInputFail");
-
                     correctInput = false;
                 }
 
             } catch (Exception exception) {
                 application.getSceneController().activate("auctionAddInputFail");
-
                 correctInput = false;
             }
 
             if (correctInput) {
                 long auctionId = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder().size() + 1;
                 long orgId = contact.getOrganizationId();
-
                 Auction addedAuction = new Auction(auctionId, orgId, auctionDate);
+
                 if(contact.getOrganization().addAuction(addedAuction)) {
                     application.getSceneController().activate("auctionAddSuccess");
                 } else {
                     application.getSceneController().activate("auctionAddFail");
                 }
             }
-
         }
     }
 
