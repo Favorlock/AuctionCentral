@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.uw.sp18.tcss360a.group6.controller.EmployeeViewAuctionsBetweenDatesController"
             prefHeight="480.0" prefWidth="680.0">
@@ -31,7 +32,8 @@
 
     <center>
         <VBox styleClass="content-section" prefHeight="200.0" prefWidth="325.0">
-            <Label text="Please enter the start and end date in the format: 2007-12-25 " wrapText="true">
+            <Label fx:id="viewAuctionsErrorText" text="Please enter the start and end date in the format: 2007-12-25 "
+                   wrapText="true">
                 <font>
                     <Font size="18.0"/>
                 </font>

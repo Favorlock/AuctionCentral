@@ -2,9 +2,11 @@ package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 
 import java.time.LocalDate;
 
@@ -16,11 +18,17 @@ import java.time.LocalDate;
  */
 public class EmployeeViewAuctionsBetweenDatesController {
 
+    private static String INVALID_ENTRY_PROMPT = "Invalid entry. Ensure starting date is before ending date" +
+            " and written in the correct format";
+
     @FXML
     private TextField startDate;
 
     @FXML
     private TextField endDate;
+
+    @FXML
+    private Label viewAuctionsErrorText;
 
     private LocalDate start;
 
@@ -28,6 +36,11 @@ public class EmployeeViewAuctionsBetweenDatesController {
 
     private FXApplication application = FXApplication.getInstance();
 
+    /**
+     * Get two dates from the GUI then either display auctions between those
+     * dates or a prompt to try again
+     * @param event activate when user hits enter
+     */
     @FXML
     public void onEnter(KeyEvent event) {
         try {
@@ -35,17 +48,16 @@ public class EmployeeViewAuctionsBetweenDatesController {
 
                 start = LocalDate.parse(startDate.getText());
                 end = LocalDate.parse(endDate.getText());
-                if (start.isBefore(end)) { //TODO: check for invalid entry formats
+                if (start.isBefore(end)) {
                     EmployeeViewRangeSuccessController.setDates(start, end);
                     application.getSceneController()
                             .activate("employeeViewRangeSuccess");
                 } else {
-                    application.getSceneController()
-                            .activate("employeeViewAuctionsError");
+                    viewAuctionsErrorText.setText(INVALID_ENTRY_PROMPT);
                 }
             }
         } catch (Exception ex) {
-            application.getSceneController().activate("employeeViewAuctionsError");
+            viewAuctionsErrorText.setText(INVALID_ENTRY_PROMPT);
         }
     }
 
