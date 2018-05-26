@@ -48,6 +48,10 @@ public class Organization {
         return this.contactPeople;
     }
 
+    /**
+     * Fetch a list of all Auctions that this organization has submitted.
+     * @return list of type auction
+     */
     public List<Auction> getAuctions() {
         if (this.auctions == null) {
             this.auctions = ConsoleApplication.getInstance()
@@ -59,6 +63,10 @@ public class Organization {
         return this.auctions;
     }
 
+    /**
+     * Return the current auction for this organization if possible.
+     * @return current organization auction
+     */
     public Auction getCurrentAuction() {
         LocalDate now = LocalDate.now();
         return getAuctions().stream()
@@ -67,13 +75,22 @@ public class Organization {
                 .findFirst().orElse(null);
     }
 
+    /**
+     * Get the auction within the last year for this organization.
+     * @return auction withing the last year
+     */
     public Auction getAuctionWithinLastYear() {
         LocalDate now = LocalDate.now();
         return getAuctions().stream()
-                .filter(auction -> auction.getStartDate().isAfter(now.minusYears(1)))
+                .filter(auction -> auction.getStartDate()
+                        .isAfter(now.minusYears(1)))
                 .findFirst().orElse(null);
     }
 
+    /**
+     * Get if the auction schedule has an opening. Returns true if successful.
+     * @return bool if auction opening
+     */
     public boolean isAuctionScheduleOpeningAvailable() {
         return ConsoleApplication.getInstance().getAuctionRepository()
                 .fetchFutureAuctions().size() < Bootstrap.getInstance().

@@ -23,49 +23,18 @@ public class ContactPerson extends AbstractUser {
         this.organizationId = organizationId;
     }
 
-//    /**
-//     * Validate if the specified auction can be scheduled into the overall auction
-//     * schedule list while following scheduling rules.
-//     *
-//     * @param auctionsSchedule the overall auction schedule
-//     * @param anAuction the auction to schedule
-//     * @return true if possible to schedule an auction on this date
-//     */
-//    public boolean scheduleAnAuction(AuctionSchedule auctionsSchedule, Auction anAuction) {
-//        return auctionsSchedule.scheduleAuction(anAuction);
-//    }
-//
-//    /**
-//     * Add an Item to the specified auction.
-//     *
-//     * @param auctionToAddItemTo the auction to add item to
-//     * @param itemToAddToAuction the item to be added to the auction
-//     */
-//    public void addInventoryToAuction (Auction auctionToAddItemTo, Item itemToAddToAuction) {
-//        auctionToAddItemTo.addItem(itemToAddToAuction);
-//        ArrayList<Item> temporaryItems = new ArrayList<>();
-//        if (submittedAuctionItems.get(auctionToAddItemTo) != null) {
-//            temporaryItems = submittedAuctionItems.get(auctionToAddItemTo);
-//            submittedAuctionItems.put(auctionToAddItemTo, temporaryItems);
-//        } else {
-//            temporaryItems.add(itemToAddToAuction);
-//            submittedAuctionItems.put(auctionToAddItemTo, temporaryItems);
-//        }
-//    }
-//
-//    /**
-//     * Get my items I've submitted in auctions.
-//     *
-//     * @return a map<auction, ArrayList<Item>> containing the auctions and items
-//     */
-//    public Map<Auction, ArrayList<Item>> viewAllAuctionsItemsISubmitted () {
-//        return submittedAuctionItems;
-//    }
-
+    /**
+     * Get the organizationId for this contact person.
+     * @return organizationId of this contact person
+     */
     public long getOrganizationId() {
         return this.organizationId;
     }
 
+    /**
+     * Get the contact persons organization from the organization repository.
+     * @return the Organization for this contact person
+     */
     public Organization getOrganization() {
         if (this.organization == null) {
             this.organization = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()

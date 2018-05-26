@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.uw.sp18.tcss360a.group6.controller.ContactMainController"
             prefHeight="480.0" prefWidth="680.0">
@@ -23,9 +24,9 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View my Auctions" onMouseReleased="#viewAuctions"/>
+                <Label fx:id="viewAuctionsLabelCP" text="View my Auctions" onMouseReleased="#viewAuctions"/>
                 <Label text="Submit Auction Request" onMouseReleased="#submitAuction" wrapText="true"/>
-                <Label text="Add Item to Auction" onMouseReleased="#addItem" wrapText="true"/>
+                <Label fx:id="viewItemsLabelCP" text="Add Item to Auction" onMouseReleased="#addItem" wrapText="true"/>
                 <fx:include source="components/Logout.fxml"/>
             </children>
         </VBox>

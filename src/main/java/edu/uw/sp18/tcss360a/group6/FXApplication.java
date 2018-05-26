@@ -101,6 +101,8 @@ public class FXApplication extends Application {
 
         stage.setTitle(STAGE_TITLE);
         stage.setScene(scene);
+        stage.setMinHeight(500);
+        stage.setMinWidth(725);
         stage.show();
     }
 
