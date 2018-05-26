@@ -77,6 +77,7 @@ public class AuctionRepository implements CollectionRepository<Auction> {
 
     @Override
     public void delete(Auction entry) {
+//        entry.id = this.index--; //TODO: should decrement index?
         this.entries.removeIf(auction -> auction.getId() == entry.getId());
         save();
     }

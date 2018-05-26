@@ -55,6 +55,7 @@ public class OrganizationRepository implements CollectionRepository<Organization
     @Override
     public void delete(Organization entry) {
         this.entries.removeIf(organization -> organization.getId() == entry.getId());
+//        entry.id = this.index--; //TODO: should decrement index?
         save();
     }
 

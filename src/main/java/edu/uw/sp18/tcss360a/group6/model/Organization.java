@@ -108,8 +108,11 @@ public class Organization {
         boolean added = false;
         if (isAuctionScheduleOpeningAvailable()
                 && getCurrentAuction() == null
-                && getAuctionWithinLastYear() == null) {
-            ConsoleApplication.getInstance().getAuctionRepository().add(auction);
+                && getAuctionWithinLastYear() == null
+                && ConsoleApplication.getInstance().getAuctionRepository().
+                fetchFutureAuctions().size() <= Auction.MAX_UPCOMING_AUCTIONS) {
+            ConsoleApplication.getInstance().getAuctionRepository()
+                    .add(auction);
             getAuctions().add(auction);
             added = true;
         }

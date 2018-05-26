@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
  */
 public class Auction {
 
+    public static final int MAX_UPCOMING_AUCTIONS = 25;
+
     @Expose
     protected long id;
 
