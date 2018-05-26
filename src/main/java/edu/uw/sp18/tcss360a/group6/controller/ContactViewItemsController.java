@@ -49,7 +49,6 @@ public class ContactViewItemsController implements Initializable {
 
     public ContactViewItemsController() {
         List<Item> auctionItems = auction.getInventory();
-        //TODO: can see auction with no items, put items in all auctions
 
         listView = new ListView();
         this.items.setAll(auctionItems);

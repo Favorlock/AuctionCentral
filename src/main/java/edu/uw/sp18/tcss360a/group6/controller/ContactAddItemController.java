@@ -29,7 +29,6 @@ public class ContactAddItemController implements Initializable {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public ContactAddItemController () {
-        //TODO: display only auctions associated with contact person
         ContactPerson user = Session.getInstance().get("user", ContactPerson.class);
         Auction auction = user.getOrganization().getCurrentAuction();
 

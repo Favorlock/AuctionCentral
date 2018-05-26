@@ -55,8 +55,7 @@ public class AddItemFormController {
     @FXML
     public void onEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-
-
+            addItem();
         }
     }
 
@@ -92,7 +91,6 @@ public class AddItemFormController {
     public static void setAuction(Auction anAuction) {
         auction = anAuction;
     }
-
 
     @FXML
     public void back() {
