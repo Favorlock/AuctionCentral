@@ -48,6 +48,7 @@ public class ItemRepository implements CollectionRepository<Item> {
     public void add(Item entry) {
         entry.id = this.index++;
         this.entries.add(entry);
+        save();
     }
 
     @Override
