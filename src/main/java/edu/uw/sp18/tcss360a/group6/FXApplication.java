@@ -33,8 +33,6 @@ public class FXApplication extends Application {
     private static String EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML = "/scenes/EmployeeViewAuctionsError.fxml";
     private static String EMPLOYEE_VIEW_RANGE_SUCCESS_FXML = "/scenes/EmployeeViewRangeSuccess.fxml";
     private static String AUCTION_ADD_FAIL_FXML = "/scenes/AuctionAddFail.fxml";
-    private static String MAX_AUCTIONS_CHANGE_SUCCESS_FXML = "/scenes/MaxAuctionsChangeSuccess.fxml";
-    private static String MAX_AUCTIONS_CHANGE_FAIL_FXML = "/scenes/MaxAuctionsChangeFail.fxml";
     private static String ADD_ITEM_FORM_FXML = "/scenes/AddItemForm.fxml";
     private static String CONTACT_VIEW_ITEMS_FXML = "/scenes/ContactViewItems.fxml";
     private static String AUCTION_ADD_INPUT_FAIL_FXML = "/scenes/AuctionAddInputFail.fxml";
@@ -85,10 +83,6 @@ public class FXApplication extends Application {
                 .addScreen("auctionAddSuccess", AUCTION_ADD_SUCCESS_FXML);
         this.sceneController
                 .addScreen("auctionAddFail", AUCTION_ADD_FAIL_FXML);
-        this.sceneController
-                .addScreen("maxAuctionsChangeSuccess", MAX_AUCTIONS_CHANGE_SUCCESS_FXML);
-        this.sceneController
-                .addScreen("maxAuctionsChangeFail", MAX_AUCTIONS_CHANGE_FAIL_FXML);
         this.sceneController
                 .addScreen("addItemForm", ADD_ITEM_FORM_FXML);
         this.sceneController

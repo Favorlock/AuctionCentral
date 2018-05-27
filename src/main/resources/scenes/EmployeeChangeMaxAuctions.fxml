@@ -31,7 +31,8 @@
 
     <center>
         <VBox styleClass="content-section" prefHeight="200.0" prefWidth="325.0">
-            <Label text="Please enter the new maximum amount of auctions in system." wrapText="true">
+            <Label fx:id="changeMaxAuctionLabel" text="Please enter the new maximum amount of auctions in system."
+                   wrapText="true">
                 <font>
                     <Font size="18.0"/>
                 </font>

@@ -18,6 +18,8 @@ import javafx.scene.input.KeyEvent;
  * @version 5/18/2018
  */
 public class EmployeeChangeMaxAuctionsController {
+    @FXML
+    public Label changeMaxAuctionLabel;
 
     private FXApplication application = FXApplication.getInstance();
 
@@ -28,11 +30,18 @@ public class EmployeeChangeMaxAuctionsController {
     public void onEnter(KeyEvent event) { //TODO: show the current auction max on gui and new max
         if (event.getCode().equals(KeyCode.ENTER)) {
             Employee employee = Session.getInstance().get("user", Employee.class);
-            int max = Integer.parseInt(newMax.getText());
-            if (employee.setAuctionCapacity(max)){
-                application.getSceneController().activate("maxAuctionsChangeSuccess");
-            } else {
-                application.getSceneController().activate("maxAuctionsChangeFail");
+            try {
+                int max = Integer.parseInt(newMax.getText());
+                if (employee.setAuctionCapacity(max)){
+                    changeMaxAuctionLabel.setText("You have sucessfully changed the maximum number" +
+                            " of upcoming auctions allowed");
+                } else {
+                    changeMaxAuctionLabel.setText("The amount entered must be a " +
+                            "positive integer greater than the number of upcoming auctions.");
+                }
+            } catch (NumberFormatException e) {
+                changeMaxAuctionLabel.setText("The amount entered must be a " +
+                        "positive integer greater than the number of upcoming auctions.");
             }
         }
     }
