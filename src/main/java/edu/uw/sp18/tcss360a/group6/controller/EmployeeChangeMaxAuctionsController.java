@@ -3,6 +3,7 @@ package edu.uw.sp18.tcss360a.group6.controller;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.SceneController;
 import edu.uw.sp18.tcss360a.group6.Session;
+import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Employee;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -20,6 +21,8 @@ import javafx.scene.input.KeyEvent;
 public class EmployeeChangeMaxAuctionsController {
     @FXML
     public Label changeMaxAuctionLabel;
+    @FXML
+    public Label currentNewMaxLabel;
 
     private FXApplication application = FXApplication.getInstance();
 
@@ -28,6 +31,7 @@ public class EmployeeChangeMaxAuctionsController {
 
     @FXML
     public void onEnter(KeyEvent event) { //TODO: show the current auction max on gui and new max
+        currentNewMaxLabel.setText("Current Max " + Auction.MAX_UPCOMING_AUCTIONS + ". Enter a new Max: ");
         if (event.getCode().equals(KeyCode.ENTER)) {
             Employee employee = Session.getInstance().get("user", Employee.class);
             try {
@@ -45,7 +49,6 @@ public class EmployeeChangeMaxAuctionsController {
             }
         }
     }
-
     @FXML
     public void back() {
         application.getSceneController().activate("employeeMain");

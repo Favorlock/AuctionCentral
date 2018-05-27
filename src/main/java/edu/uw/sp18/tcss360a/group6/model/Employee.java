@@ -43,6 +43,7 @@ public class Employee extends AbstractUser {
             settingsRepository.fetch().setAuctionCapacity(newAuctionMax);
             settingsRepository.save();
             changed = true;
+            Auction.MAX_UPCOMING_AUCTIONS = newAuctionMax;
         }
         return changed;
     }
