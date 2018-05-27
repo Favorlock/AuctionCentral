@@ -53,6 +53,12 @@ public class EmployeeViewAllAuctionsController implements Initializable{
         listView.getSelectionModel().select(0);
 
     }
+    @FXML
+    public void employeeOpenItems() {
+        Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
+        EmployeeViewAuctionItemsController.setAuction(selectedAuction);
+        application.getSceneController().activate("employeeViewItems");
+    }
 
     @FXML
     public void back() {

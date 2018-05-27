@@ -32,6 +32,7 @@ public class FXApplication extends Application {
     private static String AUCTION_ADD_SUCCESS_FXML = "/scenes/AuctionAddSuccess.fxml";
     private static String EMPLOYEE_VIEW_AUCTIONS_ERROR_FXML = "/scenes/EmployeeViewAuctionsError.fxml";
     private static String EMPLOYEE_VIEW_RANGE_SUCCESS_FXML = "/scenes/EmployeeViewRangeSuccess.fxml";
+    private static String EMPLOYEE_VIEW_AUCTION_ITEMS_FXML = "/scenes/EmployeeViewAuctionItems.fxml";
     private static String AUCTION_ADD_FAIL_FXML = "/scenes/AuctionAddFail.fxml";
     private static String ADD_ITEM_FORM_FXML = "/scenes/AddItemForm.fxml";
     private static String CONTACT_VIEW_ITEMS_FXML = "/scenes/ContactViewItems.fxml";
@@ -58,6 +59,14 @@ public class FXApplication extends Application {
                 .addScreen("contactViewAuctions", CONTACT_VIEW_AUCTIONS_FXML);
         this.sceneController.addScreen("contactAddItem", CONTACT_ADD_ITEM_FXML);
         this.sceneController.addScreen("contactSubmitAuction", CONTACT_SUBMIT_AUCTION_FXML);
+        this.sceneController
+                .addScreen("addItemForm", ADD_ITEM_FORM_FXML);
+        this.sceneController
+                .addScreen("contactViewItems", CONTACT_VIEW_ITEMS_FXML);
+        this.sceneController
+                .addScreen("auctionAddSuccess", AUCTION_ADD_SUCCESS_FXML);
+        this.sceneController
+                .addScreen("auctionAddFail", AUCTION_ADD_FAIL_FXML);
         //bidders
         this.sceneController.addScreen("bidderMain", BIDDER_MAIN_FXML);
         this.sceneController.addScreen("viewBids", BIDDER_VIEW_BIDS_FXML);
@@ -80,15 +89,8 @@ public class FXApplication extends Application {
         this.sceneController
                 .addScreen("employeeViewRangeSuccess", EMPLOYEE_VIEW_RANGE_SUCCESS_FXML);
         this.sceneController
-                .addScreen("auctionAddSuccess", AUCTION_ADD_SUCCESS_FXML);
-        this.sceneController
-                .addScreen("auctionAddFail", AUCTION_ADD_FAIL_FXML);
-        this.sceneController
-                .addScreen("addItemForm", ADD_ITEM_FORM_FXML);
-        this.sceneController
-                .addScreen("contactViewItems", CONTACT_VIEW_ITEMS_FXML);
-        this.sceneController
                 .addScreen("auctionAddInputFail", AUCTION_ADD_INPUT_FAIL_FXML);
+        this.sceneController.addScreen("employeeViewItems", EMPLOYEE_VIEW_AUCTION_ITEMS_FXML);
 
 
         this.sceneController.activate("login");
