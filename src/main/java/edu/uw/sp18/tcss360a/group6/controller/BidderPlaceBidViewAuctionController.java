@@ -40,8 +40,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
     @FXML
     private TextField bidderAmount;
-    @FXML
-    private Text selectAuctionMessage;
+
     @FXML
     private Text bidMessageText;
 
@@ -50,20 +49,14 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public BidderPlaceBidViewAuctionController() {
-        try{
+
             List<Item> auctionItems = auction.getInventory();
             listView = new ListView();
             this.items.setAll(auctionItems);
             listView.setItems(this.items);
             listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
                     listView -> new ListViewCell());
-
             listView.setVisible(true);
-        } catch (NullPointerException e){
-            //System.out.println("Please select an Auction');
-            this.selectAuctionMessage.setText("Please select an Auction");
-        }
-
     }
 
     public static void setAuction(Auction anAuction) {
