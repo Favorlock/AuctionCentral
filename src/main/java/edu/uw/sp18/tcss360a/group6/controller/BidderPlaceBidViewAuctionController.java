@@ -93,7 +93,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
             Item theItem = (Item)listView.getSelectionModel().getSelectedItem();
             Bidder theBidder = Session.getInstance().get("user", Bidder.class);
             messageForBid(theBidder.addBid(bidAmount, theItem, auction));
-            updateItems();
+
         } catch (NumberFormatException e) {
             bidderAmount.setText("Enter valid bid amount");
         }
@@ -102,6 +102,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     private void messageForBid(boolean didBid) {
         if(didBid) {
             bidMessageText.setText("Placed bid on Item");
+            updateItems();
         } else {
             bidMessageText.setText("Bid not placed on Item");
         }

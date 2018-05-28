@@ -116,6 +116,28 @@ public class Employee extends AbstractUser {
     }
 
     /**
+     * Method to cancel an auction. If an auction has no bids then delete
+     * the auction. Return true if auction did delete otherwise false.
+     *
+     * @param anAuction the auction to try to cancel
+     */
+    public Boolean canCancelAnAuction(Auction anAuction) {
+        //TODO: is all relevant info deleted?
+        boolean didDeleteAuction = false;
+        List<Auction> auctions = Bootstrap.getInstance()
+                .getAuctionRepository().fetchAll();
+        for (Auction a : auctions) {
+            if (a.getId() == anAuction.getId()) {
+                if(!isThereBidsOnAuctionItems(a.getInventory())) {
+                    didDeleteAuction = true;
+                }
+                break;
+            }
+        }
+        return didDeleteAuction;
+    }
+
+    /**
      * Checks a list of items to see if there are bids on any items.
      * returns true if at least one Item in list has a bid.
      *

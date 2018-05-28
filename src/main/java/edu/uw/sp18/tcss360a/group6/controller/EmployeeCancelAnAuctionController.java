@@ -15,6 +15,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,12 +37,19 @@ public class EmployeeCancelAnAuctionController implements Initializable{
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public EmployeeCancelAnAuctionController () {
+
         Bootstrap bootstrap = new Bootstrap();
         List<Auction> auctions = bootstrap.getAuctionRepository().fetchFutureAuctions();
-
+        Employee employee = Session.getInstance().get("user", Employee.class);
+        List<Auction> cancelAuctions = new ArrayList<>();
+        for (int i = 0; i < auctions.size(); i++) {
+            if (employee.canCancelAnAuction(auctions.get(i))) {
+                cancelAuctions.add(auctions.get(i));
+            }
+        }
         listView = new ListView();
 
-        this.auctions.setAll(auctions);
+        this.auctions.setAll(cancelAuctions);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
                 listView -> new ListViewCell());
@@ -56,14 +64,26 @@ public class EmployeeCancelAnAuctionController implements Initializable{
         listView.getSelectionModel().select(0);
 
     }
+    private void updateItems() {
+        final int selectedId = listView.getSelectionModel().getSelectedIndex();
+        if (selectedId != -1) {
+            Object itemToRemove = listView.getSelectionModel().getSelectedItem();
+            final int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
+            listView.getItems().remove(selectedId);
+            listView.getSelectionModel().select(newSelectedId);
+        }
+    }
 
     @FXML
     public void cancelAuction() {
 
         Employee employee = Session.getInstance().get("user", Employee.class);
         Auction canceledAuction = (Auction)listView.getSelectionModel().getSelectedItem();
-        employee.cancelAnAuction(canceledAuction);
-        displayAuctions();
+
+        if (employee.cancelAnAuction(canceledAuction)) {
+            updateItems();
+        }
+
     }
     @FXML
     public void back() {

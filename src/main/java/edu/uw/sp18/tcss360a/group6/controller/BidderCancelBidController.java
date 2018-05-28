@@ -65,10 +65,20 @@ public class BidderCancelBidController implements Initializable{
         Bid bid = (Bid) listView.getSelectionModel().getSelectedItem();
         didCancelBidText(bidder.cancelBid(bid));
     }
+    private void updateItems() {
+        final int selectedId = listView.getSelectionModel().getSelectedIndex();
+        if (selectedId != -1) {
+            Object itemToRemove = listView.getSelectionModel().getSelectedItem();
+            final int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
+            listView.getItems().remove(selectedId);
+            listView.getSelectionModel().select(newSelectedId);
+        }
+    }
 
     private void didCancelBidText(boolean didCancel) {
         if (didCancel) {
             cancelBidText.setText("Canceled bid");
+            updateItems();
         } else {
             cancelBidText.setText("Did not Canceled bid");
         }

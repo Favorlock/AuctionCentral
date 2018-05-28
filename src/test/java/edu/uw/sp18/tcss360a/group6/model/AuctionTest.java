@@ -44,7 +44,6 @@ public class AuctionTest {
 
     @Before
     public void setUp() {
-        new ConsoleApplication(false);
         this.auctionId = 0;
         this.organizationId = 0;
         this.pastDate = LocalDate.now().minusMonths(1);

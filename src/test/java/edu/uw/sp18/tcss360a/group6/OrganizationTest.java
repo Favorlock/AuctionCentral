@@ -21,7 +21,6 @@ public class OrganizationTest {
 
     @Before
     public void setUp() {
-        new ConsoleApplication();
         this.auctionId = 0;
         this.organizationId = 0;
         this.futureDate = LocalDate.now().plusMonths(1);
