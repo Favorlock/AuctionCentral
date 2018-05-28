@@ -43,10 +43,6 @@ public class Item {
     @Expose
     private String comments;
 
-    private Auction auction;
-
-    private List<Bid> placedBids;
-
     /**
      * Constructor for Item object.
      * @param auctionId long representing the auction ID
@@ -179,14 +175,10 @@ public class Item {
      * @return Auction object that this item belongs to
      */
     public Auction getAuction() {
-        if (this.auction == null) {
-            this.auction = Bootstrap.getInstance().
-                    getAuctionRepository().fetchAll().stream()
-                    .filter(a -> a.getId() == this.auctionId)
-                    .findFirst().orElse(null);
-        }
-
-        return this.auction;
+        return Bootstrap.getInstance().
+                getAuctionRepository().fetchAll().stream()
+                .filter(a -> a.getId() == this.auctionId)
+                .findFirst().orElse(null);
     }
 
     /**
@@ -196,15 +188,11 @@ public class Item {
      * @return List<Bid> get list of current placed bids on the item
      */
     public List<Bid> getPlacedBids() {
-        if (this.placedBids == null) {
-            this.placedBids = Bootstrap.getInstance().
-                    getBidRepository().fetchAll().stream()
-                    .filter(bid -> bid.getAuctionId() == this.auctionId
-                            && bid.getItemId() == this.id)
-                    .collect(Collectors.toList());
-        }
-
-        return this.placedBids;
+        return Bootstrap.getInstance().
+                getBidRepository().fetchAll().stream()
+                .filter(bid -> bid.getAuctionId() == this.auctionId
+                        && bid.getItemId() == this.id)
+                .collect(Collectors.toList());
     }
 
     /**

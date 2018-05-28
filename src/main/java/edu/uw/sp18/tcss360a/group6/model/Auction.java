@@ -27,10 +27,6 @@ public class Auction {
     @Expose
     private LocalDate startDate;
 
-    private Organization organization;
-
-    private List<Item> inventory;
-
     public Auction() {
         super();
     }
@@ -145,13 +141,9 @@ public class Auction {
      * @return the organization representing this auction.
      */
     public Organization getOrganization() {
-        if (this.organization == null) {
-            this.organization = Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
-                    .filter(org -> org.getId() == this.organizationId)
-                    .findFirst().orElse(null);
-        }
-
-        return this.organization;
+        return Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
+                .filter(org -> org.getId() == this.organizationId)
+                .findFirst().orElse(null);
     }
 
     /**
@@ -160,13 +152,9 @@ public class Auction {
      * @return List of type item that are the items in this auction
      */
     public List<Item> getInventory() {
-        if (this.inventory == null) {
-            this.inventory = Bootstrap.getInstance().getItemRepository().fetchAll().stream()
-                    .filter(item -> item.getAuctionId() == this.id)
-                    .collect(Collectors.toList());
-        }
-
-        return this.inventory;
+        return Bootstrap.getInstance().getItemRepository().fetchAll().stream()
+                .filter(item -> item.getAuctionId() == this.id)
+                .collect(Collectors.toList());
     }
 
     /**

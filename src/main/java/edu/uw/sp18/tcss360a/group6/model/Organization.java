@@ -21,10 +21,6 @@ public class Organization {
     @Expose
     private String name;
 
-    private List<ContactPerson> contactPeople;
-
-    private List<Auction> auctions;
-
     public long getId() {
         return this.id;
     }
@@ -33,18 +29,13 @@ public class Organization {
         return this.name;
     }
 
-
     public List<ContactPerson> getContactPeople() {
-        if (this.contactPeople == null) {
-            this.contactPeople = Bootstrap.getInstance()
-                    .getUserRepository().fetchAll().stream()
-                    .filter(user -> user.getType() == UserType.CONTACT_PERSON)
-                    .map(user -> (ContactPerson) user)
-                    .filter(user -> user.getOrganizationId() == this.id)
-                    .collect(Collectors.toList());
-        }
-
-        return this.contactPeople;
+        return Bootstrap.getInstance()
+                .getUserRepository().fetchAll().stream()
+                .filter(user -> user.getType() == UserType.CONTACT_PERSON)
+                .map(user -> (ContactPerson) user)
+                .filter(user -> user.getOrganizationId() == this.id)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -52,14 +43,10 @@ public class Organization {
      * @return list of type auction
      */
     public List<Auction> getAuctions() {
-        if (this.auctions == null) {
-            this.auctions = Bootstrap.getInstance()
-                    .getAuctionRepository().fetchAll().stream()
-                    .filter(auction -> auction.getOrganizationId() == this.id)
-                    .collect(Collectors.toList());
-        }
-
-        return this.auctions;
+        return Bootstrap.getInstance()
+                .getAuctionRepository().fetchAll().stream()
+                .filter(auction -> auction.getOrganizationId() == this.id)
+                .collect(Collectors.toList());
     }
 
     /**

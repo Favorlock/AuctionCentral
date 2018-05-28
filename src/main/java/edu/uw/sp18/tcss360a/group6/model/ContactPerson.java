@@ -16,8 +16,6 @@ public class ContactPerson extends AbstractUser {
     @Expose
     private long organizationId;
 
-    private Organization organization;
-
     public ContactPerson(long id, long organizationId, String userName) {
         super(UserType.CONTACT_PERSON, id, userName);
         this.organizationId = organizationId;
@@ -36,12 +34,8 @@ public class ContactPerson extends AbstractUser {
      * @return the Organization for this contact person
      */
     public Organization getOrganization() {
-        if (this.organization == null) {
-            this.organization = Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
-                    .filter(org -> org.getId() == this.organizationId)
-                    .findFirst().orElse(null);
-        }
-
-        return this.organization;
+        return Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
+                .filter(org -> org.getId() == this.organizationId)
+                .findFirst().orElse(null);
     }
 }

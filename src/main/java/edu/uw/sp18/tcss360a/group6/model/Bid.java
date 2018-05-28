@@ -28,12 +28,6 @@ public class Bid implements Comparable{
     @Expose
     private BigDecimal amount;
 
-    private Bidder bidder; // Lazy loaded, use getBidder()
-
-    private Auction auction; // Lazy loaded, use getAuction()
-
-    private Item item; // Lazy loaded, use getItem()
-
     public Bid() {
         super();
 
@@ -82,14 +76,10 @@ public class Bid implements Comparable{
      * @return the bidder of this bid.
      */
     public Bidder getBidder() {
-        if (this.bidder == null) {
-            this.bidder = Bootstrap.getInstance().getUserRepository().fetchAll().stream()
-                    .filter(user -> user.getType() == UserType.BIDDER && user.getId() == this.bidderId)
-                    .map(user -> (Bidder) user)
-                    .findFirst().orElse(null);
-        }
-
-        return this.bidder;
+        return Bootstrap.getInstance().getUserRepository().fetchAll().stream()
+                .filter(user -> user.getType() == UserType.BIDDER && user.getId() == this.bidderId)
+                .map(user -> (Bidder) user)
+                .findFirst().orElse(null);
     }
 
     /**
@@ -98,13 +88,9 @@ public class Bid implements Comparable{
      * @return the Auction this bid is in.
      */
     public Auction getAuction() {
-        if (this.auction == null) {
-            this.auction = Bootstrap.getInstance().getAuctionRepository().fetchAll().stream()
-                    .filter(a -> a.getId() == auctionId)
-                    .findFirst().orElse(null);
-        }
-
-        return this.auction;
+        return Bootstrap.getInstance().getAuctionRepository().fetchAll().stream()
+                .filter(a -> a.getId() == auctionId)
+                .findFirst().orElse(null);
     }
 
     /**
@@ -113,13 +99,9 @@ public class Bid implements Comparable{
      * @return the Item this bid is for
      */
     public Item getItem() {
-        if (this.item == null) {
-            this.item = Bootstrap.getInstance().getItemRepository().fetchAll().stream()
-                    .filter(i -> i.getId() == this.itemId)
-                    .findFirst().orElse(null);
-        }
-
-        return this.item;
+        return Bootstrap.getInstance().getItemRepository().fetchAll().stream()
+                .filter(i -> i.getId() == this.itemId)
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -127,7 +109,8 @@ public class Bid implements Comparable{
         String itemName = Bootstrap.getInstance().getItemRepository().fetchAll().stream()
                 .filter(item -> item.getId() == itemId)
                 .findFirst().orElse(null).getDescription();
-        this.amount = this.amount.setScale(2, BigDecimal.ROUND_HALF_UP);
+        if (this.amount != null)
+            this.amount = this.amount.setScale(2, BigDecimal.ROUND_HALF_UP);
         return "Bid ID=" + id +
                 ", Item=" + itemName +
                 ", Amount=" + amount +

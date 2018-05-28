@@ -25,8 +25,6 @@ public class Bidder extends AbstractUser {
      */
     private static final int MAX_ACTIVE_BIDS = 12;
 
-    private List<Bid> placedBids; // Lazy loaded, use getPlacedBids()
-
     /**
      * Constructor to create a bidder object.
      *
@@ -110,7 +108,6 @@ public class Bidder extends AbstractUser {
             if(b.getId() == aBid.getId()) {
                 bootstrap.getBidRepository().delete(aBid);
                 didCancelBid = true;
-                this.placedBids = this.getPlacedBids();
                 break;
             }
         }
@@ -135,14 +132,10 @@ public class Bidder extends AbstractUser {
      * @return list of type Bid
      */
     public List<Bid> getPlacedBids() {
-        if (this.placedBids == null) {
-            this.placedBids = Bootstrap.getInstance().getBidRepository()
-                    .fetchAll().stream()
-                    .filter(bid -> bid.getBidderId() == getId()).sorted()
-                    .collect(Collectors.toList());
-        }
-
-        return this.placedBids;
+        return Bootstrap.getInstance().getBidRepository()
+                .fetchAll().stream()
+                .filter(bid -> bid.getBidderId() == getId()).sorted()
+                .collect(Collectors.toList());
     }
 
     /**
