@@ -47,7 +47,7 @@ public class ContactAddItemFormController {
     private BigDecimal startBid;
     private String condition;
     private String size;
-    private String location;
+//    private String location;
     private String comments;
 
     private FXApplication application = FXApplication.getInstance();
