@@ -1,7 +1,6 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
 import edu.uw.sp18.tcss360a.group6.FXApplication;
-import edu.uw.sp18.tcss360a.group6.model.Employee;
 import javafx.fxml.FXML;
 
 /**

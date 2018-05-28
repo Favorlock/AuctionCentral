@@ -11,7 +11,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 /**
  * GUI for employees to view all auctions between dates that they specify inclusive.
@@ -47,7 +46,6 @@ public class ContactAddItemFormController {
     private BigDecimal startBid;
     private String condition;
     private String size;
-//    private String location;
     private String comments;
 
     private FXApplication application = FXApplication.getInstance();
@@ -70,7 +68,6 @@ public class ContactAddItemFormController {
         startBid = new BigDecimal(startBidField.getText());
         condition = conditionField.getText();
         size = sizeField.getText();
-//        location = locationField.getText();
         comments = commentsField.getText();
 
         //create the item and add to the auction
@@ -80,7 +77,7 @@ public class ContactAddItemFormController {
         showAddItemStatus(auction.addItem(item));
         resetTextFields();
     }
-
+    /** Show if the item added or not on the GUI. */
     private void showAddItemStatus(boolean didAdd) {
         if(didAdd) {
             addItemMessageText.setText("Item was added to the auction. Add another Item");
@@ -88,7 +85,7 @@ public class ContactAddItemFormController {
             addItemMessageText.setText("Item was not added to the auction");
         }
     }
-
+    /** set all user entry text fields to blank. */
     private void resetTextFields() {
         descriptionField.setText("");
         quantityField.setText("");

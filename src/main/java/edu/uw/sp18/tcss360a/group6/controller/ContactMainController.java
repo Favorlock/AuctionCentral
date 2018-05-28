@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
 
-import java.awt.*;
-
 /**
  * Main menu GUI for Contact Person user options. Launches sub-menus.
  *

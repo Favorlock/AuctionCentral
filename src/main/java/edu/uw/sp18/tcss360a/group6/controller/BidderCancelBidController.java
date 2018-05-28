@@ -1,11 +1,10 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
-import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
+import edu.uw.sp18.tcss360a.group6.controller.components.ListViewCell;
 import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.model.Bidder;
-import edu.uw.sp18.tcss360a.group6.controller.components.ListViewCell;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
