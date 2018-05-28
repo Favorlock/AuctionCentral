@@ -70,12 +70,12 @@ public class ContactAddItemFormController {
         startBid = new BigDecimal(startBidField.getText());
         condition = conditionField.getText();
         size = sizeField.getText();
-        location = locationField.getText();
+//        location = locationField.getText();
         comments = commentsField.getText();
 
         //create the item and add to the auction
         Item item = new Item(itemId, auctionId, description, quantity,
-                startBid, condition, size, location, comments);
+                startBid, condition, size, "a5", comments);
 
         showAddItemStatus(auction.addItem(item));
     }
