@@ -44,7 +44,8 @@ public class BidderViewAllAuctionItemsController implements Initializable{
         this.listView = new ListView();
         this.auctionItems.setAll(items);
         this.listView.setItems(this.auctionItems);
-        this.listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        this.listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
         this.listView.setVisible(true);
 
     }
