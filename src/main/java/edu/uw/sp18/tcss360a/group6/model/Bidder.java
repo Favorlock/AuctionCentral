@@ -75,6 +75,9 @@ public class Bidder extends AbstractUser {
      * @return boolean used to represent whether the bidder can bid or not.
      */
     public boolean canBid() {
+        System.out.println(getPlacedBids().stream()
+                .filter(bid -> bid.getAuction().isAcceptingBids())
+                .count());
         return getPlacedBids().stream()
                 .filter(bid -> bid.getAuction().isAcceptingBids())
                 .count() < MAX_ACTIVE_BIDS;

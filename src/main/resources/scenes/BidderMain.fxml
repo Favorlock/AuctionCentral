@@ -23,9 +23,9 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="View Items I Have Bid On" onMouseReleased="#viewBids" wrapText="true"/>
-                <Label text="Place Bid" onMouseReleased="#placeBid"/>
-                <Label text="Cancel Bid" onMouseReleased="#cancelBid"/>
+                <Label text="View Items I Have Bid On" onMouseReleased="#viewBids" wrapText="true" fx:id="viewbids"/>
+                <Label text="Place Bid" onMouseReleased="#placeBid" fx:id="placebid"/>
+                <Label text="Cancel Bid" onMouseReleased="#cancelBid" fx:id="cancelbid"/>
                 <fx:include source="components/Logout.fxml"/>
             </children>
         </VBox>

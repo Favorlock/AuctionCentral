@@ -8,7 +8,7 @@
 
 <BorderPane prefHeight="480.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.uw.sp18.tcss360a.group6.controller.EmployeeMainController">
+            fx:controller="edu.uw.sp18.tcss360a.group6.controller.EmployeeMainController" >
     <stylesheets>
         <URL value="@../css/Root.css"/>
     </stylesheets>
@@ -24,7 +24,7 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label onMouseReleased="#viewAllAuctions" text="View All Auctions in System" wrapText="true"/>
+                <Label fx:id="viewAuctions" onMouseReleased="#viewAllAuctions" text="View All Auctions in System" wrapText="true"/>
                 <Label layoutX="11.0" layoutY="56.0" onMouseReleased="#viewAuctionsBetweenDates"
                        text="View Auctions Between Two Dates" wrapText="true"/>
                 <Label onMouseReleased="#changeMaxAuctions" text="Change Maximum Number of Auctions" wrapText="true"/>
