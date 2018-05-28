@@ -37,6 +37,10 @@ public class BidderMainController implements Initializable {
     public void cancelBid() {
         application.getSceneController().activate("cancelBid");
     }
+    @FXML
+    public void viewAllAuctionsBidder() {
+        application.getSceneController().activate("bidderViewAllAuctions");
+    }
 
     @Override
     public void initialize() {

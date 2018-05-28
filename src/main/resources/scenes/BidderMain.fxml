@@ -26,6 +26,7 @@
                 <Label text="View Items I Have Bid On" onMouseReleased="#viewBids" wrapText="true" fx:id="viewbids"/>
                 <Label text="Place Bid" onMouseReleased="#placeBid" fx:id="placebid"/>
                 <Label text="Cancel Bid" onMouseReleased="#cancelBid" fx:id="cancelbid"/>
+                <Label text="View All Auctions" onMouseReleased="#viewAllAuctionsBidder" wrapText="true"/>
                 <fx:include source="components/Logout.fxml"/>
             </children>
         </VBox>
