@@ -1,7 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 
 /**
  * Represents a ContactPerson user and the methods they are able to perform
@@ -37,7 +37,7 @@ public class ContactPerson extends AbstractUser {
      */
     public Organization getOrganization() {
         if (this.organization == null) {
-            this.organization = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
+            this.organization = Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
                     .filter(org -> org.getId() == this.organizationId)
                     .findFirst().orElse(null);
         }

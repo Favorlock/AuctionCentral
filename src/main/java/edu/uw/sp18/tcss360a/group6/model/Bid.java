@@ -1,7 +1,7 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
+import edu.uw.sp18.tcss360a.group6.Bootstrap;
 
 import java.math.BigDecimal;
 
@@ -83,7 +83,7 @@ public class Bid implements Comparable{
      */
     public Bidder getBidder() {
         if (this.bidder == null) {
-            this.bidder = ConsoleApplication.getInstance().getUserRepository().fetchAll().stream()
+            this.bidder = Bootstrap.getInstance().getUserRepository().fetchAll().stream()
                     .filter(user -> user.getType() == UserType.BIDDER && user.getId() == this.bidderId)
                     .map(user -> (Bidder) user)
                     .findFirst().orElse(null);
@@ -99,7 +99,7 @@ public class Bid implements Comparable{
      */
     public Auction getAuction() {
         if (this.auction == null) {
-            this.auction = ConsoleApplication.getInstance().getAuctionRepository().fetchAll().stream()
+            this.auction = Bootstrap.getInstance().getAuctionRepository().fetchAll().stream()
                     .filter(a -> a.getId() == auctionId)
                     .findFirst().orElse(null);
         }
@@ -114,7 +114,7 @@ public class Bid implements Comparable{
      */
     public Item getItem() {
         if (this.item == null) {
-            this.item = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
+            this.item = Bootstrap.getInstance().getItemRepository().fetchAll().stream()
                     .filter(i -> i.getId() == this.itemId)
                     .findFirst().orElse(null);
         }
@@ -124,7 +124,7 @@ public class Bid implements Comparable{
 
     @Override
     public String toString() {
-        String itemName = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
+        String itemName = Bootstrap.getInstance().getItemRepository().fetchAll().stream()
                 .filter(item -> item.getId() == itemId)
                 .findFirst().orElse(null).getDescription();
         this.amount = this.amount.setScale(2, BigDecimal.ROUND_HALF_UP);

@@ -2,7 +2,6 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -181,7 +180,7 @@ public class Item {
      */
     public Auction getAuction() {
         if (this.auction == null) {
-            this.auction = ConsoleApplication.getInstance().
+            this.auction = Bootstrap.getInstance().
                     getAuctionRepository().fetchAll().stream()
                     .filter(a -> a.getId() == this.auctionId)
                     .findFirst().orElse(null);
@@ -198,7 +197,7 @@ public class Item {
      */
     public List<Bid> getPlacedBids() {
         if (this.placedBids == null) {
-            this.placedBids = ConsoleApplication.getInstance().
+            this.placedBids = Bootstrap.getInstance().
                     getBidRepository().fetchAll().stream()
                     .filter(bid -> bid.getAuctionId() == this.auctionId
                             && bid.getItemId() == this.id)
@@ -214,7 +213,7 @@ public class Item {
      * @return Bid object representing the current bid
      */
     public Bid getCurrentBid() {
-        return ConsoleApplication.getInstance().getBidRepository().fetchAll().stream()
+        return Bootstrap.getInstance().getBidRepository().fetchAll().stream()
                 .filter(b -> b.getItemId() == this.id)
                 .sorted(Comparator.comparing(Bid::getAmount))
                 .findFirst().orElse(null);

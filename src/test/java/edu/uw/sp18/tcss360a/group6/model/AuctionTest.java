@@ -1,7 +1,6 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -2,7 +2,6 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -65,7 +64,7 @@ public class Auction {
     public boolean addItem(Item item) {
         boolean added = false;
         if (!isAtCapacity()) {
-            ConsoleApplication.getInstance().getItemRepository().add(item);
+            Bootstrap.getInstance().getItemRepository().add(item);
             getInventory().add(item);
             added = true;
         }
@@ -147,7 +146,7 @@ public class Auction {
      */
     public Organization getOrganization() {
         if (this.organization == null) {
-            this.organization = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
+            this.organization = Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
                     .filter(org -> org.getId() == this.organizationId)
                     .findFirst().orElse(null);
         }
@@ -162,7 +161,7 @@ public class Auction {
      */
     public List<Item> getInventory() {
         if (this.inventory == null) {
-            this.inventory = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
+            this.inventory = Bootstrap.getInstance().getItemRepository().fetchAll().stream()
                     .filter(item -> item.getAuctionId() == this.id)
                     .collect(Collectors.toList());
         }
@@ -196,7 +195,7 @@ public class Auction {
 
     @Override
     public String toString() {
-        String org = ConsoleApplication.getInstance().getOrganizationRepository().fetchAll().stream()
+        String org = Bootstrap.getInstance().getOrganizationRepository().fetchAll().stream()
                 .filter(organization -> organization.getId() == organizationId)
                 .findFirst().orElse(null).getName();
         return "Start Date=" + startDate +

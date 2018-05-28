@@ -1,12 +1,10 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -49,7 +47,7 @@ public class Bidder extends AbstractUser {
         boolean placed = false;
         if (canBid() && canBid(auction) && item.isBidAmountAcceptable(bidAmount)) {
             Bid bid = new Bid(this.id, auction.getId(), item.getId(), bidAmount);
-            ConsoleApplication.getInstance().getBidRepository().add(bid);
+            Bootstrap.getInstance().getBidRepository().add(bid);
             getPlacedBids().add(bid);
             placed = true;
         }
@@ -138,7 +136,7 @@ public class Bidder extends AbstractUser {
      */
     public List<Bid> getPlacedBids() {
         if (this.placedBids == null) {
-            this.placedBids = ConsoleApplication.getInstance().getBidRepository()
+            this.placedBids = Bootstrap.getInstance().getBidRepository()
                     .fetchAll().stream()
                     .filter(bid -> bid.getBidderId() == getId()).sorted()
                     .collect(Collectors.toList());

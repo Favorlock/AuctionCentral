@@ -2,7 +2,6 @@ package edu.uw.sp18.tcss360a.group6.model;
 
 import com.google.gson.annotations.Expose;
 import edu.uw.sp18.tcss360a.group6.Bootstrap;
-import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,7 +36,7 @@ public class Organization {
 
     public List<ContactPerson> getContactPeople() {
         if (this.contactPeople == null) {
-            this.contactPeople = ConsoleApplication.getInstance()
+            this.contactPeople = Bootstrap.getInstance()
                     .getUserRepository().fetchAll().stream()
                     .filter(user -> user.getType() == UserType.CONTACT_PERSON)
                     .map(user -> (ContactPerson) user)
@@ -54,7 +53,7 @@ public class Organization {
      */
     public List<Auction> getAuctions() {
         if (this.auctions == null) {
-            this.auctions = ConsoleApplication.getInstance()
+            this.auctions = Bootstrap.getInstance()
                     .getAuctionRepository().fetchAll().stream()
                     .filter(auction -> auction.getOrganizationId() == this.id)
                     .collect(Collectors.toList());
@@ -92,7 +91,7 @@ public class Organization {
      * @return bool if auction opening
      */
     public boolean isAuctionScheduleOpeningAvailable() {
-        return ConsoleApplication.getInstance().getAuctionRepository()
+        return Bootstrap.getInstance().getAuctionRepository()
                 .fetchFutureAuctions().size() < Bootstrap.getInstance().
                 getSettingsRepository().fetch().getAuctionCapacity();
     }
@@ -109,9 +108,9 @@ public class Organization {
         if (isAuctionScheduleOpeningAvailable()
                 && getCurrentAuction() == null
                 && getAuctionWithinLastYear() == null
-                && ConsoleApplication.getInstance().getAuctionRepository().
+                && Bootstrap.getInstance().getAuctionRepository().
                 fetchFutureAuctions().size() <= Auction.MAX_UPCOMING_AUCTIONS) {
-            ConsoleApplication.getInstance().getAuctionRepository()
+            Bootstrap.getInstance().getAuctionRepository()
                     .add(auction);
             getAuctions().add(auction);
             added = true;
