@@ -5,7 +5,6 @@ import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.controller.components.ListViewCell;
 import edu.uw.sp18.tcss360a.group6.model.Auction;
-import edu.uw.sp18.tcss360a.group6.model.Bid;
 import edu.uw.sp18.tcss360a.group6.model.Bidder;
 import edu.uw.sp18.tcss360a.group6.model.Item;
 import javafx.beans.property.ListProperty;
@@ -19,10 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * GUI to display an auction with all of its Items that can be bid on.
@@ -43,7 +40,8 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
     @FXML
     private TextField bidderAmount;
-
+    @FXML
+    private Text selectAuctionMessage;
     @FXML
     private Text bidMessageText;
 
@@ -52,15 +50,19 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
     public BidderPlaceBidViewAuctionController() {
-        List<Item> auctionItems = auction.getInventory();
+        try{
+            List<Item> auctionItems = auction.getInventory();
+            listView = new ListView();
+            this.items.setAll(auctionItems);
+            listView.setItems(this.items);
+            listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                    listView -> new ListViewCell());
 
-        listView = new ListView();
-        this.items.setAll(auctionItems);
-        listView.setItems(this.items);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
-                listView -> new ListViewCell());
+            listView.setVisible(true);
+        } catch (NullPointerException e){
+            this.selectAuctionMessage.setText("Please select an Auction");
+        }
 
-        listView.setVisible(true);
     }
 
     public static void setAuction(Auction anAuction) {
