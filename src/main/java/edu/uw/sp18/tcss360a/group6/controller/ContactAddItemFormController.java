@@ -78,14 +78,24 @@ public class ContactAddItemFormController {
                 startBid, condition, size, "a5", comments);
 
         showAddItemStatus(auction.addItem(item));
+        resetTextFields();
     }
 
     private void showAddItemStatus(boolean didAdd) {
         if(didAdd) {
-            addItemMessageText.setText("Item was added to the auction");
+            addItemMessageText.setText("Item was added to the auction. Add another Item");
         } else {
             addItemMessageText.setText("Item was not added to the auction");
         }
+    }
+
+    private void resetTextFields() {
+        descriptionField.setText("");
+        quantityField.setText("");
+        startBidField.setText("");
+        conditionField.setText("");
+        sizeField.setText("");
+        commentsField.setText("");
     }
 
     public static void setAuction(Auction anAuction) {
