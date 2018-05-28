@@ -64,6 +64,16 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
         auction = anAuction;
     }
 
+    private void updateItems() {
+        final int selectedId = listView.getSelectionModel().getSelectedIndex();
+        if (selectedId != -1) {
+            Object itemToRemove = listView.getSelectionModel().getSelectedItem();
+            final int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
+            listView.getItems().remove(selectedId);
+            listView.getSelectionModel().select(newSelectedId);
+        }
+    }
+
     @FXML
     private void displayItems() {
         listView.itemsProperty().bind(listProperty);
@@ -83,6 +93,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
             Item theItem = (Item)listView.getSelectionModel().getSelectedItem();
             Bidder theBidder = Session.getInstance().get("user", Bidder.class);
             messageForBid(theBidder.addBid(bidAmount, theItem, auction));
+            updateItems();
         } catch (NumberFormatException e) {
             bidderAmount.setText("Enter valid bid amount");
         }
