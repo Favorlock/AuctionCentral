@@ -51,7 +51,7 @@ public class PlaceBidController implements Initializable {
     }
 
     @FXML
-    public void displayAuctions() {
+    private void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
         listView.getSelectionModel().select(0);
@@ -60,6 +60,7 @@ public class PlaceBidController implements Initializable {
 
     @FXML
     public void placeBid() { //TODO - set auction in BidderPlaceBidViewAuctionController
+        //TODO - dont allow multiple bids in succession
         Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
         BidderPlaceBidViewAuctionController.setAuction(selectedAuction);
         application.getSceneController().activate("placeBidViewAuction");

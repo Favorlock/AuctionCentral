@@ -6,6 +6,7 @@ import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -19,12 +20,12 @@ public class Bidder extends AbstractUser {
     /**
      * The maximum number of placed bids on items in a given auction.
      */
-    public static final int MAX_BIDS_PER_AUCTION = 8;
+    private static final int MAX_BIDS_PER_AUCTION = 8;
 
     /**
      * The maximum number of active placed bids for all auctions.
      */
-    public static final int MAX_ACTIVE_BIDS = 12;
+    private static final int MAX_ACTIVE_BIDS = 12;
 
     private List<Bid> placedBids; // Lazy loaded, use getPlacedBids()
 
@@ -62,7 +63,7 @@ public class Bidder extends AbstractUser {
      *
      * @return boolean used to represent whether a bidder is allowed to bid in the given auction.
      */
-    public boolean canBid(Auction auction) {  //TODO: is canBid working???
+    public boolean canBid(Auction auction) {
 
         return auction.isAcceptingBids() && getPlacedBids().stream()
                 .filter(bid -> bid.getAuction().getId() == auction.getId())
@@ -99,7 +100,7 @@ public class Bidder extends AbstractUser {
         return auctions;
     }
 
-    public boolean cancelBid(Bid aBid) { //TODO: not working !
+    public boolean cancelBid(Bid aBid) {
         boolean didCancelBid = false;
         Bootstrap bootstrap = new Bootstrap();
         List<Bid> bids = bootstrap.getBidRepository().fetchAll();
@@ -157,7 +158,7 @@ public class Bidder extends AbstractUser {
      * Get the list of Items that his bidder has placed bids on.
      * @return list of Item
      */
-    public List<Item> getPlacedBidItems() {
+    private List<Item> getPlacedBidItems() {
         return getPlacedBids().stream().map(bid -> bid.getItem()).collect(Collectors.toList());
     }
 

@@ -30,7 +30,7 @@ public class EmployeeChangeMaxAuctionsController {
     private TextField newMax;
 
     @FXML
-    public void onEnter(KeyEvent event) { //TODO: show the current auction max on gui and new max
+    public void onEnter(KeyEvent event) {
         currentNewMaxLabel.setText("Current Max " + Auction.MAX_UPCOMING_AUCTIONS + ". Enter a new Max: ");
         if (event.getCode().equals(KeyCode.ENTER)) {
             Employee employee = Session.getInstance().get("user", Employee.class);

@@ -38,7 +38,6 @@ public class EmployeeViewRangeSuccessController implements Initializable {
     private ListProperty<String> listProperty = new SimpleListProperty<>();
     public EmployeeViewRangeSuccessController () {
         Bootstrap bootstrap = new Bootstrap();
-        //TODO: Display only auctions in range
         List<Auction> auction = bootstrap.getAuctionRepository()
                 .fetchAuctionsInPeriod(startDate, endDate);
 //        List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
@@ -53,7 +52,7 @@ public class EmployeeViewRangeSuccessController implements Initializable {
 
         listView.setVisible(true);
 
-        displayAuctions(); // TODO: this should display them initially ????
+        displayAuctions();
     }
 
     public static void setDates(LocalDate start, LocalDate end) {
@@ -62,7 +61,7 @@ public class EmployeeViewRangeSuccessController implements Initializable {
     }
 
     @FXML
-    public void displayAuctions() {
+    private void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
         listView.getSelectionModel().select(0);

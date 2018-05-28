@@ -64,7 +64,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     }
 
     @FXML
-    public void displayItems() {
+    private void displayItems() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(items));
         listView.getSelectionModel().select(0);
@@ -76,7 +76,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     }
 
     @FXML
-    public void placeBidOnItem() { //TODO: CODE DEFENSIVE FOR INVALID BID IN TEXT FIELD
+    public void placeBidOnItem() {
         // check if user entered valid input into the text field
         try {
             BigDecimal bidAmount = new BigDecimal(bidderAmount.getText());
@@ -90,7 +90,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
         }
     }
 
-    public void messageForBid(boolean didBid) {
+    private void messageForBid(boolean didBid) {
         if(didBid) {
             bidMessageText.setText("Placed bid on Item");
         } else {

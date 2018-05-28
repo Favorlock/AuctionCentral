@@ -17,14 +17,14 @@ import java.math.BigDecimal;
 public class AddInventoryPrompt extends AbstractPrompt {
 
 
-    public AddInventoryPrompt(Context context) {
+    private AddInventoryPrompt(Context context) {
         super(context);
     }
 
     /**
      * Method used to execute the logic and prompting of add inventory prompt.
      *
-     * @boolean used to represent whether the prompt should return to previous
+     * @return boolean used to represent whether the prompt should return to previous
      * prompt.
      */
     @Override
@@ -35,7 +35,7 @@ public class AddInventoryPrompt extends AbstractPrompt {
         Auction auction = contact.getOrganization().getCurrentAuction();
 
         if (auction == null) {
-            // TODO: No Active Auction
+            //TODO
         } else {
             String line = null;
             String description = null;

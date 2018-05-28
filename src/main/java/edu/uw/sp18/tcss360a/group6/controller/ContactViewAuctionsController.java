@@ -39,7 +39,6 @@ public class ContactViewAuctionsController implements Initializable{
 
     public ContactViewAuctionsController () {
         ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
-        //TODO: dispaly only auctions associated with contact person
         List<Auction> auction = contact.getOrganization().getAuctions();
 
         listView = new ListView();
@@ -52,7 +51,7 @@ public class ContactViewAuctionsController implements Initializable{
     }
 
     @FXML
-    public void displayAuctions() {
+    private void displayAuctions() {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(auctions));
         listView.getSelectionModel().select(0);

@@ -78,7 +78,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void viewAllAuctionsInOrder_atLeastOnePastAndFutureAuction_True() { //TODO:
+    public void viewAllAuctionsInOrder_atLeastOnePastAndFutureAuction_True() {
         assertTrue(true);
     }
 

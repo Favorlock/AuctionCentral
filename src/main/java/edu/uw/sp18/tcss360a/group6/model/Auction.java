@@ -160,7 +160,7 @@ public class Auction {
      * @return List of type item that are the items in this auction
      */
     public List<Item> getInventory() {
-        if (this.inventory == null) { //TODO: INVENTORY FIELD NOT NEEDED ??
+        if (this.inventory == null) {
             this.inventory = ConsoleApplication.getInstance().getItemRepository().fetchAll().stream()
                     .filter(item -> item.getAuctionId() == this.id)
                     .collect(Collectors.toList());
