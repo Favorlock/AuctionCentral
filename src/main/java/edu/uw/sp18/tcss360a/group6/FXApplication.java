@@ -72,7 +72,10 @@ public class FXApplication extends Application {
         this.sceneController.addScreen("viewBids", BIDDER_VIEW_BIDS_FXML);
         this.sceneController.addScreen("placeBid", BIDDER_PLACE_BID_FXML);
         this.sceneController.addScreen("cancelBid", BIDDER_CANCEL_BID_FXML);
-        this.sceneController.addScreen("placeBidViewAuction", BIDDER_PLACE_BID_VIEW_AUCTION_FXML);
+        this.sceneController
+                .addScreen("placeBidViewAuction", BIDDER_PLACE_BID_VIEW_AUCTION_FXML);
+        this.sceneController
+                .addScreen("auctionAddInputFail", AUCTION_ADD_INPUT_FAIL_FXML);
         //employees
         this.sceneController.addScreen("employeeMain", EMPLOYEE_MAIN_FXML);
         this.sceneController
@@ -89,10 +92,7 @@ public class FXApplication extends Application {
         this.sceneController
                 .addScreen("employeeViewRangeSuccess", EMPLOYEE_VIEW_RANGE_SUCCESS_FXML);
         this.sceneController
-                .addScreen("auctionAddInputFail", AUCTION_ADD_INPUT_FAIL_FXML);
-        this.sceneController.addScreen("employeeViewItems", EMPLOYEE_VIEW_AUCTION_ITEMS_FXML);
-
-
+                .addScreen("employeeViewItems", EMPLOYEE_VIEW_AUCTION_ITEMS_FXML);
         this.sceneController.activate("login");
 
         stage.setTitle(STAGE_TITLE);

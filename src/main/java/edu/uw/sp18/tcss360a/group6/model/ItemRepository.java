@@ -54,7 +54,7 @@ public class ItemRepository implements CollectionRepository<Item> {
     @Override
     public void delete(Item entry) {
         this.entries.removeIf(item -> item.getId() == entry.getId());
-//        entry.id = this.index--; //TODO: should decrement index?
+        entry.id = this.index--;
         save();
     }
 

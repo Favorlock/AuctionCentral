@@ -38,7 +38,6 @@ public class EmployeeViewAllAuctionsController implements Initializable{
         List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
         listView = new ListView();
 
-
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());

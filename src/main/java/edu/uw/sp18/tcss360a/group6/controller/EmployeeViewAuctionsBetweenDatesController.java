@@ -11,15 +11,17 @@ import javafx.scene.text.Text;
 import java.time.LocalDate;
 
 /**
- * GUI for employees to view all auctions between dates that they specify inclusive.
+ * GUI for employees to view all auctions between dates that they specify
+ * inclusive.
  *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
 public class EmployeeViewAuctionsBetweenDatesController {
 
-    private static String INVALID_ENTRY_PROMPT = "Invalid entry. Ensure starting date is before ending date" +
-            " and written in the correct format";
+    private static final String INVALID_ENTRY_PROMPT = "Invalid entry. " +
+            "Ensure starting date is before ending date" +
+            " and written in the correct format. ex) 2007-01-12";
 
     @FXML
     private TextField startDate;
