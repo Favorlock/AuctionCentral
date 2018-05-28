@@ -1,8 +1,6 @@
 package edu.uw.sp18.tcss360a.group6;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -20,8 +18,8 @@ public class FXApplication extends Application {
     private static String CONTACT_SUBMIT_AUCTION_FXML = "/scenes/ContactSubmitAuctionRequest.fxml";
     private static String CONTACT_ADD_ITEM_FXML = "/scenes/ContactAddItem.fxml";
     private static String BIDDER_MAIN_FXML = "/scenes/BidderMain.fxml";
-    private static String BIDDER_VIEW_BIDS_FXML = "/scenes/ViewBids.fxml";
-    private static String BIDDER_PLACE_BID_FXML = "/scenes/PlaceBid.fxml";
+    private static String BIDDER_VIEW_BIDS_FXML = "/scenes/BidderViewBids.fxml";
+    private static String BIDDER_PLACE_BID_FXML = "/scenes/BidderPlaceBid.fxml";
     private static String BIDDER_CANCEL_BID_FXML = "/scenes/BidderCancelBid.fxml";
     private static String BIDDER_PLACE_BID_VIEW_AUCTION_FXML = "/scenes/BidderPlaceBidViewAuction.fxml";
     private static String EMPLOYEE_MAIN_FXML = "/scenes/EmployeeMain.fxml";
@@ -34,7 +32,7 @@ public class FXApplication extends Application {
     private static String EMPLOYEE_VIEW_RANGE_SUCCESS_FXML = "/scenes/EmployeeViewRangeSuccess.fxml";
     private static String EMPLOYEE_VIEW_AUCTION_ITEMS_FXML = "/scenes/EmployeeViewAuctionItems.fxml";
     private static String AUCTION_ADD_FAIL_FXML = "/scenes/AuctionAddFail.fxml";
-    private static String ADD_ITEM_FORM_FXML = "/scenes/AddItemForm.fxml";
+    private static String ADD_ITEM_FORM_FXML = "/scenes/ContactAddItemForm.fxml";
     private static String CONTACT_VIEW_ITEMS_FXML = "/scenes/ContactViewItems.fxml";
     private static String AUCTION_ADD_INPUT_FAIL_FXML = "/scenes/AuctionAddInputFail.fxml";
 

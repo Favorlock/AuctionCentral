@@ -82,15 +82,19 @@ public class Bidder extends AbstractUser {
     }
 
     /**
+     * Get the id for this bidder.
+     * @return id for this bidder long type
+     */
+    public long getID() {
+        return this.id;
+    }
+
+    /**
      * Get a list of all of the Auctions that I can place a bid in.
      * @return a List<Auction> that I can bid in
      */
-    public List<Auction> getAuctionsICanBidIn() { //TODO: this should be working
+    public List<Auction> getAuctionsICanBidIn() {
         Bootstrap bootstrap = new Bootstrap();
-        //this should do same as below
-//        return bootstrap.getAuctionRepository().fetchAllFutureAuctions().stream()
-//                .filter(auction -> canBid(auction)).collect(Collectors.toList());
-
         List<Auction> auctions = new ArrayList<>();
         for (Auction anAuction : bootstrap.getInstance().getAuctionRepository().fetchFutureAuctions()) {
             if(this.canBid(anAuction)) {
@@ -108,10 +112,23 @@ public class Bidder extends AbstractUser {
             if(b.getId() == aBid.getId()) {
                 bootstrap.getBidRepository().delete(aBid);
                 didCancelBid = true;
+                deleteBidFromList(aBid);
                 break;
             }
         }
         return didCancelBid;
+    }
+
+    /**
+     * Delete a bid from the list field of bids for this class.
+     * @param aBid the bid to search for to delete
+     */
+    private void deleteBidFromList(Bid aBid) {
+        for(int i = 0; i < this.placedBids.size(); i++) {
+            if(this.placedBids.get(i).getBidderId() == aBid.getBidderId() ) {
+                this.placedBids.remove(i);
+            }
+        }
     }
 
     /**

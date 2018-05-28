@@ -25,7 +25,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class ViewBidsController implements Initializable{
+public class BidderViewBidsController implements Initializable{
 
     @FXML
     private ListView listView;
@@ -36,7 +36,7 @@ public class ViewBidsController implements Initializable{
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
-    public ViewBidsController () {
+    public BidderViewBidsController() {
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
         List<Bid> bids = bidder.getPlacedBids();
         List<Item> items = new ArrayList<>();

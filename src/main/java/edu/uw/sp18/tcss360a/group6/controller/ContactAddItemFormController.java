@@ -19,7 +19,7 @@ import java.time.LocalDate;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class AddItemFormController {
+public class ContactAddItemFormController {
 
     @FXML
     private TextField descriptionField;

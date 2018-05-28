@@ -23,7 +23,7 @@ import java.util.List;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class PlaceBidController implements Initializable {
+public class BidderPlaceBidController implements Initializable {
 
     @FXML
     public ListView listView;
@@ -35,7 +35,7 @@ public class PlaceBidController implements Initializable {
 
     private ListProperty<String> listProperty = new SimpleListProperty<>();
 
-    public PlaceBidController () {
+    public BidderPlaceBidController() {
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
 
         List<Auction> auction = bidder.getAuctionsICanBidIn();
@@ -59,7 +59,7 @@ public class PlaceBidController implements Initializable {
     }
 
     @FXML
-    public void placeBid() { //TODO - set auction in BidderPlaceBidViewAuctionController
+    public void placeBid() {
         //TODO - dont allow multiple bids in succession
         Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
         BidderPlaceBidViewAuctionController.setAuction(selectedAuction);

@@ -27,6 +27,7 @@
         <VBox styleClass="sidebar-section">
             <children>
                 <Label onMouseReleased="#selectAnotherAuction" text="Select another auction" wrapText="true" />
+                <Label onMouseReleased="#viewItemsBidOn" text="View Items I have bid on" wrapText="true" />
                 <Label onMouseReleased="#back" text="Go back to main menu" wrapText="true" />
                 <fx:include source="components/Logout.fxml" />
             </children>

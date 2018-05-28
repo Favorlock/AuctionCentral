@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.uw.sp18.tcss360a.group6.controller.AddItemFormController"
+            fx:controller="edu.uw.sp18.tcss360a.group6.controller.ContactAddItemFormController"
             prefHeight="480.0" prefWidth="680.0">
     <stylesheets>
         <URL value="@../css/Root.css"/>

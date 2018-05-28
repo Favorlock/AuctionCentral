@@ -1,6 +1,5 @@
 package edu.uw.sp18.tcss360a.group6.controller;
 
-import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.FXApplication;
 import edu.uw.sp18.tcss360a.group6.Session;
 import edu.uw.sp18.tcss360a.group6.model.*;
@@ -52,7 +51,7 @@ public class ContactAddItemController implements Initializable {
     @FXML
     public void openSelection() {
         Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
-        AddItemFormController.setAuction(selectedAuction);
+        ContactAddItemFormController.setAuction(selectedAuction);
         application.getSceneController().activate("addItemForm");
     }
     @FXML

@@ -50,7 +50,9 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
     public BidderPlaceBidViewAuctionController() {
 
-            List<Item> auctionItems = auction.getInventory();
+            List<Item> auctionItems = auction.getItemsBidderCanBidOn(
+                    Session.getInstance().get("user", Bidder.class));
+//        List<Item> auctionItems = auction.getInventory(); works but displays all bids(can bid twice)
             listView = new ListView();
             this.items.setAll(auctionItems);
             listView.setItems(this.items);
@@ -68,7 +70,6 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(items));
         listView.getSelectionModel().select(0);
-
     }
     @FXML
     public void clearText() {
@@ -80,10 +81,8 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
         // check if user entered valid input into the text field
         try {
             BigDecimal bidAmount = new BigDecimal(bidderAmount.getText());
-
             Item theItem = (Item)listView.getSelectionModel().getSelectedItem();
             Bidder theBidder = Session.getInstance().get("user", Bidder.class);
-
             messageForBid(theBidder.addBid(bidAmount, theItem, auction));
         } catch (NumberFormatException e) {
             bidderAmount.setText("Enter valid bid amount");
@@ -101,6 +100,11 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
     @FXML
     public void selectAnotherAuction() {
         application.getSceneController().activate("placeBid");
+    }
+
+    @FXML
+    public void viewItemsBidOn(){
+        application.getSceneController().activate("viewBids");
     }
 
     @FXML

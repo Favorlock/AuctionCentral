@@ -5,6 +5,7 @@ import edu.uw.sp18.tcss360a.group6.Bootstrap;
 import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -167,6 +168,30 @@ public class Auction {
         }
 
         return this.inventory;
+    }
+
+    /**
+     * Get a list of items that the bidder can bid on in an auction
+     * and has not already bid on in the past.
+     * @param theBidder Bidder to check if has bids on item
+     * @return list of items bidder can bid on
+     */
+    public List<Item> getItemsBidderCanBidOn(Bidder theBidder) {
+        List<Item> items = this.getInventory();
+        List<Item> biddableItems = new ArrayList<>();
+        for(Item i : items) { //iterate list of all items in auction
+            List<Bid> bidder = i.getPlacedBids();
+            boolean canBid = true;
+            for(Bid b : bidder) { //iterate list of all bids on each item
+                if(b.getBidderId() == theBidder.getId()) {
+                    canBid = false;
+                }
+            }
+            if(canBid) {
+                biddableItems.add(i);
+            }
+        }
+        return biddableItems;
     }
 
     @Override
