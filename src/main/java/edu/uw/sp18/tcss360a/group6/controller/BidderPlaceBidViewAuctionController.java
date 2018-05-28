@@ -52,7 +52,6 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
             List<Item> auctionItems = auction.getItemsBidderCanBidOn(
                     Session.getInstance().get("user", Bidder.class));
-//        List<Item> auctionItems = auction.getInventory(); works but displays all bids(can bid twice)
             listView = new ListView();
             this.items.setAll(auctionItems);
             listView.setItems(this.items);
@@ -104,7 +103,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
     @FXML
     public void viewItemsBidOn(){
-        application.getSceneController().activate("viewBids");
+        application.getSceneController().activate("cancelBid");
     }
 
     @FXML

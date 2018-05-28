@@ -112,23 +112,11 @@ public class Bidder extends AbstractUser {
             if(b.getId() == aBid.getId()) {
                 bootstrap.getBidRepository().delete(aBid);
                 didCancelBid = true;
-                deleteBidFromList(aBid);
+                this.placedBids = this.getPlacedBids();
                 break;
             }
         }
         return didCancelBid;
-    }
-
-    /**
-     * Delete a bid from the list field of bids for this class.
-     * @param aBid the bid to search for to delete
-     */
-    private void deleteBidFromList(Bid aBid) {
-        for(int i = 0; i < this.placedBids.size(); i++) {
-            if(this.placedBids.get(i).getBidderId() == aBid.getBidderId() ) {
-                this.placedBids.remove(i);
-            }
-        }
     }
 
     /**
