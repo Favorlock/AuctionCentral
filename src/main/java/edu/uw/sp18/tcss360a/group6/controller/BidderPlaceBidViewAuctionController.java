@@ -60,6 +60,7 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
 
             listView.setVisible(true);
         } catch (NullPointerException e){
+            //System.out.println("Please select an Auction');
             this.selectAuctionMessage.setText("Please select an Auction");
         }
 
