@@ -3,301 +3,301 @@
   "entries": [
     {
       "id": 1,
-      "amountderId": 17,
+      "bidderId": 17,
       "auctionId": 14,
       "itemId": 1,
       "amount": "125.0"
     },
     {
       "id": 2,
-      "amountderId": 17,
+      "bidderId": 17,
       "auctionId": 14,
       "itemId": 2,
       "amount": "1125.0"
     },
     {
       "id": 3,
-      "amountderId": 1,
+      "bidderId": 1,
       "auctionId": 14,
       "itemId": 5,
       "amount": "11.0"
     },
     {
       "id": 4,
-      "amountderId": 17,
+      "bidderId": 17,
       "auctionId": 14,
       "itemId": 5,
       "amount": "12.0"
     },
     {
       "id": 5,
-      "amountderId": 1,
+      "bidderId": 1,
       "auctionId": 14,
       "itemId": 1,
       "amount": "130.0"
     },
     {
       "id": 6,
-      "amountderId": 2,
+      "bidderId": 2,
       "auctionId": 14,
       "itemId": 5,
       "amount": "13.0"
     },
     {
       "id": 7,
-      "amountderId": 1,
+      "bidderId": 1,
       "auctionId": 14,
       "itemId": 2,
       "amount": "1200.0"
     },
     {
       "id": 8,
-      "amountderId": 2,
+      "bidderId": 2,
       "auctionId": 14,
       "itemId": 1,
       "amount": "200.0"
     },
     {
       "id": 9,
-      "amountderId": 3,
+      "bidderId": 3,
       "auctionId": 14,
       "itemId": 3,
       "amount": "14.0"
     },
     {
       "id": 10,
-      "amountderId": 3,
+      "bidderId": 3,
       "auctionId": 14,
       "itemId": 5,
       "amount": "11.0"
     },
     {
       "id": 11,
-      "amountderId": 6,
+      "bidderId": 6,
       "auctionId": 14,
       "itemId": 1,
       "amount": "135.0"
     },
     {
       "id": 12,
-      "amountderId": 6,
+      "bidderId": 6,
       "auctionId": 14,
       "itemId": 2,
       "amount": "1135.0"
     },
     {
       "id": 13,
-      "amountderId": 6,
+      "bidderId": 6,
       "auctionId": 14,
       "itemId": 5,
       "amount": "12.0"
     },
     {
       "id": 14,
-      "amountderId": 18,
+      "bidderId": 18,
       "auctionId": 14,
       "itemId": 5,
       "amount": "13.0"
     },
     {
       "id": 15,
-      "amountderId": 3,
+      "bidderId": 3,
       "auctionId": 14,
       "itemId": 1,
       "amount": "140.0"
     },
     {
       "id": 16,
-      "amountderId": 19,
+      "bidderId": 19,
       "auctionId": 14,
       "itemId": 5,
       "amount": "14.0"
     },
     {
       "id": 17,
-      "amountderId": 19,
+      "bidderId": 19,
       "auctionId": 14,
       "itemId": 2,
       "amount": "1210.0"
     },
     {
       "id": 18,
-      "amountderId": 19,
+      "bidderId": 19,
       "auctionId": 14,
       "itemId": 1,
       "amount": "210.0"
     },
     {
       "id": 19,
-      "amountderId": 5,
+      "bidderId": 5,
       "auctionId": 14,
       "itemId": 3,
       "amount": "16.0"
     },
     {
       "id": 20,
-      "amountderId": 19,
+      "bidderId": 19,
       "auctionId": 14,
       "itemId": 4,
       "amount": "19.0"
     },
     {
       "id": 21,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 1,
       "amount": "7.00"
     },
     {
       "id": 22,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 2,
       "amount": "110.00"
     },
     {
       "id": 23,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 3,
       "amount": "1250.00"
     },
     {
       "id": 24,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 4,
       "amount": "16.00"
     },
     {
       "id": 25,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 5,
       "amount": "10.00"
     },
     {
       "id": 26,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 6,
       "amount": "120.00"
     },
     {
       "id": 27,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 7,
       "amount": "1001.00"
     },
     {
       "id": 28,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 14,
       "itemId": 8,
       "amount": "25.10"
     },
     {
       "id": 29,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 1,
       "amount": "9.00"
     },
     {
       "id": 30,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 2,
       "amount": "105.00"
     },
     {
       "id": 31,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 3,
       "amount": "1350.00"
     },
     {
       "id": 32,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 4,
       "amount": "18.00"
     },
     {
       "id": 33,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 5,
       "amount": "8.00"
     },
     {
       "id": 34,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 6,
       "amount": "125.75"
     },
     {
       "id": 35,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 7,
       "amount": "1010.00"
     },
     {
       "id": 36,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 14,
       "itemId": 8,
       "amount": "15.10"
     },
     {
       "id": 37,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 6,
       "itemId": 29,
       "amount": "301.00"
     },
     {
       "id": 38,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 6,
       "itemId": 28,
       "amount": "15.10"
     },
     {
       "id": 39,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 6,
       "itemId": 39,
       "amount": "150.10"
     },
     {
       "id": 40,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 6,
       "itemId": 41,
       "amount": "97.00"
     },
     {
       "id": 41,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 1,
       "itemId": 14,
       "amount": "1400.00"
     },
     {
       "id": 42,
-      "amountderId": 11,
+      "bidderId": 11,
       "auctionId": 1,
       "itemId": 16,
       "amount": "10.50"
     },
     {
       "id": 43,
-      "amountderId": 10,
+      "bidderId": 10,
       "auctionId": 2,
       "itemId": 18,
       "amount": "800.00"
