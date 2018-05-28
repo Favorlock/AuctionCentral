@@ -38,10 +38,6 @@
             <HBox styleClass="content-section" spacing="60">
                 <Button fx:id="selectAuction" onAction="#placeBid" text="View Selected Auction" />
             </HBox>
-
-            <HBox styleClass="content-section" spacing="60">
-                <Text fx:id="selectAuctionMessage"/>
-            </HBox>
         </VBox>
     </center>
 
