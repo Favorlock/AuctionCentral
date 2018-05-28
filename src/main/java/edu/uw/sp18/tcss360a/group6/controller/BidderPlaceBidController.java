@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public class BidderPlaceBidController implements Initializable {
 
     @FXML
     public ListView listView;
+
+    @FXML
+    public static Text bidMessageText;
 
     @FXML
     private FXApplication application = FXApplication.getInstance();

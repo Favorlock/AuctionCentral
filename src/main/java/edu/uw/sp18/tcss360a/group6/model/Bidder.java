@@ -152,7 +152,7 @@ public class Bidder extends AbstractUser {
         if (this.placedBids == null) {
             this.placedBids = ConsoleApplication.getInstance().getBidRepository()
                     .fetchAll().stream()
-                    .filter(bid -> bid.getBidderId() == getId())
+                    .filter(bid -> bid.getBidderId() == getId()).sorted()
                     .collect(Collectors.toList());
         }
 

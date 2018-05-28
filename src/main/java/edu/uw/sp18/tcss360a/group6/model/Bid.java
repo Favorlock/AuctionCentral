@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay
  * @version 4/30/2018
  */
-public class Bid {
+public class Bid implements Comparable{
 
     @Expose
     protected long id;
@@ -133,6 +133,21 @@ public class Bid {
                 ", Amount=" + amount +
                 ", Auction ID=" + auctionId;
 
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        int returnamt;
+        Bid otherBid = (Bid)o;
+        if (otherBid.getAuction().getStartDate().isBefore(this.getAuction().getStartDate())) {
+            returnamt = 1;
+        } else if (otherBid.getAuction().getStartDate().isAfter(this.getAuction().getStartDate())) {
+            returnamt = -1;
+        } else {
+            returnamt = 0;
+        }
+
+        return returnamt;
     }
 }
 

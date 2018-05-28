@@ -34,6 +34,7 @@
 
     <center>
         <VBox styleClass="content-section"  >
+            <Text fx:id="bidMessageText" />
             <ListView fx:id="listView"/>
             <HBox styleClass="content-section" spacing="60">
                 <Button fx:id="selectAuction" onAction="#placeBid" text="View Selected Auction" />
