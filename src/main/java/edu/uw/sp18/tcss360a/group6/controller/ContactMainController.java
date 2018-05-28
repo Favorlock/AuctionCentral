@@ -15,12 +15,17 @@ import java.awt.*;
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
  * @version 5/18/2018
  */
-public class ContactMainController {
+public class ContactMainController implements Initializable {
     @FXML
     public Label viewAuctionsLabelCP;
     @FXML
     public Label viewItemsLabelCP;
-
+    @FXML
+    private Label viewauctions;
+    @FXML
+    private Label submitauction;
+    @FXML
+    private Label additem;
     private FXApplication application = FXApplication.getInstance();
 
     @FXML
@@ -47,6 +52,19 @@ public class ContactMainController {
             application.getSceneController().activate("contactAddItem");
         } catch (NullPointerException e) {
             viewItemsLabelCP.setTextFill(Paint.valueOf("RED"));
+        }
+    }
+
+    @Override
+    public void initialize() {
+        ContactPerson currentCP = Session.getInstance().get("user", ContactPerson.class);
+
+        if (currentCP.getOrganization().getCurrentAuction() != null) {
+            submitauction.setDisable(true);
+        }
+        if (currentCP.getOrganization().getAuctions().size() == 0) {
+            additem.setDisable(true);
+            viewauctions.setDisable(true);
         }
     }
 }

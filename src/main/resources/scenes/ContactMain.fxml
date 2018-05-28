@@ -24,9 +24,9 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label fx:id="viewAuctionsLabelCP" text="View my Auctions" onMouseReleased="#viewAuctions"/>
-                <Label text="Submit Auction Request" onMouseReleased="#submitAuction" wrapText="true"/>
-                <Label fx:id="viewItemsLabelCP" text="Add Item to Auction" onMouseReleased="#addItem" wrapText="true"/>
+                <Label fx:id="viewauctions" text="View my Auctions" onMouseReleased="#viewAuctions"/>
+                <Label fx:id="submitauction" text="Submit Auction Request" onMouseReleased="#submitAuction" wrapText="true"/>
+                <Label fx:id="additem" text="Add Item to Auction" onMouseReleased="#addItem" wrapText="true"/>
                 <fx:include source="components/Logout.fxml"/>
             </children>
         </VBox>
