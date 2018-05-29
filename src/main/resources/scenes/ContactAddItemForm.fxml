@@ -21,7 +21,8 @@
 
     <left>
         <VBox styleClass="sidebar-section">
-            <Label text="Main Menu" onMouseReleased="#back"/>
+            <Label text="Select another auction" onMouseReleased="#back" wrapText="true"/>
+            <Label text="Main Menu" onMouseReleased="#mainMenuContactPerson"/>
             <fx:include source="components/Logout.fxml"/>
         </VBox>
     </left>

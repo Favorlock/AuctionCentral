@@ -31,8 +31,6 @@ public class ContactAddItemFormController {
     @FXML
     private TextField sizeField;
     @FXML
-    private TextField locationField;
-    @FXML
     private TextField commentsField;
     @FXML
     private Label addItemMessageText;
@@ -62,21 +60,75 @@ public class ContactAddItemFormController {
         Bootstrap bootstrap = new Bootstrap();
         itemId = bootstrap.getItemRepository().fetchAll().size() + 2;
         auctionId = auction.getId();
-
         description = descriptionField.getText();
-        quantity = Integer.parseInt(quantityField.getText());
-        startBid = new BigDecimal(startBidField.getText());
         condition = conditionField.getText();
-        size = sizeField.getText();
+        boolean validQuantity = isValidQuantityEntered();
+        boolean validBid = isValidBidEntered();
+        boolean validSize = isValidSize();
         comments = commentsField.getText();
 
-        //create the item and add to the auction
-        Item item = new Item(itemId, auctionId, description, quantity,
-                startBid, condition, size, "a5", comments);
+        //create the item and add to the auction if valid
+        if(validQuantity && validBid && validSize) {
+            Item item = new Item(itemId, auctionId, description, quantity,
+                    startBid, condition, size, "a5", comments);
 
-        showAddItemStatus(auction.addItem(item));
-        resetTextFields();
+            showAddItemStatus(auction.addItem(item));
+            resetTextFields();
+        }
     }
+
+    /**
+     * Returns true if the user entered a valid integer quantity.
+     * @return if user enter valid quantity
+     */
+    private boolean isValidQuantityEntered() {
+        boolean parsed = true;
+        try {
+            quantity = Integer.parseInt(quantityField.getText());
+        } catch (NumberFormatException e) {
+            quantityField.setText("");
+            addItemMessageText.setText("must enter a valid quantity");
+            parsed = false;
+        }
+        return parsed;
+    }
+
+    /**
+     * Get if the user entered a valid bid decimal amount.
+     * @return if valid bid entered
+     */
+    private boolean isValidBidEntered() {
+        boolean parsed = true;
+        try {
+            startBid = new BigDecimal(startBidField.getText());
+        } catch (NumberFormatException e) {
+            startBidField.setText("");
+            addItemMessageText.setText("must enter a valid bid");
+            parsed = false;
+        }
+        return parsed;
+    }
+
+    /**
+     * Get if the size string entered is valid.
+     * @return true if valid size entered
+     */
+    private boolean isValidSize() {
+        boolean parsed = false;
+
+        if(sizeField.getText().equalsIgnoreCase("small") ||
+                sizeField.getText().equalsIgnoreCase("medium") ||
+                sizeField.getText().equalsIgnoreCase("large") ) {
+            size = sizeField.getText();
+            parsed = true;
+        } else  {
+            sizeField.setText("");
+            addItemMessageText.setText("must enter small, medium or large");
+            parsed = false;
+        }
+        return parsed;
+    }
+
     /** Show if the item added or not on the GUI. */
     private void showAddItemStatus(boolean didAdd) {
         if(didAdd) {
@@ -85,6 +137,7 @@ public class ContactAddItemFormController {
             addItemMessageText.setText("Item was not added to the auction");
         }
     }
+
     /** set all user entry text fields to blank. */
     private void resetTextFields() {
         descriptionField.setText("");
@@ -103,5 +156,12 @@ public class ContactAddItemFormController {
     public void back() {
         application.getSceneController().activate("contactAddItem");
     }
+
+    @FXML
+    public void mainMenuContactPerson() {
+        application.getSceneController().activate("contactMain");
+    }
+
+
 
 }
