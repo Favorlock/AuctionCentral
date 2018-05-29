@@ -101,6 +101,11 @@ public class Bidder extends AbstractUser {
         return auctions;
     }
 
+    /**
+     * The method use to check if a bid available to cancel.
+     * @param aBid is a bid bidder wants to cancel
+     * @return boolean whether the bid can cancel or not.
+     */
     public boolean cancelBid(Bid aBid) {
         boolean didCancelBid = false;
         Bootstrap bootstrap = new Bootstrap();

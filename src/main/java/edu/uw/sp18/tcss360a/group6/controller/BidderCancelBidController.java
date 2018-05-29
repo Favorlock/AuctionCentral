@@ -56,13 +56,14 @@ public class BidderCancelBidController implements Initializable{
         listView.itemsProperty().bind(listProperty);
         listProperty.set(FXCollections.observableArrayList(observableBids));
         listView.getSelectionModel().select(0);
-
     }
 
     @FXML
     public void cancelBid() {
         Bid bid = (Bid) listView.getSelectionModel().getSelectedItem();
         didCancelBidText(bidder.cancelBid(bid));
+        listView.getSelectionModel().clearSelection();
+        listProperty.set(FXCollections.observableArrayList(observableBids));
     }
     private void updateItems() {
         final int selectedId = listView.getSelectionModel().getSelectedIndex();

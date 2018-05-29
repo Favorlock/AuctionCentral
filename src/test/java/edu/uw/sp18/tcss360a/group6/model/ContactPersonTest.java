@@ -25,16 +25,16 @@ public class ContactPersonTest {
     }
 
     @Test
-    public void getOrganizationID_TestRightID_True() {
+    public void getOrganizationID_testRightID_True() {
         assertEquals(contactPersonOrganizationID, contactPerson.getOrganizationId());
     }
     @Test
-    public void getOrganizationID_TestWrongID_false() {
+    public void getOrganizationID_testWrongID_false() {
         assertNotEquals(contactPersonOrganizationID, contactPerson.getOrganizationId());
     }
 
     @Test
-    public void getOrganization_TestGettingRightOrganizationName_True() {
+    public void getOrganization_testGettingRightOrganizationName_True() {
         assertEquals("UNICEF", contactPerson.getOrganization().getName());
     }
 
