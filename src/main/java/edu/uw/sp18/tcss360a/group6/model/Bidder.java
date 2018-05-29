@@ -92,7 +92,8 @@ public class Bidder extends AbstractUser {
     public List<Auction> getAuctionsICanBidIn() {
         Bootstrap bootstrap = new Bootstrap();
         List<Auction> auctions = new ArrayList<>();
-        for (Auction anAuction : bootstrap.getInstance().getAuctionRepository().fetchFutureAuctions()) {
+        for (Auction anAuction : bootstrap.getInstance().getAuctionRepository()
+                .fetchFutureAuctions()) {
             if(this.canBid(anAuction)) {
                 auctions.add(anAuction);
             }

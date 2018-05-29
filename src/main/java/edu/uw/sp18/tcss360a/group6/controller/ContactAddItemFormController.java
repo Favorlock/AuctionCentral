@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  * GUI for employees to view all auctions between dates that they specify inclusive.
  *
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lyndsay
- * @version 5/18/2018
+ * @version 5/28/2018
  */
 public class ContactAddItemFormController {
 
@@ -56,7 +56,7 @@ public class ContactAddItemFormController {
     }
 
     @FXML
-    public void addItem() { //TODO: validate all fields are valid
+    public void addItem() {
         Bootstrap bootstrap = new Bootstrap();
         itemId = bootstrap.getItemRepository().fetchAll().size() + 2;
         auctionId = auction.getId();
