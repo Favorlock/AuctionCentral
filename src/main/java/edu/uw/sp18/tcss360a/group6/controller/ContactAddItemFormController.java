@@ -85,9 +85,15 @@ public class ContactAddItemFormController {
         boolean parsed = true;
         try {
             quantity = Integer.parseInt(quantityField.getText());
+            if (quantity <= 0) {
+                quantityField.setText("");
+                addItemMessageText.setText("must enter a positive integer");
+
+                parsed = false;
+            }
         } catch (NumberFormatException e) {
             quantityField.setText("");
-            addItemMessageText.setText("must enter a valid quantity");
+            addItemMessageText.setText("must enter a positive integer");
             parsed = false;
         }
         return parsed;
