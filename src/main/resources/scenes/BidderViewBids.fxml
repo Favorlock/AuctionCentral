@@ -22,7 +22,7 @@
     <left>
         <VBox styleClass="sidebar-section">
             <children>
-                <Label text="Go Back" onMouseReleased="#back" wrapText="true"/>
+                <Label text="Main Menu" onMouseReleased="#back" wrapText="true"/>
                 <fx:include source="components/Logout.fxml"/>
             </children>
         </VBox>
