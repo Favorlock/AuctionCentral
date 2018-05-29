@@ -36,7 +36,8 @@ public class ContactAddItemController implements Initializable {
 
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
 
         listView.setVisible(true);
     }

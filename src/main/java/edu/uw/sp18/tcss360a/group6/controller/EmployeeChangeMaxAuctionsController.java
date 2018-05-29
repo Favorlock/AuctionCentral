@@ -30,13 +30,15 @@ public class EmployeeChangeMaxAuctionsController {
 
     @FXML
     public void onEnter(KeyEvent event) {
-        currentNewMaxLabel.setText("Current Max " + Auction.MAX_UPCOMING_AUCTIONS + ". Enter a new Max: ");
+        currentNewMaxLabel.setText("Current Max " +
+                Auction.MAX_UPCOMING_AUCTIONS + ". Enter a new Max: ");
         if (event.getCode().equals(KeyCode.ENTER)) {
             Employee employee = Session.getInstance().get("user", Employee.class);
             try {
                 int max = Integer.parseInt(newMax.getText());
                 if (employee.setAuctionCapacity(max)){
-                    changeMaxAuctionLabel.setText("You have sucessfully changed the maximum number" +
+                    changeMaxAuctionLabel.
+                            setText("You have sucessfully changed the maximum number" +
                             " of upcoming auctions allowed");
                 } else {
                     changeMaxAuctionLabel.setText("The amount entered must be a " +

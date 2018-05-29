@@ -44,7 +44,8 @@ public class ContactViewAuctionsController implements Initializable{
 
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
 
         listView.setVisible(true);
     }
@@ -59,7 +60,6 @@ public class ContactViewAuctionsController implements Initializable{
 
     @FXML
     public void viewAuction() {
-        //TODO - set auction in BidderPlaceBidViewAuctionController
         Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
         ContactViewItemsController.setAuction(selectedAuction);
         application.getSceneController().activate("contactViewItems");

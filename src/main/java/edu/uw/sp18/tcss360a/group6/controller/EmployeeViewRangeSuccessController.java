@@ -40,11 +40,8 @@ public class EmployeeViewRangeSuccessController implements Initializable {
         Bootstrap bootstrap = new Bootstrap();
         List<Auction> auction = bootstrap.getAuctionRepository()
                 .fetchAuctionsInPeriod(startDate, endDate);
-//        List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
 
         listView = new ListView();
-
-
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
         listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)

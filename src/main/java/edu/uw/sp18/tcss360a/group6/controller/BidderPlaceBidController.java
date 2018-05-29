@@ -40,15 +40,13 @@ public class BidderPlaceBidController implements Initializable {
 
     public BidderPlaceBidController() {
         Bidder bidder = Session.getInstance().get("user", Bidder.class);
-
         List<Auction> auction = bidder.getAuctionsICanBidIn();
-
         listView = new ListView();
-
 
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
 
         listView.setVisible(true);
     }
@@ -63,7 +61,6 @@ public class BidderPlaceBidController implements Initializable {
 
     @FXML
     public void placeBid() {
-        //TODO - dont allow multiple bids in succession
         Auction selectedAuction = (Auction)listView.getSelectionModel().getSelectedItem();
         BidderPlaceBidViewAuctionController.setAuction(selectedAuction);
         application.getSceneController().activate("placeBidViewAuction");

@@ -15,7 +15,9 @@ public class AuctionAddSuccessController {
     private FXApplication application = FXApplication.getInstance();
 
     @FXML
-    public void addItems() {application.getSceneController().activate("contactAddItem"); }
+    public void addItems() {
+        application.getSceneController().activate("contactAddItem");
+    }
 
     @FXML
     public void back() {

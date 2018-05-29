@@ -35,12 +35,14 @@ public class EmployeeViewAllAuctionsController implements Initializable{
 
     public EmployeeViewAllAuctionsController () {
         Bootstrap bootstrap = new Bootstrap();
-        List<Auction> auction = bootstrap.getAuctionRepository().fetchAllInChronologicalOrder();
+        List<Auction> auction = bootstrap.getAuctionRepository()
+                .fetchAllInChronologicalOrder();
         listView = new ListView();
 
         this.auctions.setAll(auction);
         listView.setItems(this.auctions);
-        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>) listView -> new ListViewCell());
+        listView.setCellFactory((Callback<ListView<String>, ListCell<String>>)
+                listView -> new ListViewCell());
 
         listView.setVisible(true);
     }

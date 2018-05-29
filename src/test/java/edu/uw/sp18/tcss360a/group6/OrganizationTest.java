@@ -1,12 +1,12 @@
 package edu.uw.sp18.tcss360a.group6;
 
 //import import edu.uw.sp18.tcss360a.group6.ConsoleApplication;
+
 import edu.uw.sp18.tcss360a.group6.model.Auction;
 import edu.uw.sp18.tcss360a.group6.model.Organization;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertFalse;

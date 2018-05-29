@@ -67,7 +67,8 @@ public class BidderPlaceBidViewAuctionController implements Initializable {
         final int selectedId = listView.getSelectionModel().getSelectedIndex();
         if (selectedId != -1) {
             Object itemToRemove = listView.getSelectionModel().getSelectedItem();
-            final int newSelectedId = (selectedId == listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
+            final int newSelectedId = (selectedId ==
+                    listView.getItems().size() - 1) ? selectedId - 1 : selectedId;
             listView.getItems().remove(selectedId);
             listView.getSelectionModel().select(newSelectedId);
         }

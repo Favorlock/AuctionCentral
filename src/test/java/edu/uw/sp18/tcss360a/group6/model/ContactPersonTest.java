@@ -3,7 +3,8 @@ package edu.uw.sp18.tcss360a.group6.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay

@@ -1,9 +1,5 @@
 package edu.uw.sp18.tcss360a.group6.model;
 
-import edu.uw.sp18.tcss360a.group6.model.Auction;
-import edu.uw.sp18.tcss360a.group6.model.Bid;
-import edu.uw.sp18.tcss360a.group6.model.Bidder;
-import edu.uw.sp18.tcss360a.group6.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,10 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author Adam G. Cannon, Josh Atherton, Tam Bui, Evan Lindsay

@@ -37,7 +37,6 @@ public class ContactSubmitAuctionRequestController {
     public void onEnter(KeyEvent event) {
         boolean correctInput = true;
         if (event.getCode().equals(KeyCode.ENTER)) {
-            //TODO: fully test business rules
             Bootstrap bootstrap = new Bootstrap();
             ContactPerson contact = Session.getInstance().get("user", ContactPerson.class);
             try {

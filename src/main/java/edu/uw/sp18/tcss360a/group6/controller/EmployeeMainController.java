@@ -13,7 +13,9 @@ public class EmployeeMainController {
     private FXApplication application = FXApplication.getInstance();
 
     @FXML
-    public void viewAllAuctions() { application.getSceneController().activate("employeeViewAllAuctions"); }
+    public void viewAllAuctions() {
+        application.getSceneController().activate("employeeViewAllAuctions");
+    }
 
     @FXML
     public void viewAuctionsBetweenDates() {
